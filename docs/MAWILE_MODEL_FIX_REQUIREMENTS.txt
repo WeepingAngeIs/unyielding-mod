@@ -1,0 +1,326 @@
+Abacus AI Prompt — Fix and Improve Humanoid Mawile Model for Cobblemon
+
+I am working on a custom humanoid Mawile-style model/addon for Cobblemon Unyielding on Minecraft 1.21.1 NeoForge.
+
+You must improve the current existing model based on the attached screenshots and the instructions below.
+
+This is not a brand-new design from scratch.
+This is a revision/fix pass on the current model.
+
+Main Goal
+
+Create a better version of my humanoid Mawile model that:
+- keeps the cute humanoid design,
+- keeps the Hatterene-inspired color palette,
+- uses Mawile’s original jaw + stem structure,
+- uses Hatterene-style eyes,
+- fixes model errors,
+- improves proportions,
+- improves the rig,
+- improves battle animations,
+- and works better as a Cobblemon-style creature model.
+
+Important Visual References
+
+Use the attached screenshots as the main reference for what currently exists and what needs fixing.
+
+The current model already has the general idea I want:
+- cute humanoid Mawile,
+- short body,
+- pink / pastel / Hatterene-like palette,
+- oversized Mawile jaws behind the head.
+
+But the current version has multiple problems that need to be fixed.
+
+CRITICAL FIXES REQUIRED
+
+1. Fix the holes in the head / hair
+
+The current model has visible holes/gaps in the head area.
+
+You must:
+- close all holes in the head,
+- fix the mesh around the face and hair,
+- make sure there are no visible empty gaps,
+- make the hair look fuller and more complete.
+
+The hair should have a little more volume than it has now.
+
+Do not leave the head looking hollow or unfinished.
+
+2. Fix the teeth textures
+
+Right now the teeth appear to be one-sided / flat textures and not fully modeled or properly visible from all sides.
+
+You must:
+- make the teeth read correctly from multiple angles,
+- fix the mouth/teeth so they do not look like paper-thin one-sided textures,
+- make them visually complete and readable in 3D,
+- keep them blocky / pixel style so they still match Minecraft / Cobblemon style.
+
+3. Use Mawile’s ORIGINAL jaw + stem
+
+This is very important.
+
+I want you to use Mawile’s original model jaw and its original attachment stem as the base.
+
+Do not invent a completely different jaw attachment.
+
+Reason:
+- Mawile’s original jaw has the proper stem/connector,
+- it gives more natural spacing behind the head,
+- it lets the jaw hang better,
+- it reduces clipping into the neck/body,
+- it better preserves Mawile’s identity.
+
+Required instruction:
+Obtain whatever files/resources you need from the original Mawile model assets so you can use:
+- Mawile’s original jaw shape,
+- Mawile’s original stem/attachment structure.
+
+Then:
+- recolor it,
+- edit it,
+- adapt it,
+- and fit it into this humanoid model.
+
+But the base structure should come from Mawile’s original jaw + stem, not a fully reinvented back-jaw.
+
+4. Recolor the jaw using the pattern I asked for before
+
+Keep using the color pattern I requested earlier:
+- Hatterene-inspired palette,
+- pastel pinks,
+- pale lavender,
+- light blue-violet / soft cool tones,
+- darker purple accents where appropriate.
+
+The jaw should visually fit the character.
+
+Do not go back to standard Mawile yellow/black colors.
+
+5. Use Hatterene-style eyes
+
+I want the model to use the eye style of Hatterene.
+
+That means:
+- the face should have eyes inspired by Hatterene’s eye look,
+- the expression should feel cute, slightly mysterious, and magical,
+- the eye styling should not just be generic dots or plain Minecraft eyes,
+- adapt Hatterene’s eye style into this humanoid Mawile design.
+
+If needed, obtain the necessary Hatterene visual reference/model resources and adapt the style of the eyes into this model.
+
+Do not turn the whole design into Hatterene.
+I only want the eye style inspiration from Hatterene.
+
+BODY / PROPORTION FIXES
+
+6. Model is too small
+
+The current model feels too small.
+
+Make the model a bit larger while still being shorter than a normal Minecraft player.
+
+It should still look like a smaller humanoid Pokémon, but not so tiny that it feels stunted.
+
+7. Make the legs a little longer
+
+The current legs are too short.
+
+Please:
+- lengthen the legs a little,
+- improve the proportions,
+- keep the model cute and compact,
+- do not make it tall like a normal player.
+
+The result should look more balanced and less squashed.
+
+8. Add knees and better limb joints
+
+The model needs actual bend points.
+
+Please improve the model/rig so it has:
+- knees,
+- elbow-like arm bends,
+- better leg joints,
+- better arm joints,
+- a bendable spine / torso section.
+
+The purpose is so the animation can look better and the body can actually pose more naturally.
+
+I want the model to be able to:
+- bend arms,
+- bend legs,
+- bend slightly at the spine,
+- crouch / bob / lean.
+
+Do not keep it too stiff.
+
+ANIMATION FIXES
+
+9. Current battle animation has jaw clipping into the neck
+
+In the current fight animation, the back jaw opens and clips into the neck/model.
+
+That must be fixed.
+
+Since I want you to use Mawile’s original jaw + stem, that should help reduce this problem.
+
+You must:
+- test the back-jaw opening motion,
+- adjust pivot points,
+- adjust spacing,
+- adjust the stem/jaw position,
+- prevent clipping into the neck/head/body as much as possible.
+
+The jaw must be able to open in battle without looking broken.
+
+10. Keep the cute animations
+
+The current animations are cute overall.
+
+Please preserve that cute feel.
+
+Do not make the creature look stiff, aggressive in a bad way, or robotic.
+
+11. New requested fight pose / battle animation
+
+I want a specific battle behavior.
+
+Requested battle pose / animation:
+- Mawile should turn its back toward the target,
+- bend over slightly,
+- open the back jaws,
+- shake a little,
+- and then bend its legs so it moves up and down.
+
+The motion should feel:
+- cute,
+- a little playful,
+- a little eerie/creepy in a Mawile way,
+- and visually interesting.
+
+This should read as a signature humanoid Mawile battle stance.
+
+Important:
+The animation must work with the improved rig:
+- legs can bend,
+- spine can bend,
+- arms can pose,
+- jaw can open without clipping badly.
+
+DESIGN DIRECTION
+
+12. Keep the existing overall concept
+
+Do NOT completely redesign the character.
+
+Keep the overall concept:
+- humanoid Mawile,
+- cute style,
+- dark hair,
+- pastel outfit/body,
+- huge jaws behind the head,
+- Hatterene-inspired palette.
+
+This is a refinement/fix pass, not a replacement.
+
+13. Maintain Cobblemon / Minecraft model style
+
+Keep the model in a style appropriate for Cobblemon and Minecraft:
+- voxel/blocky style,
+- pixel textures,
+- clean geometry,
+- readable silhouette,
+- not too over-detailed,
+- not smooth realistic anime 3D.
+
+It should still feel like it belongs in Cobblemon.
+
+TECHNICAL INSTRUCTIONS
+
+14. Use any necessary source files/resources
+
+If you need model pieces or references, go get/use the files needed from:
+- Mawile original model/resources (for jaw + stem),
+- Hatterene visual/model reference (for eyes style),
+- current humanoid Mawile project files.
+
+Use those as references / source parts where appropriate to build the improved version.
+
+15. Improve the rig if needed
+
+If the current rig is too limited, improve it.
+
+Needed rig abilities:
+- arm bends,
+- leg bends,
+- knee articulation,
+- spine bending,
+- jaw opening,
+- stable head/jaw spacing,
+- usable animation pivots.
+
+16. Test for clipping and readability
+
+Before finalizing, test:
+- standing pose,
+- walking/idle,
+- battle pose,
+- jaw opening,
+- front / side / back views.
+
+Check:
+- no head holes,
+- no broken hair gaps,
+- no flat bad teeth look,
+- less neck clipping,
+- improved proportions,
+- better animation readability.
+
+DELIVERABLES
+
+Provide:
+1. Updated improved model.
+2. Fixed textures.
+3. Improved hair/head mesh.
+4. Jaw updated using original Mawile jaw + stem.
+5. Hatterene-style eyes integrated.
+6. Improved rig with knees / bendable limbs / spine.
+7. Updated animations.
+8. Fixed battle pose/animation.
+9. Explanation of what was changed.
+10. Any source/editable files used for the model.
+11. Final installable addon or project files for testing in Cobblemon.
+
+PRIORITY ORDER
+
+Please follow this order of importance:
+1. Use original Mawile jaw + stem.
+2. Fix the head holes and hair.
+3. Fix teeth so they are not one-sided looking.
+4. Use Hatterene-style eyes.
+5. Improve size and proportions.
+6. Make legs a little longer.
+7. Add knees / limb bends / spine bend.
+8. Fix battle jaw clipping.
+9. Make the new battle pose/animation.
+10. Preserve the cute style.
+
+Final Reminder
+
+This is NOT a request to make a brand-new random humanoid Mawile.
+
+This is a request to fix and improve the current model while keeping the same idea.
+
+Most important changes:
+- use Mawile’s original jaw + stem,
+- use Hatterene-style eyes,
+- fix the holes, teeth, and hair,
+- make the model a little bigger with longer legs,
+- add better joints and rigging,
+- fix the battle animation clipping,
+- and create the back-turned, bent-over, open-jaw shaking battle pose.
+
+Do not ignore any of these requirements.
