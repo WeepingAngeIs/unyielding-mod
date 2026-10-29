@@ -2,6 +2,16 @@
 
 This addon adds a new, separate species, `cobblemon:mawileunyielding`. She's a cute humanoid Mawile girl in Hatterene colours (#A9D3F0, #F2A7C3, #C9A6E8, #6B4C9A, white) with a giant pastel jaw-ponytail. The original Mawile files are not touched.
 
+## Custom cry — October 29, 2026
+
+The root [`MawileUnyielding_Cobblemon_Addon.zip`](MawileUnyielding_Cobblemon_Addon.zip) now includes a distinct **1.5-second cry**, edited from Cobblemon's original Mawile cry for this female-only evolution. It has a short opening and a gentler falling answer, softened upper frequencies, and a clean fade.
+
+- [Listen / download the WAV master](source/audio/mawileunyielding_cry.wav)
+- [Game-ready Ogg preview](source/audio/mawileunyielding_cry.ogg)
+- [Sound notes, installation and reproduction](docs/MAWILE_CRY.md)
+
+Replace the old addon ZIP with the root ZIP above, including each client's enabled resource-pack copy. Audio-file and pack-structure checks passed; Minecraft playback has not been tested here.
+
 ## Version assumption
 - Target: **Minecraft 1.21.1, NeoForge, Cobblemon 1.6.1+**. Cobblemon 1.7.x and 1.8.x also run on MC 1.21.1 and use the same bedrock model, poser and resolver formats, so they should work too. This has not been verified in game.
 - `pack.mcmeta` uses `pack_format` 48 (the 1.21.1 data format) and `supported_formats: [34, 48]`, so the same zip is accepted as a resource pack (format 34).
