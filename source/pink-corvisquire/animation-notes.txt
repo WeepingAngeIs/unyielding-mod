@@ -1,0 +1,55 @@
+Original Corvisquire animations adapted to the pink model. Pupils have no animation channels. Original open-wing geometry restored and recolored. Blink uses the approved lower-outline expression. Original unused channels for absent bones omitted. Preview/Blockbench mathematical motion baked at 30 samples/second; game JSON retains original expressions. No Minecraft runtime test or datapack installation performed. Speed-test and wing-visibility helper clips preserved in dropdown.
+{
+  "air_fly": [
+    "wing_right",
+    "wing_right2",
+    "wing_right3"
+  ],
+  "air_idle": [],
+  "blink": [],
+  "closed_wangs": [],
+  "cry": [],
+  "fly_speed_test": [],
+  "ground_idle": [
+    "armor_left",
+    "armor_left2",
+    "armor_right",
+    "armor_right2",
+    "beard2",
+    "beard3",
+    "hairstrand",
+    "hairstrand2",
+    "scruff",
+    "scruff2",
+    "wing_left",
+    "wing_left2",
+    "wing_left3",
+    "wing_right",
+    "wing_right2",
+    "wing_right3"
+  ],
+  "ground_walk": [
+    "armor_left",
+    "armor_left2",
+    "beard2",
+    "beard3",
+    "hairstrand",
+    "hairstrand2",
+    "scruff",
+    "scruff2",
+    "wing_left",
+    "wing_left2",
+    "wing_left3"
+  ],
+  "recoil": [],
+  "sleep": [
+    "wing_left",
+    "wing_left2",
+    "wing_left3",
+    "wing_right",
+    "wing_right2",
+    "wing_right3"
+  ],
+  "walkspeed_test": [],
+  "wangs": []
+}

@@ -1,0 +1,103 @@
+{
+  "animations": {
+    "cry": "q.bedrock_stateful('pink_corvisquire', 'cry')",
+    "recoil": "q.bedrock_stateful('pink_corvisquire', 'recoil')"
+  },
+  "portraitScale": 2,
+  "portraitTranslation": [
+    -0.26,
+    -0.29,
+    0
+  ],
+  "poses": {
+    "fly": {
+      "animations": [
+        "q.pitch_tilt('body', 1)",
+        "q.look('neck', 0.75, 0.5)",
+        "q.look('head', 1, 0)",
+        "q.bedrock('pink_corvisquire', 'air_fly')",
+        "q.bedrock('pink_corvisquire', 'wangs')"
+      ],
+      "poseTypes": [
+        "FLY",
+        "SWIM"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('pink_corvisquire', 'blink')"
+      ],
+      "transformTicks": 10
+    },
+    "hover": {
+      "animations": [
+        "q.pitch_tilt('body', 1)",
+        "q.look('neck', 0.75, 0.5)",
+        "q.look('head', 1, 0)",
+        "q.bedrock('pink_corvisquire', 'air_idle')",
+        "q.bedrock('pink_corvisquire', 'wangs')"
+      ],
+      "poseTypes": [
+        "HOVER",
+        "FLOAT"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('pink_corvisquire', 'blink')"
+      ],
+      "transformTicks": 10
+    },
+    "sleep": {
+      "animations": [
+        "q.bedrock('pink_corvisquire', 'sleep')",
+        "q.bedrock('pink_corvisquire', 'closed_wangs')"
+      ],
+      "namedAnimations": {
+        "cry": "q.bedrock_stateful('dummy', 'cry')"
+      },
+      "poseTypes": [
+        "SLEEP"
+      ],
+      "transformTicks": 10
+    },
+    "standing": {
+      "animations": [
+        "q.look('neck', 0.75, 0.5)",
+        "q.look('head', 1, 0)",
+        "q.bedrock('pink_corvisquire', 'ground_idle')",
+        "q.bedrock('pink_corvisquire', 'closed_wangs')"
+      ],
+      "condition": "q.has_entity ? !q.in_air : 1.0",
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('pink_corvisquire', 'blink')"
+      ],
+      "transformTicks": 10
+    },
+    "walking": {
+      "animations": [
+        "q.look('neck', 0.75, 0.5)",
+        "q.look('head', 1, 0)",
+        "q.bedrock('pink_corvisquire', 'ground_walk')",
+        "q.bedrock('pink_corvisquire', 'closed_wangs')"
+      ],
+      "condition": "!q.in_air",
+      "poseTypes": [
+        "WALK"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('pink_corvisquire', 'blink')"
+      ],
+      "transformTicks": 10
+    }
+  },
+  "profileScale": 1.1,
+  "profileTranslation": [
+    0,
+    0.12,
+    0
+  ],
+  "rootBone": "corvisquire"
+}

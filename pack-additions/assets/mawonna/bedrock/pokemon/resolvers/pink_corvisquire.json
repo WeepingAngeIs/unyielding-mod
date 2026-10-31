@@ -1,0 +1,13 @@
+{
+  "species": "mawonna:pink_corvisquire",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "mawonna:pink_corvisquire",
+      "model": "mawonna:pink_corvisquire.geo",
+      "texture": "mawonna:textures/pokemon/pink_corvisquire/pink_corvisquire.png",
+      "layers": []
+    }
+  ]
+}
