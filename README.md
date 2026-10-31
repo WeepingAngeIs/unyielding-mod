@@ -1,8 +1,17 @@
 # Mawile (Unyielding): Cobblemon addon
 
+## Mawonna: October 31, 2026 sound and move update
+
+**The third evolution is the separate file [`Mawonna`](Mawonna), not the `MawileUnyielding_Cobblemon_Addon.zip` below.**
+
+- [Mawonna cry and the full Fairy, Steel, Poison and Fang move list](docs/MAWONNA_CRY_AND_MOVES.md).
+- Install the `Mawonna` file as `Mawonna.zip` in both the server/world datapacks and enabled client resource packs.
+- Regular Mawile keeps the original cry. The earlier wrong-target change to the other addon ZIP is reverted.
+
+
 This addon adds a new, separate species, `cobblemon:mawileunyielding`. She's a cute humanoid Mawile girl in Hatterene colours (#A9D3F0, #F2A7C3, #C9A6E8, #6B4C9A, white) with a giant pastel jaw-ponytail. The original Mawile files are not touched.
 
-## Custom cry — October 29, 2026
+## Archived notes: earlier wrong-target cry edit (reverted in the smaller ZIP)
 
 The root [`MawileUnyielding_Cobblemon_Addon.zip`](MawileUnyielding_Cobblemon_Addon.zip) now includes a distinct **1.5-second cry**, edited from Cobblemon's original Mawile cry for this female-only evolution. It has a short opening and a gentler falling answer, softened upper frequencies, and a clean fade.
 
