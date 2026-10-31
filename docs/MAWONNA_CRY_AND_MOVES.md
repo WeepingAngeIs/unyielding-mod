@@ -1,4 +1,4 @@
-# Mawonna: gentle cry + immediately available moves
+# Mawonna: gentle cry and expanded move access
 
 Updated for the *actual* third evolution `mawile_custom:mawile_third_evolution` (Mawonna), rather than the earlier mistakenly edited `cobblemon:mawileunyielding` addon.
 
@@ -48,3 +48,8 @@ Test the species and open its move-relearn UI:
 ```
 
 All ZIP entry CRCs and changed JSON were validated programmatically. The modified animation contains the new custom sound reference. Actual in-game playback and move-relearn UI were **not** tested in this environment.
+
+
+## All named moves from level 1 (October 31, 2026)
+
+The expanded learnset now has **841 named ordinary moves unlocked at level 1** (738 new unlocks). See the [complete move list and installation notes](MAWONNA_ALL_LEVEL_ONE_MOVES.md). The original Mawonna cry and other data are preserved.
