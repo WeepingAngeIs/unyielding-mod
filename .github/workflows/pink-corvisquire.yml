@@ -20,6 +20,7 @@ jobs:
           node-version: '22'
       - run: python -m pip install Pillow==11.3.0
       - run: python tools/build_and_validate.py
+      - run: node tools/test_player_ability.cjs
       - run: npm install --no-save playwright@1.56.1
       - run: npx playwright install --with-deps chromium
       - run: node tools/cloud_preview.cjs

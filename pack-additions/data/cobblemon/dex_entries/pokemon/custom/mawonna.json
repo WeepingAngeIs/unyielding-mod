@@ -1,0 +1,15 @@
+{
+  "id": "cobblemon:mawonna",
+  "speciesId": "cobblemon:mawonna",
+  "conditionAspects": [],
+  "displayAspects": [],
+  "forms": [
+    {
+      "displayForm": "Normal",
+      "unlockForms": [
+        "Normal"
+      ]
+    }
+  ],
+  "variations": []
+}

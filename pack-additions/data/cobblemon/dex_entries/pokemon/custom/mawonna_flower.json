@@ -1,0 +1,15 @@
+{
+  "id": "cobblemon:mawonna_flower",
+  "speciesId": "cobblemon:mawonna_flower",
+  "conditionAspects": [],
+  "displayAspects": [],
+  "forms": [
+    {
+      "displayForm": "Normal",
+      "unlockForms": [
+        "Normal"
+      ]
+    }
+  ],
+  "variations": []
+}

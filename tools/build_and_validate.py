@@ -38,8 +38,8 @@ with Image.open(tex) as im:assert im.size==(g['description']['texture_width'],g[
 poser=json.loads(files[prefix+f'bedrock/pokemon/posers/{n}.json']);assert poser['rootBone'] in bones
 for expr in re.findall(r"q\.bedrock(?:_stateful|_quirk)?\('pink_corvisquire', '([^']+)'",json.dumps(poser)):
  assert 'animation.'+n+'.'+expr in a,expr
-resolver=json.loads(files[prefix+f'bedrock/pokemon/resolvers/{n}.json']);assert resolver['species']=='mawonna:'+n
-species=json.loads(files[f'data/mawonna/species/custom/{n}.json']);assert species['maleRatio']==0 and species['implemented']
+resolver=json.loads(files[prefix+f'bedrock/pokemon/resolvers/{n}.json']);assert resolver['species']=='cobblemon:covislight'
+species=json.loads(files['data/cobblemon/species/custom/covislight.json']);assert species['maleRatio']==0 and species['implemented']
 expected_stats={'hp':110,'attack':10,'defence':80,'special_attack':120,'special_defence':150,'speed':125}
 assert species['name']=='Corvislight'
 assert species['baseStats']==expected_stats
@@ -49,9 +49,35 @@ required={'1:'+m['id'] for m in catalog}
 assert len(required)==68 and required.issubset(set(species['moves']))
 assert len(species['moves'])==len(set(species['moves']))
 assert {'1:steelwing','1:esperwing','1:dualwingbeat','1:oblivionwing','1:wingattack'}.issubset(required)
+player=json.loads(files['data/cobblemon/species/custom/mawonna.json'])
+admin=json.loads(files['data/cobblemon/species/custom/mawonna_flower.json'])
+assert player['baseStats']==dict(hp=100,attack=120,defence=120,special_attack=10,special_defence=100,speed=10)
+assert sum(player['baseStats'].values())==460
+assert admin['baseStats']==dict(hp=155,attack=165,defence=200,special_attack=5,special_defence=150,speed=30)
+assert player['abilities']==['futakuchionnaplayer'] and 'futakuchionna' in admin['abilities']
+for base,result in [('corvisquire','covislight'),('mawile','mawonna')]:
+ addition=json.loads(files[f'data/mawonna/species_additions/{base}_evolution.json'])
+ evo=addition['evolutions'][0]
+ assert addition['target']=='cobblemon:'+base and evo['result'].split()[0]==result
+ req=evo['requirements'][0]
+ assert req=={'variant':'defeat','target':'type=dark','amount':1000}
+ for count in [0,999,1000,1001]:assert (count>=req['amount'])==(count>=1000)
+ assert 'mawonna_flower' not in evo['result']
+ if base=='corvisquire':assert {'variant':'properties','target':'gender=female'} in evo['requirements']
+lang=json.loads(files['assets/mawonna/lang/en_us.json'])
+for sid in ['covislight','mawonna','mawonna_flower']:
+ entry=json.loads(files[f'data/cobblemon/dex_entries/pokemon/custom/{sid}.json'])
+ assert entry['speciesId']=='cobblemon:'+sid
+ assert 'cobblemon.species.'+sid+'.desc' in lang
+assert '1,000' in lang['cobblemon.species.covislight.desc']
+assert '1,000' in lang['cobblemon.species.mawonna.desc']
 with zipfile.ZipFile(root/'Mawonna.zip') as original:
  assert original.testzip() is None
- old={i.filename:original.read(i) for i in original.infolist() if not i.is_dir()}
+ original_entries={i.filename:original.read(i) for i in original.infolist() if not i.is_dir()}
+ removals=set(json.loads((root/'pack-removals.json').read_text()))
+ assert removals=={'data/mawile_custom/species/custom/mawile_third_evolution.json','assets/mawile_custom/bedrock/pokemon/resolvers/mawile_third_evolution.json'}
+ assert removals.issubset(original_entries)
+ old={p:data for p,data in original_entries.items() if p not in removals}
  assert 'pack.mcmeta' in old
  assert not set(old)&set(files),'Unexpected overwrite of existing Mawonna entry'
  with zipfile.ZipFile(out/'Mawonna-with-Pink-Corvisquire.zip','w',zipfile.ZIP_DEFLATED) as z:

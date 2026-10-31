@@ -1,0 +1,21 @@
+{
+  "target": "cobblemon:mawile",
+  "evolutions": [
+    {
+      "id": "mawile_mawonna",
+      "variant": "level_up",
+      "result": "mawonna ability=futakuchionnaplayer",
+      "consumeHeldItem": false,
+      "requirements": [
+        {
+          "variant": "defeat",
+          "target": "type=dark",
+          "amount": 1000
+        }
+      ]
+    }
+  ],
+  "pokedex": [
+    "cobblemon.species.mawile.mawonna_evolution.desc"
+  ]
+}
