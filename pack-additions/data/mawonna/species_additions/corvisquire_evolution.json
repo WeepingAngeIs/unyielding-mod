@@ -1,0 +1,25 @@
+{
+  "target": "cobblemon:corvisquire",
+  "evolutions": [
+    {
+      "id": "corvisquire_covislight",
+      "variant": "level_up",
+      "result": "covislight",
+      "consumeHeldItem": false,
+      "requirements": [
+        {
+          "variant": "defeat",
+          "target": "type=dark",
+          "amount": 1000
+        },
+        {
+          "variant": "properties",
+          "target": "gender=female"
+        }
+      ]
+    }
+  ],
+  "pokedex": [
+    "cobblemon.species.corvisquire.mawonna_evolution.desc"
+  ]
+}

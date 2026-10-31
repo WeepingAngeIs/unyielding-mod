@@ -1,4 +1,15 @@
 {
   "cobblemon.species.pink_corvisquire.name": "Corvislight",
-  "mawonna.species.pink_corvisquire.desc": "Its pink ribbon feathers flutter as it watches over its companions."
+  "mawonna.species.pink_corvisquire.desc": "Its pink ribbon feathers flutter as it watches over its companions.",
+  "cobblemon.species.covislight.name": "Corvislight",
+  "cobblemon.species.covislight.desc": "A female Corvisquire can evolve into Corvislight after personally defeating 1,000 Dark-type Pokemon in battle. Use the evolution option when available. All Fairy, Flying, and wing attack moves are available from level 1.",
+  "cobblemon.species.corvisquire.mawonna_evolution.desc": "Female Corvisquire can evolve into Corvislight after personally defeating 1,000 Dark-type Pokemon in battle. Its normal Corviknight evolution remains available.",
+  "cobblemon.species.mawile.mawonna_evolution.desc": "Mawile can evolve into the player version of Mawonna after personally defeating 1,000 Dark-type Pokemon in battle. This evolution never gives Mawonna (Flower / Admin).",
+  "cobblemon.species.mawonna.name": "Mawonna",
+  "cobblemon.species.mawonna.desc": "Evolves from Mawile after personally defeating 1,000 Dark-type Pokemon. Player version: HP 100, Atk 120, Def 120, Sp. Atk 10, Sp. Def 100, Speed 10. Futakuchi-onna lowers each opposing Pokemon's Attack and Sp. Atk by one stage on entry.",
+  "cobblemon.species.mawonna_flower.name": "Mawonna (Flower / Admin)",
+  "cobblemon.species.mawonna_flower.desc": "ADMIN VERSION. Available through the mawonna_flower spawn identifier only; no normal evolution leads here. Retains the original powerful stats and Futakuchi-onna lowering opposing Attack and Sp. Atk by two stages.",
+  "cobblemon.ability.futakuchionnaplayer": "Futakuchi-onna",
+  "cobblemon.ability.futakuchionnaplayer.desc": "On entering battle, lowers each opposing Pokemon's Attack and Sp. Atk by one stage.",
+  "cobblemon.dex.mawonna_custom": "Mawonna Creations"
 }

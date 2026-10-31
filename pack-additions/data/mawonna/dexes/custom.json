@@ -1,0 +1,10 @@
+{
+  "id": "mawonna:custom",
+  "sortOrder": 13,
+  "type": "cobblemon:simple_pokedex_def",
+  "entries": [
+    "cobblemon:covislight",
+    "cobblemon:mawonna",
+    "cobblemon:mawonna_flower"
+  ]
+}

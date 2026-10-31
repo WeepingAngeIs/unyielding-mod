@@ -8,7 +8,7 @@
   "height": 8,
   "weight": 100,
   "pokedex": [
-    "mawonna.species.pink_corvisquire.desc"
+    "cobblemon.species.covislight.desc"
   ],
   "labels": [
     "custom",
@@ -172,5 +172,6 @@
     "tutor:swift"
   ],
   "evolutions": [],
-  "forms": []
+  "forms": [],
+  "preEvolution": "corvisquire"
 }
