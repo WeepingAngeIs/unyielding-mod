@@ -1,9 +1,12 @@
-name: Pink Corvisquire cloud checks
+name: V17 pack build and cloud checks
 on:
   push:
-    branches: [main, 'codex/pink-corvisquire-cloud']
+    branches: [main, 'codex/v17-installable-pack-fix']
   pull_request:
   workflow_dispatch:
+concurrency:
+  group: v17-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -25,9 +28,15 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node tools/cloud_preview.cjs
       - uses: actions/upload-artifact@v4
+        with:
+          name: Mawonna-v17-Corvislight-INSTALL
+          path: dist/installable/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Mawonna-Pink-Corvisquire
-          path: dist/
+          name: Mawonna-v17-test-reports
+          path: |
+            dist/*.json
+            dist/previews/
           if-no-files-found: error
-

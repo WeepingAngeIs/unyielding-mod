@@ -1,4 +1,4 @@
-import json, zipfile, struct, re, gzip
+import json, zipfile, struct, re, gzip, hashlib
 from pathlib import Path
 from PIL import Image
 root=Path(__file__).resolve().parents[1]
@@ -71,7 +71,9 @@ for sid in ['covislight','mawonna','mawonna_flower']:
  assert 'cobblemon.species.'+sid+'.desc' in lang
 assert '1,000' in lang['cobblemon.species.covislight.desc']
 assert '1,000' in lang['cobblemon.species.mawonna.desc']
-with zipfile.ZipFile(root/'Mawonna.zip') as original:
+base_zip=root/'Mawonna.zip'
+assert hashlib.sha256(base_zip.read_bytes()).hexdigest()=='ad24b99301a8741d2370bde79b35ac69c4a5f53b7e7768d064e4b80fad2141b9', 'Wrong Mawonna base: must be the user-supplied v17 Floral Kimono'
+with zipfile.ZipFile(base_zip) as original:
  assert original.testzip() is None
  original_entries={i.filename:original.read(i) for i in original.infolist() if not i.is_dir()}
  removals=set(json.loads((root/'pack-removals.json').read_text()))
@@ -80,10 +82,39 @@ with zipfile.ZipFile(root/'Mawonna.zip') as original:
  old={p:data for p,data in original_entries.items() if p not in removals}
  assert 'pack.mcmeta' in old
  assert not set(old)&set(files),'Unexpected overwrite of existing Mawonna entry'
- with zipfile.ZipFile(out/'Mawonna-with-Pink-Corvisquire.zip','w',zipfile.ZIP_DEFLATED) as z:
+ # V17 did not include the later cry; preserve that separate repository audio.
+ cry='assets/mawile_custom/sounds/pokemon/mawile_third_evolution/mawonna_cry.ogg'
+ files[cry]=(root/'source/audio/mawonna_cry.ogg').read_bytes()
+ geo_path='assets/mawile_custom/bedrock/pokemon/models/mawile_third_evolution/mawile_third_evolution.geo.json'
+ maw_geo=json.loads(old[geo_path])['minecraft:geometry'][0]
+ assert len(maw_geo['bones'])==131
+ assert sum(b['name'].startswith('kimono') for b in maw_geo['bones'])==26
+ maw_bones={b['name'] for b in maw_geo['bones']}
+ maw_anim=json.loads(old['assets/mawile_custom/bedrock/pokemon/animations/mawile_third_evolution/mawile_third_evolution.animation.json'])['animations']
+ for clip in maw_anim.values():
+  assert set(clip.get('bones',{})).issubset(maw_bones),set(clip.get('bones',{}))-maw_bones
+ for sid in ['mawonna','mawonna_flower']:
+  res=json.loads(files[f'assets/mawonna/bedrock/pokemon/resolvers/{sid}.json'])
+  assert res['species']=='cobblemon:'+sid
+  assert res['variations'][0]['model']=='mawile_custom:mawile_third_evolution.geo'
+ metadata=json.loads(old['pack.mcmeta'])
+ metadata['pack']['description']='Mawonna v17 Floral Kimono + Corvislight | Player and Flower versions'
+ old['pack.mcmeta']=json.dumps(metadata,indent=2).encode()
+
+ with zipfile.ZipFile(out/'Mawonna-v17-Corvislight.zip','w',zipfile.ZIP_DEFLATED) as z:
   for path,data in sorted((old|files).items()):z.writestr(path,data)
-with zipfile.ZipFile(out/'Mawonna-with-Pink-Corvisquire.zip') as z:
+with zipfile.ZipFile(out/'Mawonna-v17-Corvislight.zip') as z:
  assert z.testzip() is None
  assert all(z.read(p)==data for p,data in old.items())
-report={'status':'passed','animations':len(a),'bones':len(bones),'original_entries_preserved':len(old),'added_entries':len(files),'minecraft_runtime_test':False}
+# The downloadable artifact is the pack itself, never a ZIP containing another ZIP.
+installable=out/'installable'
+for path,data in sorted((old|files).items()):
+ target=installable/path
+ target.parent.mkdir(parents=True,exist_ok=True)
+ target.write_bytes(data)
+assert (installable/'pack.mcmeta').is_file()
+assert not list(installable.glob('*.zip'))
+for sid in ['covislight','mawonna','mawonna_flower']:
+ assert (installable/f'data/cobblemon/species/custom/{sid}.json').is_file()
+report={'mawonna_model_version':17,'mawonna_base_sha256':hashlib.sha256(base_zip.read_bytes()).hexdigest(),'directly_installable_artifact':True,'status':'passed','animations':len(a),'bones':len(bones),'original_entries_preserved':len(old),'added_entries':len(files),'minecraft_runtime_test':False}
 (out/'validation.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))
