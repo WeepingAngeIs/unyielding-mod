@@ -33,7 +33,7 @@ Battle-only Z-Moves and Dynamax/G-Max variants and dynamic Hidden Power type pla
 
 ## Installation and testing
 
-The `Mawonna` file in the repository is an extensionless ZIP. Download it and name it `Mawonna.zip` locally. Replace the old archive in **both** your world/server `datapacks/` and each client's enabled `resourcepacks/` (or client-server resource pack). Do not keep the older ZIP enabled alongside it. Restart the game or use F3+T to refresh resources; reload the server datapacks.
+The repository now provides `Mawonna.zip` ready to download and install, with no renaming needed. Replace the old archive in **both** your world/server `datapacks/` and each client's enabled `resourcepacks/` (or client-server resource pack). Do not keep the older ZIP enabled alongside it. Restart the game or use F3+T to refresh resources; reload the server datapacks.
 
 Test the isolated audio:
 

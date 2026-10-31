@@ -14,8 +14,8 @@
 
 ## Installation
 
-1. Download the updated [`Mawonna`](../Mawonna) file from GitHub's main branch using **Download raw file**.
-2. Name it `Mawonna.zip` locally (the stored GitHub file is an extensionless ZIP).
+1. Download the ready-to-install [`Mawonna.zip`](../Mawonna.zip) from GitHub's main branch using **Download raw file**.
+2. Keep its filename as `Mawonna.zip`; there is no need to rename it or repackage it.
 3. Replace your old Mawonna addon in the server/world datapacks folder and enabled client resourcepacks (or whichever copy you normally use for the model/audio).
 4. Reload data or restart the server and client, and disable/delete obsolete duplicate copies.
 5. Obtain Mawonna and open the Pokémon's move-relearn interface. Search for moves such as Absorb, Acrobatics, Draco Meteor, Fire Fang and Moonblast. The 841 named entries should be listed from level 1, although usability of every move remains untested in-game.

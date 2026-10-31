@@ -1,11 +1,15 @@
 # Mawile (Unyielding): Cobblemon addon
 
+## Installable archive naming rule
+
+**Release convention for this repository:** Always commit installable Minecraft modpack addons, datapacks and resource packs as actual `.zip` files on GitHub. Avoid extensionless archives, and provide direct download links to the `.zip`. Preserve `pack.mcmeta` at the ZIP root. Updating GitHub does **not** update the running Minecraft server: replace the server datapack and relevant client resource pack, then reload/restart as needed.
+
 ## Mawonna: October 31, 2026 sound and move update
 
-**The third evolution is the separate file [`Mawonna`](Mawonna), not the `MawileUnyielding_Cobblemon_Addon.zip` below.**
+**The third evolution is the ready-to-install [`Mawonna.zip`](Mawonna.zip), not the separate `MawileUnyielding_Cobblemon_Addon.zip` below.**
 
 - [Mawonna cry and the full Fairy, Steel, Poison and Fang move list](docs/MAWONNA_CRY_AND_MOVES.md).
-- Install the `Mawonna` file as `Mawonna.zip` in both the server/world datapacks and enabled client resource packs.
+- Download `Mawonna.zip` directly, then replace the old copy in both the server/world datapacks and enabled client resource packs.
 - Regular Mawile keeps the original cry. The earlier wrong-target change to the other addon ZIP is reverted.
 
 
