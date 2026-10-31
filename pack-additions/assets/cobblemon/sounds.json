@@ -1,0 +1,26 @@
+{
+  "pokemon.mawonna.cry": {
+    "sounds": [
+      {
+        "name": "mawile_custom:pokemon/mawile_third_evolution/mawonna_cry",
+        "volume": 1
+      }
+    ]
+  },
+  "pokemon.mawonna_flower.cry": {
+    "sounds": [
+      {
+        "name": "mawile_custom:pokemon/mawile_third_evolution/mawonna_cry",
+        "volume": 1
+      }
+    ]
+  },
+  "pokemon.covislight.cry": {
+    "sounds": [
+      {
+        "name": "cobblemon:pokemon/corvisquire/corvisquire_cry",
+        "volume": 1
+      }
+    ]
+  }
+}
