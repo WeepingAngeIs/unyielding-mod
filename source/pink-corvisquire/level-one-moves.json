@@ -1,0 +1,342 @@
+[
+  {
+    "id": "acrobatics",
+    "name": "Acrobatics",
+    "type": "Flying"
+  },
+  {
+    "id": "aerialace",
+    "name": "Aerial Ace",
+    "type": "Flying"
+  },
+  {
+    "id": "aeroblast",
+    "name": "Aeroblast",
+    "type": "Flying"
+  },
+  {
+    "id": "aircutter",
+    "name": "Air Cutter",
+    "type": "Flying"
+  },
+  {
+    "id": "airslash",
+    "name": "Air Slash",
+    "type": "Flying"
+  },
+  {
+    "id": "alluringvoice",
+    "name": "Alluring Voice",
+    "type": "Fairy"
+  },
+  {
+    "id": "aromaticmist",
+    "name": "Aromatic Mist",
+    "type": "Fairy"
+  },
+  {
+    "id": "babydolleyes",
+    "name": "Baby-Doll Eyes",
+    "type": "Fairy"
+  },
+  {
+    "id": "beakblast",
+    "name": "Beak Blast",
+    "type": "Flying"
+  },
+  {
+    "id": "bleakwindstorm",
+    "name": "Bleakwind Storm",
+    "type": "Flying"
+  },
+  {
+    "id": "bounce",
+    "name": "Bounce",
+    "type": "Flying"
+  },
+  {
+    "id": "bravebird",
+    "name": "Brave Bird",
+    "type": "Flying"
+  },
+  {
+    "id": "charm",
+    "name": "Charm",
+    "type": "Fairy"
+  },
+  {
+    "id": "chatter",
+    "name": "Chatter",
+    "type": "Flying"
+  },
+  {
+    "id": "craftyshield",
+    "name": "Crafty Shield",
+    "type": "Fairy"
+  },
+  {
+    "id": "dazzlinggleam",
+    "name": "Dazzling Gleam",
+    "type": "Fairy"
+  },
+  {
+    "id": "decorate",
+    "name": "Decorate",
+    "type": "Fairy"
+  },
+  {
+    "id": "defog",
+    "name": "Defog",
+    "type": "Flying"
+  },
+  {
+    "id": "disarmingvoice",
+    "name": "Disarming Voice",
+    "type": "Fairy"
+  },
+  {
+    "id": "dragonascent",
+    "name": "Dragon Ascent",
+    "type": "Flying"
+  },
+  {
+    "id": "drainingkiss",
+    "name": "Draining Kiss",
+    "type": "Fairy"
+  },
+  {
+    "id": "drillpeck",
+    "name": "Drill Peck",
+    "type": "Flying"
+  },
+  {
+    "id": "dualwingbeat",
+    "name": "Dual Wingbeat",
+    "type": "Flying"
+  },
+  {
+    "id": "esperwing",
+    "name": "Esper Wing",
+    "type": "Psychic"
+  },
+  {
+    "id": "fairylock",
+    "name": "Fairy Lock",
+    "type": "Fairy"
+  },
+  {
+    "id": "fairywind",
+    "name": "Fairy Wind",
+    "type": "Fairy"
+  },
+  {
+    "id": "featherdance",
+    "name": "Feather Dance",
+    "type": "Flying"
+  },
+  {
+    "id": "fleurcannon",
+    "name": "Fleur Cannon",
+    "type": "Fairy"
+  },
+  {
+    "id": "floatyfall",
+    "name": "Floaty Fall",
+    "type": "Flying"
+  },
+  {
+    "id": "floralhealing",
+    "name": "Floral Healing",
+    "type": "Fairy"
+  },
+  {
+    "id": "flowershield",
+    "name": "Flower Shield",
+    "type": "Fairy"
+  },
+  {
+    "id": "fly",
+    "name": "Fly",
+    "type": "Flying"
+  },
+  {
+    "id": "geomancy",
+    "name": "Geomancy",
+    "type": "Fairy"
+  },
+  {
+    "id": "gmaxfinale",
+    "name": "G-Max Finale",
+    "type": "Fairy"
+  },
+  {
+    "id": "gmaxsmite",
+    "name": "G-Max Smite",
+    "type": "Fairy"
+  },
+  {
+    "id": "gmaxwindrage",
+    "name": "G-Max Wind Rage",
+    "type": "Flying"
+  },
+  {
+    "id": "guardianofalola",
+    "name": "Guardian of Alola",
+    "type": "Fairy"
+  },
+  {
+    "id": "gust",
+    "name": "Gust",
+    "type": "Flying"
+  },
+  {
+    "id": "hiddenpowerflying",
+    "name": "Hidden Power Flying",
+    "type": "Flying"
+  },
+  {
+    "id": "hurricane",
+    "name": "Hurricane",
+    "type": "Flying"
+  },
+  {
+    "id": "letssnuggleforever",
+    "name": "Let's Snuggle Forever",
+    "type": "Fairy"
+  },
+  {
+    "id": "lightofruin",
+    "name": "Light of Ruin",
+    "type": "Fairy"
+  },
+  {
+    "id": "magicaltorque",
+    "name": "Magical Torque",
+    "type": "Fairy"
+  },
+  {
+    "id": "maxairstream",
+    "name": "Max Airstream",
+    "type": "Flying"
+  },
+  {
+    "id": "maxstarfall",
+    "name": "Max Starfall",
+    "type": "Fairy"
+  },
+  {
+    "id": "mirrormove",
+    "name": "Mirror Move",
+    "type": "Flying"
+  },
+  {
+    "id": "mistyexplosion",
+    "name": "Misty Explosion",
+    "type": "Fairy"
+  },
+  {
+    "id": "mistyterrain",
+    "name": "Misty Terrain",
+    "type": "Fairy"
+  },
+  {
+    "id": "moonblast",
+    "name": "Moonblast",
+    "type": "Fairy"
+  },
+  {
+    "id": "moonlight",
+    "name": "Moonlight",
+    "type": "Fairy"
+  },
+  {
+    "id": "naturesmadness",
+    "name": "Nature's Madness",
+    "type": "Fairy"
+  },
+  {
+    "id": "oblivionwing",
+    "name": "Oblivion Wing",
+    "type": "Flying"
+  },
+  {
+    "id": "peck",
+    "name": "Peck",
+    "type": "Flying"
+  },
+  {
+    "id": "playrough",
+    "name": "Play Rough",
+    "type": "Fairy"
+  },
+  {
+    "id": "pluck",
+    "name": "Pluck",
+    "type": "Flying"
+  },
+  {
+    "id": "roost",
+    "name": "Roost",
+    "type": "Flying"
+  },
+  {
+    "id": "skyattack",
+    "name": "Sky Attack",
+    "type": "Flying"
+  },
+  {
+    "id": "skydrop",
+    "name": "Sky Drop",
+    "type": "Flying"
+  },
+  {
+    "id": "sparklyswirl",
+    "name": "Sparkly Swirl",
+    "type": "Fairy"
+  },
+  {
+    "id": "spiritbreak",
+    "name": "Spirit Break",
+    "type": "Fairy"
+  },
+  {
+    "id": "springtidestorm",
+    "name": "Springtide Storm",
+    "type": "Fairy"
+  },
+  {
+    "id": "steelwing",
+    "name": "Steel Wing",
+    "type": "Steel"
+  },
+  {
+    "id": "strangesteam",
+    "name": "Strange Steam",
+    "type": "Fairy"
+  },
+  {
+    "id": "supersonicskystrike",
+    "name": "Supersonic Skystrike",
+    "type": "Flying"
+  },
+  {
+    "id": "sweetkiss",
+    "name": "Sweet Kiss",
+    "type": "Fairy"
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind",
+    "type": "Flying"
+  },
+  {
+    "id": "twinkletackle",
+    "name": "Twinkle Tackle",
+    "type": "Fairy"
+  },
+  {
+    "id": "wingattack",
+    "name": "Wing Attack",
+    "type": "Flying"
+  }
+]

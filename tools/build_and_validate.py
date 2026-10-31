@@ -40,6 +40,15 @@ for expr in re.findall(r"q\.bedrock(?:_stateful|_quirk)?\('pink_corvisquire', '(
  assert 'animation.'+n+'.'+expr in a,expr
 resolver=json.loads(files[prefix+f'bedrock/pokemon/resolvers/{n}.json']);assert resolver['species']=='mawonna:'+n
 species=json.loads(files[f'data/mawonna/species/custom/{n}.json']);assert species['maleRatio']==0 and species['implemented']
+expected_stats={'hp':110,'attack':10,'defence':80,'special_attack':120,'special_defence':150,'speed':125}
+assert species['name']=='Corvislight'
+assert species['baseStats']==expected_stats
+assert sum(species['baseStats'].values())==595
+catalog=json.loads((root/'source/pink-corvisquire/level-one-moves.json').read_text())
+required={'1:'+m['id'] for m in catalog}
+assert len(required)==68 and required.issubset(set(species['moves']))
+assert len(species['moves'])==len(set(species['moves']))
+assert {'1:steelwing','1:esperwing','1:dualwingbeat','1:oblivionwing','1:wingattack'}.issubset(required)
 with zipfile.ZipFile(root/'Mawonna.zip') as original:
  assert original.testzip() is None
  old={i.filename:original.read(i) for i in original.infolist() if not i.is_dir()}
