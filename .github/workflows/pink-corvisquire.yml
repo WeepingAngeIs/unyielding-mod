@@ -1,9 +1,12 @@
-name: Pink Corvisquire cloud checks
+name: V17 pack build and cloud checks
 on:
   push:
-    branches: [main, 'codex/pink-corvisquire-cloud']
+    branches: [main, 'codex/v17-installable-pack-fix']
   pull_request:
   workflow_dispatch:
+concurrency:
+  group: v17-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -25,9 +28,49 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node tools/cloud_preview.cjs
       - uses: actions/upload-artifact@v4
+        with:
+          name: Mawonna-v17-Corvislight-INSTALL
+          path: dist/installable/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Mawonna-Pink-Corvisquire
-          path: dist/
+          name: Mawonna-v17-test-reports
+          path: |
+            dist/*.json
+            dist/previews/
           if-no-files-found: error
-
+  runtime-spawn-smoke:
+    needs: validate-build-preview
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/download-artifact@v4
+        with:
+          name: Mawonna-v17-Corvislight-INSTALL
+          path: runtime-pack
+      - name: Boot real Cobblemon and test all spawn commands
+        run: >-
+          python tools/cloud_runtime_smoke.py
+          --pack runtime-pack
+          --eula-file source/runtime/eula.txt
+          --species Covislight mawonna mawonna_flower
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Mawonna-v17-RUNTIME-TEST-REPORT
+          path: dist/runtime/
+          if-no-files-found: warn
+  
+  

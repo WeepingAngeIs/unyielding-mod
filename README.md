@@ -1,88 +1,35 @@
-# Mawile (Unyielding): Cobblemon addon
+# Mawonna v17 Floral Kimono + Corvislight
 
-## Installable archive naming rule
+The Mawonna model is the exact user-approved v17 Floral Kimono model in both player and Flower variants. The v16 model is no longer the build base.
 
-**Release convention for this repository:** Always commit installable Minecraft modpack addons, datapacks and resource packs as actual `.zip` files on GitHub. Avoid extensionless archives, and provide direct download links to the `.zip`. Preserve `pack.mcmeta` at the ZIP root. Updating GitHub does **not** update the running Minecraft server: replace the server datapack and relevant client resource pack, then reload/restart as needed.
+## Installation
 
-## Mawonna: October 31, 2026 sound and move update
+Download **Mawonna-v17-Corvislight-INSTALL.zip** from the latest successful GitHub Actions run. This ZIP is directly installable: opening it must show `pack.mcmeta`, `data/`, and `assets/` immediately. Do not install the separate test-reports download, or an older ZIP that contains another pack ZIP.
 
-**The third evolution is the ready-to-install [`Mawonna.zip`](Mawonna.zip), not the separate `MawileUnyielding_Cobblemon_Addon.zip` below.**
+Put the same INSTALL ZIP in:
+- the **server world's datapacks** folder (registers species, evolutions, stats, abilities), and
+- the **client resourcepacks** folder (models, textures, animation, Pokédex text).
 
-- [Mawonna cry and the full Fairy, Steel, Poison and Fang move list](docs/MAWONNA_CRY_AND_MOVES.md).
-- Download `Mawonna.zip` directly, then replace the old copy in both the server/world datapacks and enabled client resource packs.
-- Regular Mawile keeps the original cry. The earlier wrong-target change to the other addon ZIP is reverted.
+Remove older Mawonna v16/v17 combined packs from the active pack selection to avoid overrides. If the server supplies a world-specific resource pack, update that server-provided pack too; a higher-priority v16 server pack can override client v17 models.
 
+After replacing the server datapack, fully restart the server for Cobblemon species registries. `/reload` alone is not the installation verification. Check `/datapack list enabled` and the server startup log.
 
-This addon adds a new, separate species, `cobblemon:mawileunyielding`. She's a cute humanoid Mawile girl in Hatterene colours (#A9D3F0, #F2A7C3, #C9A6E8, #6B4C9A, white) with a giant pastel jaw-ponytail. The original Mawile files are not touched.
+## Commands
 
-## Archived notes: earlier wrong-target cry edit (reverted in the smaller ZIP)
+- `/pokespawn Covislight`: Corvislight (display name), using the requested short command spelling.
+- `/pokespawn mawonna`: player Mawonna; HP 100 / Atk 120 / Def 120 / SpA 10 / SpD 100 / Speed 10; BST 460.
+- `/pokespawn mawonna_flower`: powerful Flower/admin variant, original stats and two-stage ability.
 
-The root [`MawileUnyielding_Cobblemon_Addon.zip`](MawileUnyielding_Cobblemon_Addon.zip) now includes a distinct **1.5-second cry**, edited from Cobblemon's original Mawile cry for this female-only evolution. It has a short opening and a gentler falling answer, softened upper frequencies, and a clean fade.
+These remain operator-controlled Cobblemon commands. The normal evolution can never produce the Flower variant.
 
-- [Listen / download the WAV master](source/audio/mawileunyielding_cry.wav)
-- [Game-ready Ogg preview](source/audio/mawileunyielding_cry.ogg)
-- [Sound notes, installation and reproduction](docs/MAWILE_CRY.md)
+Female Corvisquire and Mawile each need 1,000 Dark-type defeats tracked on the individual Pokémon. The requirements appear in their Pokédex descriptions and the custom section of the National Dex. Corvislight keeps its 595 BST spread and all 68 Fairy/Flying/wing attacks from level 1. Pupils remain still.
 
-Replace the old addon ZIP with the root ZIP above, including each client's enabled resource-pack copy. Audio-file and pack-structure checks passed; Minecraft playback has not been tested here.
+The custom Futakuchi-onna ability requires Mega Showdown, as in the original Mawonna pack. Player Mawonna lowers Attack and Special Attack by one stage; Flower retains the original two-stage handler.
 
-## Version assumption
-- Target: **Minecraft 1.21.1, NeoForge, Cobblemon 1.6.1+**. Cobblemon 1.7.x and 1.8.x also run on MC 1.21.1 and use the same bedrock model, poser and resolver formats, so they should work too. This has not been verified in game.
-- `pack.mcmeta` uses `pack_format` 48 (the 1.21.1 data format) and `supported_formats: [34, 48]`, so the same zip is accepted as a resource pack (format 34).
-- The format templates come from standard Cobblemon 1.6 conventions. The upstream Mawile files were not fetched in this build step.
+## Cloud builds
 
-## Install
-**Single player**
-1. Copy `dist/MawileUnyielding_Cobblemon_Addon.zip` into `<world>/datapacks/`. This loads the species data.
-2. Copy the **same zip** into `.minecraft/resourcepacks/` and enable it. This loads the model, textures, animations and name. (Cobblemon also loads `assets/` from datapacks on some versions. If the model shows up without this step, you can skip it.)
-3. Run `/reload` or rejoin the world.
+All builds and heavy tests run on GitHub-hosted runners. The build pins the exact supplied v17 ZIP hash and verifies its 131-bone model and 26 kimono controls. Reports are a separate download so they cannot hide the installable datapack inside another ZIP.
 
-**Server**
-- Put the zip in `<world>/datapacks/` on the server. Either have each client install the same zip as a resource pack, or serve it as the server resource pack (`resource-pack=` in `server.properties`).
-- Alternatively, use Cobblemon's global datapack folder (`config/cobblemon/datapacks` or `datapacks/` in the instance root, depending on your Cobblemon version).
+The retained `source/pink-corvisquire/*v16*` filename refers to the **bird's animation revision**, not the Mawonna model. Mawonna is v17.
 
-## Test
-```
-/pokespawn mawileunyielding
-/pokespawn mawileunyielding shiny
-```
-
-## Model
-- Height is about **1.41 blocks** (22.5 px including the jaw arc). Hitbox: 0.6 × 1.4.
-- Bones: `mawileunyielding > body > {leg_left, leg_right, skirt, torso > {arm_left, arm_right, head > {eyelids, hair, ponytail, jaw_base > {jaw_upper, jaw_lower}}}}`
-- The texture is 128×128 with box UVs. The shiny variant is a hue-rotated (mint/peach) copy.
-- Animations: `ground_idle`, `ground_walk`, `sit` (a 6 s idle quirk), `sleep` (a kneeling nap with eyes closed), `blink`, `happy`, `battle_idle`, `faint`, `cry` (jaw chomp).
-- Poser poses: standing (with blink, sit and happy quirks), walking, sleeping, battle-standing. It also has faint and cry hooks.
-
-## File layout
-```
-pack/                       # unzipped pack source (identical to the zip contents)
-  pack.mcmeta
-  data/cobblemon/species/custom/mawileunyielding.json
-  assets/cobblemon/bedrock/pokemon/{models,animations,posers,resolvers}/0303_mawileunyielding/
-  assets/cobblemon/textures/pokemon/0303_mawileunyielding/mawileunyielding(_shiny).png
-  assets/cobblemon/lang/en_us.json
-source/mawileunyielding.bbmodel   # editable Blockbench source (Bedrock entity, embedded texture and animations)
-scripts/build.py                  # regenerates everything, including the zip
-docs/previews/                    # turnaround next to a 1.8-block player box, plus sit and sleep poses
-dist/MawileUnyielding_Cobblemon_Addon.zip
-```
-
-## Placeholders
-- Stats, types (Steel/Fairy), abilities, catch rate and the move list are copied or approximated from Mawile as **placeholders**.
-- There are no spawn rules, so she can only be obtained with `/pokespawn`.
-- The national dex number is 303, shared with Mawile.
-
-## Completed and checked here
-- All JSON files parse.
-- Every animated bone exists in the geometry.
-- The zip has `pack.mcmeta`, `data/` and `assets/` at its root.
-- Previews were rendered with matplotlib.
-
-## Needs in-game testing
-**None of this has been tested in Minecraft.** Things to check:
-- Rotation directions (Bedrock X/Y sign) for the walk, sit and sleep animations.
-- The quirk syntax (`q.bedrock_quirk`) on your Cobblemon version.
-- The eyelid blink offset.
-- Portrait and profile framing.
-- Texture seams on fractional-size cubes.
-- Whether the lang file merges cleanly with Cobblemon's own `en_us.json`.
+Old species IDs from earlier development packs changed; back up existing worlds before replacing those versions.
