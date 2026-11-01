@@ -11,5 +11,7 @@
   "cobblemon.species.mawonna_flower.desc": "ADMIN VERSION. Available through the mawonna_flower spawn identifier only; no normal evolution leads here. Retains the original powerful stats and Futakuchi-onna lowering opposing Attack and Sp. Atk by two stages.",
   "cobblemon.ability.futakuchionnaplayer": "Futakuchi-onna",
   "cobblemon.ability.futakuchionnaplayer.desc": "On entering battle, lowers each opposing Pokemon's Attack and Sp. Atk by one stage.",
-  "cobblemon.dex.mawonna_custom": "Mawonna Creations"
+  "cobblemon.dex.mawonna_custom": "Mawonna Creations",
+  "cobblemon.species.mawonnaflower.name": "Mawonna (Flower / Admin)",
+  "cobblemon.species.mawonnaflower.desc": "ADMIN VERSION. Available through the mawonna_flower spawn identifier only; no normal evolution leads here. Retains the original powerful stats and Futakuchi-onna lowering opposing Attack and Sp. Atk by two stages."
 }
