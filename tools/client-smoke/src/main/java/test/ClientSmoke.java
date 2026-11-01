@@ -25,6 +25,22 @@ public class ClientSmoke {
             try {
                 if(error!=null) throw new RuntimeException(error);
                 if(!mc.getResourcePackRepository().getSelectedIds().contains("file/mawonna-test")) throw new AssertionError("Test pack was removed");
+                Class<?> repoClass=Class.forName("com.cobblemon.mod.common.client.render.models.blockbench.repository.VaryingModelRepository");
+                Object repo=repoClass.getField("INSTANCE").get(null);
+                Method modelsMethod=repoClass.getDeclaredMethod("getTexturedModels");
+                modelsMethod.setAccessible(true);
+                Map<?,?> models=(Map<?,?>)modelsMethod.invoke(repo);
+                for(String key:List.of("mawonna:pink_corvisquire.geo","mawile_custom:mawile_third_evolution.geo")) {
+                    if(!models.containsKey(net.minecraft.resources.ResourceLocation.parse(key))) throw new AssertionError("Model not baked: "+key);
+                }
+                Class<?> stateClass=Class.forName("com.cobblemon.mod.common.client.render.models.blockbench.PosableState");
+                Class<?> floating=Class.forName("com.cobblemon.mod.common.client.render.models.blockbench.FloatingState");
+                Method getPoser=repoClass.getMethod("getPoser",net.minecraft.resources.ResourceLocation.class,stateClass);
+                for(String id:List.of("covislight","mawonna","mawonna_flower")) {
+                    Object state=floating.getConstructor().newInstance();
+                    Object poser=getPoser.invoke(repo,net.minecraft.resources.ResourceLocation.parse("cobblemon:"+id),state);
+                    if(poser==null) throw new AssertionError("Missing poser: "+id);
+                }
                 // Exercise the actual shipped Cube class: the original malformed UV must fail.
                 Class<?> cube=Class.forName("com.cobblemon.mod.common.client.render.models.blockbench.Cube");
                 boolean rejected=false;
