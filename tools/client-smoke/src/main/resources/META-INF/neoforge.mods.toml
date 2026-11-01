@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+[[mods]]
+modId="clientsmoke"
+version="1.0.0"
+displayName="Cloud client resource loading test"
+[[dependencies.clientsmoke]]
+modId="cobblemon"
+type="required"
+versionRange="[1.8.4,)"
+ordering="AFTER"
+side="CLIENT"

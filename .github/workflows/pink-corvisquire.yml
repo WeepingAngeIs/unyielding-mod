@@ -72,5 +72,32 @@ jobs:
           name: Mawonna-v17-RUNTIME-TEST-REPORT
           path: dist/runtime/
           if-no-files-found: warn
-  
-  
+  client-load-smoke:
+    needs: validate-build-preview
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      - run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libopenal1
+      - uses: actions/download-artifact@v4
+        with:
+          name: Mawonna-v17-Corvislight-INSTALL
+          path: client-pack
+      - name: Load and reload pack in real Minecraft client
+        run: python tools/cloud_client_smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Mawonna-v17-CLIENT-TEST-REPORT
+          path: dist/client/
+          if-no-files-found: warn
