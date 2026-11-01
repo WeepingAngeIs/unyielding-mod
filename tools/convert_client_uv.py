@@ -72,8 +72,12 @@ def convert(files):
  # Compensate inside the model so existing server species/baseScale still work.
  # The root pivot is zero and no gameplay animation translates this root.
  assert next(b for b in model['bones'] if b['name']=='corvisquire')['pivot']==[0,0,0]
+ # Cobblemon registers named children, not the root itself, as pose parts.
+ for bone in model['bones']:
+  if bone.get('parent')=='corvisquire':bone['parent']='client_uv_scale'
+ model['bones'].insert(1,{'name':'client_uv_scale','parent':'corvisquire','pivot':[0,0,0]})
  for pose in poser['poses'].values():
-  pose.setdefault('transformedParts',[]).append({'part':'corvisquire','scale':1/SCALE})
+  pose.setdefault('transformedParts',[]).append({'part':'client_uv_scale','scale':1/SCALE})
  for path,obj in [(gp,geo),(ap,animations),(pp,poser)]:files[path]=json.dumps(obj,indent=2).encode()
  buf=io.BytesIO();atlas.save(buf,format='PNG');files[tp]=buf.getvalue()
  assert all(isinstance(c['uv'],list) for b in model['bones'] for c in b.get('cubes',[]))
