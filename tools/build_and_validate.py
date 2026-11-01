@@ -71,7 +71,7 @@ for sid in ['covislight','mawonna','mawonna_flower']:
  assert 'cobblemon.species.'+sid+'.desc' in lang
 assert '1,000' in lang['cobblemon.species.covislight.desc']
 assert '1,000' in lang['cobblemon.species.mawonna.desc']
-base_zip=root/'Mawonna.zip'
+base_zip=root/'source'/'Mawonna-v17-base.zip'
 assert hashlib.sha256(base_zip.read_bytes()).hexdigest()=='ad24b99301a8741d2370bde79b35ac69c4a5f53b7e7768d064e4b80fad2141b9', 'Wrong Mawonna base: must be the user-supplied v17 Floral Kimono'
 with zipfile.ZipFile(base_zip) as original:
  assert original.testzip() is None
