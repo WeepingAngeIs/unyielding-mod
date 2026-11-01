@@ -101,6 +101,11 @@ with zipfile.ZipFile(base_zip) as original:
  metadata['pack']['description']='Mawonna v17 Floral Kimono + Corvislight | Player and Flower versions'
  old['pack.mcmeta']=json.dumps(metadata,indent=2).encode()
 
+ from convert_client_uv import convert
+ conversion_report=convert(files)
+ # Enforce the client-supported UV schema on the actual packaged geometry.
+ converted=json.loads(files['assets/mawonna/bedrock/pokemon/models/pink_corvisquire/pink_corvisquire.geo.json'])
+ assert all(isinstance(c['uv'],list) and len(c['uv'])==2 for b in converted['minecraft:geometry'][0]['bones'] for c in b.get('cubes',[]))
  with zipfile.ZipFile(out/'Mawonna-v17-Corvislight.zip','w',zipfile.ZIP_DEFLATED) as z:
   for path,data in sorted((old|files).items()):z.writestr(path,data)
 with zipfile.ZipFile(out/'Mawonna-v17-Corvislight.zip') as z:
@@ -116,5 +121,5 @@ assert (installable/'pack.mcmeta').is_file()
 assert not list(installable.glob('*.zip'))
 for sid in ['covislight','mawonna','mawonna_flower']:
  assert (installable/f'data/cobblemon/species/custom/{sid}.json').is_file()
-report={'mawonna_model_version':17,'mawonna_base_sha256':hashlib.sha256(base_zip.read_bytes()).hexdigest(),'directly_installable_artifact':True,'status':'passed','animations':len(a),'bones':len(bones),'original_entries_preserved':len(old),'added_entries':len(files),'minecraft_runtime_test':False}
+report={'mawonna_model_version':17,'mawonna_base_sha256':hashlib.sha256(base_zip.read_bytes()).hexdigest(),'directly_installable_artifact':True,'status':'passed','animations':len(a),'bones':len(bones),'original_entries_preserved':len(old),'added_entries':len(files),'minecraft_runtime_test':False,'client_uv_conversion':conversion_report}
 (out/'validation.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))

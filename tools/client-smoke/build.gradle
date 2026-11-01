@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+neoForge {
+    version = '21.1.249'
+    runs { client { client(); gameDirectory = file('run'); jvmArgument '-Xmx4G' } }
+    mods { clientsmoke { sourceSet(sourceSets.main) } }
+}
+dependencies { implementation fileTree(dir: 'libs', include: ['*.jar']) }
