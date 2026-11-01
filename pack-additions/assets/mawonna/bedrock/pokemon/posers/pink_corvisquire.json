@@ -25,7 +25,7 @@
       "quirks": [
         "q.bedrock_quirk('pink_corvisquire', 'blink')"
       ],
-      "transformTicks": 10
+      "transformTicks": 0
     },
     "hover": {
       "animations": [
@@ -42,7 +42,7 @@
       "quirks": [
         "q.bedrock_quirk('pink_corvisquire', 'blink')"
       ],
-      "transformTicks": 10
+      "transformTicks": 0
     },
     "sleep": {
       "animations": [
@@ -55,7 +55,7 @@
       "poseTypes": [
         "SLEEP"
       ],
-      "transformTicks": 10
+      "transformTicks": 0
     },
     "standing": {
       "animations": [
@@ -74,7 +74,7 @@
       "quirks": [
         "q.bedrock_quirk('pink_corvisquire', 'blink')"
       ],
-      "transformTicks": 10
+      "transformTicks": 0
     },
     "walking": {
       "animations": [
@@ -90,7 +90,7 @@
       "quirks": [
         "q.bedrock_quirk('pink_corvisquire', 'blink')"
       ],
-      "transformTicks": 10
+      "transformTicks": 0
     }
   },
   "profileScale": 1.1,
