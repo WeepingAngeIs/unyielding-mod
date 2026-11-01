@@ -64,7 +64,6 @@
         "q.bedrock('pink_corvisquire', 'ground_idle')",
         "q.bedrock('pink_corvisquire', 'closed_wangs')"
       ],
-      "condition": "q.has_entity ? !q.in_air : 1.0",
       "poseTypes": [
         "STAND",
         "NONE",
@@ -83,7 +82,6 @@
         "q.bedrock('pink_corvisquire', 'ground_walk')",
         "q.bedrock('pink_corvisquire', 'closed_wangs')"
       ],
-      "condition": "!q.in_air",
       "poseTypes": [
         "WALK"
       ],
