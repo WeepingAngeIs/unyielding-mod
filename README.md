@@ -38,4 +38,4 @@ Old species IDs from earlier development packs changed; back up existing worlds 
 
 GitHub also launches Minecraft 1.21.1 / NeoForge 21.1.249 / Cobblemon 1.8.4 under Xvfb, loads and reloads the installable pack, requires it to remain selected, and rejects model-loading errors. The original invalid object UV is tested against Cobblemon's actual Cube parser. This uses the required mods, not the entire client modpack.
 
-Corvislight's authoring model keeps per-face UVs. The cloud exporter bakes these into the integer box-UV format accepted by Cobblemon, preserving texture detail with compensated geometry and display scale. Mawonna v17 files remain unchanged.
+Corvislight's authoring model keeps per-face UVs. The cloud exporter bakes these into the integer box-UV format accepted by Cobblemon, preserving texture detail with compensated geometry and root-bone pose scale (server species size is unchanged). Mawonna v17 files remain unchanged.

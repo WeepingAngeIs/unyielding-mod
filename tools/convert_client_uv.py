@@ -1,7 +1,7 @@
 """Bake authoring per-face UVs to Cobblemon 1.8.4's integer box UV format.
 
 Runs during the cloud build. A uniform 16x authoring scale, compensated in
-species and UI scales, retains eye detail instead of reducing it to 3 pixels.
+a root-bone pose transform, retains eye detail instead of reducing it to 3 pixels.
 Mawonna assets are never touched.
 """
 import copy, io, json, math
@@ -66,12 +66,15 @@ def convert(files):
   if key in model['description']:model['description'][key]=scaled(model['description'][key])
  animations=json.loads(files[ap])
  for clip in animations['animations'].values():
-  for channels in clip.get('bones',{}).values():
-   if 'position' in channels:channels['position']=scaled(channels['position'])
- species=json.loads(files[sp]);species['baseScale']/=SCALE
+  for bone_name,channels in clip.get('bones',{}).items():
+   if bone_name != 'corvisquire' and 'position' in channels:channels['position']=scaled(channels['position'])
  poser=json.loads(files[pp])
- for key in ('portraitScale','profileScale'):poser[key]=poser.get(key,1)/SCALE
- for path,obj in [(gp,geo),(ap,animations),(pp,poser),(sp,species)]:files[path]=json.dumps(obj,indent=2).encode()
+ # Compensate inside the model so existing server species/baseScale still work.
+ # The root pivot is zero and no gameplay animation translates this root.
+ assert next(b for b in model['bones'] if b['name']=='corvisquire')['pivot']==[0,0,0]
+ for pose in poser['poses'].values():
+  pose.setdefault('transformedParts',[]).append({'part':'corvisquire','scale':1/SCALE})
+ for path,obj in [(gp,geo),(ap,animations),(pp,poser)]:files[path]=json.dumps(obj,indent=2).encode()
  buf=io.BytesIO();atlas.save(buf,format='PNG');files[tp]=buf.getvalue()
  assert all(isinstance(c['uv'],list) for b in model['bones'] for c in b.get('cubes',[]))
- return {'converted_cubes':count,'atlas_size':4096,'geometry_scale':SCALE,'world_scale_compensated':True}
+ return {'converted_cubes':count,'atlas_size':4096,'geometry_scale':SCALE,'world_scale_compensated':True,'server_baseScale_unchanged':True}
