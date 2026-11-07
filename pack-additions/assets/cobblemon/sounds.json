@@ -22,5 +22,21 @@
         "volume": 1
       }
     ]
+  },
+  "pokemon.fairy_sliggoo.cry": {
+    "sounds": [
+      {
+        "name": "cobblemon:pokemon/sliggoo/sliggoo_cry",
+        "volume": 1
+      }
+    ]
+  },
+  "pokemon.fairysliggoo.cry": {
+    "sounds": [
+      {
+        "name": "cobblemon:pokemon/sliggoo/sliggoo_cry",
+        "volume": 1
+      }
+    ]
   }
 }

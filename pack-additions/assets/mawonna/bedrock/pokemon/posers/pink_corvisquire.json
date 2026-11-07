@@ -25,7 +25,17 @@
       "quirks": [
         "q.bedrock_quirk('pink_corvisquire', 'blink')"
       ],
-      "transformTicks": 0
+      "transformTicks": 0,
+      "transformedParts": [
+        {
+          "part": "client_uv_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
     },
     "hover": {
       "animations": [
@@ -42,7 +52,17 @@
       "quirks": [
         "q.bedrock_quirk('pink_corvisquire', 'blink')"
       ],
-      "transformTicks": 0
+      "transformTicks": 0,
+      "transformedParts": [
+        {
+          "part": "client_uv_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
     },
     "sleep": {
       "animations": [
@@ -55,7 +75,17 @@
       "poseTypes": [
         "SLEEP"
       ],
-      "transformTicks": 0
+      "transformTicks": 0,
+      "transformedParts": [
+        {
+          "part": "client_uv_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
     },
     "standing": {
       "animations": [
@@ -73,7 +103,17 @@
       "quirks": [
         "q.bedrock_quirk('pink_corvisquire', 'blink')"
       ],
-      "transformTicks": 0
+      "transformTicks": 0,
+      "transformedParts": [
+        {
+          "part": "client_uv_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
     },
     "walking": {
       "animations": [
@@ -88,7 +128,17 @@
       "quirks": [
         "q.bedrock_quirk('pink_corvisquire', 'blink')"
       ],
-      "transformTicks": 0
+      "transformTicks": 0,
+      "transformedParts": [
+        {
+          "part": "client_uv_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
     }
   },
   "profileScale": 1.1,

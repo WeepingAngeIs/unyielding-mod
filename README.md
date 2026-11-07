@@ -1,41 +1,21 @@
-# Mawonna v17 Floral Kimono + Corvislight
+# Mawonna v17, Corvislight, Mawile Unyielding and Fairy Sliggoo
 
-The Mawonna model is the exact user-approved v17 Floral Kimono model in both player and Flower variants. The v16 model is no longer the build base.
-
-## Installation
-
-Download **Mawonna-v17-Corvislight-INSTALL.zip** from the latest successful GitHub Actions run. This ZIP is directly installable: opening it must show `pack.mcmeta`, `data/`, and `assets/` immediately. Do not install the separate test-reports download, or an older ZIP that contains another pack ZIP.
-
-Put the same INSTALL ZIP in:
-- the **server world's datapacks** folder (registers species, evolutions, stats, abilities), and
-- the **client resourcepacks** folder (models, textures, animation, Pokédex text).
-
-Remove older Mawonna v16/v17 combined packs from the active pack selection to avoid overrides. If the server supplies a world-specific resource pack, update that server-provided pack too; a higher-priority v16 server pack can override client v17 models.
-
-After replacing the server datapack, fully restart the server for Cobblemon species registries. `/reload` alone is not the installation verification. Check `/datapack list enabled` and the server startup log.
+Download [Mawonna.zip](https://github.com/WeepingAngeIs/unyielding-mod/raw/refs/heads/main/Mawonna.zip). This single complete pack is used in the server datapacks folder and client resourcepacks folder. Update both copies and restart the server. Servers that supply this ZIP as their resource pack should keep the same URL. Avoid enabling older duplicate packs.
 
 ## Commands
 
-- `/pokespawn Covislight`: Corvislight (display name), using the requested short command spelling.
-- `/pokespawn mawonna`: player Mawonna; HP 100 / Atk 120 / Def 120 / SpA 10 / SpD 100 / Speed 10; BST 460.
-- `/pokespawn mawonna_flower`: powerful Flower/admin variant, original stats and two-stage ability.
+- `/pokespawn mawonna`: player Mawonna, approved v17 Floral Kimono model.
+- `/pokespawn mawonna_flower`: powerful Flower/admin Mawonna, same v17 model.
+- `/pokespawn Covislight`: Corvislight.
+- `/pokespawn mawileunyielding`: Mawile Unyielding.
+- `/pokespawn fairy_sliggoo`: Fairy Sliggoo.
 
-These remain operator-controlled Cobblemon commands. The normal evolution can never produce the Flower variant.
+Fairy Sliggoo is Fairy/Dragon with HP 200, Attack 10, Defense 120, Special Attack 120, Special Defense 110, Speed 15 (BST 575). It is a final evolution of Sliggoo after that individual defeats 1,000 Dark-type Pokemon. Its native abilities and move list are retained with Fairy Wind added at level 1. The normal Goodra evolution remains available. Its four Cupid wings support flight, with all 15 original Sliggoo animations and two new flight animations. No player riding is added.
 
-Female Corvisquire and Mawile each need 1,000 Dark-type defeats tracked on the individual Pokémon. The requirements appear in their Pokédex descriptions and the custom section of the National Dex. Corvislight keeps its 595 BST spread and all 68 Fairy/Flying/wing attacks from level 1. Pupils remain still.
+Mawile and female Corvisquire also require 1,000 Dark defeats for their custom evolutions. Requirements appear in the Pokedex. The Flower variant is never obtained through normal evolution.
 
-The custom Futakuchi-onna ability requires Mega Showdown, as in the original Mawonna pack. Player Mawonna lowers Attack and Special Attack by one stage; Flower retains the original two-stage handler.
+## Cloud builds and testing
 
-## Cloud builds
+All pack builds and heavy tests run on GitHub-hosted runners. The workflow preserves the complete shipped pack, including Mawile Unyielding, approved Mawonna v17 geometry, Corvislight's fixed poses and riding. It checks Sliggoo stats, types, evolution, all 17 animations, samples its 3D preview, boots a real Cobblemon server to test all five spawn commands, and loads/reloads the models in a real Minecraft client. Runtime checks use the required mods, not the full client modpack.
 
-All builds and heavy tests run on GitHub-hosted runners. The build pins the exact supplied v17 ZIP hash and verifies its 131-bone model and 26 kimono controls. Reports are a separate download so they cannot hide the installable datapack inside another ZIP.
-
-The retained `source/pink-corvisquire/*v16*` filename refers to the **bird's animation revision**, not the Mawonna model. Mawonna is v17.
-
-Old species IDs from earlier development packs changed; back up existing worlds before replacing those versions.
-
-## Client loading regression check
-
-GitHub also launches Minecraft 1.21.1 / NeoForge 21.1.249 / Cobblemon 1.8.4 under Xvfb, loads and reloads the installable pack, requires it to remain selected, and rejects model-loading errors. The original invalid object UV is tested against Cobblemon's actual Cube parser. This uses the required mods, not the entire client modpack.
-
-Corvislight's authoring model keeps per-face UVs. The cloud exporter bakes these into the integer box-UV format accepted by Cobblemon, preserving texture detail with compensated geometry and root-bone pose scale (server species size is unchanged). Mawonna v17 files remain unchanged.
+Only after every job passes does the workflow replace root `Mawonna.zip`. Reports and an installable pack are also available in Actions. Do not use older Actions artifacts as the current complete pack.

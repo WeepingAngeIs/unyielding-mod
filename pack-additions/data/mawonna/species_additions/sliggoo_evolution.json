@@ -1,0 +1,21 @@
+{
+  "target": "cobblemon:sliggoo",
+  "evolutions": [
+    {
+      "id": "sliggoo_fairy_sliggoo",
+      "variant": "level_up",
+      "result": "fairy_sliggoo",
+      "consumeHeldItem": false,
+      "requirements": [
+        {
+          "variant": "defeat",
+          "target": "type=dark",
+          "amount": 1000
+        }
+      ]
+    }
+  ],
+  "pokedex": [
+    "cobblemon.species.sliggoo.fairy_evolution.desc"
+  ]
+}

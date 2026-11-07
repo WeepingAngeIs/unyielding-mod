@@ -1,0 +1,162 @@
+{
+  "abilities": [
+    "sapsipper",
+    "hydration",
+    "h:gooey"
+  ],
+  "aspects": [],
+  "baseExperienceYield": 158,
+  "baseFriendship": 35,
+  "baseScale": 0.65,
+  "baseStats": {
+    "hp": 200,
+    "attack": 10,
+    "defence": 120,
+    "special_attack": 120,
+    "special_defence": 110,
+    "speed": 15
+  },
+  "behaviour": {
+    "moving": {
+      "fly": {
+        "canFly": true
+      },
+      "walk": {
+        "walkSpeed": 0.15
+      }
+    }
+  },
+  "catchRate": 45,
+  "drops": {
+    "amount": 4,
+    "entries": [
+      {
+        "item": "minecraft:slime_ball",
+        "quantityRange": "0-2"
+      },
+      {
+        "item": "cobblemon:shed_shell",
+        "percentage": 5.0
+      },
+      {
+        "item": "cobblemon:haban_berry",
+        "percentage": 5.0
+      }
+    ]
+  },
+  "eggCycles": 40,
+  "eggGroups": [
+    "dragon"
+  ],
+  "evYield": {
+    "attack": 0,
+    "defence": 0,
+    "hp": 0,
+    "special_attack": 0,
+    "special_defence": 2,
+    "speed": 0
+  },
+  "evolutions": [],
+  "experienceGroup": "slow",
+  "features": [],
+  "forms": [],
+  "height": 8,
+  "hitbox": {
+    "fixed": false,
+    "height": 1.65,
+    "width": 1.1
+  },
+  "implemented": true,
+  "labels": [
+    "custom",
+    "fan_design"
+  ],
+  "maleRatio": 0.5,
+  "moves": [
+    "1:tackle",
+    "1:bubble",
+    "1:absorb",
+    "1:bide",
+    "1:dragonbreath",
+    "1:acidspray",
+    "1:watergun",
+    "1:acidarmor",
+    "15:protect",
+    "20:flail",
+    "25:waterpulse",
+    "30:raindance",
+    "35:dragonpulse",
+    "43:curse",
+    "49:bodyslam",
+    "56:muddywater",
+    "egg:counter",
+    "egg:lifedew",
+    "tm:acidspray",
+    "tm:blizzard",
+    "tm:bodyslam",
+    "tm:charm",
+    "tm:chillingwater",
+    "tm:curse",
+    "tm:dracometeor",
+    "tm:dragonpulse",
+    "tm:endure",
+    "tm:facade",
+    "tm:icebeam",
+    "tm:infestation",
+    "tm:irontail",
+    "tm:muddywater",
+    "tm:mudshot",
+    "tm:outrage",
+    "tm:protect",
+    "tm:raindance",
+    "tm:rest",
+    "tm:rockslide",
+    "tm:shockwave",
+    "tm:skittersmack",
+    "tm:sleeptalk",
+    "tm:sludgebomb",
+    "tm:sludgewave",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:takedown",
+    "tm:terablast",
+    "tm:thunder",
+    "tm:thunderbolt",
+    "tm:toxic",
+    "tm:waterpulse",
+    "tutor:dracometeor",
+    "tutor:dragonpulse",
+    "tutor:icebeam",
+    "tutor:irontail",
+    "tutor:outrage",
+    "tutor:rest",
+    "tutor:rockslide",
+    "tutor:shockwave",
+    "tutor:skittersmack",
+    "tutor:sleeptalk",
+    "tutor:sludgebomb",
+    "tutor:thunderbolt",
+    "tutor:waterpulse",
+    "legacy:attract",
+    "legacy:confide",
+    "legacy:doubleteam",
+    "legacy:frustration",
+    "legacy:hiddenpower",
+    "legacy:poisontail",
+    "legacy:return",
+    "legacy:round",
+    "legacy:secretpower",
+    "legacy:snore",
+    "legacy:swagger",
+    "1:fairywind"
+  ],
+  "name": "FairySliggoo",
+  "nationalPokedexNumber": 9305,
+  "pokedex": [
+    "cobblemon.species.fairysliggoo.desc"
+  ],
+  "preEvolution": "sliggoo",
+  "primaryType": "fairy",
+  "weight": 175,
+  "secondaryType": "dragon"
+}

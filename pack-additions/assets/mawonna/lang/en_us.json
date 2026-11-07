@@ -15,5 +15,9 @@
   "cobblemon.species.mawonnaflower.name": "Mawonna Flower",
   "cobblemon.species.mawonnaflower.desc": "ADMIN VERSION. Available through the mawonna_flower spawn identifier only; no normal evolution leads here. Retains the original powerful stats and Futakuchi-onna lowering opposing Attack and Sp. Atk by two stages.",
   "cobblemon.species.corvislight.name": "Corvislight",
-  "cobblemon.species.corvislight.desc": "A female Corvisquire can evolve into Corvislight after personally defeating 1,000 Dark-type Pokemon in battle. Use the evolution option when available. All Fairy, Flying, and wing attack moves are available from level 1."
+  "cobblemon.species.corvislight.desc": "A female Corvisquire can evolve into Corvislight after personally defeating 1,000 Dark-type Pokemon in battle. Use the evolution option when available. All Fairy, Flying, and wing attack moves are available from level 1.",
+  "cobblemon.species.fairysliggoo.name": "Fairy Sliggoo",
+  "cobblemon.species.fairy_sliggoo.name": "Fairy Sliggoo",
+  "cobblemon.species.fairysliggoo.desc": "Sliggoo evolves into Fairy Sliggoo after personally defeating 1,000 Dark-type Pokemon in battle. Select the evolution when available. This Fairy/Dragon final evolution flies with four fluffy Cupid wings. HP 200, Atk 10, Def 120, Sp. Atk 120, Sp. Def 110, Speed 15.",
+  "cobblemon.species.sliggoo.fairy_evolution.desc": "Sliggoo evolves into Fairy Sliggoo after personally defeating 1,000 Dark-type Pokemon in battle. Select the evolution when available. This Fairy/Dragon final evolution flies with four fluffy Cupid wings. HP 200, Atk 10, Def 120, Sp. Atk 120, Sp. Def 110, Speed 15."
 }

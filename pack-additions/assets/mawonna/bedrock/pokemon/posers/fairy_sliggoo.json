@@ -1,0 +1,95 @@
+{
+  "animations": {
+    "cry": "q.bedrock_stateful('fairy_sliggoo', 'cry')",
+    "recoil": "q.bedrock_stateful('fairy_sliggoo', 'recoil')"
+  },
+  "portraitScale": 1.72,
+  "portraitTranslation": [
+    -0.38,
+    0.69,
+    0
+  ],
+  "poses": {
+    "battle-standing": {
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('fairy_sliggoo', 'battle_idle')"
+      ],
+      "isBattle": true,
+      "namedAnimations": {
+        "cry": "q.bedrock_stateful('fairy_sliggoo', 'battle_cry')"
+      },
+      "poseTypes": [
+        "STAND"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('fairy_sliggoo', 'blink')"
+      ]
+    },
+    "sleep": {
+      "animations": [
+        "q.bedrock('fairy_sliggoo', 'sleep')"
+      ],
+      "namedAnimations": {
+        "cry": "q.bedrock_stateful('dummy', 'cry')"
+      },
+      "poseTypes": [
+        "SLEEP"
+      ]
+    },
+    "standing": {
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('fairy_sliggoo', 'ground_idle')"
+      ],
+      "isBattle": false,
+      "poseTypes": [
+        "STAND",
+        "FLOAT",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('fairy_sliggoo', 'blink')",
+        "q.bedrock_quirk('fairy_sliggoo', 'idle_quirk', 30, 60, 1)"
+      ]
+    },
+    "walking": {
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('fairy_sliggoo', 'ground_walk')"
+      ],
+      "poseTypes": [
+        "WALK",
+        "SWIM"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('fairy_sliggoo', 'blink')"
+      ]
+    },
+    "hover": {
+      "poseTypes": [
+        "HOVER"
+      ],
+      "animations": [
+        "q.bedrock('fairy_sliggoo', 'air_idle')"
+      ]
+    },
+    "flying": {
+      "poseTypes": [
+        "FLY"
+      ],
+      "animations": [
+        "q.bedrock('fairy_sliggoo', 'air_fly')"
+      ]
+    }
+  },
+  "profileScale": 0.56,
+  "profileTranslation": [
+    0.02,
+    0.89,
+    0
+  ],
+  "rootBone": "sliggoo"
+}

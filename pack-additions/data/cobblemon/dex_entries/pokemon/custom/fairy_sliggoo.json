@@ -1,0 +1,15 @@
+{
+  "id": "cobblemon:fairy_sliggoo",
+  "speciesId": "cobblemon:fairy_sliggoo",
+  "conditionAspects": [],
+  "displayAspects": [],
+  "forms": [
+    {
+      "displayForm": "Normal",
+      "unlockForms": [
+        "Normal"
+      ]
+    }
+  ],
+  "variations": []
+}

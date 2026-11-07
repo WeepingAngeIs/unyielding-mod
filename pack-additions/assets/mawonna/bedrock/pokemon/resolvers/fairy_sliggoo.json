@@ -1,0 +1,13 @@
+{
+  "species": "cobblemon:fairy_sliggoo",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "mawonna:fairy_sliggoo",
+      "model": "mawonna:fairy_sliggoo.geo",
+      "texture": "mawonna:textures/pokemon/fairy_sliggoo/fairy_sliggoo.png",
+      "layers": []
+    }
+  ]
+}
