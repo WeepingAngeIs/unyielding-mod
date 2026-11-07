@@ -1,0 +1,10 @@
+{
+  "display": {
+    "icon": {"id":"mawonna:mawilite_vow_ring"},
+    "title": "There's No Laws Against the Pokemon",
+    "description": "fall in love, marry your Pokemon",
+    "frame": "challenge", "show_toast": true, "announce_to_chat": true, "hidden": false,
+    "background": "minecraft:textures/block/pink_concrete.png"
+  },
+  "criteria": {"vow": {"trigger":"minecraft:impossible"}}
+}

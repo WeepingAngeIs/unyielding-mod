@@ -8,6 +8,12 @@
       "model": "mawonna:pink_corvisquire.geo",
       "texture": "mawonna:textures/pokemon/pink_corvisquire/pink_corvisquire.png",
       "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "mawonna:textures/pokemon/pink_corvisquire/pink_corvisquire_shiny.png"
     }
   ]
 }

@@ -13,6 +13,9 @@ for label,version in VERSIONS.items():
  info=fetch_json('https://api.modrinth.com/v2/version/'+version)
  item=next((x for x in info['files'] if x.get('primary')),info['files'][0])
  download(item['url'],libs/item['filename'],item['hashes']['sha512'])
+companion=root/'unyielding-artifact/Unyielding-Mawonna.jar'
+if not companion.is_file():raise FileNotFoundError(companion)
+shutil.copy2(companion,libs/companion.name)
 shutil.copytree(root/'client-pack',run/'resourcepacks/mawonna-test',dirs_exist_ok=True)
 (run/'options.txt').write_text('resourcePacks:["vanilla","file/mawonna-test"]\nmaxFps:30\nrenderDistance:2\nsimulationDistance:2\n')
 status='failed'

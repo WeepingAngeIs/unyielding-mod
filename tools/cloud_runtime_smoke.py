@@ -17,6 +17,18 @@ VERSIONS = {
     'Architectury 13.0.11': '1IiqEQGl',
 }
 NEOFORGE = '21.1.249'
+MEAL_VERSIONS = {
+    "Farmer's Delight 1.3.4": 'XTVZDOol',
+    "My Nether's Delight 1.10.4.1": 'SGFJBL5q',
+    'Twilight Delight 3.2.9': 'MFC7tDeW',
+    "End's Delight 2.6.1": 'YTApg6Hl',
+}
+# Exact installed dependency, sourced from the user's CurseForge instance metadata.
+TWILIGHT_FOREST = {
+    'filename': 'twilightforest-1.21.1-4.8.3345-universal.jar',
+    'url': 'https://edge.forgecdn.net/files/7797/302/twilightforest-1.21.1-4.8.3345-universal.jar',
+    'sha1': '9cfd4154928433e2f1f6cfc3deb48c284debb580',
+}
 HEADERS = {'User-Agent': 'unyielding-mod-cloud-runtime-smoke/1.0 (GitHub Actions)'}
 
 def fetch_json(url):
@@ -71,6 +83,7 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--pack',required=True,type=Path)
     parser.add_argument('--eula-file',required=True,type=Path)
+    parser.add_argument('--unyielding',required=True,type=Path)
     parser.add_argument('--species',nargs='+',default=['Covislight','mawonna','mawonna_flower'])
     args=parser.parse_args()
     if os.environ.get('GITHUB_ACTIONS')!='true' or os.environ.get('RUNNER_ENVIRONMENT')!='github-hosted':
@@ -83,11 +96,19 @@ def main():
     output=root/'dist/runtime';output.mkdir(parents=True,exist_ok=True)
     manifest=[]
     mods=work/'mods';mods.mkdir(exist_ok=True)
-    for label,version in VERSIONS.items():
+    for label,version in (VERSIONS | MEAL_VERSIONS).items():
         info=fetch_json('https://api.modrinth.com/v2/version/'+version)
         chosen=next((x for x in info['files'] if x.get('primary')),info['files'][0])
         download(chosen['url'],mods/chosen['filename'],chosen['hashes']['sha512'])
         manifest.append({'label':label,'version_id':version,'file':chosen['filename'],'sha512':chosen['hashes']['sha512']})
+    forest=mods/TWILIGHT_FOREST['filename']
+    download(TWILIGHT_FOREST['url'],forest)
+    if hashlib.sha1(forest.read_bytes()).hexdigest()!=TWILIGHT_FOREST['sha1']:
+        raise AssertionError('Twilight Forest dependency checksum mismatch')
+    manifest.append({'label':'Twilight Forest 4.8.3345',**TWILIGHT_FOREST})
+    if not args.unyielding.is_file():raise FileNotFoundError(args.unyielding)
+    shutil.copy2(args.unyielding,mods/'Unyielding-Mawonna.jar')
+    manifest.append({'label':'Integrated Unyielding mod','file':'Unyielding-Mawonna.jar','sha256':hashlib.sha256(args.unyielding.read_bytes()).hexdigest()})
     installer=work/'neoforge-installer.jar'
     download(f'https://maven.neoforged.net/releases/net/neoforged/neoforge/{NEOFORGE}/neoforge-{NEOFORGE}-installer.jar',installer)
     with (output/'installer.log').open('w') as log:
@@ -109,7 +130,7 @@ def main():
     else:
         shutil.copy2(args.pack,packs/'Mawonna-runtime-test.zip')
     report={'minecraft':'1.21.1','neoforge':NEOFORGE,'mods':manifest,'commands':[],
-            'scope':'Real server boot and actual species spawning; no client rendering or evolution battle simulation.',
+            'scope':'Real server boot, species spawning, and production companion assertions for verified defeat filtering, native counters, feeding, marriage and persistence; no full human battle replay.',
             'status':'failed'}
     proc=None;rcon=None
     try:
@@ -128,6 +149,10 @@ def main():
             rcon.command('gamerule doMobSpawning false')
             rcon.command('forceload add 0 0')
             rcon.command('scoreboard objectives add smoke dummy')
+            self_test=rcon.command('mawonnatest')
+            report['companion_self_test']=self_test
+            if 'MAWONNA_SELF_TEST_OK' not in self_test:
+                raise AssertionError('Companion runtime assertions failed: '+self_test)
             for index,species in enumerate(args.species):
                 # Score records the actual command's return success; parser errors cannot pass.
                 marker='spawn_'+str(index)
@@ -141,6 +166,11 @@ def main():
                 report['commands'].append(record)
                 if not re.search(r'\bhas 1\b',score) or not re.search(r'\bhas 1\b',exists):
                     raise AssertionError('Actual spawn command failed: '+json.dumps(record))
+                rcon.command('kill @e[type=cobblemon:pokemon]')
+                response=rcon.command(f'execute positioned 0 80 0 store success score {marker}_shiny smoke run pokespawn {species} shiny level=5')
+                score=rcon.command(f'scoreboard players get {marker}_shiny smoke')
+                report['commands'].append({'species_argument':species+' shiny','command_response':response,'score':score})
+                if not re.search(r'\bhas 1\b',score):raise AssertionError('Shiny spawn command failed: '+species)
             report['status']='passed'
     finally:
         if rcon:

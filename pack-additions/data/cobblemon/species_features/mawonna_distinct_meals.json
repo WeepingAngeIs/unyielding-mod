@@ -1,0 +1,20 @@
+{
+  "default": 0,
+  "keys": [
+    "mawonna_distinct_meals"
+  ],
+  "max": 49,
+  "min": 0,
+  "type": "integer",
+  "visible": true,
+  "display": {
+    "colour": [
+      235,
+      151,
+      174
+    ],
+    "name": "mawonna.ui.distinct_meals",
+    "overlay": "cobblemon:textures/gui/summary/summary_stats_fullness_overlay.png",
+    "underlay": "cobblemon:textures/gui/summary/summary_stats_other_bar.png"
+  }
+}

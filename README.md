@@ -1,22 +1,48 @@
-# Mawonna v17, Corvislight, Mawile Unyielding and Fairy Sliggoo
+# Mawonna v17, Corvislight, Fairy Sliggoo and Inkyeon
 
-Download [Mawonna.zip](https://github.com/WeepingAngeIs/unyielding-mod/raw/refs/heads/main/Mawonna.zip). This single complete pack is used in the server datapacks folder and client resourcepacks folder. Update both copies and restart the server. Servers that supply this ZIP as their resource pack should keep the same URL. Avoid enabling older duplicate packs.
+Use the tested [Mawonna.zip](https://github.com/WeepingAngeIs/unyielding-mod/raw/refs/heads/main/Mawonna.zip) in both the server datapacks folder and client resourcepacks folder. This update also requires the matching [Unyielding-Mawonna.jar](https://github.com/WeepingAngeIs/unyielding-mod/raw/refs/heads/main/Unyielding-Mawonna.jar) on the server and every client. Replace the old Unyielding JAR with this combined JAR in each mods folder, then restart. Do not keep both versions installed. It extends the exact user-approved Unyielding 1.0.8 JAR and preserves all existing module contents, including its crafting restrictions. A resource-pack reload alone cannot install Java changes. Avoid enabling older duplicate Mawonna packs.
 
-## Commands
+## Spawn commands and shinies
 
-- `/pokespawn mawonna`: player Mawonna, approved v17 Floral Kimono model.
-- `/pokespawn mawonna_flower`: powerful Flower/admin Mawonna, same v17 model.
-- `/pokespawn Covislight`: Corvislight.
-- `/pokespawn mawileunyielding`: Mawile Unyielding.
+- `/pokespawn mawonna`: public Mawonna, approved v17 Floral Kimono model.
+- `/pokespawn mawonna_flower`: powerful Flower/admin variant, same v17 model; never a normal evolution.
+- `/pokespawn covislight`: Corvislight (the spawn identifier retains this spelling).
 - `/pokespawn fairy_sliggoo`: Fairy Sliggoo.
+- `/pokespawn inkyeon`: Inkyeon.
 
-Fairy Sliggoo is Fairy/Dragon with HP 200, Attack 10, Defense 120, Special Attack 120, Special Defense 110, Speed 15 (BST 575). It is a final evolution of Sliggoo after that individual defeats 1,000 Dark-type Pokemon. Its native abilities and moves are retained. All regular Dragon/Fairy moves, tail/wing/shell moves (including Withdraw and Shelter), and Leech Seed are available from level 1. Z-Moves, Max/G-Max moves, special partner/boss-only moves and internal placeholders are excluded. The normal Goodra evolution remains available. Its four Cupid wings support flight, with all 15 original Sliggoo animations and two new flight animations. No player riding is added.
+Append `shiny` to any command, for example `/pokespawn inkyeon shiny`. Spawn commands require the server's normal operator permissions. Mawile Unyielding is removed; ordinary Mawile remains.
 
-Mawile and female Corvisquire also require 1,000 Dark defeats for their custom evolutions. Requirements appear in the Pokedex. The Flower variant is never obtained through normal evolution.
+## Evolution progress
+
+All custom defeat counters start fresh with this update. Unknown old totals are not imported. Only verified Dark-type knockouts by the individual Pokémon count. Wild and NPC battles count; human PvP never counts. Defeats are shown in the right-hand Pokémon summary sidebar using Cobblemon's native species-feature bars.
+
+| Evolution | Requirements |
+| --- | --- |
+| Mawile → public Mawonna | 666 verified Dark defeats, 49 distinct approved substantial meals, then marriage to its owner using a Mawilite Vow Ring |
+| Female Corvisquire → Corvislight | 1,000 verified Dark defeats |
+| Sliggoo → Fairy Sliggoo | 1,000 verified Dark defeats |
+| Sylveon → Inkyeon | 1,000 verified Dark defeats and exactly 0 friendship |
+
+Mawile also shows its distinct-meal progress in the summary sidebar. Repeat dishes and renamed foods do not add credit. Closely related ingredient variations share a dish credit. The reviewed whitelist has 85 food items representing 72 distinct dishes from Farmer's Delight, My Nether's Delight, Twilight's Delight and End's Delight. Raw ingredients, simple sides, drinks and snacks do not qualify. Servers need the corresponding food mods and their dependencies to obtain enough dishes; the full Unyielding client already includes them.
+
+The ring is `mawonna:mawilite_vow_ring`. It has no crafting recipe or loot entry; a server operator can supply it using `/give @s mawonna:mawilite_vow_ring`, or configure a shop later. The ring is required even when both counters are complete. The marriage advancement is **There's No Laws Against the Pokemon**, with description **fall in love, marry your Pokemon**.
+
+## Base stats
+
+| Pokémon | HP | Atk | Def | Sp. Atk | Sp. Def | Speed | BST |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Public Mawonna | 100 | 120 | 120 | 10 | 100 | 10 | 460 |
+| Mawonna Flower | 155 | 165 | 200 | 5 | 150 | 30 | 705 |
+| Corvislight | 110 | 10 | 80 | 120 | 150 | 125 | 595 |
+| Fairy Sliggoo | 200 | 10 | 120 | 120 | 110 | 15 | 575 |
+| Inkyeon | 101 | 145 | 90 | 10 | 105 | 146 | 597 |
+
+Public Mawonna learns regular Fairy, Steel, Dark, Ghost and fang moves, excluding Z/Max moves, 1-PP moves and internal placeholders. Flower knows the named move catalog including Z/Max and 1-PP moves, excluding internal placeholders. Futakuchi's Grasp replaces Sheer Force and lowers a damaging contact attacker's Attack by one stage, subject to normal battle protections.
+
+Fairy Sliggoo learns regular Dragon/Fairy, tail, wing and shell moves plus Leech Seed. Inkyeon learns regular Fairy/Dark, tail, sound, liquid-themed and speed-themed moves. Its abilities are Synchronize, Inky Love (contact lowers the attacker’s Speed), and hidden Tainted Charm (guaranteed Cute Charm activation against eligible opposite-gender contact attackers, with normal infatuation immunities).
+
+The pack includes the approved exported models, textures and animation clips. Inkyeon's browser-preview collision physics and droplet/puddle simulation are not a Minecraft physics implementation; those preview-only effects are not claimed as live game features.
 
 ## Cloud builds and testing
 
-All pack builds and heavy tests run on GitHub-hosted runners. The workflow preserves the complete shipped pack, including Mawile Unyielding, approved Mawonna v17 geometry, Corvislight's fixed poses and riding. It checks Sliggoo stats, types, evolution, all 17 animations, samples its 3D preview, boots a real Cobblemon server to test all five spawn commands, and loads/reloads the models in a real Minecraft client. Runtime checks use the required mods, not the full client modpack.
-
-Only after every job passes does the workflow replace root `Mawonna.zip`. Reports and an installable pack are also available in Actions. Do not use older Actions artifacts as the current complete pack.
-
+All builds and heavy tests run on GitHub-hosted runners. Root download artifacts are replaced only after the cloud build, real server checks and real client load/reload checks pass. Approved Mawonna v17 geometry is protected against accidental replacement. Check the workflow reports for exact coverage and runtime limitations; the smoke environment is not the entire 467-mod client.

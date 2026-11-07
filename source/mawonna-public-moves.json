@@ -1,0 +1,1130 @@
+[
+  {
+    "id": "alluringvoice",
+    "name": "Alluring Voice",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "anchorshot",
+    "name": "Anchor Shot",
+    "type": "Steel",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "aromaticmist",
+    "name": "Aromatic Mist",
+    "type": "Fairy",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "assurance",
+    "name": "Assurance",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "astonish",
+    "name": "Astonish",
+    "type": "Ghost",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "astralbarrage",
+    "name": "Astral Barrage",
+    "type": "Ghost",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "autotomize",
+    "name": "Autotomize",
+    "type": "Steel",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "babydolleyes",
+    "name": "Baby-Doll Eyes",
+    "type": "Fairy",
+    "pp": 30,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "beatup",
+    "name": "Beat Up",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "behemothbash",
+    "name": "Behemoth Bash",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "behemothblade",
+    "name": "Behemoth Blade",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "bite",
+    "name": "Bite",
+    "type": "Dark",
+    "pp": 25,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "bittermalice",
+    "name": "Bitter Malice",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "brutalswing",
+    "name": "Brutal Swing",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "bulletpunch",
+    "name": "Bullet Punch",
+    "type": "Steel",
+    "pp": 30,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "ceaselessedge",
+    "name": "Ceaseless Edge",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "charm",
+    "name": "Charm",
+    "type": "Fairy",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "comeuppance",
+    "name": "Comeuppance",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "confuseray",
+    "name": "Confuse Ray",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "craftyshield",
+    "name": "Crafty Shield",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "crunch",
+    "name": "Crunch",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "curse",
+    "name": "Curse",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "darkpulse",
+    "name": "Dark Pulse",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "darkvoid",
+    "name": "Dark Void",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "darkestlariat",
+    "name": "Darkest Lariat",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "dazzlinggleam",
+    "name": "Dazzling Gleam",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "decorate",
+    "name": "Decorate",
+    "type": "Fairy",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "destinybond",
+    "name": "Destiny Bond",
+    "type": "Ghost",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "disarmingvoice",
+    "name": "Disarming Voice",
+    "type": "Fairy",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "doomdesire",
+    "name": "Doom Desire",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "doubleironbash",
+    "name": "Double Iron Bash",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "drainingkiss",
+    "name": "Draining Kiss",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "embargo",
+    "name": "Embargo",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "fairylock",
+    "name": "Fairy Lock",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "fairywind",
+    "name": "Fairy Wind",
+    "type": "Fairy",
+    "pp": 30,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "faketears",
+    "name": "Fake Tears",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "falsesurrender",
+    "name": "False Surrender",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "feintattack",
+    "name": "Feint Attack",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "fierywrath",
+    "name": "Fiery Wrath",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "firefang",
+    "name": "Fire Fang",
+    "type": "Fire",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "flashcannon",
+    "name": "Flash Cannon",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "flatter",
+    "name": "Flatter",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "fleurcannon",
+    "name": "Fleur Cannon",
+    "type": "Fairy",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "fling",
+    "name": "Fling",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "floralhealing",
+    "name": "Floral Healing",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "flowershield",
+    "name": "Flower Shield",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "foulplay",
+    "name": "Foul Play",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "geargrind",
+    "name": "Gear Grind",
+    "type": "Steel",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "gearup",
+    "name": "Gear Up",
+    "type": "Steel",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "geomancy",
+    "name": "Geomancy",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "gigatonhammer",
+    "name": "Gigaton Hammer",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "grudge",
+    "name": "Grudge",
+    "type": "Ghost",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "gyroball",
+    "name": "Gyro Ball",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "hardpress",
+    "name": "Hard Press",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "heavyslam",
+    "name": "Heavy Slam",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "hex",
+    "name": "Hex",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "honeclaws",
+    "name": "Hone Claws",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "hyperfang",
+    "name": "Hyper Fang",
+    "type": "Normal",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "hyperspacefury",
+    "name": "Hyperspace Fury",
+    "type": "Dark",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "icefang",
+    "name": "Ice Fang",
+    "type": "Ice",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "infernalparade",
+    "name": "Infernal Parade",
+    "type": "Ghost",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "irondefense",
+    "name": "Iron Defense",
+    "type": "Steel",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "ironhead",
+    "name": "Iron Head",
+    "type": "Steel",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "irontail",
+    "name": "Iron Tail",
+    "type": "Steel",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "jawlock",
+    "name": "Jaw Lock",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "kingsshield",
+    "name": "King's Shield",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "knockoff",
+    "name": "Knock Off",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "kowtowcleave",
+    "name": "Kowtow Cleave",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "lashout",
+    "name": "Lash Out",
+    "type": "Dark",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "lastrespects",
+    "name": "Last Respects",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "lick",
+    "name": "Lick",
+    "type": "Ghost",
+    "pp": 30,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "lightofruin",
+    "name": "Light of Ruin",
+    "type": "Fairy",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "magnetbomb",
+    "name": "Magnet Bomb",
+    "type": "Steel",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "makeitrain",
+    "name": "Make It Rain",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "memento",
+    "name": "Memento",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "metalburst",
+    "name": "Metal Burst",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "metalclaw",
+    "name": "Metal Claw",
+    "type": "Steel",
+    "pp": 35,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "metalsound",
+    "name": "Metal Sound",
+    "type": "Steel",
+    "pp": 40,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "meteormash",
+    "name": "Meteor Mash",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "mirrorshot",
+    "name": "Mirror Shot",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "mistyexplosion",
+    "name": "Misty Explosion",
+    "type": "Fairy",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "mistyterrain",
+    "name": "Misty Terrain",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "moonblast",
+    "name": "Moonblast",
+    "type": "Fairy",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "moongeistbeam",
+    "name": "Moongeist Beam",
+    "type": "Ghost",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "moonlight",
+    "name": "Moonlight",
+    "type": "Fairy",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "nastyplot",
+    "name": "Nasty Plot",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "naturesmadness",
+    "name": "Nature's Madness",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "nightdaze",
+    "name": "Night Daze",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "nightshade",
+    "name": "Night Shade",
+    "type": "Ghost",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "nightslash",
+    "name": "Night Slash",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "nightmare",
+    "name": "Nightmare",
+    "type": "Ghost",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "obstruct",
+    "name": "Obstruct",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "ominouswind",
+    "name": "Ominous Wind",
+    "type": "Ghost",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "partingshot",
+    "name": "Parting Shot",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "payback",
+    "name": "Payback",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "phantomforce",
+    "name": "Phantom Force",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "playrough",
+    "name": "Play Rough",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "poisonfang",
+    "name": "Poison Fang",
+    "type": "Poison",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "poltergeist",
+    "name": "Poltergeist",
+    "type": "Ghost",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "powertrip",
+    "name": "Power Trip",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "psychicfangs",
+    "name": "Psychic Fangs",
+    "type": "Psychic",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "punishment",
+    "name": "Punishment",
+    "type": "Dark",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "pursuit",
+    "name": "Pursuit",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "quash",
+    "name": "Quash",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "ragefist",
+    "name": "Rage Fist",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "ruination",
+    "name": "Ruination",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "shadowball",
+    "name": "Shadow Ball",
+    "type": "Ghost",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "shadowbone",
+    "name": "Shadow Bone",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "shadowclaw",
+    "name": "Shadow Claw",
+    "type": "Ghost",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "shadowforce",
+    "name": "Shadow Force",
+    "type": "Ghost",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "shadowpunch",
+    "name": "Shadow Punch",
+    "type": "Ghost",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "shadowsneak",
+    "name": "Shadow Sneak",
+    "type": "Ghost",
+    "pp": 30,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "shelter",
+    "name": "Shelter",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "shiftgear",
+    "name": "Shift Gear",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "smartstrike",
+    "name": "Smart Strike",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "snarl",
+    "name": "Snarl",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "snatch",
+    "name": "Snatch",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "spectralthief",
+    "name": "Spectral Thief",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "spinout",
+    "name": "Spin Out",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "spiritbreak",
+    "name": "Spirit Break",
+    "type": "Fairy",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "spiritshackle",
+    "name": "Spirit Shackle",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "spite",
+    "name": "Spite",
+    "type": "Ghost",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "springtidestorm",
+    "name": "Springtide Storm",
+    "type": "Fairy",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "steelbeam",
+    "name": "Steel Beam",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "steelroller",
+    "name": "Steel Roller",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "steelwing",
+    "name": "Steel Wing",
+    "type": "Steel",
+    "pp": 25,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "strangesteam",
+    "name": "Strange Steam",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "suckerpunch",
+    "name": "Sucker Punch",
+    "type": "Dark",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "sunsteelstrike",
+    "name": "Sunsteel Strike",
+    "type": "Steel",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "superfang",
+    "name": "Super Fang",
+    "type": "Normal",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "sweetkiss",
+    "name": "Sweet Kiss",
+    "type": "Fairy",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "switcheroo",
+    "name": "Switcheroo",
+    "type": "Dark",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "tachyoncutter",
+    "name": "Tachyon Cutter",
+    "type": "Steel",
+    "pp": 10,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "taunt",
+    "name": "Taunt",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "thief",
+    "name": "Thief",
+    "type": "Dark",
+    "pp": 25,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "throatchop",
+    "name": "Throat Chop",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "thunderfang",
+    "name": "Thunder Fang",
+    "type": "Electric",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "topsyturvy",
+    "name": "Topsy-Turvy",
+    "type": "Dark",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "torment",
+    "name": "Torment",
+    "type": "Dark",
+    "pp": 15,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "trickortreat",
+    "name": "Trick-or-Treat",
+    "type": "Ghost",
+    "pp": 20,
+    "zMove": false,
+    "maxMove": false
+  },
+  {
+    "id": "wickedblow",
+    "name": "Wicked Blow",
+    "type": "Dark",
+    "pp": 5,
+    "zMove": false,
+    "maxMove": false
+  }
+]

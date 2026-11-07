@@ -1,0 +1,29 @@
+{
+  "target": "cobblemon:sylveon",
+  "evolutions": [
+    {
+      "id": "sylveon_inkyeon",
+      "variant": "level_up",
+      "result": "inkyeon",
+      "optional": true,
+      "permanent": false,
+      "consumeHeldItem": false,
+      "requirements": [
+        {
+          "variant": "negate",
+          "inner": {
+            "variant": "friendship",
+            "amount": 1
+          }
+        },
+        {
+          "variant": "properties",
+          "target": "mawonna_verified_dark_defeats_1000=1000"
+        }
+      ]
+    }
+  ],
+  "pokedex": [
+    "cobblemon.species.sylveon.inkyeon_evolution.desc"
+  ]
+}

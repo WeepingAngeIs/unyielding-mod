@@ -1,0 +1,3373 @@
+{
+  "policy": "Explicit substantial multi-ingredient prepared dishes; >=6 nutrition and >=7.2 saturation. No raw ingredients, drinks, snacks, or plain sides. Closely related protein swaps share credit. Feasts are excluded; listed edible dishes only.",
+  "item_count": 85,
+  "distinct_dishes": 72,
+  "entries": [
+    {
+      "item": "farmersdelight:barbecue_stick",
+      "nutrition": 8,
+      "saturation": 14.4,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/barbecue_stick.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:crops/tomato"
+              },
+              {
+                "tag": "c:crops/onion"
+              },
+              {
+                "tag": "c:foods/cooked_meat"
+              },
+              {
+                "item": "minecraft:stick"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:barbecue_stick"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/skewer"
+    },
+    {
+      "item": "farmersdelight:egg_sandwich",
+      "nutrition": 8,
+      "saturation": 12.8,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/egg_sandwich.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "tag": "c:foods/cooked_egg"
+              },
+              {
+                "tag": "c:foods/cooked_egg"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:egg_sandwich"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/sandwich"
+    },
+    {
+      "item": "farmersdelight:chicken_sandwich",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/chicken_sandwich.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "tag": "c:foods/cooked_chicken"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "tag": "c:crops/carrot"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:chicken_sandwich"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/sandwich"
+    },
+    {
+      "item": "farmersdelight:hamburger",
+      "nutrition": 11,
+      "saturation": 17.6,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/hamburger.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "item": "farmersdelight:beef_patty"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "tag": "c:crops/tomato"
+              },
+              {
+                "tag": "c:crops/onion"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:hamburger"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/burger"
+    },
+    {
+      "item": "farmersdelight:bacon_sandwich",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/bacon_sandwich.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "tag": "c:foods/cooked_bacon"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "tag": "c:crops/tomato"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:bacon_sandwich"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/sandwich"
+    },
+    {
+      "item": "farmersdelight:mutton_wrap",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/mutton_wrap.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "tag": "c:foods/cooked_mutton"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "tag": "c:crops/onion"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:mutton_wrap"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/wrap"
+    },
+    {
+      "item": "farmersdelight:dumplings",
+      "nutrition": 8,
+      "saturation": 12.8,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/dumplings.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/dough"
+              },
+              {
+                "tag": "c:crops/cabbage"
+              },
+              {
+                "tag": "c:crops/onion"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "tag": "c:foods/raw_chicken"
+                  },
+                  {
+                    "tag": "c:foods/raw_pork"
+                  },
+                  {
+                    "tag": "c:foods/raw_beef"
+                  },
+                  {
+                    "item": "minecraft:brown_mushroom"
+                  }
+                ]
+              }
+            ],
+            "result": {
+              "count": 2,
+              "id": "farmersdelight:dumplings"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:dumplings"
+    },
+    {
+      "item": "farmersdelight:stuffed_potato",
+      "nutrition": 10,
+      "saturation": 14.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/stuffed_potato.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "item": "minecraft:baked_potato"
+              },
+              {
+                "tag": "c:foods/cooked_beef"
+              },
+              {
+                "tag": "c:drinks/milk"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:stuffed_potato"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/stuffed_potato"
+    },
+    {
+      "item": "farmersdelight:beef_stew",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/beef_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/raw_beef"
+              },
+              {
+                "tag": "c:crops/carrot"
+              },
+              {
+                "tag": "c:crops/potato"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:beef_stew"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:beef_stew"
+    },
+    {
+      "item": "farmersdelight:vegetable_soup",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/vegetable_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:crops/carrot"
+              },
+              {
+                "tag": "c:crops/potato"
+              },
+              {
+                "tag": "c:crops/beetroot"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:vegetable_soup"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:vegetable_soup"
+    },
+    {
+      "item": "farmersdelight:fish_stew",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/fish_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/safe_raw_fish"
+              },
+              {
+                "item": "farmersdelight:tomato_sauce"
+              },
+              {
+                "tag": "c:crops/onion"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:fish_stew"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:fish_stew"
+    },
+    {
+      "item": "farmersdelight:onion_soup",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/onion_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:crops/onion"
+              },
+              {
+                "tag": "c:crops/onion"
+              },
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "tag": "c:drinks/milk"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:onion_soup"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:onion_soup"
+    },
+    {
+      "item": "farmersdelight:chicken_soup",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/chicken_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/raw_chicken"
+              },
+              {
+                "tag": "c:crops/carrot"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "type": "neoforge:difference",
+                "base": {
+                  "tag": "c:foods/vegetable"
+                },
+                "subtracted": {
+                  "item": "minecraft:melon_slice"
+                }
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:chicken_soup"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:chicken_soup"
+    },
+    {
+      "item": "farmersdelight:fried_rice",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/fried_rice.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:crops/rice"
+              },
+              {
+                "tag": "c:eggs"
+              },
+              {
+                "tag": "c:crops/carrot"
+              },
+              {
+                "tag": "c:crops/onion"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:fried_rice"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:fried_rice"
+    },
+    {
+      "item": "farmersdelight:pumpkin_soup",
+      "nutrition": 14,
+      "saturation": 21.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/pumpkin_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "item": "farmersdelight:pumpkin_slice"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "tag": "c:foods/raw_pork"
+              },
+              {
+                "tag": "c:drinks/milk"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:pumpkin_soup"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:pumpkin_soup"
+    },
+    {
+      "item": "farmersdelight:baked_cod_stew",
+      "nutrition": 14,
+      "saturation": 21.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/baked_cod_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/raw_cod"
+              },
+              {
+                "tag": "c:crops/potato"
+              },
+              {
+                "tag": "c:eggs"
+              },
+              {
+                "tag": "c:crops/tomato"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:baked_cod_stew"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:baked_cod_stew"
+    },
+    {
+      "item": "farmersdelight:noodle_soup",
+      "nutrition": 14,
+      "saturation": 21.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/noodle_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/pasta"
+              },
+              {
+                "tag": "c:eggs"
+              },
+              {
+                "item": "minecraft:dried_kelp"
+              },
+              {
+                "tag": "c:foods/raw_pork"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:noodle_soup"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:noodle_soup"
+    },
+    {
+      "item": "farmersdelight:bacon_and_eggs",
+      "nutrition": 10,
+      "saturation": 12.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/bacon_and_eggs.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/cooked_bacon"
+              },
+              {
+                "tag": "c:foods/cooked_bacon"
+              },
+              {
+                "item": "minecraft:bowl"
+              },
+              {
+                "tag": "c:foods/cooked_egg"
+              },
+              {
+                "tag": "c:foods/cooked_egg"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:bacon_and_eggs"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:bacon_and_eggs"
+    },
+    {
+      "item": "farmersdelight:ratatouille",
+      "nutrition": 10,
+      "saturation": 12.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/ratatouille.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:crops/tomato"
+              },
+              {
+                "tag": "c:crops/onion"
+              },
+              {
+                "tag": "c:crops/beetroot"
+              },
+              {
+                "type": "neoforge:difference",
+                "base": {
+                  "tag": "c:foods/vegetable"
+                },
+                "subtracted": {
+                  "item": "minecraft:melon_slice"
+                }
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:ratatouille"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:ratatouille"
+    },
+    {
+      "item": "farmersdelight:steak_and_potatoes",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/steak_and_potatoes.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "item": "minecraft:baked_potato"
+              },
+              {
+                "item": "minecraft:cooked_beef"
+              },
+              {
+                "item": "minecraft:bowl"
+              },
+              {
+                "tag": "c:crops/onion"
+              },
+              {
+                "item": "farmersdelight:cooked_rice"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:steak_and_potatoes"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:steak_and_potatoes"
+    },
+    {
+      "item": "farmersdelight:pasta_with_meatballs",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/pasta_with_meatballs.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "item": "farmersdelight:minced_beef"
+              },
+              {
+                "tag": "c:foods/pasta"
+              },
+              {
+                "item": "farmersdelight:tomato_sauce"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:pasta_with_meatballs"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/meat_pasta"
+    },
+    {
+      "item": "farmersdelight:pasta_with_mutton_chop",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/pasta_with_mutton_chop.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/raw_mutton"
+              },
+              {
+                "tag": "c:foods/pasta"
+              },
+              {
+                "item": "farmersdelight:tomato_sauce"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:pasta_with_mutton_chop"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/meat_pasta"
+    },
+    {
+      "item": "farmersdelight:mushroom_rice",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/mushroom_rice.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "item": "minecraft:brown_mushroom"
+              },
+              {
+                "item": "minecraft:red_mushroom"
+              },
+              {
+                "tag": "c:crops/rice"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:carrot"
+                  },
+                  {
+                    "item": "minecraft:potato"
+                  }
+                ]
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:mushroom_rice"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:mushroom_rice"
+    },
+    {
+      "item": "farmersdelight:roasted_mutton_chops",
+      "nutrition": 14,
+      "saturation": 21.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/roasted_mutton_chops.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "item": "farmersdelight:cooked_mutton_chops"
+              },
+              {
+                "tag": "c:crops/beetroot"
+              },
+              {
+                "item": "minecraft:bowl"
+              },
+              {
+                "item": "farmersdelight:cooked_rice"
+              },
+              {
+                "tag": "c:crops/tomato"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:roasted_mutton_chops"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:roasted_mutton_chops"
+    },
+    {
+      "item": "farmersdelight:vegetable_noodles",
+      "nutrition": 14,
+      "saturation": 21.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/vegetable_noodles.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:crops/carrot"
+              },
+              {
+                "tag": "c:mushrooms"
+              },
+              {
+                "tag": "c:foods/pasta"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "type": "neoforge:difference",
+                "base": {
+                  "tag": "c:foods/vegetable"
+                },
+                "subtracted": {
+                  "item": "minecraft:melon_slice"
+                }
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:vegetable_noodles"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:vegetable_noodles"
+    },
+    {
+      "item": "farmersdelight:squid_ink_pasta",
+      "nutrition": 14,
+      "saturation": 21.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/cooking/squid_ink_pasta.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/safe_raw_fish"
+              },
+              {
+                "tag": "c:foods/pasta"
+              },
+              {
+                "tag": "c:crops/tomato"
+              },
+              {
+                "item": "minecraft:ink_sac"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:squid_ink_pasta"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:squid_ink_pasta"
+    },
+    {
+      "item": "farmersdelight:grilled_salmon",
+      "nutrition": 14,
+      "saturation": 21.0,
+      "source_class": "FoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersdelight/recipe/grilled_salmon.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/cooked_salmon"
+              },
+              {
+                "item": "minecraft:sweet_berries"
+              },
+              {
+                "item": "minecraft:bowl"
+              },
+              {
+                "tag": "c:crops/cabbage"
+              },
+              {
+                "tag": "c:crops/onion"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "farmersdelight:grilled_salmon"
+            }
+          }
+        }
+      ],
+      "dish": "farmersdelight:grilled_salmon"
+    },
+    {
+      "item": "mynethersdelight:scotch_eggs",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/scotch_eggs.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/boiled_egg"
+              },
+              {
+                "tag": "c:foods/boiled_egg"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "farmersdelight:minced_beef"
+                  },
+                  {
+                    "item": "mynethersdelight:hoglin_sausage"
+                  }
+                ]
+              },
+              {
+                "tag": "c:foods/bread"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:scotch_eggs"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:scotch_eggs"
+    },
+    {
+      "item": "mynethersdelight:egg_soup",
+      "nutrition": 10,
+      "saturation": 14.0,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/egg_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/boiled_egg"
+              },
+              {
+                "tag": "c:foods/cooked_egg"
+              },
+              {
+                "tag": "c:foods/cooked_egg"
+              },
+              {
+                "tag": "c:foods/onion"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:egg_soup"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:egg_soup"
+    },
+    {
+      "item": "mynethersdelight:strider_stew",
+      "nutrition": 8,
+      "saturation": 9.6,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/strider_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "cookingtime": 400,
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/raw_strider"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:warped_fungus"
+                  },
+                  {
+                    "item": "minecraft:crimson_fungus"
+                  }
+                ]
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:warped_fungus"
+                  },
+                  {
+                    "item": "minecraft:crimson_fungus"
+                  },
+                  {
+                    "item": "minecraft:red_mushroom"
+                  },
+                  {
+                    "item": "minecraft:brown_mushroom"
+                  }
+                ]
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:warped_roots"
+                  },
+                  {
+                    "item": "minecraft:crimson_roots"
+                  },
+                  {
+                    "item": "farmersdelight:straw"
+                  }
+                ]
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:strider_stew"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:strider_stew"
+    },
+    {
+      "item": "mynethersdelight:crimson_stroganoff",
+      "nutrition": 11,
+      "saturation": 16.5,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/crimson_stroganoff.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "cookingtime": 400,
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "item": "mynethersdelight:minced_strider"
+              },
+              {
+                "item": "minecraft:crimson_fungus"
+              },
+              {
+                "item": "minecraft:crimson_fungus"
+              },
+              {
+                "tag": "c:drinks/milk"
+              },
+              {
+                "tag": "c:foods/pasta"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:crimson_stroganoff"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:crimson_stroganoff"
+    },
+    {
+      "item": "mynethersdelight:chilidog",
+      "nutrition": 11,
+      "saturation": 11.0,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/farmersrespite/recipe/chilidog_alt.json",
+          "data": {
+            "neoforge:conditions": [
+              {
+                "type": "neoforge:mod_loaded",
+                "modid": "farmersrespite"
+              }
+            ],
+            "type": "minecraft:crafting_shapeless",
+            "ingredients": [
+              {
+                "item": "farmersrespite:blazing_chili"
+              },
+              {
+                "item": "mynethersdelight:hotdog"
+              },
+              {
+                "item": "mynethersdelight:hotdog"
+              }
+            ],
+            "result": {
+              "count": 2,
+              "id": "mynethersdelight:chilidog"
+            }
+          }
+        },
+        {
+          "path": "data/mynethersdelight/recipe/cooking/chilidog.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "mynethersdelight:hotdog"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "tag": "mynethersdelight:hot_spice"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "mynethersdelight:minced_strider"
+                  },
+                  {
+                    "item": "farmersdelight:minced_beef"
+                  }
+                ]
+              },
+              {
+                "item": "minecraft:nether_wart"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:chilidog"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:chilidog"
+    },
+    {
+      "item": "mynethersdelight:sausage_and_potatoes",
+      "nutrition": 11,
+      "saturation": 12.1,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/sausage_and_potatoes.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "tag": "c:crops/potato"
+              },
+              {
+                "item": "mynethersdelight:hoglin_sausage"
+              },
+              {
+                "item": "mynethersdelight:hoglin_sausage"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:sausage_and_potatoes"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:sausage_and_potatoes"
+    },
+    {
+      "item": "mynethersdelight:breakfast_sampler",
+      "nutrition": 15,
+      "saturation": 22.5,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/crafting/breakfast_sampler.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "item": "mynethersdelight:roasted_sausage"
+              },
+              {
+                "item": "mynethersdelight:roasted_sausage"
+              },
+              [
+                {
+                  "item": "minecraft:honey_bottle"
+                },
+                {
+                  "item": "mynethersdelight:strider_egg"
+                }
+              ],
+              {
+                "tag": "c:foods/cooked_egg"
+              },
+              {
+                "tag": "c:foods/cooked_egg"
+              },
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "item": "minecraft:bowl"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:breakfast_sampler"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:breakfast_sampler"
+    },
+    {
+      "item": "mynethersdelight:nether_burger",
+      "nutrition": 12,
+      "saturation": 18.0,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/crafting/nether_burger.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "item": "mynethersdelight:cooked_loin"
+              },
+              {
+                "item": "minecraft:twisting_vines"
+              },
+              {
+                "item": "minecraft:crimson_fungus"
+              },
+              [
+                {
+                  "item": "minecraft:warped_fungus"
+                },
+                {
+                  "item": "minecraft:crimson_fungus"
+                }
+              ]
+            ],
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:nether_burger"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/burger"
+    },
+    {
+      "item": "mynethersdelight:blue_tenderloin_steak",
+      "nutrition": 9,
+      "saturation": 14.4,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/crafting/blue_tenderloin_steak.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "group": "blue_tenderloin_steak_group",
+            "ingredients": [
+              {
+                "item": "mynethersdelight:cooked_loin"
+              },
+              {
+                "item": "minecraft:warped_fungus"
+              },
+              [
+                {
+                  "item": "minecraft:warped_fungus"
+                },
+                {
+                  "item": "minecraft:warped_roots"
+                },
+                {
+                  "item": "farmersdelight:straw"
+                }
+              ],
+              {
+                "item": "minecraft:bowl"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:blue_tenderloin_steak"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:blue_tenderloin_steak"
+    },
+    {
+      "item": "mynethersdelight:fried_hoglin_chop",
+      "nutrition": 12,
+      "saturation": 21.6,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/fried_hoglin_chop.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "item": "mynethersdelight:hoglin_loin"
+              },
+              {
+                "item": "minecraft:wheat"
+              },
+              {
+                "tag": "c:drinks/milk"
+              },
+              {
+                "tag": "c:eggs"
+              },
+              {
+                "item": "mynethersdelight:bullet_pepper"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:fried_hoglin_chop"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:fried_hoglin_chop"
+    },
+    {
+      "item": "mynethersdelight:twisted_ghasta",
+      "nutrition": 10,
+      "saturation": 13.0,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/twisted_ghasta.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "item": "mynethersdelight:ghasta"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:warped_fungus"
+                  },
+                  {
+                    "item": "minecraft:twisting_vines"
+                  }
+                ]
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:warped_fungus"
+                  },
+                  {
+                    "item": "minecraft:twisting_vines"
+                  }
+                ]
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:twisted_ghasta"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:twisted_ghasta"
+    },
+    {
+      "item": "mynethersdelight:giant_takoyaki",
+      "nutrition": 12,
+      "saturation": 18.0,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/giant_tentacles.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/giant_tentacles"
+              },
+              {
+                "tag": "c:foods/giant_tentacles"
+              },
+              {
+                "tag": "c:foods/dough"
+              },
+              {
+                "item": "farmersdelight:onion"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:giant_takoyaki"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:giant_takoyaki"
+    },
+    {
+      "item": "mynethersdelight:spicy_noodle_soup",
+      "nutrition": 16,
+      "saturation": 20.8,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/spicy_noodle_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/rice_pasta"
+              },
+              {
+                "tag": "c:foods/cooked_egg"
+              },
+              {
+                "tag": "mynethersdelight:hot_spice"
+              },
+              {
+                "tag": "c:foods/raw_hoglin"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:spicy_noodle_soup"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:spicy_noodle_soup"
+    },
+    {
+      "item": "mynethersdelight:ghasta_with_cream",
+      "nutrition": 8,
+      "saturation": 14.4,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/crafting/ghasta_with_cream.json",
+          "data": {
+            "type": "minecraft:crafting_shaped",
+            "category": "misc",
+            "key": {
+              "#": {
+                "item": "minecraft:magma_cream"
+              },
+              "B": {
+                "item": "minecraft:bowl"
+              },
+              "G": [
+                {
+                  "item": "mynethersdelight:ghasta"
+                },
+                {
+                  "item": "mynethersdelight:ghasmati"
+                }
+              ],
+              "T": {
+                "item": "minecraft:ghast_tear"
+              }
+            },
+            "pattern": [
+              "GGG",
+              "GT#",
+              "GBG"
+            ],
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:ghasta_with_cream"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:ghasta_with_cream"
+    },
+    {
+      "item": "mynethersdelight:stuffed_pepper",
+      "nutrition": 8,
+      "saturation": 12.8,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/crafting/stuffed_pepper.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "item": "mynethersdelight:bullet_pepper"
+              },
+              {
+                "tag": "c:foods/cooked_pork"
+              },
+              {
+                "tag": "c:drinks/milk"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:stuffed_pepper"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:stuffed_pepper"
+    },
+    {
+      "item": "mynethersdelight:spicy_skewer",
+      "nutrition": 7,
+      "saturation": 12.6,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/crafting/spicy_skewer.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "item": "mynethersdelight:bullet_pepper"
+              },
+              {
+                "tag": "c:foods/raw_strider"
+              },
+              {
+                "item": "minecraft:blaze_rod"
+              },
+              {
+                "item": "mynethersdelight:bullet_pepper"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:spicy_skewer"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/skewer"
+    },
+    {
+      "item": "mynethersdelight:spicy_hoglin_stew",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/spicy_hoglin_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "mynethersdelight:hoglin_loin"
+                  },
+                  {
+                    "item": "mynethersdelight:hoglin_sausage"
+                  },
+                  {
+                    "item": "mynethersdelight:roasted_sausage"
+                  },
+                  {
+                    "item": "mynethersdelight:cooked_loin"
+                  }
+                ]
+              },
+              {
+                "tag": "c:crops/potato"
+              },
+              {
+                "tag": "c:crops/carrot"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "mynethersdelight:bullet_pepper"
+                  },
+                  {
+                    "item": "mynethersdelight:pepper_powder"
+                  }
+                ]
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:spicy_hoglin_stew"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:spicy_hoglin_stew"
+    },
+    {
+      "item": "mynethersdelight:hot_wings_bucket",
+      "nutrition": 18,
+      "saturation": 16.2,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/crafting/hot_wings_bucket.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "item": "mynethersdelight:hot_wings"
+              },
+              {
+                "item": "mynethersdelight:hot_wings"
+              },
+              {
+                "item": "mynethersdelight:hot_wings"
+              },
+              {
+                "item": "minecraft:bucket"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:hot_wings_bucket"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:hot_wings_bucket"
+    },
+    {
+      "item": "mynethersdelight:spicy_curry",
+      "nutrition": 15,
+      "saturation": 19.5,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/spicy_curry.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 1.0,
+            "ingredients": [
+              {
+                "tag": "c:foods/raw_meat"
+              },
+              {
+                "tag": "c:drinks/milk"
+              },
+              {
+                "tag": "mynethersdelight:hot_spice"
+              },
+              {
+                "tag": "c:crops/rice"
+              },
+              {
+                "type": "neoforge:difference",
+                "base": {
+                  "tag": "c:foods/vegetable"
+                },
+                "subtracted": {
+                  "item": "minecraft:melon_slice"
+                }
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:pumpkin"
+                  },
+                  {
+                    "item": "farmersdelight:pumpkin_slice"
+                  }
+                ]
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "mynethersdelight:spicy_curry"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:spicy_curry"
+    },
+    {
+      "item": "mynethersdelight:burnt_roll",
+      "nutrition": 10,
+      "saturation": 12.0,
+      "source_class": "MNDFoodValues.java",
+      "recipes": [
+        {
+          "path": "data/mynethersdelight/recipe/cooking/burn_roll.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "cookingtime": 50,
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "minecraft:magma_cream"
+              },
+              {
+                "item": "minecraft:magma_cream"
+              },
+              {
+                "tag": "c:foods/raw_meat"
+              }
+            ],
+            "result": {
+              "count": 2,
+              "id": "mynethersdelight:burnt_roll"
+            }
+          }
+        }
+      ],
+      "dish": "mynethersdelight:burnt_roll"
+    },
+    {
+      "item": "twilightdelight:naga_skewers",
+      "nutrition": 8,
+      "saturation": 14.4,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/naga_skewers.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "twilightdelight:naga_cooked"
+              },
+              {
+                "tag": "twilightdelight:naga_cooked"
+              },
+              {
+                "item": "minecraft:carrot"
+              },
+              {
+                "item": "minecraft:baked_potato"
+              },
+              {
+                "tag": "c:rods/wooden"
+              },
+              {
+                "tag": "c:rods/wooden"
+              }
+            ],
+            "result": {
+              "count": 2,
+              "id": "twilightdelight:naga_skewers"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/skewer"
+    },
+    {
+      "item": "twilightdelight:naga_stew",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/naga_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "tag": "twilightdelight:naga_raw"
+              },
+              {
+                "tag": "twilightdelight:naga_raw"
+              },
+              {
+                "tag": "c:foods/onion"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:naga_stew"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:naga_stew"
+    },
+    {
+      "item": "twilightdelight:naga_meatball_congee",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/naga_meatball_congee.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "tag": "twilightdelight:naga_raw"
+              },
+              {
+                "tag": "twilightdelight:naga_raw"
+              },
+              {
+                "item": "minecraft:carrot"
+              },
+              {
+                "item": "minecraft:dried_kelp"
+              },
+              {
+                "tag": "c:crops/rice"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:naga_meatball_congee"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:naga_meatball_congee"
+    },
+    {
+      "item": "twilightdelight:meef_wrap",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/meef_wrap.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "tag": "twilightdelight:meef_cooked"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "tag": "c:foods/onion"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:meef_wrap"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/wrap"
+    },
+    {
+      "item": "twilightdelight:ghast_burger",
+      "nutrition": 11,
+      "saturation": 17.6,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/ghast_burger.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "item": "twilightforest:experiment_115"
+              },
+              {
+                "tag": "c:crops/beetroot"
+              },
+              {
+                "tag": "c:foods/tomato"
+              },
+              {
+                "tag": "c:foods/onion"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:ghast_burger"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/burger"
+    },
+    {
+      "item": "twilightdelight:hydra_burger",
+      "nutrition": 18,
+      "saturation": 28.8,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/hydra_burger.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "tag": "twilightdelight:hydra_meat"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "tag": "c:foods/tomato"
+              },
+              {
+                "tag": "c:foods/onion"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:hydra_burger"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/burger"
+    },
+    {
+      "item": "twilightdelight:glowstew",
+      "nutrition": 7,
+      "saturation": 9.8,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/glowstew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "minecraft:glowstone_dust"
+              },
+              {
+                "item": "twilightforest:mushgloom"
+              },
+              {
+                "item": "twilightforest:torchberries"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:glowstew"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:glowstew"
+    },
+    {
+      "item": "twilightdelight:glow_venison_rib_with_pasta",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/glow_venison_rib_with_pasta.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:glowstew"
+              },
+              {
+                "tag": "twilightdelight:vension_raw"
+              },
+              {
+                "item": "farmersdelight:raw_pasta"
+              },
+              {
+                "item": "twilightforest:liveroot"
+              },
+              {
+                "item": "minecraft:beetroot"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:glow_venison_rib_with_pasta"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:glow_venison_rib_with_pasta"
+    },
+    {
+      "item": "twilightdelight:mushgloom_meef_pasta",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/mushgloom_meef_pasta.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:mushgloom_sauce"
+              },
+              {
+                "tag": "twilightdelight:meef_raw"
+              },
+              {
+                "item": "farmersdelight:raw_pasta"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:mushgloom_meef_pasta"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:mushgloom_meef_pasta"
+    },
+    {
+      "item": "twilightdelight:liveroot_pork_fried_rice",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/liveroot_pork_fried_rice.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.5,
+            "ingredients": [
+              {
+                "tag": "c:crops/rice"
+              },
+              {
+                "tag": "c:foods/raw_pork"
+              },
+              {
+                "tag": "c:foods/raw_pork"
+              },
+              {
+                "tag": "c:eggs"
+              },
+              {
+                "item": "twilightforest:liveroot"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:liveroot_pork_fried_rice"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:liveroot_pork_fried_rice"
+    },
+    {
+      "item": "twilightdelight:liveroot_venison_noodle_soup",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/liveroot_venison_noodle_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.5,
+            "ingredients": [
+              {
+                "tag": "c:foods/pasta"
+              },
+              {
+                "tag": "twilightdelight:vension_raw"
+              },
+              {
+                "item": "farmersdelight:chicken_soup"
+              },
+              {
+                "item": "twilightforest:liveroot"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:liveroot_venison_noodle_soup"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:liveroot_venison_noodle_soup"
+    },
+    {
+      "item": "twilightdelight:torchberry_venison_sandwich",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/torchberry_venison_sandwich.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/bread"
+              },
+              {
+                "tag": "twilightdelight:vension_cooked"
+              },
+              {
+                "tag": "c:foods/leafy_green"
+              },
+              {
+                "item": "twilightforest:torchberries"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:torchberry_venison_sandwich"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/sandwich"
+    },
+    {
+      "item": "twilightdelight:fried_insect",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/fried_insect.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:raw_insect"
+              },
+              {
+                "tag": "c:foods/onion"
+              },
+              {
+                "item": "minecraft:carrot"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:fried_insect"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:fried_insect"
+    },
+    {
+      "item": "twilightdelight:thousand_plant_stew",
+      "nutrition": 10,
+      "saturation": 12.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/thousand_plant_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "cookingtime": 400,
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightforest:root_strand"
+              },
+              {
+                "item": "twilightforest:fallen_leaves"
+              },
+              {
+                "item": "twilightforest:liveroot"
+              },
+              {
+                "item": "twilightforest:torchberry_plant"
+              },
+              {
+                "item": "minecraft:vine"
+              },
+              {
+                "item": "twilightforest:fiddlehead"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:thousand_plant_stew"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:thousand_plant_stew"
+    },
+    {
+      "item": "twilightdelight:grilled_ghast",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/grilled_ghast.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "cookingtime": 800,
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "farmersdelight:tomato"
+              },
+              {
+                "item": "minecraft:beetroot"
+              },
+              {
+                "tag": "twilightforest:fiery_vial"
+              },
+              {
+                "item": "twilightforest:experiment_115"
+              },
+              {
+                "item": "twilightforest:experiment_115"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:grilled_ghast"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:grilled_ghast"
+    },
+    {
+      "item": "twilightdelight:grilled_tomahawk_smeak",
+      "nutrition": 14,
+      "saturation": 22.4,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/grilled_tomahawk_smeak.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "cookingtime": 1600,
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:raw_tomahawk_smeak"
+              },
+              {
+                "item": "twilightdelight:mushgloom_sauce"
+              },
+              {
+                "tag": "c:drinks/milk"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:grilled_tomahawk_smeak"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:grilled_tomahawk_smeak"
+    },
+    {
+      "item": "twilightdelight:red_thread_pasta",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/red_thread_pasta.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "cookingtime": 400,
+            "experience": 0.5,
+            "ingredients": [
+              {
+                "item": "twilightforest:red_thread"
+              },
+              {
+                "item": "twilightforest:red_thread"
+              },
+              {
+                "item": "twilightforest:red_thread"
+              },
+              {
+                "item": "farmersdelight:tomato_sauce"
+              },
+              {
+                "item": "minecraft:beetroot_soup"
+              },
+              {
+                "item": "minecraft:sweet_berries"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:red_thread_pasta"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:red_thread_pasta"
+    },
+    {
+      "item": "twilightdelight:hydra_skewer",
+      "nutrition": 8,
+      "saturation": 14.4,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/hydra_skewer.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "twilightdelight:hydra_meat"
+              },
+              {
+                "item": "twilightforest:steeleaf_ingot"
+              },
+              {
+                "item": "twilightforest:liveroot"
+              },
+              {
+                "tag": "c:rods/wooden"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:hydra_skewer"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/skewer"
+    },
+    {
+      "item": "twilightdelight:fiery_blood_curd",
+      "nutrition": 14,
+      "saturation": 22.4,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/fiery_blood_curd.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bucket"
+            },
+            "cookingtime": 800,
+            "experience": 0.5,
+            "ingredients": [
+              {
+                "item": "twilightforest:fiery_blood"
+              },
+              {
+                "item": "twilightforest:fiery_blood"
+              },
+              {
+                "tag": "twilightdelight:hydra_meat"
+              },
+              {
+                "item": "twilightforest:torchberries"
+              },
+              {
+                "item": "twilightforest:mayapple"
+              },
+              {
+                "item": "minecraft:blaze_rod"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:fiery_blood_curd"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:fiery_blood_curd"
+    },
+    {
+      "item": "twilightdelight:hydra_stuffed_potato",
+      "nutrition": 8,
+      "saturation": 9.6,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/hydra_stuffed_potato.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "item": "minecraft:baked_potato"
+              },
+              {
+                "tag": "twilightdelight:hydra_meat"
+              },
+              {
+                "item": "twilightdelight:mushgloom_sauce"
+              },
+              {
+                "tag": "c:foods/onion"
+              }
+            ],
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:hydra_stuffed_potato"
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/stuffed_potato"
+    },
+    {
+      "item": "twilightdelight:hydra_stew",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/hydra_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "cookingtime": 400,
+            "experience": 0.5,
+            "ingredients": [
+              {
+                "tag": "twilightdelight:hydra_meat"
+              },
+              {
+                "item": "minecraft:potato"
+              },
+              {
+                "item": "twilightforest:mayapple"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:hydra_stew"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:hydra_stew"
+    },
+    {
+      "item": "twilightdelight:fried_hydra_chop",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/fried_hydra_chop.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "cookingtime": 800,
+            "experience": 0.5,
+            "ingredients": [
+              {
+                "tag": "twilightdelight:hydra_meat"
+              },
+              {
+                "tag": "c:eggs"
+              },
+              {
+                "item": "farmersdelight:wheat_dough"
+              },
+              {
+                "item": "minecraft:carrot"
+              },
+              {
+                "item": "twilightforest:moss_patch"
+              },
+              {
+                "item": "twilightforest:mayapple"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:fried_hydra_chop"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:fried_hydra_chop"
+    },
+    {
+      "item": "twilightdelight:glowing_curry_rice",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/glowing_curry_rice.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "cookingtime": 400,
+            "experience": 0.5,
+            "ingredients": [
+              {
+                "item": "twilightdelight:cooked_insect"
+              },
+              {
+                "tag": "c:crops/rice"
+              },
+              {
+                "item": "twilightdelight:mushgloom_sauce"
+              },
+              {
+                "tag": "c:foods/onion"
+              },
+              {
+                "item": "minecraft:potato"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:glowing_curry_rice"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:glowing_curry_rice"
+    },
+    {
+      "item": "twilightdelight:velvet_antler_stewed_chicken_soup",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/velvet_antler_stewed_chicken_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "cookingtime": 400,
+            "experience": 0.5,
+            "ingredients": [
+              {
+                "item": "twilightdelight:velvet_antler_slice"
+              },
+              {
+                "item": "minecraft:chicken"
+              },
+              {
+                "item": "twilightforest:liveroot"
+              },
+              {
+                "item": "minecraft:brown_mushroom"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:velvet_antler_stewed_chicken_soup"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:velvet_antler_stewed_chicken_soup"
+    },
+    {
+      "item": "twilightdelight:crab_claw_pasta",
+      "nutrition": 12,
+      "saturation": 19.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/crab_claw_pasta.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:helmet_crab_claw"
+              },
+              {
+                "item": "farmersdelight:raw_pasta"
+              },
+              {
+                "item": "farmersdelight:tomato_sauce"
+              },
+              {
+                "item": "minecraft:carrot"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:crab_claw_pasta"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:crab_claw_pasta"
+    },
+    {
+      "item": "twilightdelight:stuffed_crab_claw",
+      "nutrition": 8,
+      "saturation": 9.6,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/stuffed_crab_claw.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:helmet_crab_claw"
+              },
+              {
+                "item": "minecraft:potato"
+              },
+              {
+                "item": "minecraft:carrot"
+              },
+              {
+                "item": "twilightforest:torchberries"
+              },
+              {
+                "item": "twilightforest:mayapple"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:stuffed_crab_claw"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:stuffed_crab_claw"
+    },
+    {
+      "item": "twilightdelight:phantom_bone_broth",
+      "nutrition": 8,
+      "saturation": 12.8,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/phantom_bone_broth.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:phantom_bone"
+              },
+              {
+                "item": "twilightforest:moss_patch"
+              },
+              {
+                "item": "minecraft:short_grass"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:brown_mushroom"
+                  },
+                  {
+                    "item": "minecraft:red_mushroom"
+                  },
+                  {
+                    "item": "twilightforest:mushgloom"
+                  }
+                ]
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:phantom_bone_broth"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:phantom_bone_broth"
+    },
+    {
+      "item": "twilightdelight:tomb_of_the_phantom",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/tomb_of_the_phantom.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:phantom_bone"
+              },
+              {
+                "item": "twilightdelight:phantom_bone"
+              },
+              {
+                "item": "minecraft:vine"
+              },
+              {
+                "item": "twilightforest:moss_patch"
+              },
+              {
+                "item": "farmersdelight:raw_pasta"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:tomb_of_the_phantom"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:tomb_of_the_phantom"
+    },
+    {
+      "item": "twilightdelight:regret_soup",
+      "nutrition": 8,
+      "saturation": 11.2,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/regret_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:experiment_110"
+              },
+              {
+                "item": "minecraft:ghast_tear"
+              },
+              {
+                "item": "minecraft:ghast_tear"
+              },
+              {
+                "item": "minecraft:ghast_tear"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:regret_soup"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:regret_soup"
+    },
+    {
+      "item": "twilightdelight:thickcut_ghast_fries",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "DelightFood.java",
+      "recipes": [
+        {
+          "path": "data/twilightdelight/recipe/cooking/thickcut_ghast_fries.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "container": {
+              "count": 1,
+              "id": "minecraft:bowl"
+            },
+            "experience": 0.35,
+            "ingredients": [
+              {
+                "item": "twilightdelight:experiment_113"
+              },
+              {
+                "item": "twilightdelight:experiment_113"
+              },
+              {
+                "item": "twilightdelight:experiment_113"
+              },
+              {
+                "item": "minecraft:potato"
+              },
+              {
+                "item": "farmersdelight:wheat_dough"
+              },
+              {
+                "item": "farmersdelight:tomato_sauce"
+              }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+              "count": 1,
+              "id": "twilightdelight:thickcut_ghast_fries"
+            }
+          }
+        }
+      ],
+      "dish": "twilightdelight:thickcut_ghast_fries"
+    },
+    {
+      "item": "ends_delight:stir_fried_shulker_meat",
+      "nutrition": 10,
+      "saturation": 16.0,
+      "source_class": "FoodList.java",
+      "recipes": [
+        {
+          "path": "data/ends_delight/recipe/food/stir_fried_shulker_meat.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "ingredients": [
+              {
+                "tag": "c:crops/onion"
+              },
+              {
+                "tag": "c:crops/tomato"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:chorus_fruit"
+                  },
+                  {
+                    "item": "ends_delight:chorus_fruit_grain"
+                  }
+                ]
+              },
+              {
+                "tag": "c:foods/shulker_meat"
+              }
+            ],
+            "result": {
+              "id": "ends_delight:stir_fried_shulker_meat"
+            },
+            "recipe_book_tab": "meals",
+            "experience": 1.0,
+            "cookingtime": 200
+          }
+        }
+      ],
+      "dish": "ends_delight:stir_fried_shulker_meat"
+    },
+    {
+      "item": "ends_delight:dragon_breath_and_chorus_soup",
+      "nutrition": 16,
+      "saturation": 19.2,
+      "source_class": "FoodList.java",
+      "recipes": [
+        {
+          "path": "data/ends_delight/recipe/food/dragon_breath_and_chorus_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "ingredients": [
+              {
+                "item": "minecraft:suspicious_stew"
+              },
+              {
+                "item": "minecraft:dragon_breath"
+              },
+              {
+                "item": "ends_delight:dried_chorus_flower"
+              },
+              {
+                "item": "minecraft:chorus_fruit"
+              },
+              {
+                "item": "minecraft:chorus_fruit"
+              }
+            ],
+            "result": {
+              "id": "ends_delight:dragon_breath_and_chorus_soup"
+            },
+            "recipe_book_tab": "meals",
+            "cookingtime": 200,
+            "experience": 1.0
+          }
+        }
+      ],
+      "dish": "ends_delight:dragon_breath_and_chorus_soup"
+    },
+    {
+      "item": "ends_delight:end_barbecue_stick",
+      "nutrition": 10,
+      "saturation": 14.0,
+      "source_class": "FoodList.java",
+      "recipes": [
+        {
+          "path": "data/ends_delight/recipe/food/end_barbecue_stick.json",
+          "data": {
+            "type": "minecraft:crafting_shapeless",
+            "category": "misc",
+            "ingredients": [
+              {
+                "tag": "c:foods/roasted_shulker_meat"
+              },
+              {
+                "tag": "c:foods/roasted_dragon_meat"
+              },
+              {
+                "item": "minecraft:chorus_fruit"
+              },
+              {
+                "item": "ends_delight:dried_endermite_meat"
+              },
+              {
+                "item": "minecraft:stick"
+              },
+              {
+                "item": "minecraft:stick"
+              },
+              {
+                "item": "minecraft:stick"
+              }
+            ],
+            "result": {
+              "id": "ends_delight:end_barbecue_stick",
+              "count": 3
+            }
+          }
+        }
+      ],
+      "dish": "mawonna:dish/skewer"
+    },
+    {
+      "item": "ends_delight:ender_congee",
+      "nutrition": 10,
+      "saturation": 12.0,
+      "source_class": "FoodList.java",
+      "recipes": [
+        {
+          "path": "data/ends_delight/recipe/food/ender_congee.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "ingredients": [
+              {
+                "tag": "c:crops/rice"
+              },
+              {
+                "item": "ends_delight:dried_endermite_meat"
+              },
+              {
+                "item": "ends_delight:ender_pearl_grain"
+              }
+            ],
+            "container": {
+              "id": "minecraft:bowl"
+            },
+            "result": {
+              "id": "ends_delight:ender_congee"
+            },
+            "recipe_book_tab": "meals",
+            "cookingtime": 200,
+            "experience": 1.0
+          }
+        }
+      ],
+      "dish": "ends_delight:ender_congee"
+    },
+    {
+      "item": "ends_delight:enderman_gristle_stew",
+      "nutrition": 7,
+      "saturation": 9.8,
+      "source_class": "FoodList.java",
+      "recipes": [
+        {
+          "path": "data/ends_delight/recipe/food/enderman_gristle_stew.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "ingredients": [
+              {
+                "item": "ends_delight:enderman_gristle"
+              },
+              {
+                "item": "ends_delight:enderman_gristle"
+              },
+              {
+                "item": "ends_delight:dried_chorus_flower"
+              },
+              {
+                "item": "ends_delight:chorus_succulent"
+              }
+            ],
+            "result": {
+              "id": "ends_delight:enderman_gristle_stew"
+            },
+            "recipe_book_tab": "meals",
+            "experience": 1.0,
+            "cookingtime": 200
+          }
+        }
+      ],
+      "dish": "ends_delight:enderman_gristle_stew"
+    },
+    {
+      "item": "ends_delight:shulker_soup",
+      "nutrition": 8,
+      "saturation": 9.6,
+      "source_class": "FoodList.java",
+      "recipes": [
+        {
+          "path": "data/ends_delight/recipe/food/shulker_soup.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "ingredients": [
+              {
+                "tag": "c:foods/shulker_meat"
+              },
+              {
+                "item": "ends_delight:dried_chorus_flower"
+              },
+              {
+                "item": "ends_delight:chorus_succulent"
+              }
+            ],
+            "result": {
+              "id": "ends_delight:shulker_soup"
+            },
+            "recipe_book_tab": "meals",
+            "cookingtime": 200,
+            "experience": 1.0
+          }
+        }
+      ],
+      "dish": "ends_delight:shulker_soup"
+    },
+    {
+      "item": "ends_delight:ender_noodle",
+      "nutrition": 8,
+      "saturation": 9.6,
+      "source_class": "FoodList.java",
+      "recipes": [
+        {
+          "path": "data/ends_delight/recipe/food/ender_noodle.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "ingredients": [
+              {
+                "tag": "c:foods/shulker_meat"
+              },
+              {
+                "item": "ends_delight:dried_endermite_meat"
+              },
+              {
+                "item": "ends_delight:chorus_sauce"
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "item": "minecraft:warped_fungus"
+                  },
+                  {
+                    "item": "minecraft:crimson_fungus"
+                  },
+                  {
+                    "item": "minecraft:brown_mushroom"
+                  },
+                  {
+                    "item": "minecraft:red_mushroom"
+                  }
+                ]
+              },
+              {
+                "type": "neoforge:compound",
+                "children": [
+                  {
+                    "tag": "c:foods/dough"
+                  },
+                  {
+                    "tag": "c:foods/pasta"
+                  }
+                ]
+              }
+            ],
+            "result": {
+              "id": "ends_delight:ender_noodle",
+              "count": 2
+            },
+            "recipe_book_tab": "meals",
+            "cookingtime": 200,
+            "experience": 1.0
+          }
+        }
+      ],
+      "dish": "ends_delight:ender_noodle"
+    },
+    {
+      "item": "ends_delight:ender_bamboo_rice",
+      "nutrition": 15,
+      "saturation": 18.0,
+      "source_class": "FoodList.java",
+      "recipes": [
+        {
+          "path": "data/ends_delight/recipe/food/ender_bamboo_rice.json",
+          "data": {
+            "type": "farmersdelight:cooking",
+            "ingredients": [
+              {
+                "item": "minecraft:bamboo"
+              },
+              {
+                "tag": "c:crops/rice"
+              },
+              {
+                "tag": "c:foods/raw_dragon_meat"
+              },
+              {
+                "item": "ends_delight:chorus_succulent"
+              },
+              {
+                "item": "minecraft:carrot"
+              },
+              {
+                "tag": "c:crops/onion"
+              }
+            ],
+            "result": {
+              "id": "ends_delight:ender_bamboo_rice",
+              "count": 2
+            },
+            "recipe_book_tab": "meals",
+            "cookingtime": 200,
+            "experience": 1.0
+          }
+        }
+      ],
+      "dish": "ends_delight:ender_bamboo_rice"
+    }
+  ]
+}

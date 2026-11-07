@@ -1,0 +1,10 @@
+{
+  "default": 0,
+  "keys": [
+    "mawonna_married"
+  ],
+  "max": 1,
+  "min": 0,
+  "type": "integer",
+  "visible": false
+}

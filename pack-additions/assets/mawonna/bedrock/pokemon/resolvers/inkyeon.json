@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:inkyeon",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "model": "mawonna:inkyeon.geo",
+      "poser": "mawonna:inkyeon",
+      "texture": "mawonna:textures/pokemon/inkyeon/inkyeon.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "mawonna:textures/pokemon/inkyeon/inkyeon_shiny.png"
+    }
+  ]
+}

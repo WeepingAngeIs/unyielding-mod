@@ -1,0 +1,15 @@
+{
+  "id": "cobblemon:inkyeon",
+  "speciesId": "cobblemon:inkyeon",
+  "conditionAspects": [],
+  "displayAspects": [],
+  "forms": [
+    {
+      "displayForm": "Normal",
+      "unlockForms": [
+        "Normal"
+      ]
+    }
+  ],
+  "variations": []
+}

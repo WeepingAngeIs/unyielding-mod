@@ -1,4 +1,11 @@
 [
-  "data/mawile_custom/species/custom/mawile_third_evolution.json",
-  "assets/mawile_custom/bedrock/pokemon/resolvers/mawile_third_evolution.json"
+  "assets/cobblemon/bedrock/pokemon/animations/0303_mawileunyielding/mawileunyielding.animation.json",
+  "assets/cobblemon/bedrock/pokemon/models/0303_mawileunyielding/mawileunyielding.geo.json",
+  "assets/cobblemon/bedrock/pokemon/posers/0303_mawileunyielding/mawileunyielding.json",
+  "assets/cobblemon/bedrock/pokemon/resolvers/0303_mawileunyielding/0_mawileunyielding_base.json",
+  "assets/cobblemon/textures/pokemon/0303_mawileunyielding/mawileunyielding.png",
+  "assets/cobblemon/textures/pokemon/0303_mawileunyielding/mawileunyielding_shiny.png",
+  "assets/mawile_custom/bedrock/pokemon/resolvers/mawile_third_evolution.json",
+  "data/cobblemon/species/custom/mawileunyielding.json",
+  "data/mawile_custom/species/custom/mawile_third_evolution.json"
 ]
