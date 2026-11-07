@@ -130,7 +130,7 @@ def main():
     else:
         shutil.copy2(args.pack,packs/'Mawonna-runtime-test.zip')
     report={'minecraft':'1.21.1','neoforge':NEOFORGE,'mods':manifest,'commands':[],
-            'scope':'Real server boot, species spawning, and production companion assertions for verified defeat filtering, native counters, feeding, marriage and persistence; no full human battle replay.',
+            'scope':'Real server boot and normal/shiny spawning; real BattleFaintedEvent fixtures with synthetic actors exercise production defeat tracking, native counters, evolution gates, feeding, marriage and persistence. No full human battle replay.',
             'status':'failed'}
     proc=None;rcon=None
     try:
@@ -184,6 +184,13 @@ def main():
             p=work/'logs'/name
             if p.exists():shutil.copy2(p,output/name)
         (output/'runtime-validation.json').write_text(json.dumps(report,indent=2))
+        if report['status']!='passed':
+            latest=output/'latest.log'
+            console=output/'server-console.log'
+            failure_log=latest if latest.exists() else console
+            if failure_log.exists():
+                print('Cloud server failure: last 100 log lines',flush=True)
+                print('\n'.join(failure_log.read_text(errors='replace').splitlines()[-100:]),flush=True)
     print(json.dumps({'status':report['status'],'species':[x['species_argument'] for x in report['commands']]}))
 
 if __name__=='__main__':main()

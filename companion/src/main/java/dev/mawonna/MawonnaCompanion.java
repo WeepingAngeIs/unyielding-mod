@@ -108,7 +108,7 @@ public final class MawonnaCompanion {
         for (var opponent : actor.getSide().getOppositeSide().getActors()) if (opponent.getType() == ActorType.PLAYER) pvp = true;
         Pokemon original = killer.getOriginalPokemon();
         if (!eligible(pvp, actor.getType(), victim.getType(), actor.getSide() != victim.getSide(), dark,
-                      original.getOwnerUUID() != null, true)) return;
+                      original.isPlayerOwned(), true)) return;
         String key = counterKey(original);
         if (key == null) return;
         String faint = killed.getUuid() + ":" + killed.getFaintedAt();
@@ -170,7 +170,10 @@ public final class MawonnaCompanion {
         boolean ring = stack.is(RING.get());
         FoodProperties food = stack.get(DataComponents.FOOD);
         if (!ring && food == null) return;
-        // Own these interactions on both sides to prevent Cobblemon's ordinary feeding consuming the same item twice.
+        String canonical = DISHES.get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
+        // Unlisted foods retain Cobblemon's ordinary feeding behavior but never earn meal progress.
+        if (!ring && canonical == null) return;
+        // Own eligible interactions on both sides to prevent ordinary feeding consuming the same item twice.
         event.setCanceled(true);
         event.setCancellationResult(InteractionResult.SUCCESS);
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
@@ -190,7 +193,6 @@ public final class MawonnaCompanion {
             message(player,"married");
             return;
         }
-        String canonical = DISHES.get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
         if (canonical == null || food.nutrition() < 6 || food.saturation() < 7.199F) { message(player,"ineligible"); return; }
         if (!rememberMeal(pokemon, canonical)) { message(player,"repeat",mealIds(pokemon).size()); return; }
         ItemStack remainder = stack.getCraftingRemainingItem();
@@ -224,7 +226,7 @@ public final class MawonnaCompanion {
             if (food == null || food.nutrition() < 6 || food.saturation() < 7.199F) continue;
             boolean ingredientsExist = !recipe.getIngredients().isEmpty();
             for (var ingredient : recipe.getIngredients()) {
-                if (!ingredient.isEmpty() && ingredient.getItems().length == 0) ingredientsExist = false;
+                if (ingredient != net.minecraft.world.item.crafting.Ingredient.EMPTY && ingredient.getItems().length == 0) ingredientsExist = false;
             }
             if (ingredientsExist) obtainable.add(canonical);
         }
@@ -234,11 +236,55 @@ public final class MawonnaCompanion {
     private static void require(boolean condition, String message) {
         if (!condition) throw new IllegalStateException(message);
     }
+    private static final class TestActor extends BattleActor {
+        private final ActorType type;
+        TestActor(ActorType type, List<BattlePokemon> team) { super(UUID.randomUUID(),team); this.type=type; }
+        @Override public ActorType getType() { return type; }
+        @Override public net.minecraft.network.chat.MutableComponent getName() { return Component.literal("Cloud test actor"); }
+        @Override public net.minecraft.network.chat.MutableComponent nameOwned(String name) { return Component.literal(name); }
+    }
+    private static Pokemon testPokemon(String name) {
+        Pokemon pokemon = new Pokemon();
+        pokemon.setSpecies(Objects.requireNonNull(PokemonSpecies.getByName(name)));
+        return pokemon;
+    }
+    private static void testFaintEvent(ActorType victimType, boolean dark, boolean knownOrigin, int expected) {
+        Pokemon attacker = testPokemon("mawile");
+        Pokemon bench = testPokemon("mawile");
+        var store = new com.cobblemon.mod.common.api.storage.party.PlayerPartyStore(UUID.randomUUID());
+        require(store.add(attacker) && store.add(bench), "Test ownership not initialized");
+        Pokemon battleCopy = testPokemon("mawile");
+        BattlePokemon killer = new BattlePokemon(attacker,battleCopy,new ArrayList<>(),new ArrayList<>());
+        BattlePokemon benched = new BattlePokemon(bench,bench,new ArrayList<>(),new ArrayList<>());
+        Pokemon victimPokemon = testPokemon(dark ? "umbreon" : "eevee");
+        BattlePokemon victim = new BattlePokemon(victimPokemon,victimPokemon,new ArrayList<>(),new ArrayList<>());
+        TestActor player = new TestActor(ActorType.PLAYER,List.of(killer,benched));
+        TestActor opponent = new TestActor(victimType,List.of(victim));
+        PokemonBattle battle = new PokemonBattle(new com.cobblemon.mod.common.battles.BattleFormat(),
+            new com.cobblemon.mod.common.battles.BattleSide(player),new com.cobblemon.mod.common.battles.BattleSide(opponent));
+        victim.setFaintedAt(1);
+        var context = new com.cobblemon.mod.common.api.battles.interpreter.BasicContext("tackle",1,
+            com.cobblemon.mod.common.api.battles.interpreter.BattleContext.Type.values()[0],knownOrigin ? killer : null);
+        var event = new BattleFaintedEvent(battle,victim,context,"p2a");
+        onFainted(event);
+        require(value(attacker,DEFEATS)==expected,"Faint event credit wrong for " + victimType + " dark="+dark+" origin="+knownOrigin);
+        require(value(battleCopy,DEFEATS)==expected,"Battle copy missing verified counter");
+        require(value(bench,DEFEATS)==0,"Benched teammate received credit");
+        onFainted(event);
+        require(value(attacker,DEFEATS)==expected,"Duplicate faint event credited twice");
+        for (var operation : killer.getPostBattlePokemonOperations()) operation.invoke(killer);
+        require(value(attacker,DEFEATS)==expected,"Postbattle operation changed valid credit");
+    }
     private static boolean evolutionReady(Pokemon pokemon, String id) {
         return pokemon.getForm().getEvolutions().stream().filter(e -> e.getId().equals(id))
                 .findFirst().orElseThrow(() -> new IllegalStateException("Missing evolution " + id)).test(pokemon);
     }
     static void selfTest(net.minecraft.core.RegistryAccess registry) {
+        testFaintEvent(ActorType.WILD,true,true,1);
+        testFaintEvent(ActorType.NPC,true,true,1);
+        testFaintEvent(ActorType.PLAYER,true,true,0);
+        testFaintEvent(ActorType.WILD,false,true,0);
+        testFaintEvent(ActorType.WILD,true,false,0);
         Object battle = new Object();
         require(firstFaint(battle,"victim:1"),"First faint ignored");
         require(!firstFaint(battle,"victim:1"),"Duplicate faint counted");
@@ -287,6 +333,19 @@ public final class MawonnaCompanion {
         Pokemon restored = new Pokemon().loadFromNBT(registry,pokemon.saveToNBT(registry,new CompoundTag()));
         require(mealIds(restored).size()==49 && value(restored,MEALS)==49,"Meal persistence failed");
         require(value(restored,MARRIED)==1 && restored.getPersistentData().getUUID(SPOUSE).equals(owner),"Marriage persistence failed");
+        Pokemon sliggoo = testPokemon("sliggoo");
+        set(sliggoo,DEFEATS_1000,999);
+        require(!evolutionReady(sliggoo,"sliggoo_fairy_sliggoo"),"Fairy Sliggoo bypasses defeat counter");
+        set(sliggoo,DEFEATS_1000,1000);
+        require(evolutionReady(sliggoo,"sliggoo_fairy_sliggoo"),"Fairy Sliggoo threshold rejected");
+        Pokemon corvisquire = testPokemon("corvisquire");
+        corvisquire.setGender(com.cobblemon.mod.common.pokemon.Gender.FEMALE);
+        set(corvisquire,DEFEATS_1000,999);
+        require(!evolutionReady(corvisquire,"corvisquire_covislight"),"Corvislight bypasses defeat counter");
+        set(corvisquire,DEFEATS_1000,1000);
+        require(evolutionReady(corvisquire,"corvisquire_covislight"),"Female Corvislight threshold rejected");
+        corvisquire.setGender(com.cobblemon.mod.common.pokemon.Gender.MALE);
+        require(!evolutionReady(corvisquire,"corvisquire_covislight"),"Male Corvislight evolution accepted");
         Pokemon sylveon = new Pokemon();
         sylveon.setSpecies(Objects.requireNonNull(PokemonSpecies.getByName("sylveon")));
         set(sylveon,DEFEATS_1000,1000);

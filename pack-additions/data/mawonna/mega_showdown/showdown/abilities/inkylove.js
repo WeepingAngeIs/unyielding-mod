@@ -1,5 +1,5 @@
 ({
-  // Native Gooey behavior, including contact protection and stat-drop rules.
+  /* Native Gooey behavior, including contact protection and stat-drop rules. */
   onDamagingHit(damage, target, source, move) {
     if (this.checkMoveMakesContact(move, source, target, true)) {
       this.add("-ability", target, "Inky Love");

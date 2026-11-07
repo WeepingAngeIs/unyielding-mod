@@ -1,5 +1,5 @@
 ({
-  // Native Tangling Hair contact handling; Attack replaces Speed.
+  /* Native Tangling Hair contact handling; Attack replaces Speed. */
   onDamagingHit(damage, target, source, move) {
     if (this.checkMoveMakesContact(move, source, target, true)) {
       this.add("-ability", target, "Futakuchi's Grasp");
