@@ -10,7 +10,7 @@ Download [Mawonna.zip](https://github.com/WeepingAngeIs/unyielding-mod/raw/refs/
 - `/pokespawn mawileunyielding`: Mawile Unyielding.
 - `/pokespawn fairy_sliggoo`: Fairy Sliggoo.
 
-Fairy Sliggoo is Fairy/Dragon with HP 200, Attack 10, Defense 120, Special Attack 120, Special Defense 110, Speed 15 (BST 575). It is a final evolution of Sliggoo after that individual defeats 1,000 Dark-type Pokemon. Its native abilities and move list are retained with Fairy Wind added at level 1. The normal Goodra evolution remains available. Its four Cupid wings support flight, with all 15 original Sliggoo animations and two new flight animations. No player riding is added.
+Fairy Sliggoo is Fairy/Dragon with HP 200, Attack 10, Defense 120, Special Attack 120, Special Defense 110, Speed 15 (BST 575). It is a final evolution of Sliggoo after that individual defeats 1,000 Dark-type Pokemon. Its native abilities and moves are retained. All regular Dragon/Fairy moves, tail/wing/shell moves (including Withdraw and Shelter), and Leech Seed are available from level 1. Z-Moves, Max/G-Max moves, special partner/boss-only moves and internal placeholders are excluded. The normal Goodra evolution remains available. Its four Cupid wings support flight, with all 15 original Sliggoo animations and two new flight animations. No player riding is added.
 
 Mawile and female Corvisquire also require 1,000 Dark defeats for their custom evolutions. Requirements appear in the Pokedex. The Flower variant is never obtained through normal evolution.
 
@@ -19,3 +19,4 @@ Mawile and female Corvisquire also require 1,000 Dark defeats for their custom e
 All pack builds and heavy tests run on GitHub-hosted runners. The workflow preserves the complete shipped pack, including Mawile Unyielding, approved Mawonna v17 geometry, Corvislight's fixed poses and riding. It checks Sliggoo stats, types, evolution, all 17 animations, samples its 3D preview, boots a real Cobblemon server to test all five spawn commands, and loads/reloads the models in a real Minecraft client. Runtime checks use the required mods, not the full client modpack.
 
 Only after every job passes does the workflow replace root `Mawonna.zip`. Reports and an installable pack are also available in Actions. Do not use older Actions artifacts as the current complete pack.
+

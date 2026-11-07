@@ -30,6 +30,11 @@ get=lambda n:json.loads(files[n])
 s=get('data/cobblemon/species/custom/fairy_sliggoo.json')
 assert s['baseStats']==dict(hp=200,attack=10,defence=120,special_attack=120,special_defence=110,speed=15)
 assert sum(s['baseStats'].values())==575
+catalog=json.loads((r/'source/fairy-sliggoo/level-one-moves.json').read_text())
+assert all('1:'+m['id'] in s['moves'] for m in catalog)
+assert all(not m.get('isZ') and not m.get('isMax') and m.get('isNonstandard') in (None,'Past') for m in catalog)
+assert {'leechseed','withdraw','shelter','shellsmash','wingattack','dragontail','moonblast'}.issubset({m['id'] for m in catalog})
+assert len(s['moves'])==len(set(s['moves']))
 assert (s['primaryType'],s['secondaryType'])==('fairy','dragon') and s['implemented']
 assert s['behaviour']['moving']['fly']['canFly'] and not s['evolutions']
 evo=get('data/mawonna/species_additions/sliggoo_evolution.json')
@@ -75,4 +80,5 @@ with zipfile.ZipFile(out/'Mawonna.zip','w',zipfile.ZIP_DEFLATED) as z:
   p=install/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data)
 report={'status':'passed','mawonna_version':17,'existing_entries_preserved':len(manifest)-len(allowed),'sliggoo_animations':len(clips),'sliggoo_wings':len(wings),'sliggoo_bst':575,'sha256':hashlib.sha256((out/'Mawonna.zip').read_bytes()).hexdigest()}
 (out/'validation.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))
+
 

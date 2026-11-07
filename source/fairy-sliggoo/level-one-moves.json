@@ -1,0 +1,459 @@
+[
+  {
+    "id": "alluringvoice",
+    "name": "Alluring Voice",
+    "type": "Fairy",
+    "num": 914
+  },
+  {
+    "id": "aquatail",
+    "name": "Aqua Tail",
+    "type": "Water",
+    "num": 401
+  },
+  {
+    "id": "aromaticmist",
+    "name": "Aromatic Mist",
+    "type": "Fairy",
+    "num": 597
+  },
+  {
+    "id": "babydolleyes",
+    "name": "Baby-Doll Eyes",
+    "type": "Fairy",
+    "num": 608
+  },
+  {
+    "id": "breakingswipe",
+    "name": "Breaking Swipe",
+    "type": "Dragon",
+    "num": 784
+  },
+  {
+    "id": "charm",
+    "name": "Charm",
+    "type": "Fairy",
+    "num": 204
+  },
+  {
+    "id": "clangingscales",
+    "name": "Clanging Scales",
+    "type": "Dragon",
+    "num": 691
+  },
+  {
+    "id": "clangoroussoul",
+    "name": "Clangorous Soul",
+    "type": "Dragon",
+    "num": 775
+  },
+  {
+    "id": "coreenforcer",
+    "name": "Core Enforcer",
+    "type": "Dragon",
+    "isNonstandard": "Past",
+    "num": 687
+  },
+  {
+    "id": "craftyshield",
+    "name": "Crafty Shield",
+    "type": "Fairy",
+    "isNonstandard": "Past",
+    "num": 578
+  },
+  {
+    "id": "dazzlinggleam",
+    "name": "Dazzling Gleam",
+    "type": "Fairy",
+    "num": 605
+  },
+  {
+    "id": "decorate",
+    "name": "Decorate",
+    "type": "Fairy",
+    "num": 777
+  },
+  {
+    "id": "disarmingvoice",
+    "name": "Disarming Voice",
+    "type": "Fairy",
+    "num": 574
+  },
+  {
+    "id": "dracometeor",
+    "name": "Draco Meteor",
+    "type": "Dragon",
+    "num": 434
+  },
+  {
+    "id": "dragonbreath",
+    "name": "Dragon Breath",
+    "type": "Dragon",
+    "num": 225
+  },
+  {
+    "id": "dragoncheer",
+    "name": "Dragon Cheer",
+    "type": "Dragon",
+    "num": 913
+  },
+  {
+    "id": "dragonclaw",
+    "name": "Dragon Claw",
+    "type": "Dragon",
+    "num": 337
+  },
+  {
+    "id": "dragondance",
+    "name": "Dragon Dance",
+    "type": "Dragon",
+    "num": 349
+  },
+  {
+    "id": "dragondarts",
+    "name": "Dragon Darts",
+    "type": "Dragon",
+    "num": 751
+  },
+  {
+    "id": "dragonenergy",
+    "name": "Dragon Energy",
+    "type": "Dragon",
+    "num": 820
+  },
+  {
+    "id": "dragonhammer",
+    "name": "Dragon Hammer",
+    "type": "Dragon",
+    "num": 692
+  },
+  {
+    "id": "dragonpulse",
+    "name": "Dragon Pulse",
+    "type": "Dragon",
+    "num": 406
+  },
+  {
+    "id": "dragonrage",
+    "name": "Dragon Rage",
+    "type": "Dragon",
+    "isNonstandard": "Past",
+    "num": 82
+  },
+  {
+    "id": "dragonrush",
+    "name": "Dragon Rush",
+    "type": "Dragon",
+    "num": 407
+  },
+  {
+    "id": "dragontail",
+    "name": "Dragon Tail",
+    "type": "Dragon",
+    "num": 525
+  },
+  {
+    "id": "drainingkiss",
+    "name": "Draining Kiss",
+    "type": "Fairy",
+    "num": 577
+  },
+  {
+    "id": "dualchop",
+    "name": "Dual Chop",
+    "type": "Dragon",
+    "isNonstandard": "Past",
+    "num": 530
+  },
+  {
+    "id": "dualwingbeat",
+    "name": "Dual Wingbeat",
+    "type": "Flying",
+    "num": 814
+  },
+  {
+    "id": "dynamaxcannon",
+    "name": "Dynamax Cannon",
+    "type": "Dragon",
+    "num": 744
+  },
+  {
+    "id": "esperwing",
+    "name": "Esper Wing",
+    "type": "Psychic",
+    "num": 840
+  },
+  {
+    "id": "eternabeam",
+    "name": "Eternabeam",
+    "type": "Dragon",
+    "isNonstandard": "Past",
+    "num": 795
+  },
+  {
+    "id": "fairylock",
+    "name": "Fairy Lock",
+    "type": "Fairy",
+    "num": 587
+  },
+  {
+    "id": "fairywind",
+    "name": "Fairy Wind",
+    "type": "Fairy",
+    "num": 584
+  },
+  {
+    "id": "ficklebeam",
+    "name": "Fickle Beam",
+    "type": "Dragon",
+    "num": 907
+  },
+  {
+    "id": "fleurcannon",
+    "name": "Fleur Cannon",
+    "type": "Fairy",
+    "num": 705
+  },
+  {
+    "id": "floralhealing",
+    "name": "Floral Healing",
+    "type": "Fairy",
+    "num": 666
+  },
+  {
+    "id": "flowershield",
+    "name": "Flower Shield",
+    "type": "Fairy",
+    "isNonstandard": "Past",
+    "num": 579
+  },
+  {
+    "id": "geomancy",
+    "name": "Geomancy",
+    "type": "Fairy",
+    "isNonstandard": "Past",
+    "num": 601
+  },
+  {
+    "id": "glaiverush",
+    "name": "Glaive Rush",
+    "type": "Dragon",
+    "num": 862
+  },
+  {
+    "id": "hiddenpowerdragon",
+    "name": "Hidden Power Dragon",
+    "type": "Dragon",
+    "isNonstandard": "Past",
+    "num": 237
+  },
+  {
+    "id": "irontail",
+    "name": "Iron Tail",
+    "type": "Steel",
+    "num": 231
+  },
+  {
+    "id": "leechseed",
+    "name": "Leech Seed",
+    "type": "Grass",
+    "num": 73
+  },
+  {
+    "id": "lightofruin",
+    "name": "Light of Ruin",
+    "type": "Fairy",
+    "isNonstandard": "Past",
+    "num": 617
+  },
+  {
+    "id": "mistyexplosion",
+    "name": "Misty Explosion",
+    "type": "Fairy",
+    "num": 802
+  },
+  {
+    "id": "mistyterrain",
+    "name": "Misty Terrain",
+    "type": "Fairy",
+    "num": 581
+  },
+  {
+    "id": "moonblast",
+    "name": "Moonblast",
+    "type": "Fairy",
+    "num": 585
+  },
+  {
+    "id": "moonlight",
+    "name": "Moonlight",
+    "type": "Fairy",
+    "num": 236
+  },
+  {
+    "id": "naturesmadness",
+    "name": "Nature's Madness",
+    "type": "Fairy",
+    "isNonstandard": "Past",
+    "num": 717
+  },
+  {
+    "id": "oblivionwing",
+    "name": "Oblivion Wing",
+    "type": "Flying",
+    "isNonstandard": "Past",
+    "num": 613
+  },
+  {
+    "id": "orderup",
+    "name": "Order Up",
+    "type": "Dragon",
+    "num": 856
+  },
+  {
+    "id": "outrage",
+    "name": "Outrage",
+    "type": "Dragon",
+    "num": 200
+  },
+  {
+    "id": "playrough",
+    "name": "Play Rough",
+    "type": "Fairy",
+    "num": 583
+  },
+  {
+    "id": "poisontail",
+    "name": "Poison Tail",
+    "type": "Poison",
+    "num": 342
+  },
+  {
+    "id": "razorshell",
+    "name": "Razor Shell",
+    "type": "Water",
+    "num": 534
+  },
+  {
+    "id": "roaroftime",
+    "name": "Roar of Time",
+    "type": "Dragon",
+    "num": 459
+  },
+  {
+    "id": "scaleshot",
+    "name": "Scale Shot",
+    "type": "Dragon",
+    "num": 799
+  },
+  {
+    "id": "shedtail",
+    "name": "Shed Tail",
+    "type": "Normal",
+    "num": 880
+  },
+  {
+    "id": "shellsidearm",
+    "name": "Shell Side Arm",
+    "type": "Poison",
+    "num": 801
+  },
+  {
+    "id": "shellsmash",
+    "name": "Shell Smash",
+    "type": "Normal",
+    "num": 504
+  },
+  {
+    "id": "shelltrap",
+    "name": "Shell Trap",
+    "type": "Fire",
+    "isNonstandard": "Past",
+    "num": 704
+  },
+  {
+    "id": "shelter",
+    "name": "Shelter",
+    "type": "Steel",
+    "num": 842
+  },
+  {
+    "id": "spacialrend",
+    "name": "Spacial Rend",
+    "type": "Dragon",
+    "num": 460
+  },
+  {
+    "id": "spiritbreak",
+    "name": "Spirit Break",
+    "type": "Fairy",
+    "num": 789
+  },
+  {
+    "id": "springtidestorm",
+    "name": "Springtide Storm",
+    "type": "Fairy",
+    "num": 831
+  },
+  {
+    "id": "steelwing",
+    "name": "Steel Wing",
+    "type": "Steel",
+    "num": 211
+  },
+  {
+    "id": "strangesteam",
+    "name": "Strange Steam",
+    "type": "Fairy",
+    "num": 790
+  },
+  {
+    "id": "sweetkiss",
+    "name": "Sweet Kiss",
+    "type": "Fairy",
+    "num": 186
+  },
+  {
+    "id": "tailglow",
+    "name": "Tail Glow",
+    "type": "Bug",
+    "num": 294
+  },
+  {
+    "id": "tailslap",
+    "name": "Tail Slap",
+    "type": "Normal",
+    "num": 541
+  },
+  {
+    "id": "tailwhip",
+    "name": "Tail Whip",
+    "type": "Normal",
+    "num": 39
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind",
+    "type": "Flying",
+    "num": 366
+  },
+  {
+    "id": "twister",
+    "name": "Twister",
+    "type": "Dragon",
+    "num": 239
+  },
+  {
+    "id": "wingattack",
+    "name": "Wing Attack",
+    "type": "Flying",
+    "num": 17
+  },
+  {
+    "id": "withdraw",
+    "name": "Withdraw",
+    "type": "Water",
+    "num": 110
+  }
+]
+
