@@ -8,15 +8,15 @@
       "consumeHeldItem": false,
       "requirements": [
         {
-          "variant": "defeat",
-          "target": "type=dark",
-          "amount": 1000
+          "variant": "properties",
+          "target": "gender=female"
         },
         {
           "variant": "properties",
-          "target": "gender=female"
+          "target": "mawonna_verified_dark_defeats_1000=1000"
         }
-      ]
+      ],
+      "optional": true
     }
   ],
   "pokedex": [

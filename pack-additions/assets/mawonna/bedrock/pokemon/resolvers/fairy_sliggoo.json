@@ -8,6 +8,12 @@
       "model": "mawonna:fairy_sliggoo.geo",
       "texture": "mawonna:textures/pokemon/fairy_sliggoo/fairy_sliggoo.png",
       "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "mawonna:textures/pokemon/fairy_sliggoo/fairy_sliggoo_shiny.png"
     }
   ]
 }

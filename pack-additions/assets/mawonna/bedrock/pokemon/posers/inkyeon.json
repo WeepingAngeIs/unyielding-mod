@@ -1,0 +1,66 @@
+{
+  "animations": {
+    "cry": "q.bedrock_stateful('inkyeon', 'cry')"
+  },
+  "portraitScale": 1.97,
+  "portraitTranslation": [
+    -0.51,
+    0.33,
+    0
+  ],
+  "poses": {
+    "battle_standing": {
+      "animations": [
+        "q.look('head', 1, 1, 70, -45, 45, -45)",
+        "q.bedrock('inkyeon', 'battle_idle')"
+      ],
+      "isBattle": true,
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "FLOAT"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('inkyeon', 'blink')"
+      ]
+    },
+    "standing": {
+      "animations": [
+        "q.look('head', 1, 1, 70, -45, 45, -45)",
+        "q.bedrock('inkyeon', 'playful_idle')"
+      ],
+      "isBattle": false,
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE",
+        "FLOAT"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('inkyeon', 'blink')"
+      ]
+    },
+    "walking": {
+      "animations": [
+        "q.look('head', 1, 1, 70, -45, 45, -45)",
+        "q.bedrock('inkyeon', 'ground_idle')",
+        "q.quadruped_walk(0.66, 1.4, 'front_leg_left', 'front_leg_right', 'back_leg_left', 'back_leg_right')"
+      ],
+      "poseTypes": [
+        "WALK",
+        "SWIM"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('inkyeon', 'blink')"
+      ]
+    }
+  },
+  "profileScale": 0.77,
+  "profileTranslation": [
+    0,
+    0.57,
+    0
+  ],
+  "rootBone": "sylveon"
+}

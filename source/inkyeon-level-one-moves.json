@@ -1,0 +1,1988 @@
+[
+  {
+    "id": "accelerock",
+    "name": "Accelerock",
+    "type": "Rock",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "acid",
+    "name": "Acid",
+    "type": "Poison",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "acidarmor",
+    "name": "Acid Armor",
+    "type": "Poison",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "acidspray",
+    "name": "Acid Spray",
+    "type": "Poison",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "aerialace",
+    "name": "Aerial Ace",
+    "type": "Flying",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ]
+  },
+  {
+    "id": "afteryou",
+    "name": "After You",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "agility",
+    "name": "Agility",
+    "type": "Psychic",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "alluringvoice",
+    "name": "Alluring Voice",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy",
+      "sound"
+    ]
+  },
+  {
+    "id": "appleacid",
+    "name": "Apple Acid",
+    "type": "Grass",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "aquajet",
+    "name": "Aqua Jet",
+    "type": "Water",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "aquaring",
+    "name": "Aqua Ring",
+    "type": "Water",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "aquastep",
+    "name": "Aqua Step",
+    "type": "Water",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "aquatail",
+    "name": "Aqua Tail",
+    "type": "Water",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "aromaticmist",
+    "name": "Aromatic Mist",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "assurance",
+    "name": "Assurance",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "autotomize",
+    "name": "Autotomize",
+    "type": "Steel",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "babydolleyes",
+    "name": "Baby-Doll Eyes",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "beatup",
+    "name": "Beat Up",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "bite",
+    "name": "Bite",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "boomburst",
+    "name": "Boomburst",
+    "type": "Normal",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "breakingswipe",
+    "name": "Breaking Swipe",
+    "type": "Dragon",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "brickbreak",
+    "name": "Brick Break",
+    "type": "Fighting",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ]
+  },
+  {
+    "id": "brutalswing",
+    "name": "Brutal Swing",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "bugbuzz",
+    "name": "Bug Buzz",
+    "type": "Bug",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "bulldoze",
+    "name": "Bulldoze",
+    "type": "Ground",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "bulletpunch",
+    "name": "Bullet Punch",
+    "type": "Steel",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "ceaselessedge",
+    "name": "Ceaseless Edge",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "charm",
+    "name": "Charm",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "chatter",
+    "name": "Chatter",
+    "type": "Flying",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "clangingscales",
+    "name": "Clanging Scales",
+    "type": "Dragon",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "clangoroussoul",
+    "name": "Clangorous Soul",
+    "type": "Dragon",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound",
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "comeuppance",
+    "name": "Comeuppance",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "confide",
+    "name": "Confide",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "cottonspore",
+    "name": "Cotton Spore",
+    "type": "Grass",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "craftyshield",
+    "name": "Crafty Shield",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "crunch",
+    "name": "Crunch",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "darkpulse",
+    "name": "Dark Pulse",
+    "type": "Dark",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "darkvoid",
+    "name": "Dark Void",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ],
+    "restriction": "Native battle rules restrict use to Darkrai."
+  },
+  {
+    "id": "darkestlariat",
+    "name": "Darkest Lariat",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "dazzlinggleam",
+    "name": "Dazzling Gleam",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "decorate",
+    "name": "Decorate",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "disarmingvoice",
+    "name": "Disarming Voice",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy",
+      "sound"
+    ]
+  },
+  {
+    "id": "doublehit",
+    "name": "Double Hit",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "doubleteam",
+    "name": "Double Team",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ]
+  },
+  {
+    "id": "dragonascent",
+    "name": "Dragon Ascent",
+    "type": "Flying",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ]
+  },
+  {
+    "id": "dragondance",
+    "name": "Dragon Dance",
+    "type": "Dragon",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "dragontail",
+    "name": "Dragon Tail",
+    "type": "Dragon",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "drainingkiss",
+    "name": "Draining Kiss",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "drumbeating",
+    "name": "Drum Beating",
+    "type": "Grass",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "echoedvoice",
+    "name": "Echoed Voice",
+    "type": "Normal",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "eeriespell",
+    "name": "Eerie Spell",
+    "type": "Psychic",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "electroball",
+    "name": "Electro Ball",
+    "type": "Electric",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "electroweb",
+    "name": "Electroweb",
+    "type": "Electric",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "embargo",
+    "name": "Embargo",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "esperwing",
+    "name": "Esper Wing",
+    "type": "Psychic",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "extremespeed",
+    "name": "Extreme Speed",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "fairylock",
+    "name": "Fairy Lock",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "fairywind",
+    "name": "Fairy Wind",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "fakeout",
+    "name": "Fake Out",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "faketears",
+    "name": "Fake Tears",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark",
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "falsesurrender",
+    "name": "False Surrender",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "feint",
+    "name": "Feint",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "feintattack",
+    "name": "Feint Attack",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "fierywrath",
+    "name": "Fiery Wrath",
+    "type": "Dark",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "filletaway",
+    "name": "Fillet Away",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "firstimpression",
+    "name": "First Impression",
+    "type": "Bug",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "flamecharge",
+    "name": "Flame Charge",
+    "type": "Fire",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "flatter",
+    "name": "Flatter",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "fleurcannon",
+    "name": "Fleur Cannon",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "fling",
+    "name": "Fling",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "floralhealing",
+    "name": "Floral Healing",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "flowershield",
+    "name": "Flower Shield",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "foulplay",
+    "name": "Foul Play",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "geomancy",
+    "name": "Geomancy",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy",
+      "speed_boost"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "glaciate",
+    "name": "Glaciate",
+    "type": "Ice",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "grasswhistle",
+    "name": "Grass Whistle",
+    "type": "Grass",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "grassyglide",
+    "name": "Grassy Glide",
+    "type": "Grass",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "growl",
+    "name": "Growl",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "gyroball",
+    "name": "Gyro Ball",
+    "type": "Steel",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "healbell",
+    "name": "Heal Bell",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "honeclaws",
+    "name": "Hone Claws",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "howl",
+    "name": "Howl",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "hyperdrill",
+    "name": "Hyper Drill",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ]
+  },
+  {
+    "id": "hypervoice",
+    "name": "Hyper Voice",
+    "type": "Normal",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "hyperspacefury",
+    "name": "Hyperspace Fury",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ],
+    "restriction": "Native battle rules restrict use to Hoopa Unbound."
+  },
+  {
+    "id": "iceshard",
+    "name": "Ice Shard",
+    "type": "Ice",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "icywind",
+    "name": "Icy Wind",
+    "type": "Ice",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "irontail",
+    "name": "Iron Tail",
+    "type": "Steel",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "jawlock",
+    "name": "Jaw Lock",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "jetpunch",
+    "name": "Jet Punch",
+    "type": "Water",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "knockoff",
+    "name": "Knock Off",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "kowtowcleave",
+    "name": "Kowtow Cleave",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "lashout",
+    "name": "Lash Out",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "lifedew",
+    "name": "Life Dew",
+    "type": "Water",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "lightofruin",
+    "name": "Light of Ruin",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "lowsweep",
+    "name": "Low Sweep",
+    "type": "Fighting",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "machpunch",
+    "name": "Mach Punch",
+    "type": "Fighting",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "mefirst",
+    "name": "Me First",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "memento",
+    "name": "Memento",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "metalsound",
+    "name": "Metal Sound",
+    "type": "Steel",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "mistyexplosion",
+    "name": "Misty Explosion",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "mistyterrain",
+    "name": "Misty Terrain",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "moonblast",
+    "name": "Moonblast",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "moonlight",
+    "name": "Moonlight",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "mudshot",
+    "name": "Mud Shot",
+    "type": "Ground",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "muddywater",
+    "name": "Muddy Water",
+    "type": "Water",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "nastyplot",
+    "name": "Nasty Plot",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "naturesmadness",
+    "name": "Nature's Madness",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "nightdaze",
+    "name": "Night Daze",
+    "type": "Dark",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "nightslash",
+    "name": "Night Slash",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "noretreat",
+    "name": "No Retreat",
+    "type": "Fighting",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "nobleroar",
+    "name": "Noble Roar",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "obstruct",
+    "name": "Obstruct",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "octazooka",
+    "name": "Octazooka",
+    "type": "Water",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "overdrive",
+    "name": "Overdrive",
+    "type": "Electric",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "partingshot",
+    "name": "Parting Shot",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark",
+      "sound"
+    ]
+  },
+  {
+    "id": "payback",
+    "name": "Payback",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "perishsong",
+    "name": "Perish Song",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "playrough",
+    "name": "Play Rough",
+    "type": "Fairy",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "poisontail",
+    "name": "Poison Tail",
+    "type": "Poison",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "pounce",
+    "name": "Pounce",
+    "type": "Bug",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "pound",
+    "name": "Pound",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "powertrip",
+    "name": "Power Trip",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "psychicnoise",
+    "name": "Psychic Noise",
+    "type": "Psychic",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "punishment",
+    "name": "Punishment",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "pursuit",
+    "name": "Pursuit",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "quash",
+    "name": "Quash",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark",
+      "speed_control"
+    ]
+  },
+  {
+    "id": "quickattack",
+    "name": "Quick Attack",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "quickguard",
+    "name": "Quick Guard",
+    "type": "Fighting",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "quiverdance",
+    "name": "Quiver Dance",
+    "type": "Bug",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "rapidspin",
+    "name": "Rapid Spin",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "relicsong",
+    "name": "Relic Song",
+    "type": "Normal",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "roar",
+    "name": "Roar",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "rockpolish",
+    "name": "Rock Polish",
+    "type": "Rock",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "rocktomb",
+    "name": "Rock Tomb",
+    "type": "Rock",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "rollingkick",
+    "name": "Rolling Kick",
+    "type": "Fighting",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "round",
+    "name": "Round",
+    "type": "Normal",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "ruination",
+    "name": "Ruination",
+    "type": "Dark",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "scaryface",
+    "name": "Scary Face",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "screech",
+    "name": "Screech",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "shadowsneak",
+    "name": "Shadow Sneak",
+    "type": "Ghost",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "shedtail",
+    "name": "Shed Tail",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "shellsmash",
+    "name": "Shell Smash",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "shiftgear",
+    "name": "Shift Gear",
+    "type": "Steel",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "shockwave",
+    "name": "Shock Wave",
+    "type": "Electric",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ]
+  },
+  {
+    "id": "sing",
+    "name": "Sing",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "slam",
+    "name": "Slam",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "sludge",
+    "name": "Sludge",
+    "type": "Poison",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "sludgebomb",
+    "name": "Sludge Bomb",
+    "type": "Poison",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "sludgewave",
+    "name": "Sludge Wave",
+    "type": "Poison",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "smokescreen",
+    "name": "Smokescreen",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "snarl",
+    "name": "Snarl",
+    "type": "Dark",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "dark",
+      "sound"
+    ]
+  },
+  {
+    "id": "snatch",
+    "name": "Snatch",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "snore",
+    "name": "Snore",
+    "type": "Normal",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "soak",
+    "name": "Soak",
+    "type": "Water",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "sparklingaria",
+    "name": "Sparkling Aria",
+    "type": "Water",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "speedswap",
+    "name": "Speed Swap",
+    "type": "Psychic",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "spikecannon",
+    "name": "Spike Cannon",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "spiritbreak",
+    "name": "Spirit Break",
+    "type": "Fairy",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "springtidestorm",
+    "name": "Springtide Storm",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "stickyweb",
+    "name": "Sticky Web",
+    "type": "Bug",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "strangesteam",
+    "name": "Strange Steam",
+    "type": "Fairy",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "stringshot",
+    "name": "String Shot",
+    "type": "Bug",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "suckerpunch",
+    "name": "Sucker Punch",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark",
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "supersonic",
+    "name": "Supersonic",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "sweetkiss",
+    "name": "Sweet Kiss",
+    "type": "Fairy",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "fairy"
+    ]
+  },
+  {
+    "id": "swift",
+    "name": "Swift",
+    "type": "Normal",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "swift_motion"
+    ]
+  },
+  {
+    "id": "switcheroo",
+    "name": "Switcheroo",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark",
+      "swift_motion"
+    ]
+  },
+  {
+    "id": "syrupbomb",
+    "name": "Syrup Bomb",
+    "type": "Grass",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink",
+      "speed_control"
+    ]
+  },
+  {
+    "id": "tailglow",
+    "name": "Tail Glow",
+    "type": "Bug",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "tailslap",
+    "name": "Tail Slap",
+    "type": "Normal",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "tailwhip",
+    "name": "Tail Whip",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "tail"
+    ]
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind",
+    "type": "Flying",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "tail",
+      "speed_control"
+    ]
+  },
+  {
+    "id": "tarshot",
+    "name": "Tar Shot",
+    "type": "Rock",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink",
+      "speed_control"
+    ]
+  },
+  {
+    "id": "taunt",
+    "name": "Taunt",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "tearfullook",
+    "name": "Tearful Look",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "thief",
+    "name": "Thief",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "throatchop",
+    "name": "Throat Chop",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "thunderclap",
+    "name": "Thunderclap",
+    "type": "Electric",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "tidyup",
+    "name": "Tidy Up",
+    "type": "Normal",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "topsyturvy",
+    "name": "Topsy-Turvy",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "torchsong",
+    "name": "Torch Song",
+    "type": "Fire",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "torment",
+    "name": "Torment",
+    "type": "Dark",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  },
+  {
+    "id": "toxicthread",
+    "name": "Toxic Thread",
+    "type": "Poison",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "trailblaze",
+    "name": "Trailblaze",
+    "type": "Grass",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "trickroom",
+    "name": "Trick Room",
+    "type": "Psychic",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_control"
+    ]
+  },
+  {
+    "id": "upperhand",
+    "name": "Upper Hand",
+    "type": "Fighting",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "uproar",
+    "name": "Uproar",
+    "type": "Normal",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "sound"
+    ]
+  },
+  {
+    "id": "vacuumwave",
+    "name": "Vacuum Wave",
+    "type": "Fighting",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "venomdrench",
+    "name": "Venom Drench",
+    "type": "Poison",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink",
+      "speed_control"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "venoshock",
+    "name": "Venoshock",
+    "type": "Poison",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ]
+  },
+  {
+    "id": "victorydance",
+    "name": "Victory Dance",
+    "type": "Fighting",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "speed_boost"
+    ]
+  },
+  {
+    "id": "watershuriken",
+    "name": "Water Shuriken",
+    "type": "Water",
+    "category": "Special",
+    "level": 1,
+    "categories": [
+      "speed_priority"
+    ]
+  },
+  {
+    "id": "watersport",
+    "name": "Water Sport",
+    "type": "Water",
+    "category": "Status",
+    "level": 1,
+    "categories": [
+      "liquid_ink"
+    ],
+    "catalogStatus": "Past"
+  },
+  {
+    "id": "wickedblow",
+    "name": "Wicked Blow",
+    "type": "Dark",
+    "category": "Physical",
+    "level": 1,
+    "categories": [
+      "dark"
+    ]
+  }
+]

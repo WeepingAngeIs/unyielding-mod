@@ -1,0 +1,20 @@
+{
+  "default": 0,
+  "display": {
+    "colour": [
+      183,
+      118,
+      192
+    ],
+    "name": "mawonna.ui.verified_dark_defeats",
+    "overlay": "cobblemon:textures/gui/summary/summary_stats_generic_overlay.png",
+    "underlay": "cobblemon:textures/gui/summary/summary_stats_other_bar.png"
+  },
+  "keys": [
+    "mawonna_verified_dark_defeats"
+  ],
+  "max": 666,
+  "min": 0,
+  "type": "integer",
+  "visible": true
+}

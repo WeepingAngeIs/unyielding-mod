@@ -8,11 +8,11 @@
       "consumeHeldItem": false,
       "requirements": [
         {
-          "variant": "defeat",
-          "target": "type=dark",
-          "amount": 1000
+          "variant": "properties",
+          "target": "mawonna_verified_dark_defeats=666 mawonna_distinct_meals=49 mawonna_married=1"
         }
-      ]
+      ],
+      "optional": true
     }
   ],
   "pokedex": [

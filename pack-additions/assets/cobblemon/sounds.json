@@ -38,5 +38,13 @@
         "volume": 1
       }
     ]
+  },
+  "pokemon.inkyeon.cry": {
+    "sounds": [
+      {
+        "name": "cobblemon:pokemon.sylveon.cry",
+        "type": "event"
+      }
+    ]
   }
 }

@@ -8,6 +8,12 @@
       "model": "mawile_custom:mawile_third_evolution.geo",
       "texture": "mawile_custom:textures/pokemon/mawile_third_evolution/mawile_third_evolution.png",
       "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "mawile_custom:textures/pokemon/mawile_third_evolution/mawile_third_evolution_shiny.png"
     }
   ]
 }
