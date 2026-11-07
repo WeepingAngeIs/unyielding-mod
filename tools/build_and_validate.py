@@ -44,7 +44,11 @@ for b in bones.values():
  for c in b.get('cubes',[]):
   assert isinstance(c['uv'],list) and len(c['uv'])==2 and all(isinstance(v,int) for v in c['uv'])
   assert all(v>=0 for v in c['size'])
-  assert all(0<=v<lim for v,lim in zip(c['uv'],[geo['description']['texture_width'],geo['description']['texture_height']]))
+  # Native zero-width antenna planes have negative net origins; only their nonzero faces sample texture.
+  u,v=c['uv'];x,y,z=c['size'];tw=geo['description']['texture_width'];th=geo['description']['texture_height']
+  faces=[(u,v+z,z,y),(u+z,v+z,x,y),(u+z+x,v+z,z,y),(u+2*z+x,v+z,x,y),(u+z,v,x,z),(u+z+x,v,x,z)]
+  for fu,fv,fw,fh in faces:
+   if fw>0 and fh>0:assert 0<=fu and fu+fw<=tw and 0<=fv and fv+fh<=th,(b['name'],c['uv'],(fu,fv,fw,fh))
 with Image.open(io.BytesIO(files['assets/mawonna/textures/pokemon/fairy_sliggoo/fairy_sliggoo.png'])) as im:
  assert im.size==(2048,1024);im.verify()
 clips=get('assets/mawonna/bedrock/pokemon/animations/fairy_sliggoo/fairy_sliggoo.animation.json')['animations']
@@ -71,3 +75,4 @@ with zipfile.ZipFile(out/'Mawonna.zip','w',zipfile.ZIP_DEFLATED) as z:
   p=install/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data)
 report={'status':'passed','mawonna_version':17,'existing_entries_preserved':len(manifest)-len(allowed),'sliggoo_animations':len(clips),'sliggoo_wings':len(wings),'sliggoo_bst':575,'sha256':hashlib.sha256((out/'Mawonna.zip').read_bytes()).hexdigest()}
 (out/'validation.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))
+
