@@ -1,0 +1,18 @@
+name: Build Lunavee prototype
+on:
+  push:
+    branches: [feature/lunavee]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate and package standalone addon
+        run: python tools/build_lunavee.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Lunavee-prototype
+          path: dist/Lunavee.zip

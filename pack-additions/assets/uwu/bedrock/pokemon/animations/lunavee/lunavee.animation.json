@@ -1,0 +1,79 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.lunavee.idle": {
+      "loop": true,
+      "animation_length": 2,
+      "bones": {
+        "tail": {
+          "rotation": [
+            0,
+            "math.sin(q.anim_time * 100) * 8",
+            0
+          ]
+        }
+      }
+    },
+    "animation.lunavee.walk": {
+      "loop": true,
+      "animation_length": 2,
+      "bones": {
+        "tail": {
+          "rotation": [
+            0,
+            "math.sin(q.anim_time * 100) * 8",
+            0
+          ]
+        },
+        "leg-1-1.5": {
+          "rotation": [
+            "math.sin(q.anim_time * 450) * -25",
+            0,
+            0
+          ]
+        },
+        "leg-13": {
+          "rotation": [
+            "math.sin(q.anim_time * 450) * 25",
+            0,
+            0
+          ]
+        },
+        "leg1-1.5": {
+          "rotation": [
+            "math.sin(q.anim_time * 450) * -25",
+            0,
+            0
+          ]
+        },
+        "leg13": {
+          "rotation": [
+            "math.sin(q.anim_time * 450) * 25",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.lunavee.sleep": {
+      "loop": true,
+      "animation_length": 2,
+      "bones": {
+        "tail": {
+          "rotation": [
+            0,
+            "math.sin(q.anim_time * 100) * 8",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            12,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "abilities": [
+    "synchronize",
+    "h:magicbounce"
+  ],
+  "aspects": [],
+  "baseExperienceYield": 158,
+  "baseFriendship": 70,
+  "baseScale": 0.7,
+  "baseStats": {
+    "hp": 95,
+    "attack": 45,
+    "defence": 85,
+    "special_attack": 110,
+    "special_defence": 110,
+    "speed": 80
+  },
+  "behaviour": {
+    "moving": {
+      "walk": {
+        "walkSpeed": 0.2
+      }
+    }
+  },
+  "catchRate": 45,
+  "drops": {
+    "amount": 1,
+    "entries": [
+      {
+        "item": "minecraft:glowstone_dust",
+        "quantityRange": "0-1"
+      }
+    ]
+  },
+  "eggCycles": 40,
+  "eggGroups": [
+    "field"
+  ],
+  "evYield": {
+    "attack": 0,
+    "defence": 0,
+    "hp": 0,
+    "special_attack": 0,
+    "special_defence": 2,
+    "speed": 0
+  },
+  "evolutions": [],
+  "experienceGroup": "medium_fast",
+  "features": [],
+  "forms": [],
+  "height": 7,
+  "hitbox": {
+    "width": 0.7,
+    "height": 1,
+    "fixed": false
+  },
+  "implemented": true,
+  "labels": [
+    "custom",
+    "fan_design"
+  ],
+  "maleRatio": 0.5,
+  "moves": [
+    "1:tackle",
+    "1:tailwhip",
+    "5:babydolleyes",
+    "10:snarl",
+    "15:drainingkiss",
+    "20:confuseray",
+    "25:moonlight",
+    "30:darkpulse",
+    "35:calmmind",
+    "40:moonblast",
+    "45:wish",
+    "50:psychic",
+    "tm:protect",
+    "tm:shadowball",
+    "tm:rest",
+    "tm:sleeptalk"
+  ],
+  "name": "Lunavee",
+  "nationalPokedexNumber": 9306,
+  "pokedex": [
+    "cobblemon.species.lunavee.desc"
+  ],
+  "primaryType": "fairy",
+  "weight": 95,
+  "secondaryType": "dark"
+}

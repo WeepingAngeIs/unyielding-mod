@@ -1,0 +1,13 @@
+{
+  "species": "cobblemon:lunavee",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "uwu:lunavee",
+      "model": "uwu:lunavee.geo",
+      "texture": "uwu:textures/pokemon/lunavee/lunavee.png",
+      "layers": []
+    }
+  ]
+}
