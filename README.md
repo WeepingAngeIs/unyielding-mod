@@ -4,11 +4,13 @@ Supporting mod and pack files for Cobblemon Unyielding.
 
 ## Installation
 
-1. Download the [combined Unyielding mod](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.0.jar) and [complete pack](https://github.com/WeepingAngeIs/unyielding-mod/raw/refs/heads/main/Mawonna.zip). The combined mod release is maintained in Server-Jars.
+1. Download the [combined Unyielding mod](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.1.jar) and [complete pack](https://github.com/WeepingAngeIs/unyielding-mod/raw/refs/heads/main/Mawonna.zip). The combined mod release is maintained in Server-Jars.
 2. Stop Minecraft and the server. Back up the world before updating.
-3. Replace the previous Unyielding JAR and separate UnyieldingQuests JAR in the server's and every client's `mods` folder with the combined file. Remove any separate companion module already included in that file. Keep only one copy of each module installed.
+3. Replace the previous Unyielding JAR and separate UnyieldingQuests or Cobble Currency Bridge JARs in the server's and every client's `mods` folder with the combined file. Remove any separate companion module already included in that file. Keep only one copy of each module installed.
 4. Replace the previous pack in the server/world `datapacks` folder and each client's enabled `resourcepacks` folder. Remove older duplicate copies from the enabled pack list. If the server distributes this pack, update that copy as well.
 5. Restart the server and clients. A resource-pack reload alone cannot install JAR changes.
+
+Version 1.1.1 requires Cobblemon 1.8.4, CobbleDollars 2.x, Lightman's Currency 2.3.0.5 or newer, and their required libraries on both server and clients. Keep those external mods installed.
 
 ## Builds and checks
 
