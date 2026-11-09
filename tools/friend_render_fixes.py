@@ -5,7 +5,7 @@ SIZES = {'lunavee': 0.5, 'buzzeon': 0.4, 'creepyeon': 0.4, 'ghost_jirachi': 0.4}
 PORTRAITS = {
     'buzzeon': (1.6, [-0.75, 0.64, 0]),
     'creepyeon': (1.8, [-0.485, 0.89, 0]),
-    'uwu': (1.55, [-0.23, 0.16, 0]),
+    'uwu': (1.8, [-0.27, 0.01, 0]),
 }
 
 
@@ -32,11 +32,22 @@ def apply(files):
             for bone in geo['minecraft:geometry'][0]['bones']:
                 # The new ears/wings extend up Y, unlike their Leafeon template.
                 # Mirrored outward rest angles keep the entire flap outside the torso.
-                angles = {'ear_left': 24, 'ear_right': -24,
+                angles = {'ear_left': 55, 'ear_right': -55,
                           'bug_wing_left': 35, 'bug_wing_left2': 35,
                           'bug_wing_right': -35, 'bug_wing_right2': -35}
                 if bone['name'] in angles:
                     bone.setdefault('rotation', [0, 0, 0])[2] = angles[bone['name']]
+            put(name, geo)
+        if name.startswith('assets/uwu/bedrock/pokemon/models/ghost_jirachi/') and name.endswith('.geo.json'):
+            geo = json.loads(files[name])
+            for bone in geo['minecraft:geometry'][0]['bones']:
+                # These added upright crystals were authored with the opposite
+                # Z handedness: they fold over the face instead of flaring out.
+                # Keep the original CCC skeleton, crown and animation angles.
+                if bone['name'].startswith(('ghost_spike_', 'ghost_cheek_', 'ghost_skirt_')):
+                    for cube in bone.get('cubes', []):
+                        if 'rotation' in cube:
+                            cube['rotation'][2] = -cube['rotation'][2]
             put(name, geo)
         if '/posers/' not in name or not name.startswith(tuple(f'assets/{ns}/' for ns in ['lunavee','buzzeon','creepyeon','uwu'])):
             continue

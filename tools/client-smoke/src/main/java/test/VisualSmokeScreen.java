@@ -55,6 +55,7 @@ public final class VisualSmokeScreen extends Screen {
             if (++page < SHOTS.size()) return;
             results.put("actual_gui_screenshots", SHOTS);
             results.put("gui_rendered_variants", 8);
+            results.put("screenshot_gui_dimensions", List.of(width, height));
             Files.writeString(Path.of("client-smoke-passed.json"), new Gson().toJson(results));
             done = true;
             Minecraft.getInstance().stop();
@@ -68,27 +69,31 @@ public final class VisualSmokeScreen extends Screen {
 
     private void renderOverview(GuiGraphics graphics) {
         int cellWidth = width / 4, cellHeight = (height - 36) / 4;
+        int iconScale = Math.max(1, Math.min(3, (cellHeight - 32) / 32));
+        int iconSize = 32 * iconScale;
+        float profileFactor = Math.min(cellWidth / 320f, cellHeight / 171f);
         for (int column = 0; column < 4; column++) for (int row = 0; row < 4; row++) {
             String species = SPECIES.get(column), sex = row < 2 ? "male" : "female";
             boolean portrait = (row & 1) == 1;
             int x = column * cellWidth, y = 32 + row * cellHeight;
-            panel(graphics, x, y, cellWidth, cellHeight, species + " " + sex + (portrait ? " portrait 32x32 (3x)" : " profile"));
-            int iconX = x + cellWidth / 2 - 48, iconY = y + 32;
+            panel(graphics, x, y, cellWidth, cellHeight, species + " " + sex + (portrait ? " portrait 32x32 (" + iconScale + "x)" : " profile"));
+            int iconX = x + (cellWidth - iconSize) / 2;
+            int iconY = y + 24 + (cellHeight - 28 - iconSize) / 2;
             if (portrait) {
-                graphics.fill(iconX - 1, iconY - 1, iconX + 97, iconY + 97, 0xFF93A5B8);
-                graphics.fill(iconX, iconY, iconX + 96, iconY + 96, 0xFF283442);
-                graphics.enableScissor(iconX, iconY, iconX + 96, iconY + 96);
+                graphics.fill(iconX - 1, iconY - 1, iconX + iconSize + 1, iconY + iconSize + 1, 0xFF93A5B8);
+                graphics.fill(iconX, iconY, iconX + iconSize, iconY + iconSize, 0xFF283442);
+                graphics.enableScissor(iconX, iconY, iconX + iconSize, iconY + iconSize);
             } else graphics.enableScissor(x + 3, y + 20, x + cellWidth - 3, y + cellHeight - 3);
             graphics.pose().pushPose();
             FloatingState state = state(sex, 0);
             if (portrait) {
                 graphics.pose().translate(iconX, iconY, 100);
-                graphics.pose().scale(3f, 3f, 1f);
+                graphics.pose().scale(iconScale, iconScale, 1f);
                 graphics.pose().translate(16, 0, 0);
                 GuiUtilsKt.drawPosablePortrait(id(species), graphics.pose(), 13f, 1f, false, state, 0f, 0f, 0f, 0f, 0f, 0f, false, 1f, 1f, 1f, 1f);
             } else {
-                graphics.pose().translate(x + cellWidth / 2.0, y + 34, 100);
-                profile(graphics, species, state, PoseType.PROFILE, 64f, 28f);
+                graphics.pose().translate(x + cellWidth / 2.0, y + 34 * profileFactor, 100);
+                profile(graphics, species, state, PoseType.PROFILE, 64f * profileFactor, 28f);
             }
             graphics.pose().popPose();
             graphics.disableScissor();
@@ -99,28 +104,34 @@ public final class VisualSmokeScreen extends Screen {
         PoseType[] poses = {PoseType.STAND, PoseType.FLY, PoseType.FLY, PoseType.FLY, PoseType.HOVER};
         float[] seconds = {0f, 0f, .175f, .35f, .3f};
         int cellWidth = width / 5, cellHeight = (height - 36) / 2;
+        float factor = Math.min(cellWidth / 256f, cellHeight / 342f);
         for (int row = 0; row < 2; row++) for (int column = 0; column < 5; column++) {
             String sex = row == 0 ? "male" : "female";
             int x = column * cellWidth, y = 32 + row * cellHeight;
             panel(graphics, x, y, cellWidth, cellHeight, sex + " " + poses[column] + " t=" + seconds[column]);
+            graphics.enableScissor(x + 3, y + 20, x + cellWidth - 3, y + cellHeight - 3);
             graphics.pose().pushPose();
-            graphics.pose().translate(x + cellWidth / 2.0, y + 105, 100);
-            profile(graphics, "buzzeon", state(sex, seconds[column]), poses[column], 94f, 12f);
+            graphics.pose().translate(x + cellWidth / 2.0, y + 105 * factor, 100);
+            profile(graphics, "buzzeon", state(sex, seconds[column]), poses[column], 94f * factor, 12f);
             graphics.pose().popPose();
+            graphics.disableScissor();
         }
     }
 
     private void renderGhost(GuiGraphics graphics) {
         int cellWidth = width / 3, cellHeight = (height - 36) / 2;
+        float factor = Math.min(cellWidth / (1280f / 3f), cellHeight / 342f);
         float[] angles = {-45f, 0f, 45f};
         for (int row = 0; row < 2; row++) for (int column = 0; column < 3; column++) {
             String sex = row == 0 ? "male" : "female";
             int x = column * cellWidth, y = 32 + row * cellHeight;
             panel(graphics, x, y, cellWidth, cellHeight, "Ghost Jirachi " + sex + " yaw=" + angles[column]);
+            graphics.enableScissor(x + 3, y + 20, x + cellWidth - 3, y + cellHeight - 3);
             graphics.pose().pushPose();
-            graphics.pose().translate(x + cellWidth / 2.0, y + 92, 100);
-            profile(graphics, "ghost_jirachi", state(sex, .5f), PoseType.PROFILE, 110f, angles[column]);
+            graphics.pose().translate(x + cellWidth / 2.0, y + 92 * factor, 100);
+            profile(graphics, "ghost_jirachi", state(sex, .5f), PoseType.PROFILE, 110f * factor, angles[column]);
             graphics.pose().popPose();
+            graphics.disableScissor();
         }
     }
 

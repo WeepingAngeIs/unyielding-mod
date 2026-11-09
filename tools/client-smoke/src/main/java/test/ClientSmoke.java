@@ -78,6 +78,9 @@ public class ClientSmoke {
                 results.putAll(Map.of("status","passed","resource_reload",true,"pack_retained",true,"original_uv_rejected",true,"vow_ring_baked",true,"species_textures",textures));
                 results.put("pack_source", bundled ? "bundled_mod_jar" : "external_resource_pack");
                 results.put("title_screen_render_fixture", Map.of("species", prepareRenderSpecies(bundled), "fields", List.of("name", "baseScale"), "purpose", "GUI form-scale lookup only; full species parsing and gameplay are verified by server runtime smoke"));
+                // Launch defaults override options.txt dimensions; resize the actual
+                // GLFW window and allow its normal framebuffer callback to run.
+                org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(), 1280, 720);
                 mc.setScreen(new VisualSmokeScreen(results));
             } catch(Throwable t) {
                 try {Files.writeString(Path.of("client-smoke-failed.txt"),t.toString());}catch(Exception ignored){}
