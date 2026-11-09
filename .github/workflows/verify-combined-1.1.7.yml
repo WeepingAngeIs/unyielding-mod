@@ -1,0 +1,60 @@
+name: Verify pinned combined Unyielding 1.1.7
+on:
+  push:
+    branches: [verify/unyielding-1.1.7]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: verify-combined-1.1.7
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    defaults:
+      run:
+        working-directory: combined-release
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: WeepingAngeIs/Server-Jars
+          ref: 8fd25db398a556a56a4fcea5009a0e57304ee280
+          path: combined-release
+          sparse-checkout: |
+            riding-update
+            tutorial-update
+            unyielding-quests
+            currency-bridge
+            combined-unyielding
+            releases
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      - name: Assemble and audit exact combined JAR
+        run: python3 riding-update/build_bundle.py
+      - name: Prepare isolated final-JAR checks
+        run: python3 riding-update/prepare_smoke.py
+      - name: Install display dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libgl1-mesa-dri libglx-mesa0 libopenal1 libxrandr2 libxcursor1 libxinerama1
+      - name: Exercise combined JAR in real server and client
+        run: bash riding-update/run_smoke.generated.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Unyielding-1.1.7-verified
+          path: combined-release/dist/riding/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Unyielding-1.1.7-test-evidence
+          path: |
+            combined-release/dist/riding-smoke/
+            combined-release/dist/riding/assembly-report.json
+          if-no-files-found: warn
