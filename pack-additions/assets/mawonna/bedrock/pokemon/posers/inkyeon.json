@@ -46,7 +46,8 @@
         "q.look('head', 1, 1, 70, -45, 45, -45)",
         "q.bedrock('inkyeon', 'ground_idle')",
         "q.bedrock('inkyeon', 'walk_alignment')",
-        "q.quadruped_walk(0.66, 1.4, 'front_leg_left', 'front_leg_right', 'back_leg_left', 'back_leg_right')"
+        "q.biped_walk(0.66, 1.4, 'front_leg_left', 'front_leg_right')",
+        "q.biped_walk(0.66, 0.7, 'back_leg_right', 'back_leg_left')"
       ],
       "poseTypes": [
         "WALK",

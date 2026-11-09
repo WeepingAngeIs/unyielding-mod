@@ -17,6 +17,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.network.chat.Component;
@@ -263,14 +264,18 @@ public final class VisualSmokeScreen extends Screen {
         List<Map<String,Object>> samples = new ArrayList<>();
         for (boolean shiny : new boolean[]{false, true}) {
             float minLeft = Float.POSITIVE_INFINITY, maxLeft = Float.NEGATIVE_INFINITY;
+            float minFront = Float.POSITIVE_INFINITY, maxFront = Float.NEGATIVE_INFINITY;
             for (int frame = 0; frame < WALK_PHASES.length; frame++) {
                 var state = variantState(shiny, frame / 8f);
                 var model = VaryingModelRepository.INSTANCE.getPoser(id("inkyeon"), state);
+                configureModelContext(model, id("inkyeon"), state);
                 state.setCurrentModel(model);
                 state.setPoseToFirstSuitable(PoseType.WALK);
+                model.applyAnimations(null, state, WALK_PHASES[frame], 0f, state.getAnimationSeconds() * 20f, 0f, 0f);
+                float rearNeutral = model.getPart("back_leg_left").xRot, frontNeutral = model.getPart("front_leg_left").xRot;
                 model.applyAnimations(null, state, WALK_PHASES[frame], .8f, state.getAnimationSeconds() * 20f, 0f, 0f);
                 Map<String,Object> rotations = new LinkedHashMap<>();
-                for (String boneName : List.of("back_leg_left", "back_leg_right", "knee_left", "knee_right", "ankle_left", "ankle_right", "foot_left", "foot_right")) {
+                for (String boneName : List.of("front_leg_left", "front_leg_right", "back_leg_left", "back_leg_right", "knee_left", "knee_right", "ankle_left", "ankle_right", "foot_left", "foot_right")) {
                     var bone = model.getPart(boneName);
                     for (float angle : new float[]{bone.xRot, bone.yRot, bone.zRot})
                         if (!Float.isFinite(angle)) throw new AssertionError("Nonfinite Inkyeon walk rotation: " + boneName);
@@ -279,14 +284,39 @@ public final class VisualSmokeScreen extends Screen {
                         throw new AssertionError("Inkyeon WALK leg swings sideways: " + boneName + " yaw=" + bone.yRot + " roll=" + bone.zRot);
                 }
                 float left = model.getPart("back_leg_left").xRot;
+                float right = model.getPart("back_leg_right").xRot;
+                float frontLeft = model.getPart("front_leg_left").xRot;
+                float frontRight = model.getPart("front_leg_right").xRot;
                 minLeft = Math.min(minLeft, left);
                 maxLeft = Math.max(maxLeft, left);
-                samples.add(Map.of("shiny", shiny, "phase", frame, "limb_swing", WALK_PHASES[frame], "stride", .8f, "radians_xyz", rotations));
+                minFront = Math.min(minFront, frontLeft);
+                maxFront = Math.max(maxFront, frontLeft);
+                assertNear(left - rearNeutral, .5f * (frontRight - frontNeutral), "rear-left/front-right diagonal phase");
+                assertNear(right - rearNeutral, .5f * (frontLeft - frontNeutral), "rear-right/front-left diagonal phase");
+                var nativeState = variantState(shiny, frame / 8f);
+                var nativeModel = VaryingModelRepository.INSTANCE.getPoser(id("sylveon"), nativeState);
+                configureModelContext(nativeModel, id("sylveon"), nativeState);
+                nativeState.setCurrentModel(nativeModel);
+                nativeState.setPoseToFirstSuitable(PoseType.WALK);
+                nativeModel.applyAnimations(null, nativeState, WALK_PHASES[frame], 0f, nativeState.getAnimationSeconds() * 20f, 0f, 0f);
+                float nativeRearNeutral = nativeModel.getPart("back_leg_left").xRot;
+                nativeModel.applyAnimations(null, nativeState, WALK_PHASES[frame], .8f, nativeState.getAnimationSeconds() * 20f, 0f, 0f);
+                assertNear(frontLeft, nativeModel.getPart("front_leg_left").xRot, "native front-left stride");
+                assertNear(frontRight, nativeModel.getPart("front_leg_right").xRot, "native front-right stride");
+                assertNear(left - rearNeutral, .5f * (nativeModel.getPart("back_leg_left").xRot - nativeRearNeutral), "half native rear-left stride");
+                assertNear(right - rearNeutral, .5f * (nativeModel.getPart("back_leg_right").xRot - nativeRearNeutral), "half native rear-right stride");
+                samples.add(Map.of("shiny", shiny, "phase", frame, "limb_swing", WALK_PHASES[frame], "stride", .8f, "radians_xyz", rotations, "native_front_unchanged_and_rear_half_amplitude", true));
+                nativeModel.setDefault();
                 model.setDefault();
             }
-            if (maxLeft - minLeft < .2f) throw new AssertionError("Inkyeon WALK test did not exercise rear-leg motion");
+            assertNear(maxLeft - minLeft, 1.12f, "rear WALK pitch range at stride 0.8");
+            assertNear(maxFront - minFront, 2.24f, "front WALK pitch range at stride 0.8");
         }
         return samples;
+    }
+
+    private static void assertNear(float actual, float expected, String label) {
+        if (Math.abs(actual - expected) > .0001f) throw new AssertionError(label + ": got " + actual + ", expected " + expected);
     }
 
     private static void advanceInkyeonTransition(PosableModel model, FloatingState state, String from, String to, int startTick, int elapsed) {
@@ -306,7 +336,7 @@ public final class VisualSmokeScreen extends Screen {
         float[] values = new float[REAR_CHAIN.size() * 9];
         int index = 0;
         for (String name : REAR_CHAIN) {
-            var bone = model.getPart(name);
+            var bone = rearPart(model, name);
             for (float value : new float[]{bone.x, bone.y, bone.z, bone.xRot, bone.yRot, bone.zRot, bone.xScale, bone.yScale, bone.zScale}) {
                 if (!Float.isFinite(value)) throw new AssertionError("Nonfinite rear-chain transform: " + name);
                 values[index++] = value;
@@ -315,13 +345,29 @@ public final class VisualSmokeScreen extends Screen {
         return values;
     }
 
+    private static ModelPart rearPart(PosableModel model, String name) {
+        // JSON posers register the chosen root as __root, not its geometry name.
+        // Read the actual root object so its transforms stay in the assertions.
+        if (name.equals("sylveon")) {
+            Object root = model.getRootPart();
+            if (root instanceof ModelPart part) return part;
+            throw new AssertionError("Expected a baked ModelPart root, got " + root.getClass().getName());
+        }
+        Object candidate = model.getRelevantPartsByName().get(name);
+        if (candidate instanceof ModelPart part) return part;
+        throw new AssertionError("Missing rear ancestor or joint: " + name);
+    }
+
     // Pivot position through the actual baked Minecraft ModelPart hierarchy.
     // Both global and body-local values distinguish body sway from a loose leg.
     private static Vector3f rearFootPosition(PosableModel model, String side, boolean bodyLocal) {
         PoseStack transforms = new PoseStack();
-        if (!bodyLocal) for (String bone : List.of("sylveon", "body")) model.getPart(bone).translateAndRotate(transforms);
+        if (!bodyLocal) {
+            model.getRootPart().transform(transforms);
+            rearPart(model, "body").translateAndRotate(transforms);
+        }
         for (String bone : List.of("back_legs", "back_leg_" + side, "knee_" + side, "ankle_" + side, "foot_" + side))
-            model.getPart(bone).translateAndRotate(transforms);
+            rearPart(model, bone).translateAndRotate(transforms);
         return new Vector3f().mulPosition(transforms.last().pose());
     }
 
