@@ -15,3 +15,16 @@ Version 1.1.3 requires Cobblemon 1.8.4, CobbleDollars 2.x, Lightman's Currency 2
 ## Builds and checks
 
 Builds and runtime checks run on GitHub-hosted runners. The download files are updated only after the cloud build, server checks and client load/reload checks pass. Those checks use a focused test environment; they do not cover the entire client modpack.
+
+## New command-only Pokemon
+
+The combined pack includes the approved Lunavee, Buzzeon, Ghost Jirachi, and Creepyeon exports. With operator permission:
+
+```text
+/pokespawn lunavee
+/pokespawn buzzeon
+/pokespawn ghost_jirachi
+/pokespawn creepyeon
+```
+
+Append `gender=male` or `gender=female` to select a sex. These four currently have no natural spawn or evolution rules. Their supplied exports have no separate shiny palettes; `shiny` retains the same artwork. Lunavee retains Normal typing and Eevee abilities; Creepyeon retains its supplied Synchronize/Magic Bounce and Espeon-derived learnset. Lunavee's Aura Wheel retains its normal species restriction. Original export notes and licenses are under `docs/imported-pokemon/`.

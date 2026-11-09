@@ -1,0 +1,128 @@
+{
+  "animations": {
+    "cry": "q.bedrock_stateful('ghost_jirachi', 'cry')",
+    "doomdesire": "q.bedrock_primary('ghost_jirachi', 'signature', q.curve('symmetrical'))",
+    "faint": "q.bedrock_stateful('ghost_jirachi', 'faint')",
+    "physical": "q.bedrock_primary('ghost_jirachi', 'physical', q.curve('symmetrical'))",
+    "recoil": "q.bedrock_stateful('ghost_jirachi', 'recoil')",
+    "special": "q.bedrock_primary('ghost_jirachi', 'special', q.curve('symmetrical'))",
+    "status": "q.bedrock_stateful('ghost_jirachi', 'status')"
+  },
+  "portraitScale": 2.2,
+  "portraitTranslation": [
+    0,
+    -0.2,
+    0
+  ],
+  "poses": {
+    "battle-standing": {
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('ghost_jirachi', 'battle_idle')"
+      ],
+      "isBattle": true,
+      "poseTypes": [
+        "STAND"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('ghost_jirachi', 'blink')"
+      ]
+    },
+    "leftshoulder": {
+      "animations": [
+        "bedrock(ghost_jirachi, left_shoulder)",
+        "q.look('head')"
+      ],
+      "poseName": "leftshoulder",
+      "poseTypes": [
+        "SHOULDER_LEFT"
+      ],
+      "quirks": [
+        {
+          "animations": [
+            "bedrock(ghost_jirachi, blink)"
+          ],
+          "name": "blink"
+        }
+      ],
+      "transformTicks": 10
+    },
+    "rightshoulder": {
+      "animations": [
+        "bedrock(ghost_jirachi, right_shoulder)",
+        "q.look('head')"
+      ],
+      "poseName": "rightshoulder",
+      "poseTypes": [
+        "SHOULDER_RIGHT"
+      ],
+      "quirks": [
+        {
+          "animations": [
+            "bedrock(ghost_jirachi, blink)"
+          ],
+          "name": "blink"
+        }
+      ],
+      "transformTicks": 10
+    },
+    "sleeping": {
+      "animations": [
+        "q.bedrock('ghost_jirachi', 'sleep')"
+      ],
+      "poseTypes": [
+        "SLEEP"
+      ]
+    },
+    "standing": {
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('ghost_jirachi', 'ground_idle')"
+      ],
+      "isBattle": false,
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('ghost_jirachi', 'blink')"
+      ]
+    },
+    "walking": {
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('ghost_jirachi', 'ground_walk')"
+      ],
+      "poseTypes": [
+        "WALK"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('ghost_jirachi', 'blink')"
+      ]
+    },
+    "hovering": {
+      "poseTypes": [
+        "HOVER"
+      ],
+      "animations": [
+        "q.bedrock('ghost_jirachi', 'ground_idle')"
+      ]
+    },
+    "flying": {
+      "poseTypes": [
+        "FLY"
+      ],
+      "animations": [
+        "q.bedrock('ghost_jirachi', 'ground_walk')"
+      ]
+    }
+  },
+  "profileScale": 1.0,
+  "profileTranslation": [
+    0,
+    0.5,
+    0
+  ]
+}

@@ -108,7 +108,7 @@ jobs:
           --pack runtime-pack
           --eula-file source/runtime/eula.txt
           --unyielding unyielding-artifact/Unyielding-Mawonna.jar
-          --species Covislight mawonna mawonna_flower fairy_sliggoo inkyeon
+          --species Covislight mawonna mawonna_flower fairy_sliggoo inkyeon lunavee buzzeon ghost_jirachi creepyeon
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -1,0 +1,124 @@
+{
+  "implemented": true,
+  "nationalPokedexNumber": 9310,
+  "name": "Buzzeon",
+  "primaryType": "bug",
+  "secondaryType": "flying",
+  "maleRatio": 0.5,
+  "height": 10,
+  "weight": 240,
+  "pokedex": [
+    "cobblemon.species.buzzeon.desc"
+  ],
+  "labels": [
+    "custom",
+    "fan_design"
+  ],
+  "aspects": [],
+  "abilities": [
+    "swarm",
+    "compoundeyes",
+    "h:tintedlens"
+  ],
+  "eggGroups": [
+    "field",
+    "bug"
+  ],
+  "baseStats": {
+    "hp": 100,
+    "attack": 140,
+    "defence": 80,
+    "special_attack": 15,
+    "special_defence": 80,
+    "speed": 135
+  },
+  "evYield": {
+    "hp": 0,
+    "attack": 2,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 1
+  },
+  "baseExperienceYield": 184,
+  "experienceGroup": "medium_fast",
+  "catchRate": 45,
+  "eggCycles": 35,
+  "baseFriendship": 70,
+  "baseScale": 0.65,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.15,
+    "fixed": false
+  },
+  "behaviour": {
+    "moving": {
+      "fly": {
+        "canFly": true
+      }
+    },
+    "resting": {
+      "canSleep": true,
+      "light": "0-4"
+    }
+  },
+  "moves": [
+    "1:attackorder",
+    "1:bugbite",
+    "1:bugbuzz",
+    "1:defendorder",
+    "1:fellstinger",
+    "1:firstimpression",
+    "1:furycutter",
+    "1:healorder",
+    "1:infestation",
+    "1:leechlife",
+    "1:lunge",
+    "1:megahorn",
+    "1:pinmissile",
+    "1:pollenpuff",
+    "1:pounce",
+    "1:powder",
+    "1:quiverdance",
+    "1:ragepowder",
+    "1:signalbeam",
+    "1:silktrap",
+    "1:silverwind",
+    "1:skittersmack",
+    "1:spiderweb",
+    "1:steamroller",
+    "1:stickyweb",
+    "1:stringshot",
+    "1:strugglebug",
+    "1:tailglow",
+    "1:twineedle",
+    "1:uturn",
+    "1:xscissor",
+    "1:poisonsting",
+    "1:poisonjab",
+    "1:crosspoison",
+    "1:toxic",
+    "1:drillrun",
+    "1:knockoff",
+    "1:aerialace",
+    "1:acrobatics",
+    "1:dualwingbeat",
+    "1:tailwind",
+    "1:roost",
+    "1:tackle",
+    "1:quickattack",
+    "1:bite",
+    "1:crunch",
+    "1:doubleedge",
+    "1:charm",
+    "1:babydolleyes",
+    "1:helpinghand",
+    "1:wish",
+    "1:protect",
+    "1:substitute",
+    "1:swordsdance",
+    "1:agility"
+  ],
+  "evolutions": [],
+  "forms": []
+}

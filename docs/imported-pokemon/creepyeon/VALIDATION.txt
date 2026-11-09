@@ -1,0 +1,1 @@
+Offline validation passed. Both models were rendered front and side from exported geometry and compared to the approved browser preview. This is not a Minecraft runtime test.

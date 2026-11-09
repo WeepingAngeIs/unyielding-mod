@@ -1,0 +1,46 @@
+{
+  "rootBone": "eevee",
+  "portraitScale": 1.94,
+  "portraitTranslation": [
+    -0.32,
+    -0.41,
+    0
+  ],
+  "profileScale": 0.77,
+  "profileTranslation": [
+    0,
+    0.6,
+    0
+  ],
+  "animations": {
+    "cry": "q.bedrock_stateful('lunavee', 'cry')"
+  },
+  "poses": {
+    "standing": {
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE",
+        "FLOAT",
+        "SHOULDER_LEFT",
+        "SHOULDER_RIGHT"
+      ],
+      "animations": [
+        "q.look('head', 1, 1, 70, -45, 45)",
+        "q.bedrock('lunavee', 'ground_idle')"
+      ]
+    },
+    "walking": {
+      "poseTypes": [
+        "WALK",
+        "SWIM"
+      ],
+      "animations": [
+        "q.look('head', 1, 1, 70, -45, 45)",
+        "q.bedrock('lunavee', 'ground_idle')",
+        "q.quadruped_walk(0.66, 1.4, 'front_leg_left', 'front_leg_right', 'back_leg_left', 'back_leg_right')"
+      ]
+    }
+  }
+}

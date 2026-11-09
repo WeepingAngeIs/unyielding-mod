@@ -1,0 +1,9 @@
+{
+  "jsonParse": true,
+  "references": true,
+  "skeletonReferences": true,
+  "moveCount": 55,
+  "baseStatTotal": 550,
+  "inGameTested": false,
+  "installedMoveRegistryVerified": false
+}

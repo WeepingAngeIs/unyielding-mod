@@ -1,0 +1,22 @@
+{
+  "species": "cobblemon:buzzeon",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "buzzeon:buzzeon",
+      "model": "buzzeon:buzzeon_male.geo",
+      "texture": "buzzeon:textures/pokemon/buzzeon.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "female"
+      ],
+      "poser": "buzzeon:buzzeon",
+      "model": "buzzeon:buzzeon_female.geo",
+      "texture": "buzzeon:textures/pokemon/buzzeon.png",
+      "layers": []
+    }
+  ]
+}

@@ -30,7 +30,7 @@ public class ClientSmoke {
                 Method modelsMethod=repoClass.getDeclaredMethod("getTexturedModels");
                 modelsMethod.setAccessible(true);
                 Map<?,?> models=(Map<?,?>)modelsMethod.invoke(repo);
-                for(String key:List.of("mawonna:inkyeon.geo","mawonna:fairy_sliggoo.geo","mawonna:pink_corvisquire.geo","mawile_custom:mawile_third_evolution.geo")) {
+                for(String key:List.of("lunavee:lunavee.geo","buzzeon:buzzeon_male.geo","buzzeon:buzzeon_female.geo","creepyeon:creepyeon_male.geo","creepyeon:creepyeon_female.geo","uwu:ghost_jirachi_male.geo","uwu:ghost_jirachi_female.geo","mawonna:inkyeon.geo","mawonna:fairy_sliggoo.geo","mawonna:pink_corvisquire.geo","mawile_custom:mawile_third_evolution.geo")) {
                     if(!models.containsKey(net.minecraft.resources.ResourceLocation.parse(key))) throw new AssertionError("Model not baked: "+key);
                 }
                 Class<?> stateClass=Class.forName("com.cobblemon.mod.common.client.render.models.blockbench.PosableState");
@@ -51,6 +51,16 @@ public class ClientSmoke {
                     Object shiny=getTexture.invoke(repo,location,state);
                     if(normal==null || shiny==null || normal.equals(shiny)) throw new AssertionError("Missing distinct normal/shiny texture: "+id);
                     textures.put(id,List.of(normal.toString(),shiny.toString()));
+                }
+                for(String id:List.of("lunavee","buzzeon","ghost_jirachi","creepyeon")) {
+                    var location=net.minecraft.resources.ResourceLocation.parse("cobblemon:"+id);
+                    if(!variations.containsKey(location)) throw new AssertionError("Missing imported resolver: "+id);
+                    for(String sex:List.of("male","female")) {
+                        Object state=floating.getConstructor().newInstance();
+                        setAspects.invoke(state,Set.of(sex));
+                        if(getPoser.invoke(repo,location,state)==null || getTexture.invoke(repo,location,state)==null)
+                            throw new AssertionError("Missing imported appearance: "+id+" "+sex);
+                    }
                 }
                 var ringId=net.minecraft.resources.ResourceLocation.parse("mawonna:mawilite_vow_ring");
                 if(!net.minecraft.core.registries.BuiltInRegistries.ITEM.containsKey(ringId)) throw new AssertionError("Vow ring is not registered");

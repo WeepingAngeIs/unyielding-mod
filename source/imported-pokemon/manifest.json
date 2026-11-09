@@ -1,0 +1,18 @@
+{
+  "ghost_jirachi": {
+    "archive": "Ghost-Jirachi-Addon.zip",
+    "sha256": "ef477c1b9823f79cac3cf24e32d991930de0f24b659cb9b6579ccd2b4c7b2789"
+  },
+  "creepyeon": {
+    "archive": "Creepyeon-Cobblemon-Addon.zip",
+    "sha256": "a7ddfd125a5d7b227c7632a90c926a82540fd4c3d65c64730366a1f7b45cc253"
+  },
+  "lunavee": {
+    "archive": "Lunavee-Addon-1.0.0.zip",
+    "sha256": "ecd83aa6311c8a3481bdb379c6396b74da1381a9fcf10e8e00e5a6c59d2dca69"
+  },
+  "buzzeon": {
+    "archive": "Buzzeon-Cobblemon-Addon-1.0.0.zip",
+    "sha256": "7661c33bf5493fca5a17fb0de8ce249679c1e525f0f6c887b80ddb4d83c6bc0f"
+  }
+}

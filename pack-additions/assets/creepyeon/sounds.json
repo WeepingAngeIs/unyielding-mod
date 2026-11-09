@@ -1,0 +1,16 @@
+{
+  "pokemon.creepyeon.male.cry": {
+    "sounds": [
+      {
+        "name": "creepyeon:pokemon/creepyeon/male_cry"
+      }
+    ]
+  },
+  "pokemon.creepyeon.female.cry": {
+    "sounds": [
+      {
+        "name": "creepyeon:pokemon/creepyeon/female_cry"
+      }
+    ]
+  }
+}

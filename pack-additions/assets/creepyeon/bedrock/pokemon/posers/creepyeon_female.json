@@ -1,0 +1,115 @@
+{
+  "rootBone": "espeon",
+  "portraitScale": 1.8,
+  "portraitTranslation": [
+    0,
+    -0.1,
+    0
+  ],
+  "profileScale": 0.75,
+  "profileTranslation": [
+    0,
+    0.6,
+    0
+  ],
+  "animations": {
+    "cry": "q.bedrock_stateful('creepyeon_female', 'cry')",
+    "blink": "q.bedrock_stateful('creepyeon_female', 'blink')",
+    "glow": "q.bedrock_stateful('creepyeon_female', 'glow')"
+  },
+  "poses": {
+    "standing": {
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "FLOAT"
+      ],
+      "animations": [
+        "q.bedrock('creepyeon_female', 'ground_idle')"
+      ],
+      "transformedParts": [
+        {
+          "part": "export_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
+    },
+    "walking": {
+      "poseTypes": [
+        "WALK"
+      ],
+      "animations": [
+        "q.bedrock('creepyeon_female', 'walk')"
+      ],
+      "transformedParts": [
+        {
+          "part": "export_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
+    },
+    "swimming": {
+      "poseTypes": [
+        "SWIM"
+      ],
+      "animations": [
+        "q.bedrock('creepyeon_female', 'swim')"
+      ],
+      "transformedParts": [
+        {
+          "part": "export_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
+    },
+    "portrait": {
+      "poseTypes": [
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "animations": [
+        "q.bedrock('creepyeon_female', 'pose')"
+      ],
+      "transformedParts": [
+        {
+          "part": "export_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
+    },
+    "sleeping": {
+      "poseTypes": [
+        "SLEEP"
+      ],
+      "animations": [
+        "q.bedrock('creepyeon_female', 'ground_idle')"
+      ],
+      "transformedParts": [
+        {
+          "part": "export_scale",
+          "scale": [
+            0.0625,
+            0.0625,
+            0.0625
+          ]
+        }
+      ]
+    }
+  }
+}

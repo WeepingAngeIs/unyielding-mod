@@ -1,0 +1,78 @@
+{
+  "rootBone": "leafeon",
+  "portraitScale": 1.2,
+  "portraitTranslation": [
+    0,
+    -0.3,
+    0
+  ],
+  "profileScale": 0.65,
+  "profileTranslation": [
+    0,
+    0.2,
+    0
+  ],
+  "animations": {
+    "cry": "q.bedrock_stateful('buzzeon', 'cry')",
+    "recoil": "q.bedrock_stateful('buzzeon', 'recoil')",
+    "faint": "q.bedrock_stateful('buzzeon', 'faint')",
+    "sit": "q.bedrock_stateful('buzzeon', 'sit')",
+    "run": "q.bedrock_stateful('buzzeon', 'run')",
+    "battle_idle": "q.bedrock_stateful('buzzeon', 'battle_idle')",
+    "blink": "q.bedrock_stateful('buzzeon', 'blink')",
+    "ear_twitch": "q.bedrock_stateful('buzzeon', 'ear_twitch')",
+    "wing_stretch": "q.bedrock_stateful('buzzeon', 'wing_stretch')"
+  },
+  "poses": {
+    "standing": {
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "transformTicks": 10,
+      "animations": [
+        "q.bedrock('buzzeon', 'ground_idle')"
+      ]
+    },
+    "walking": {
+      "poseTypes": [
+        "WALK"
+      ],
+      "transformTicks": 10,
+      "animations": [
+        "q.bedrock('buzzeon', 'walk')"
+      ]
+    },
+    "flying": {
+      "poseTypes": [
+        "FLY",
+        "SWIM"
+      ],
+      "transformTicks": 10,
+      "animations": [
+        "q.bedrock('buzzeon', 'fly')"
+      ]
+    },
+    "hovering": {
+      "poseTypes": [
+        "HOVER",
+        "FLOAT"
+      ],
+      "transformTicks": 10,
+      "animations": [
+        "q.bedrock('buzzeon', 'hover')"
+      ]
+    },
+    "sleeping": {
+      "poseTypes": [
+        "SLEEP"
+      ],
+      "transformTicks": 10,
+      "animations": [
+        "q.bedrock('buzzeon', 'sleep')"
+      ]
+    }
+  }
+}

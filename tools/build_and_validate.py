@@ -15,7 +15,7 @@ removed=set(json.loads((r/'pack-removals.json').read_text()))
 for name in removed: files.pop(name,None)
 assert not any('mawileunyielding' in n.lower() for n in files)
 allowed={
- 'assets/mawonna/lang/en_us.json','assets/cobblemon/sounds.json','data/mawonna/dexes/custom.json','pack.mcmeta',
+ 'assets/cobblemon/lang/en_us.json','assets/mawonna/lang/en_us.json','assets/cobblemon/sounds.json','data/mawonna/dexes/custom.json','pack.mcmeta',
  'assets/mawonna/bedrock/pokemon/resolvers/mawonna.json',
  'assets/mawonna/bedrock/pokemon/resolvers/mawonna_flower.json',
  'assets/mawonna/bedrock/pokemon/resolvers/pink_corvisquire.json',
@@ -84,7 +84,7 @@ for sid in ['mawonna','mawonna_flower','inkyeon','covislight','fairy_sliggoo']:
  assert get('data/cobblemon/species/custom/'+sid+'.json')['implemented']
 bird=get('assets/mawonna/bedrock/pokemon/posers/pink_corvisquire.json')
 assert all(p['transformTicks']==0 for p in bird['poses'].values())
-meta=get('pack.mcmeta');meta['pack']['description']='Mawonna v17 + Corvislight + Fairy Sliggoo + Inkyeon | companion mod required'
+meta=get('pack.mcmeta');meta['pack']['description']='Mawonna v17 + Lunavee + Buzzeon + Ghost Jirachi + Creepyeon | companion mod required'
 files['pack.mcmeta']=(json.dumps(meta,indent=2)+'\n').encode()
 # Every custom defeat gate uses a fresh verified feature, never native unfiltered defeats.
 for base_name,cap in [('mawile',666),('corvisquire',1000),('sliggoo',1000),('sylveon',1000)]:
@@ -123,6 +123,8 @@ for resolver in ['mawonna','mawonna_flower','pink_corvisquire','fairy_sliggoo','
   if 'texture' in variant:
    ns,path=variant['texture'].split(':',1)
    with Image.open(io.BytesIO(files['assets/'+ns+'/'+path])) as im:im.verify()
+from validate_imported_pokemon import validate
+validate(files, r)
 install=out/'installable' 
 with zipfile.ZipFile(out/'Mawonna.zip','w',zipfile.ZIP_DEFLATED) as z:
  for name,data in sorted(files.items()):

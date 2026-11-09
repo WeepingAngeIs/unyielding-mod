@@ -1,0 +1,23 @@
+LUNAVEE 1.0.0 — Minecraft Java 1.21.1, Cobblemon NeoForge 1.8.2
+
+Install the SAME ZIP in both places; do not unzip it:
+1. Server: world/datapacks/ (the active world folder).
+2. Every client: resourcepacks/ and ENABLE it above other Cobblemon packs.
+For single player, use saves/<world>/datapacks/ plus resourcepacks/.
+Restart the server/world after installation. This is a datapack + resource pack, NOT a mod JAR.
+
+Commands (operator/cheats required):
+/pokegive @s lunavee gender=male
+/pokegive @s lunavee gender=female
+/pokespawn lunavee
+
+New species; does not replace Eevee. No natural spawns or evolution recipe configured.
+Normal typing and Eevee abilities retained because a different type/ability was not chosen.
+Stats: 80/75/80/45/80/131; BST 491. All 102 requested moves available at level 1.
+Aura Wheel remains species-restricted and fails for Lunavee. Other conditional moves retain standard restrictions.
+Base scale is 1/3 of standard Eevee. Male/female use the same final approved styling.
+Cute animated idle, original procedural walking, moon pattern, black raised nose, golden eyes, cream tail drips, emissive twinkles and higher cry.
+Alternate pose is included in the animation file; standing uses the cute idle.
+Shiny uses the same appearance (no separate shiny design was requested).
+
+Validation: JSON parsing, move IDs, references, texture dimensions and ZIP integrity checked. Not tested inside a running Minecraft client/server; first test in a spare world.

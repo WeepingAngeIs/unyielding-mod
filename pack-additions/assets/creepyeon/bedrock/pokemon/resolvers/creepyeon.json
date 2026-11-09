@@ -1,0 +1,34 @@
+{
+  "species": "cobblemon:creepyeon",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "model": "creepyeon:creepyeon_male.geo",
+      "poser": "creepyeon:creepyeon_male",
+      "texture": "creepyeon:textures/pokemon/creepyeon/male.png",
+      "layers": [
+        {
+          "name": "eye_glow",
+          "emissive": true,
+          "texture": "creepyeon:textures/pokemon/creepyeon/male_glow.png"
+        }
+      ]
+    },
+    {
+      "aspects": [
+        "female"
+      ],
+      "model": "creepyeon:creepyeon_female.geo",
+      "poser": "creepyeon:creepyeon_female",
+      "texture": "creepyeon:textures/pokemon/creepyeon/female.png",
+      "layers": [
+        {
+          "name": "eye_glow",
+          "emissive": true,
+          "texture": "creepyeon:textures/pokemon/creepyeon/female_glow.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+Ghost Jirachi — Ghost/Psychic
+Base stats: 100 in each stat, total 600.
+Original Jirachi learnset retained. Added ghost-themed and psychic level-up options.
+
+Ghost/Psychic and wish-themed level-up highlights:
+Level 1: astonish
+Level 1: confuseray
+Level 1: confusion
+Level 1: wish
+Level 12: nightshade
+Level 18: psybeam
+Level 21: hex
+Level 28: willowisp
+Level 35: calmmind
+Level 42: psychic
+Level 42: shadowball
+Level 49: dreameater
+Level 56: destinybond
+Level 56: healingwish
+Level 63: trickroom
+Level 70: futuresight
+Level 70: phantomforce
+Level 84: storedpower
+Level 98: doomdesire
+
+Verified all 16 original CCC Jirachi clips are identical apart from animation identifier prefix. Both model skeletons retain all referenced bones and all original poser bindings remain present. Hover and flight use the original idle/movement clips.
+This is a learnset update; it does not overwrite an existing Pokemon’s four active moves.
+Validation is file-level; not tested in a running Minecraft client.

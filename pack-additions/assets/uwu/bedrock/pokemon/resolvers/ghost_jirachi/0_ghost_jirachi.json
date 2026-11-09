@@ -1,0 +1,18 @@
+{
+  "species": "cobblemon:ghost_jirachi",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "model": "uwu:ghost_jirachi_male.geo",
+      "poser": "uwu:ghost_jirachi",
+      "texture": "uwu:textures/pokemon/ghost_jirachi/ghost_jirachi.png"
+    },
+    {
+      "aspects": [
+        "female"
+      ],
+      "model": "uwu:ghost_jirachi_female.geo"
+    }
+  ]
+}
