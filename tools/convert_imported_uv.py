@@ -83,6 +83,7 @@ def convert(files):
             elif '/posers/' in name and name.endswith('.json'):
                 obj = json.loads(files[name]); obj['rootBone'] = 'import_uv_root'
                 for pose in obj['poses'].values():
+                    pose['transformTicks'] = 0
                     pose.setdefault('transformedParts', []).append({'part': 'import_uv_scale', 'scale': [1/SCALE]*3})
                 files[name] = json.dumps(obj).encode()
         report[sid] = {'models': len(models), 'cubes': len(tiles), 'atlas': [width, height], 'scale_compensated': True}

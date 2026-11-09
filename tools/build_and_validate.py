@@ -125,8 +125,15 @@ for resolver in ['mawonna','mawonna_flower','pink_corvisquire','fairy_sliggoo','
    with Image.open(io.BytesIO(files['assets/'+ns+'/'+path])) as im:im.verify()
 from validate_imported_pokemon import validate
 validate(files, r)
+from friend_progression import apply as apply_progression
+from friend_render_fixes import apply as apply_render_fixes, validate as validate_render_fixes
+(out/'friends-move-progression.json').write_text(json.dumps(apply_progression(files), indent=2))
+apply_render_fixes(files)
+from friend_riding_seats import apply as apply_riding_seats
+(out/'friends-riding-seats.json').write_text(json.dumps(apply_riding_seats(files), indent=2))
 from convert_imported_uv import convert
 (out/'imported-uv-conversion.json').write_text(json.dumps(convert(files), indent=2))
+validate_render_fixes(files)
 install=out/'installable' 
 with zipfile.ZipFile(out/'Mawonna.zip','w',zipfile.ZIP_DEFLATED) as z:
  for name,data in sorted(files.items()):

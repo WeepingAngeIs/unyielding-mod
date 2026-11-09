@@ -16,13 +16,20 @@ for label,version in VERSIONS.items():
 companion=root/'unyielding-artifact/Unyielding-Mawonna.jar'
 if not companion.is_file():raise FileNotFoundError(companion)
 shutil.copy2(companion,libs/companion.name)
-shutil.copytree(root/'client-pack',run/'resourcepacks/mawonna-test',dirs_exist_ok=True)
-(run/'options.txt').write_text('resourcePacks:["vanilla","file/mawonna-test"]\nmaxFps:30\nrenderDistance:2\nsimulationDistance:2\n')
+bundled=os.environ.get('UNYIELDING_BUNDLED_PACK')=='true'
+if not bundled:shutil.copytree(root/'client-pack',run/'resourcepacks/mawonna-test',dirs_exist_ok=True)
+selected='["vanilla"]' if bundled else '["vanilla","file/mawonna-test"]'
+(run/'options.txt').write_text('resourcePacks:'+selected+'\nmaxFps:30\nrenderDistance:2\nsimulationDistance:2\nguiScale:1\noverrideWidth:1280\noverrideHeight:720\n')
 status='failed'
 try:
  with (out/'client-console.log').open('w') as log:
   subprocess.run(['xvfb-run','-a','-s','-screen 0 1280x720x24','gradle','--no-daemon','runClient'],cwd=project,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=1500,env=os.environ|{'LIBGL_ALWAYS_SOFTWARE':'true'})
  assert (run/'client-smoke-passed.json').exists(),'Client never confirmed loaded resource pack'
+ result=json.loads((run/'client-smoke-passed.json').read_text())
+ assert result.get('pose_transition_scale_samples',0)>0,'No pose transitions were checked'
+ assert len(result.get('actual_gui_screenshots',[]))==3,'Missing actual GUI render screenshots'
+ for filename in result['actual_gui_screenshots']:
+  assert (run/'visual-smoke'/filename).stat().st_size>10000,'Missing or empty GUI screenshot: '+filename
  log=(run/'logs/latest.log').read_text(errors='replace')
  for bad in ['Failed to load model file with identifier mawonna:', 'Unable to load model mawonna:', 'Caught error loading resourcepacks', 'Failed to load model file with identifier mawile_custom:']:
   assert bad not in log,bad
@@ -32,4 +39,5 @@ finally:
   p=run/name
   if p.exists():shutil.copy2(p,out/p.name)
  if (run/'crash-reports').exists():shutil.copytree(run/'crash-reports',out/'crash-reports',dirs_exist_ok=True)
- (out/'client-validation.json').write_text(json.dumps({'status':status,'minecraft':'1.21.1','cobblemon':'1.8.4','scope':'Actual Minecraft client resource reload, model/poser resolution, malformed UV regression, selected pack retained. Minimal mod set; not the complete user modpack.'},indent=2))
+ if (run/'visual-smoke').exists():shutil.copytree(run/'visual-smoke',out/'visual-smoke',dirs_exist_ok=True)
+ (out/'client-validation.json').write_text(json.dumps({'status':status,'minecraft':'1.21.1','cobblemon':'1.8.4','scope':'Actual Minecraft client resource reload; GUI profile and portrait screenshots of both sexes; Buzzeon flight cycle; Ghost Jirachi angles; runtime scale checks across pose transitions; malformed UV regression. Minimal mod set, without a world or complete user modpack.'},indent=2))

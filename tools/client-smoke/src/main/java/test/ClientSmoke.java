@@ -24,7 +24,8 @@ public class ClientSmoke {
         mc.reloadResourcePacks().whenComplete((unused,error)->mc.execute(()->{
             try {
                 if(error!=null) throw new RuntimeException(error);
-                if(!mc.getResourcePackRepository().getSelectedIds().contains("file/mawonna-test")) throw new AssertionError("Test pack was removed");
+                boolean bundled = "true".equals(System.getenv("UNYIELDING_BUNDLED_PACK"));
+                if(!bundled && !mc.getResourcePackRepository().getSelectedIds().contains("file/mawonna-test")) throw new AssertionError("Test pack was removed");
                 Class<?> repoClass=Class.forName("com.cobblemon.mod.common.client.render.models.blockbench.repository.VaryingModelRepository");
                 Object repo=repoClass.getField("INSTANCE").get(null);
                 Method modelsMethod=repoClass.getDeclaredMethod("getTexturedModels");
@@ -73,11 +74,48 @@ public class ClientSmoke {
                 boolean rejected=false;
                 try {new Gson().fromJson("{\"uv\":{\"north\":{\"uv\":[0,0]}}}",cube);} catch(com.google.gson.JsonParseException expected){rejected=true;}
                 if(!rejected) throw new AssertionError("Regression fixture did not reproduce parser rejection");
-                Files.writeString(Path.of("client-smoke-passed.json"),new Gson().toJson(Map.of("status","passed","resource_reload",true,"pack_retained",true,"original_uv_rejected",true,"vow_ring_baked",true,"species_textures",textures)));
+                var results = new LinkedHashMap<String,Object>();
+                results.putAll(Map.of("status","passed","resource_reload",true,"pack_retained",true,"original_uv_rejected",true,"vow_ring_baked",true,"species_textures",textures));
+                results.put("pack_source", bundled ? "bundled_mod_jar" : "external_resource_pack");
+                results.put("title_screen_species_loaded_from_shipped_data", prepareRenderSpecies(bundled));
+                mc.setScreen(new VisualSmokeScreen(results));
             } catch(Throwable t) {
                 try {Files.writeString(Path.of("client-smoke-failed.txt"),t.toString());}catch(Exception ignored){}
                 t.printStackTrace();
-            } finally {mc.stop();}
+                mc.stop();
+            }
         }));
+    }
+
+    // A title screen has no server registry sync. Parse the exact tested pack's
+    // definitions with Cobblemon's parser so the GUI can obtain form base scales.
+    // Server-side species loading remains independently tested by runtime smoke.
+    private static List<String> prepareRenderSpecies(boolean bundled) throws Exception {
+        var registry = com.cobblemon.mod.common.api.pokemon.PokemonSpecies.INSTANCE;
+        Map<net.minecraft.resources.ResourceLocation, com.cobblemon.mod.common.pokemon.Species> species = new LinkedHashMap<>();
+        for (var existing : com.cobblemon.mod.common.api.pokemon.PokemonSpecies.getSpecies())
+            species.put(existing.getResourceIdentifier(), existing);
+        List<String> loaded = new ArrayList<>();
+        for (String name : List.of("lunavee", "buzzeon", "creepyeon", "ghost_jirachi")) {
+            var id = net.minecraft.resources.ResourceLocation.parse("cobblemon:" + name);
+            if (species.containsKey(id)) continue;
+            String resource = "data/cobblemon/species/custom/" + name + ".json";
+            String json;
+            if (bundled) {
+                try (var jar = new java.util.zip.ZipFile(Path.of("../libs/Unyielding-Mawonna.jar").toFile())) {
+                    var entry = jar.getEntry(resource);
+                    if (entry == null) throw new AssertionError("Bundled species data missing: " + resource);
+                    try (var stream = jar.getInputStream(entry)) { json = new String(stream.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8); }
+                }
+            } else json = Files.readString(Path.of("resourcepacks/mawonna-test").resolve(resource));
+            try (var reader = new java.io.BufferedReader(new java.io.StringReader(json))) {
+                var parsed = registry.parse(reader, id);
+                if (parsed == null) throw new AssertionError("Species parser returned null: " + name);
+                species.put(id, parsed);
+                loaded.add(name);
+            }
+        }
+        if (!loaded.isEmpty()) registry.reload(species);
+        return loaded;
     }
 }
