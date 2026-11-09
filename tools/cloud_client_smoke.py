@@ -1,5 +1,5 @@
 """Real NeoForge/Cobblemon client resource loading under Xvfb, GitHub only."""
-import os, json, shutil, subprocess, sys
+import os, json, shutil, subprocess, sys, zipfile
 from pathlib import Path
 from cloud_runtime_smoke import VERSIONS, fetch_json, download
 
@@ -15,6 +15,12 @@ for label,version in versions.items():
  info=fetch_json('https://api.modrinth.com/v2/version/'+version)
  item=next((x for x in info['files'] if x.get('primary')),info['files'][0])
  download(item['url'],libs/item['filename'],item['hashes']['sha512'])
+ if label.startswith('Kotlin for Forge'):
+  with zipfile.ZipFile(libs/item['filename']) as kotlin:
+   metadata=json.loads(kotlin.read('META-INF/jarjar/metadata.json'))
+   stdlib=next(entry for entry in metadata['jars'] if entry['identifier']=={'group':'org.jetbrains.kotlin','artifact':'kotlin-stdlib'})
+   compile_libs=project/'compile-libs';compile_libs.mkdir(exist_ok=True)
+   (compile_libs/Path(stdlib['path']).name).write_bytes(kotlin.read(stdlib['path']))
 companion=root/'unyielding-artifact/Unyielding-Mawonna.jar'
 if not companion.is_file():raise FileNotFoundError(companion)
 shutil.copy2(companion,libs/companion.name)
@@ -28,9 +34,10 @@ try:
  assert (run/'client-smoke-passed.json').exists(),'Client never confirmed loaded resource pack'
  result=json.loads((run/'client-smoke-passed.json').read_text())
  assert result.get('pose_transition_scale_samples',0)>0,'No pose transitions were checked'
- assert len(result.get('actual_gui_screenshots',[]))==6,'Missing actual GUI render screenshots'
+ assert len(result.get('actual_gui_screenshots',[]))==8,'Missing actual GUI render screenshots'
  assert len(result.get('inkyeon_walk_samples',[]))==8,'Missing actual normal/shiny Inkyeon WALK rotation samples'
  assert len(result.get('fairy_sliggoo_face_bones',[]))==4,'Missing native Fairy Sliggoo face bones'
+ assert len(result.get('inkyeon_transition_checks',{}).get('samples',[]))>=280,'Missing Inkyeon idle/walk transition checks'
  for filename in result['actual_gui_screenshots']:
   assert (run/'visual-smoke'/filename).stat().st_size>10000,'Missing or empty GUI screenshot: '+filename
  log=(run/'logs/latest.log').read_text(errors='replace')

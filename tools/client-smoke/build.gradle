@@ -8,4 +8,8 @@ neoForge {
     runs { client { client(); gameDirectory = file('run'); jvmArgument '-Xmx4G' } }
     mods { clientsmoke { sourceSet(sourceSets.main) } }
 }
-dependencies { implementation fileTree(dir: 'libs', include: ['*.jar']) }
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // Exact nested Kotlin runtime from the downloaded Kotlin for Forge jar.
+    compileOnly fileTree(dir: 'compile-libs', include: ['*.jar'])
+}

@@ -36,6 +36,8 @@ def write_zip(path, entries):
         for name, data in sorted(entries.items()):
             info = zipfile.ZipInfo(name, (2026, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
+            info.create_system = 3
+            info.external_attr = 0o600 << 16
             archive.writestr(info, data)
     assert read_zip(path) == entries
 
@@ -76,8 +78,9 @@ def main():
                 content = (json.dumps(document, indent=2) + '\n').encode()
             else:
                 content = original[name]
-        elif name.endswith('.json') and json.loads(content) == json.loads(original[name]):
-            content = original[name]
+        elif name.endswith('.json'):
+            document = json.loads(content)
+            content = original[name] if document == json.loads(original[name]) else (json.dumps(document, indent=2) + '\n').encode()
         if content != original[name]:
             changes.append(name)
             revised[name] = pack[name] = content

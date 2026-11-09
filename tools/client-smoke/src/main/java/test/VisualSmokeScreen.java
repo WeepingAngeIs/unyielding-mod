@@ -4,6 +4,7 @@ import com.cobblemon.mod.common.api.gui.GuiUtilsKt;
 import com.cobblemon.mod.common.client.gui.PokemonGuiUtilsKt;
 import com.cobblemon.mod.common.client.gui.ProfileTransformType;
 import com.cobblemon.mod.common.client.render.models.blockbench.FloatingState;
+import com.cobblemon.mod.common.client.render.models.blockbench.PosableModel;
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.RenderContext;
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.VaryingModelRepository;
 import com.cobblemon.mod.common.entity.PoseType;
@@ -11,6 +12,7 @@ import com.google.gson.Gson;
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.GuiGraphics;
@@ -28,8 +30,9 @@ import java.util.*;
 /** Captures actual Cobblemon GUI renderers, without starting a local world. */
 public final class VisualSmokeScreen extends Screen {
     private static final List<String> SPECIES = List.of("lunavee", "buzzeon", "creepyeon", "ghost_jirachi");
-    private static final List<String> SHOTS = List.of("friends-profiles-portraits.png", "buzzeon-wing-cycle.png", "ghost-jirachi-angles.png", "fairy-sliggoo-native-face.png", "inkyeon-walk-normal.png", "inkyeon-walk-shiny.png");
+    private static final List<String> SHOTS = List.of("friends-profiles-portraits.png", "buzzeon-wing-cycle.png", "ghost-jirachi-angles.png", "fairy-sliggoo-native-face.png", "inkyeon-walk-normal.png", "inkyeon-walk-shiny.png", "inkyeon-idle-walk-normal.png", "inkyeon-idle-walk-shiny.png");
     private static final float[] WALK_PHASES = {0f, (float)Math.PI / 1.32f, (float)Math.PI / .66f, 3f * (float)Math.PI / 1.32f};
+    private static final List<String> REAR_CHAIN = List.of("sylveon", "body", "back_legs", "back_leg_left", "knee_left", "ankle_left", "foot_left", "back_leg_right", "knee_right", "ankle_right", "foot_right");
     private final Map<String,Object> results;
     private int page, frames;
     private boolean done;
@@ -51,7 +54,8 @@ public final class VisualSmokeScreen extends Screen {
             else if (page == 1) renderWings(graphics);
             else if (page == 2) renderGhost(graphics);
             else if (page == 3) renderSliggoo(graphics);
-            else renderInkyeonWalk(graphics, page == 5);
+            else if (page < 6) renderInkyeonWalk(graphics, page == 5);
+            else renderInkyeonTransitions(graphics, page == 7);
             graphics.flush();
             if (++frames < 4) return;
             Path directory = Path.of("visual-smoke");
@@ -62,6 +66,7 @@ public final class VisualSmokeScreen extends Screen {
             if (page == 0) results.put("pose_transition_scale_samples", validateTransitions());
             if (page == 3) results.put("fairy_sliggoo_face_bones", validateSliggooFace());
             if (page == 5) results.put("inkyeon_walk_samples", validateInkyeonWalk());
+            if (page == 7) results.put("inkyeon_transition_checks", validateInkyeonTransitions());
             frames = 0;
             if (++page < SHOTS.size()) return;
             results.put("actual_gui_screenshots", SHOTS);
@@ -180,25 +185,40 @@ public final class VisualSmokeScreen extends Screen {
         }
     }
 
+    private void renderInkyeonTransitions(GuiGraphics graphics, boolean shiny) {
+        int[] ticks = {0, 1, 2, 3, 5, 10};
+        int cellWidth = width / ticks.length, cellHeight = (height - 36) / 4;
+        float factor = Math.min(cellWidth / (1280f / 6), cellHeight / 171f);
+        for (int row = 0; row < 4; row++) for (int column = 0; column < ticks.length; column++) {
+            String from = row < 2 ? "standing" : "walking", to = row < 2 ? "walking" : "standing";
+            int x = column * cellWidth, y = 32 + row * cellHeight;
+            panel(graphics, x, y, cellWidth, cellHeight, (row < 2 ? "idle>walk " : "walk>idle ") + ((row & 1) == 0 ? "front " : "rear ") + "t=" + ticks[column]);
+            graphics.enableScissor(x + 3, y + 20, x + cellWidth - 3, y + cellHeight - 3);
+            graphics.pose().pushPose();
+            graphics.pose().translate(x + cellWidth / 2.0, y + 24 * factor, 100);
+            inkyeonProfile(graphics, variantState(shiny, 2f), 0f, 64f * factor, (row & 1) == 0 ? 0f : 180f, from, to, ticks[column]);
+            graphics.pose().popPose();
+            graphics.disableScissor();
+        }
+    }
+
     // The normal inventory helper hardcodes zero limb swing and zero stride.
     // Use the same loaded Cobblemon renderer with a real moving WALK pose here.
     private static void walkingProfile(GuiGraphics graphics, FloatingState state, float limbSwing, float scale, float yaw) {
+        inkyeonProfile(graphics, state, limbSwing, scale, yaw, null, null, 0);
+    }
+
+    private static void inkyeonProfile(GuiGraphics graphics, FloatingState state, float limbSwing, float scale, float yaw, String from, String to, int elapsed) {
         var repository = VaryingModelRepository.INSTANCE;
         var species = id("inkyeon");
         var model = repository.getPoser(species, state);
         var texture = repository.getTexture(species, state);
-        var context = new RenderContext();
-        context.put(RenderContext.Companion.getTEXTURE(), texture);
-        context.put(RenderContext.Companion.getSCALE(), 1f);
-        context.put(RenderContext.Companion.getSPECIES(), species);
-        context.put(RenderContext.Companion.getASPECTS(), state.getCurrentAspects());
-        context.put(RenderContext.Companion.getRENDER_STATE(), RenderContext.RenderState.PROFILE);
-        context.put(RenderContext.Companion.getPOSABLE_STATE(), state);
-        context.put(RenderContext.Companion.getDO_QUIRKS(), false);
-        model.setContext(context);
+        var context = configureModelContext(model, species, state);
         state.setCurrentModel(model);
-        state.setPoseToFirstSuitable(PoseType.WALK);
-        model.applyAnimations(null, state, limbSwing, .8f, state.getAnimationSeconds() * 20f, 0f, 0f);
+        if (from == null) {
+            state.setPoseToFirstSuitable(PoseType.WALK);
+            model.applyAnimations(null, state, limbSwing, .8f, state.getAnimationSeconds() * 20f, 0f, 0f);
+        } else advanceInkyeonTransition(model, state, from, to, 40, elapsed);
         graphics.pose().scale(scale, scale, -scale);
         var translation = model.getProfileTranslation();
         float profileScale = model.getProfileScale();
@@ -216,6 +236,19 @@ public final class VisualSmokeScreen extends Screen {
         });
         model.setDefault();
         Lighting.setupFor3DItems();
+    }
+
+    private static RenderContext configureModelContext(PosableModel model, ResourceLocation species, FloatingState state) {
+        var context = new RenderContext();
+        context.put(RenderContext.Companion.getTEXTURE(), VaryingModelRepository.INSTANCE.getTexture(species, state));
+        context.put(RenderContext.Companion.getSCALE(), 1f);
+        context.put(RenderContext.Companion.getSPECIES(), species);
+        context.put(RenderContext.Companion.getASPECTS(), state.getCurrentAspects());
+        context.put(RenderContext.Companion.getRENDER_STATE(), RenderContext.RenderState.PROFILE);
+        context.put(RenderContext.Companion.getPOSABLE_STATE(), state);
+        context.put(RenderContext.Companion.getDO_QUIRKS(), false);
+        model.setContext(context);
+        return context;
     }
 
     private static List<String> validateSliggooFace() {
@@ -254,6 +287,122 @@ public final class VisualSmokeScreen extends Screen {
             if (maxLeft - minLeft < .2f) throw new AssertionError("Inkyeon WALK test did not exercise rear-leg motion");
         }
         return samples;
+    }
+
+    private static void advanceInkyeonTransition(PosableModel model, FloatingState state, String from, String to, int startTick, int elapsed) {
+        state.setCurrentModel(model);
+        state.updateAge(startTick);
+        state.setPose(from);
+        model.applyAnimations(null, state, startTick * .55f, .8f, startTick, 0f, 0f);
+        model.moveToPose(state, model.getPose(to));
+        for (int tick = 0; tick <= elapsed; tick++) {
+            state.updateAge(startTick + tick);
+            state.preRender();
+            model.applyAnimations(null, state, (startTick + tick) * .55f, .8f, startTick + tick, 0f, 0f);
+        }
+    }
+
+    private static float[] rearTransform(PosableModel model) {
+        float[] values = new float[REAR_CHAIN.size() * 9];
+        int index = 0;
+        for (String name : REAR_CHAIN) {
+            var bone = model.getPart(name);
+            for (float value : new float[]{bone.x, bone.y, bone.z, bone.xRot, bone.yRot, bone.zRot, bone.xScale, bone.yScale, bone.zScale}) {
+                if (!Float.isFinite(value)) throw new AssertionError("Nonfinite rear-chain transform: " + name);
+                values[index++] = value;
+            }
+        }
+        return values;
+    }
+
+    // Pivot position through the actual baked Minecraft ModelPart hierarchy.
+    // Both global and body-local values distinguish body sway from a loose leg.
+    private static Vector3f rearFootPosition(PosableModel model, String side, boolean bodyLocal) {
+        PoseStack transforms = new PoseStack();
+        if (!bodyLocal) for (String bone : List.of("sylveon", "body")) model.getPart(bone).translateAndRotate(transforms);
+        for (String bone : List.of("back_legs", "back_leg_" + side, "knee_" + side, "ankle_" + side, "foot_" + side))
+            model.getPart(bone).translateAndRotate(transforms);
+        return new Vector3f().mulPosition(transforms.last().pose());
+    }
+
+    private static Map<String,Object> rearSnapshot(PosableModel model) {
+        Map<String,Object> snapshot = new LinkedHashMap<>();
+        float[] values = rearTransform(model);
+        for (int i = 0; i < REAR_CHAIN.size(); i++) {
+            int n = i * 9;
+            snapshot.put(REAR_CHAIN.get(i), Map.of("position", List.of(values[n], values[n+1], values[n+2]), "rotation_xyz", List.of(values[n+3], values[n+4], values[n+5]), "scale", List.of(values[n+6], values[n+7], values[n+8])));
+        }
+        for (String side : List.of("left", "right")) for (boolean bodyLocal : new boolean[]{false, true}) {
+            var point = rearFootPosition(model, side, bodyLocal);
+            snapshot.put(side + (bodyLocal ? "_foot_body_local" : "_foot_world"), List.of(point.x, point.y, point.z));
+        }
+        return snapshot;
+    }
+
+    private static Map<String,Object> validateInkyeonTransitions() {
+        Map<String,Object> output = new LinkedHashMap<>();
+        Map<String,Object> boundsReport = new LinkedHashMap<>();
+        float[] minima = new float[REAR_CHAIN.size() * 9], maxima = new float[minima.length];
+        Arrays.fill(minima, Float.POSITIVE_INFINITY);
+        Arrays.fill(maxima, Float.NEGATIVE_INFINITY);
+        float minLateral = Float.POSITIVE_INFINITY, maxLateral = Float.NEGATIVE_INFINITY;
+        // Cover a complete eight-second idle loop and multiple gait cycles.
+        // The native Sylveon comparison uses its real loaded pose and hierarchy.
+        for (String species : List.of("inkyeon", "sylveon")) for (String pose : List.of("standing", "battle_standing", "walking")) {
+            var state = variantState(false, 0);
+            var model = VaryingModelRepository.INSTANCE.getPoser(id(species), state);
+            configureModelContext(model, id(species), state);
+            state.setCurrentModel(model);
+            if (!model.getPoses().containsKey(pose)) continue;
+            state.setPose(pose);
+            float[] low = {Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY};
+            float[] high = {Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY};
+            for (int tick = 0; tick <= 160; tick++) {
+                state.updateAge(tick);
+                model.applyAnimations(null, state, tick * .55f, .8f, tick, 0f, 0f);
+                float[] values = rearTransform(model);
+                if (species.equals("inkyeon")) for (int i = 0; i < values.length; i++) {
+                    minima[i] = Math.min(minima[i], values[i]);
+                    maxima[i] = Math.max(maxima[i], values[i]);
+                }
+                for (String side : List.of("left", "right")) {
+                    var point = rearFootPosition(model, side, true);
+                    float[] coordinates = {point.x, point.y, point.z};
+                    for (int i = 0; i < 3; i++) { low[i] = Math.min(low[i], coordinates[i]); high[i] = Math.max(high[i], coordinates[i]); }
+                    if (species.equals("inkyeon")) { minLateral = Math.min(minLateral, point.x); maxLateral = Math.max(maxLateral, point.x); }
+                }
+                model.setDefault();
+            }
+            boundsReport.put(species + ":" + pose, Map.of("frames", 161, "body_local_foot_min_xyz", low, "body_local_foot_max_xyz", high));
+        }
+        List<Map<String,Object>> samples = new ArrayList<>();
+        for (boolean shiny : new boolean[]{false, true}) for (String idle : List.of("standing", "battle_standing")) for (boolean startsWalking : new boolean[]{false, true})
+            for (int startTick : new int[]{0, 20, 40, 80, 120}) for (int elapsed : new int[]{0, 1, 2, 3, 5, 10, 20}) {
+                String from = startsWalking ? "walking" : idle, to = startsWalking ? idle : "walking";
+                var state = variantState(shiny, startTick / 20f);
+                var model = VaryingModelRepository.INSTANCE.getPoser(id("inkyeon"), state);
+                configureModelContext(model, id("inkyeon"), state);
+                advanceInkyeonTransition(model, state, from, to, startTick, elapsed);
+                float[] values = rearTransform(model);
+                for (int i = 0; i < values.length; i++) {
+                    int component = i % 9;
+                    float tolerance = component >= 6 ? .0001f : component >= 3 ? .05f : .25f;
+                    if (values[i] < minima[i] - tolerance || values[i] > maxima[i] + tolerance)
+                        throw new AssertionError("Inkyeon transition escaped steady transform bounds: " + from + "->" + to + " t=" + elapsed + " bone=" + REAR_CHAIN.get(i / 9) + " component=" + component + " value=" + values[i] + " range=" + minima[i] + ".." + maxima[i]);
+                }
+                for (String side : List.of("left", "right")) {
+                    var foot = rearFootPosition(model, side, true);
+                    if (foot.x < minLateral - .03125f || foot.x > maxLateral + .03125f)
+                        throw new AssertionError("Inkyeon transition foot escaped lateral bounds: " + from + "->" + to + " t=" + elapsed + " side=" + side + " x=" + foot.x);
+                }
+                samples.add(Map.of("shiny", shiny, "from", from, "to", to, "start_tick", startTick, "transition_tick", elapsed, "current_pose", state.getCurrentPose(), "rear_chain", rearSnapshot(model)));
+                model.setDefault();
+            }
+        output.put("steady_bounds", boundsReport);
+        output.put("samples", samples);
+        output.put("lateral_tolerance_blocks", .03125f);
+        output.put("scope", "Actual loaded pose transitions, moving stride 0.8, body-local and world foot pivots, all rear ancestors and joints; 8-second idle loops plus native Sylveon comparison");
+        return output;
     }
 
     private void panel(GuiGraphics graphics, int x, int y, int w, int h, String label) {
