@@ -4,17 +4,17 @@ Supporting mod and pack files for Cobblemon Unyielding.
 
 ## Installation
 
-1. Download the current combined Unyielding mod from [Server-Jars](https://github.com/WeepingAngeIs/Server-Jars). The next combined release includes the complete Mawonna assets and data inside the JAR; follow that release's installation notes.
+1. Download [Unyielding 1.1.7](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.7.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules and riding definitions.
 2. Stop Minecraft and the server. Back up the world before updating.
 3. Replace the previous Unyielding JAR and separate UnyieldingQuests or Cobble Currency Bridge JARs in the server's and every client's `mods` folder with the combined file. Remove any separate companion module already included in that file. Keep only one copy of each module installed.
-4. Replace the previous pack in the server/world `datapacks` folder and each client's enabled `resourcepacks` folder. Remove older duplicate copies from the enabled pack list. If the server distributes this pack, update that copy as well.
+4. Remove or disable the old `Mawonna.zip` and individual Lunavee, Buzzeon, Ghost Jirachi and Creepyeon addon packs from the world `datapacks` and each client's `resourcepacks`. The JAR supplies them now; old external packs can override the fixes. Update any server-distributed copy containing those old assets. Other resource packs can remain enabled.
 5. Restart the server and clients. A resource-pack reload alone cannot install JAR changes.
 
-The combined release requires Cobblemon 1.8.4, CobbleDollars 2.x, Lightman's Currency 2.3.0.5 or newer, and their required libraries on both server and clients. Keep those external mods installed. `Unyielding-Mawonna.jar` in this repository is an older companion test artifact; use the current Server-Jars release for installation.
+The combined release requires Cobblemon 1.8.4, CobbleDollars 2.x, Lightman's Currency 2.3.0.5 or newer, and their required libraries on both server and clients. Keep those external mods installed. The separate `cu-rideable` JAR can remain if you use its native Pokemon riding support; it does not duplicate these nine custom entries. The ZIP remains available for separate pack workflows, but is unnecessary with the combined JAR.
 
 ## Builds and checks
 
-Builds and runtime checks run on GitHub-hosted runners. The download files are updated only after the cloud build, server checks and client load/reload checks pass. Those checks use a focused test environment; they do not cover the entire client modpack.
+This release's builds and game checks ran on GitHub-hosted runners, with a focused local compilation check to reduce repeated cloud runs. Downloads are published only after their required checks pass. The checks use a focused test environment; they do not cover the entire client modpack or sustained player-controlled flight.
 
 ## New command-only Pokemon
 
