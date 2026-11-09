@@ -1,0 +1,51 @@
+name: Verify Fairy Sliggoo face and Inkyeon gait
+on:
+  push:
+    branches: [fix/sliggoo-face-inkyeon-legs]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sliggoo-inkyeon-hotfix
+  cancel-in-progress: true
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      - name: Assemble requested asset fixes and audit unchanged content
+        run: |
+          python tools/build_model_hotfix.py
+          mkdir -p unyielding-artifact
+          cp dist/model-hotfix/Unyielding-1.1.8.jar unyielding-artifact/Unyielding-Mawonna.jar
+      - name: Prepare cloud display
+        run: sudo apt-get update -qq && sudo apt-get install -y xvfb libgl1-mesa-dri libopenal1
+      - name: Render actual final JAR and verify gait
+        env:
+          UNYIELDING_BUNDLED_PACK: 'true'
+        run: python tools/cloud_client_smoke.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Unyielding-1.1.8-verified
+          path: |
+            dist/model-hotfix/Unyielding-1.1.8.jar
+            dist/model-hotfix/Mawonna.zip
+            dist/model-hotfix/assembly-report.json
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Unyielding-1.1.8-render-evidence
+          path: dist/client/
+          if-no-files-found: warn

@@ -100,7 +100,7 @@ public class ClientSmoke {
         for (var existing : com.cobblemon.mod.common.api.pokemon.PokemonSpecies.getSpecies())
             species.put(existing.getResourceIdentifier(), existing);
         List<String> loaded = new ArrayList<>();
-        for (String name : List.of("lunavee", "buzzeon", "creepyeon", "ghost_jirachi")) {
+        for (String name : List.of("lunavee", "buzzeon", "creepyeon", "ghost_jirachi", "fairy_sliggoo", "inkyeon")) {
             var id = net.minecraft.resources.ResourceLocation.parse("cobblemon:" + name);
             if (species.containsKey(id)) continue;
             String resource = "data/cobblemon/species/custom/" + name + ".json";
