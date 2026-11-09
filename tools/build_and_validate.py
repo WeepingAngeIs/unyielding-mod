@@ -125,6 +125,8 @@ for resolver in ['mawonna','mawonna_flower','pink_corvisquire','fairy_sliggoo','
    with Image.open(io.BytesIO(files['assets/'+ns+'/'+path])) as im:im.verify()
 from validate_imported_pokemon import validate
 validate(files, r)
+from convert_imported_uv import convert
+(out/'imported-uv-conversion.json').write_text(json.dumps(convert(files), indent=2))
 install=out/'installable' 
 with zipfile.ZipFile(out/'Mawonna.zip','w',zipfile.ZIP_DEFLATED) as z:
  for name,data in sorted(files.items()):
