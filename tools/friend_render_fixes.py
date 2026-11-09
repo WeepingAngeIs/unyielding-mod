@@ -2,6 +2,11 @@
 import json
 
 SIZES = {'lunavee': 0.5, 'buzzeon': 0.4, 'creepyeon': 0.4, 'ghost_jirachi': 0.4}
+PORTRAITS = {
+    'buzzeon': (1.6, [-0.75, 0.64, 0]),
+    'creepyeon': (1.8, [-0.485, 0.89, 0]),
+    'uwu': (1.55, [-0.23, 0.16, 0]),
+}
 
 
 def apply(files):
@@ -36,6 +41,9 @@ def apply(files):
         if '/posers/' not in name or not name.startswith(tuple(f'assets/{ns}/' for ns in ['lunavee','buzzeon','creepyeon','uwu'])):
             continue
         poser = json.loads(files[name])
+        namespace = name.split('/')[1]
+        if namespace in PORTRAITS:
+            poser['portraitScale'], poser['portraitTranslation'] = PORTRAITS[namespace]
         for pose in poser['poses'].values():
             # Match the proven Corvislight correction: never interpolate the 1/16 scale.
             pose['transformTicks'] = 0

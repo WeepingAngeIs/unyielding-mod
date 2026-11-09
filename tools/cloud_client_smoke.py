@@ -31,7 +31,10 @@ try:
  for filename in result['actual_gui_screenshots']:
   assert (run/'visual-smoke'/filename).stat().st_size>10000,'Missing or empty GUI screenshot: '+filename
  log=(run/'logs/latest.log').read_text(errors='replace')
- for bad in ['Failed to load model file with identifier mawonna:', 'Unable to load model mawonna:', 'Caught error loading resourcepacks', 'Failed to load model file with identifier mawile_custom:']:
+ failures=['Caught error loading resourcepacks']
+ for namespace in ['lunavee','buzzeon','creepyeon','uwu','mawonna','mawile_custom']:
+  failures.extend(prefix+namespace+':' for prefix in ['Failed to load animation group ', 'Failed to load model file with identifier ', 'Unable to load model '])
+ for bad in failures:
   assert bad not in log,bad
  status='passed'
 finally:

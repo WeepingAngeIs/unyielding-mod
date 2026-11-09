@@ -129,6 +129,8 @@ from friend_progression import apply as apply_progression
 from friend_render_fixes import apply as apply_render_fixes, validate as validate_render_fixes
 (out/'friends-move-progression.json').write_text(json.dumps(apply_progression(files), indent=2))
 apply_render_fixes(files)
+from friend_animation_fixes import apply as apply_animation_fixes
+(out/'friends-animation-compatibility.json').write_text(json.dumps(apply_animation_fixes(files), indent=2))
 from friend_riding_seats import apply as apply_riding_seats
 (out/'friends-riding-seats.json').write_text(json.dumps(apply_riding_seats(files), indent=2))
 from convert_imported_uv import convert

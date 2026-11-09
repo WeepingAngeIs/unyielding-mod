@@ -72,13 +72,24 @@ public final class VisualSmokeScreen extends Screen {
             String species = SPECIES.get(column), sex = row < 2 ? "male" : "female";
             boolean portrait = (row & 1) == 1;
             int x = column * cellWidth, y = 32 + row * cellHeight;
-            panel(graphics, x, y, cellWidth, cellHeight, species + " " + sex + (portrait ? " portrait" : " profile"));
-            graphics.enableScissor(x + 3, y + 20, x + cellWidth - 3, y + cellHeight - 3);
+            panel(graphics, x, y, cellWidth, cellHeight, species + " " + sex + (portrait ? " portrait 32x32 (3x)" : " profile"));
+            int iconX = x + cellWidth / 2 - 48, iconY = y + 32;
+            if (portrait) {
+                graphics.fill(iconX - 1, iconY - 1, iconX + 97, iconY + 97, 0xFF93A5B8);
+                graphics.fill(iconX, iconY, iconX + 96, iconY + 96, 0xFF283442);
+                graphics.enableScissor(iconX, iconY, iconX + 96, iconY + 96);
+            } else graphics.enableScissor(x + 3, y + 20, x + cellWidth - 3, y + cellHeight - 3);
             graphics.pose().pushPose();
-            graphics.pose().translate(x + cellWidth / 2.0, y + (portrait ? cellHeight * .65 : 34), 100);
             FloatingState state = state(sex, 0);
-            if (portrait) GuiUtilsKt.drawPosablePortrait(id(species), graphics.pose(), 40f, 1f, false, state, 0f, 0f, 0f, 0f, 0f, 0f, false, 1f, 1f, 1f, 1f);
-            else profile(graphics, species, state, PoseType.PROFILE, 64f, 28f);
+            if (portrait) {
+                graphics.pose().translate(iconX, iconY, 100);
+                graphics.pose().scale(3f, 3f, 1f);
+                graphics.pose().translate(16, 0, 0);
+                GuiUtilsKt.drawPosablePortrait(id(species), graphics.pose(), 13f, 1f, false, state, 0f, 0f, 0f, 0f, 0f, 0f, false, 1f, 1f, 1f, 1f);
+            } else {
+                graphics.pose().translate(x + cellWidth / 2.0, y + 34, 100);
+                profile(graphics, species, state, PoseType.PROFILE, 64f, 28f);
+            }
             graphics.pose().popPose();
             graphics.disableScissor();
         }

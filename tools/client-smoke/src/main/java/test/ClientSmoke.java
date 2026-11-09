@@ -77,7 +77,7 @@ public class ClientSmoke {
                 var results = new LinkedHashMap<String,Object>();
                 results.putAll(Map.of("status","passed","resource_reload",true,"pack_retained",true,"original_uv_rejected",true,"vow_ring_baked",true,"species_textures",textures));
                 results.put("pack_source", bundled ? "bundled_mod_jar" : "external_resource_pack");
-                results.put("title_screen_species_loaded_from_shipped_data", prepareRenderSpecies(bundled));
+                results.put("title_screen_render_fixture", Map.of("species", prepareRenderSpecies(bundled), "fields", List.of("name", "baseScale"), "purpose", "GUI form-scale lookup only; full species parsing and gameplay are verified by server runtime smoke"));
                 mc.setScreen(new VisualSmokeScreen(results));
             } catch(Throwable t) {
                 try {Files.writeString(Path.of("client-smoke-failed.txt"),t.toString());}catch(Exception ignored){}
@@ -87,9 +87,10 @@ public class ClientSmoke {
         }));
     }
 
-    // A title screen has no server registry sync. Parse the exact tested pack's
-    // definitions with Cobblemon's parser so the GUI can obtain form base scales.
-    // Server-side species loading remains independently tested by runtime smoke.
+    // A title screen has neither server registry sync nor the ability registry.
+    // The GUI only needs name and baseScale; use those exact shipped values in a
+    // render-only fixture. Models, textures, poses and animations remain real.
+    // Full species parsing/gameplay remains independently tested by runtime smoke.
     private static List<String> prepareRenderSpecies(boolean bundled) throws Exception {
         var registry = com.cobblemon.mod.common.api.pokemon.PokemonSpecies.INSTANCE;
         Map<net.minecraft.resources.ResourceLocation, com.cobblemon.mod.common.pokemon.Species> species = new LinkedHashMap<>();
@@ -108,12 +109,14 @@ public class ClientSmoke {
                     try (var stream = jar.getInputStream(entry)) { json = new String(stream.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8); }
                 }
             } else json = Files.readString(Path.of("resourcepacks/mawonna-test").resolve(resource));
-            try (var reader = new java.io.BufferedReader(new java.io.StringReader(json))) {
-                var parsed = registry.parse(reader, id);
-                if (parsed == null) throw new AssertionError("Species parser returned null: " + name);
-                species.put(id, parsed);
-                loaded.add(name);
-            }
+            var definition = com.google.gson.JsonParser.parseString(json).getAsJsonObject();
+            if (definition.has("forms") && !definition.getAsJsonArray("forms").isEmpty())
+                throw new AssertionError("Render fixture requires explicit form handling for " + name);
+            var fixture = new com.cobblemon.mod.common.pokemon.Species();
+            fixture.setName(definition.get("name").getAsString());
+            fixture.setBaseScale(definition.get("baseScale").getAsFloat());
+            species.put(id, fixture);
+            loaded.add(name);
         }
         if (!loaded.isEmpty()) registry.reload(species);
         return loaded;
