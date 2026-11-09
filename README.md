@@ -4,7 +4,7 @@ Supporting mod and pack files for Cobblemon Unyielding.
 
 ## Installation
 
-1. Download [Unyielding 1.1.7](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.7.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules and riding definitions.
+1. Download [Unyielding 1.1.8](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.8.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules and riding definitions.
 2. Stop Minecraft and the server. Back up the world before updating.
 3. Replace the previous Unyielding JAR and separate UnyieldingQuests or Cobble Currency Bridge JARs in the server's and every client's `mods` folder with the combined file. Remove any separate companion module already included in that file. Keep only one copy of each module installed.
 4. Remove or disable the old `Mawonna.zip` and individual Lunavee, Buzzeon, Ghost Jirachi and Creepyeon addon packs from the world `datapacks` and each client's `resourcepacks`. The JAR supplies them now; old external packs can override the fixes. Update any server-distributed copy containing those old assets. Other resource packs can remain enabled.
@@ -32,3 +32,5 @@ Append `gender=male` or `gender=female` to select a sex. These four currently ha
 The friends' revised learnsets start with four moves and unlock later moves through leveling. See [the full schedules](docs/friends-move-progression.md). Existing Pokemon can retain already learned moves. Lunavee uses Eevee's normal scale; Buzzeon, Creepyeon and Ghost Jirachi have reduced world sizes. The zero-transition scale correction matches the earlier Corvislight fix. Buzzeon's ears and wings angle outward. Ghost Jirachi has a proper English name alias and corrected side-crystal angles, preserving the raised purple crown and original animation clips. Portraits are centered on faces. Lunavee's star scale keyframes are expanded into the vector format that Cobblemon accepts, so its animation group loads.
 
 All nine custom species have riding seat locators. The combined release supplies their riding definitions. Rendering checks capture actual client portraits, profiles and flight poses and verify scale throughout pose changes. These are focused client checks, not a full modpack play session.
+
+Fairy Sliggoo uses the original Sliggoo eyes and mouth. Inkyeon has a shorter rear stride and corrected sideways alignment; its normal/shiny gait and 280 idle/walk transition samples passed actual client rendering checks. See the [1.1.8 verification](https://github.com/WeepingAngeIs/Server-Jars/blob/main/releases/Unyielding-1.1.8-Validation.txt).
