@@ -215,8 +215,12 @@ public final class MawonnaCompanion {
         if (stack.isEmpty() || !net.neoforged.fml.ModList.get().isLoaded("solonion")
                 || stack.getItem().getFoodProperties(stack, owner) == null) return null;
         double diversity = OnionScore.forFood(stack, owner);
-        // Account for binary floating point in the mod's 9.8 + 0.2 boundary.
-        return diversity >= 10.0 - 1.0e-9 ? BuiltInRegistries.ITEM.getKey(stack.getItem()).toString() : null;
+        return qualifiesDiversity(diversity) ? BuiltInRegistries.ITEM.getKey(stack.getItem()).toString() : null;
+    }
+
+    private static boolean qualifiesDiversity(double score) {
+        // The mod calculates in binary floating point, including when adding food effect bonuses.
+        return score >= 8.0 - 1.0e-9;
     }
 
     // The other Unyielding features also run in installations without Spice of Life Onion.
@@ -452,6 +456,8 @@ public final class MawonnaCompanion {
         ListTag legacy = new ListTag();
         legacy.add(StringTag.valueOf("mawonna:dish/burger"));
         diner.getPersistentData().put(MEAL_IDS, legacy);
+        require(!qualifiesDiversity(7.99) && qualifiesDiversity(8.0) && qualifiesDiversity(8.01),
+                "Diversity threshold must include exactly eight");
         require(mealIds(diner).contains("farmersdelight:hamburger"), "Legacy burger credit lost");
         require(approvedMeal(new ItemStack(net.minecraft.world.item.Items.CARROT), null) == null, "Carrot qualified");
         for (String id : List.of("farmersdelight:baked_cod_stew", "farmersdelight:honey_glazed_ham",

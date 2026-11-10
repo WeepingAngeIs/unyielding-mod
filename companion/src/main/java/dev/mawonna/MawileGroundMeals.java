@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.UUID;
 import net.minecraft.world.level.pathfinder.Path;
 
-/** Short-range meal collection for a trainer's sent-out Mawile. */
+/** Wild and owned Mawile respond to food held or dropped by nearby players. */
 final class MawileGroundMeals {
     private record Bite(ItemStack food, int finishTick) {}
     private static final Map<PokemonEntity, Bite> bites = new WeakHashMap<>();
