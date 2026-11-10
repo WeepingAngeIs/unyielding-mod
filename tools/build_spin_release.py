@@ -71,7 +71,7 @@ for mod,version in [('mawonna','1.0.2'),('unyieldingquests','1.6.9')]:
     assert count==1
     text=text[:block.start()]+replaced+text[block.end():]
 entries[meta]=text.encode()
-entries[manifest]=re.sub(rb'Implementation-Version: [^\r\n]+',b'Implementation-Version: 1.1.8',base[manifest])
+entries[manifest]=re.sub(rb'Implementation-Version: [^\r\n]+',b'Implementation-Version: 1.1.9',base[manifest])
 entries[manifest]=re.sub(rb'Unyielding-Quests-Version: [^\r\n]+',b'Unyielding-Quests-Version: 1.6.9',entries[manifest])
 oldmeta=tomllib.loads(base[meta].decode()); newmeta=tomllib.loads(text)
 for m in oldmeta['mods']:
@@ -86,11 +86,11 @@ for n,v in base.items():
         assert entries[n]==v,n
 for n,v in entries.items():
     if n.endswith('.json'):json.loads(v)
-dest=out/'Unyielding-1.1.8.jar'
+dest=out/'Unyielding-1.1.9.jar'
 with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
     for n,v in sorted(entries.items()):z.writestr(n,v)
 assert read(dest)==entries
-report={'status':'passed','version':'1.1.8','sha256':sha(dest.read_bytes()),'baseline_sha256':sha(base_path.read_bytes()),'mod_ids':[m['modId'] for m in newmeta['mods']], 'changed_entries':sorted(changed),'added_entries':sorted(set(entries)-set(base)),'preserved_entries':len(base)-len(changed),'portrait_model_species_walk_preserved':True}
+report={'status':'passed','version':'1.1.9','sha256':sha(dest.read_bytes()),'baseline_sha256':sha(base_path.read_bytes()),'mod_ids':[m['modId'] for m in newmeta['mods']], 'changed_entries':sorted(changed),'added_entries':sorted(set(entries)-set(base)),'preserved_entries':len(base)-len(changed),'portrait_model_species_walk_preserved':True}
 (out/'assembly-report.json').write_text(json.dumps(report,indent=2)+'\n')
 (out/'SHA256SUMS').write_text(report['sha256']+'  '+dest.name+'\n')
 (root/'unyielding-artifact').mkdir(exist_ok=True)

@@ -2,7 +2,7 @@
   "farmersdelight:barbecue_stick": "mawonna:dish/skewer",
   "farmersdelight:egg_sandwich": "mawonna:dish/sandwich",
   "farmersdelight:chicken_sandwich": "mawonna:dish/sandwich",
-  "farmersdelight:hamburger": "mawonna:dish/burger",
+  "farmersdelight:hamburger": "farmersdelight:hamburger",
   "farmersdelight:bacon_sandwich": "mawonna:dish/sandwich",
   "farmersdelight:mutton_wrap": "mawonna:dish/wrap",
   "farmersdelight:dumplings": "farmersdelight:dumplings",
@@ -33,7 +33,7 @@
   "mynethersdelight:chilidog": "mynethersdelight:chilidog",
   "mynethersdelight:sausage_and_potatoes": "mynethersdelight:sausage_and_potatoes",
   "mynethersdelight:breakfast_sampler": "mynethersdelight:breakfast_sampler",
-  "mynethersdelight:nether_burger": "mawonna:dish/burger",
+  "mynethersdelight:nether_burger": "mynethersdelight:nether_burger",
   "mynethersdelight:blue_tenderloin_steak": "mynethersdelight:blue_tenderloin_steak",
   "mynethersdelight:fried_hoglin_chop": "mynethersdelight:fried_hoglin_chop",
   "mynethersdelight:twisted_ghasta": "mynethersdelight:twisted_ghasta",
@@ -50,8 +50,8 @@
   "twilightdelight:naga_stew": "twilightdelight:naga_stew",
   "twilightdelight:naga_meatball_congee": "twilightdelight:naga_meatball_congee",
   "twilightdelight:meef_wrap": "mawonna:dish/wrap",
-  "twilightdelight:ghast_burger": "mawonna:dish/burger",
-  "twilightdelight:hydra_burger": "mawonna:dish/burger",
+  "twilightdelight:ghast_burger": "twilightdelight:ghast_burger",
+  "twilightdelight:hydra_burger": "twilightdelight:hydra_burger",
   "twilightdelight:glowstew": "twilightdelight:glowstew",
   "twilightdelight:glow_venison_rib_with_pasta": "twilightdelight:glow_venison_rib_with_pasta",
   "twilightdelight:mushgloom_meef_pasta": "twilightdelight:mushgloom_meef_pasta",
@@ -83,5 +83,7 @@
   "ends_delight:enderman_gristle_stew": "ends_delight:enderman_gristle_stew",
   "ends_delight:shulker_soup": "ends_delight:shulker_soup",
   "ends_delight:ender_noodle": "ends_delight:ender_noodle",
-  "ends_delight:ender_bamboo_rice": "ends_delight:ender_bamboo_rice"
+  "ends_delight:ender_bamboo_rice": "ends_delight:ender_bamboo_rice",
+  "farmersdelight:honey_glazed_ham": "farmersdelight:honey_glazed_ham",
+  "eternal_starlight_delight:starlight_hamburger": "eternal_starlight_delight:starlight_hamburger"
 }

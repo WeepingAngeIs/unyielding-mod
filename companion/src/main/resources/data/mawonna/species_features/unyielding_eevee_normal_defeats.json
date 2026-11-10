@@ -6,5 +6,15 @@
   "min": 0,
   "max": 500,
   "default": 0,
-  "visible": true
+  "visible": true,
+  "display": {
+    "colour": [
+      183,
+      118,
+      192
+    ],
+    "name": "mawonna.ui.eevee_normal",
+    "overlay": "cobblemon:textures/gui/summary/summary_stats_generic_overlay.png",
+    "underlay": "cobblemon:textures/gui/summary/summary_stats_other_bar.png"
+  }
 }

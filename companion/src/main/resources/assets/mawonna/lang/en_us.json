@@ -10,5 +10,8 @@
   "mawonna.message.married": "A vow sealed with love. Mawonna evolution is now unlocked; open your Pokemon's evolution option.",
   "mawonna.message.already_married": "This Mawile has already exchanged vows.",
   "mawonna.ui.distinct_meals": "Different meals",
-  "mawonna.ui.verified_dark_defeats": "Defeat Dark Types"
+  "mawonna.ui.verified_dark_defeats": "Defeat Dark Types",
+  "mawonna.ui.eevee_gastly": "Defeat Gastly",
+  "mawonna.ui.eevee_normal": "Defeat Normal Types",
+  "mawonna.ui.eevee_bug": "Defeat Bug Types"
 }

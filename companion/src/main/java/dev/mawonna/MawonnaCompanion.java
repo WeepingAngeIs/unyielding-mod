@@ -62,6 +62,7 @@ public final class MawonnaCompanion {
         NeoForge.EVENT_BUS.addListener(this::onInteract);
         NeoForge.EVENT_BUS.addListener(this::commands);
         NeoForge.EVENT_BUS.addListener(this::midnightOffers);
+        NeoForge.EVENT_BUS.addListener(MawileGroundMeals::tick);
         CobblemonEvents.EVOLUTION_ACCEPTED.subscribe(Priority.NORMAL, (Consumer<com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionAcceptedEvent>) event -> {
             if (event.getEvolution().getId().equals("eevee_lunavee") && !event.getEvolution().test(event.getPokemon())) event.cancel();
         });
@@ -177,6 +178,7 @@ public final class MawonnaCompanion {
         Set<String> ids = new LinkedHashSet<>();
         ListTag tags = pokemon.getPersistentData().getList(MEAL_IDS, Tag.TAG_STRING);
         for (Tag tag : tags) ids.add(tag.getAsString());
+        if (ids.remove("mawonna:dish/burger")) ids.add("farmersdelight:hamburger");
         return ids;
     }
     static boolean rememberMeal(Pokemon pokemon, String canonical) {
@@ -195,6 +197,16 @@ public final class MawonnaCompanion {
     private static void message(ServerPlayer player, String key, Object... values) {
         player.sendSystemMessage(Component.translatable("mawonna.message." + key, values));
     }
+    static String approvedMeal(ItemStack stack) {
+        FoodProperties food = stack.get(DataComponents.FOOD);
+        if (food == null || food.nutrition() < 6 || food.saturation() < 7.199F) return null;
+        return DISHES.get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
+    }
+
+    static void reportMeal(ServerPlayer player, Pokemon pokemon) {
+        message(player,"meal",Math.min(49,mealIds(pokemon).size()),value(pokemon,DEFEATS));
+    }
+
     private void onInteract(PlayerInteractEvent.EntityInteract event) {
         if (event.getHand() != InteractionHand.MAIN_HAND || !(event.getTarget() instanceof PokemonEntity entity)) return;
         Pokemon pokemon = entity.getPokemon();
@@ -204,8 +216,7 @@ public final class MawonnaCompanion {
         FoodProperties food = stack.get(DataComponents.FOOD);
         if (!ring && food == null) return;
         String canonical = DISHES.get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
-        // Unlisted foods retain Cobblemon's ordinary feeding behavior but never earn meal progress.
-        if (!ring && canonical == null) return;
+        // Resolve an attempted food interaction here so it cannot become a player bite.
         // Own eligible interactions on both sides to prevent ordinary feeding consuming the same item twice.
         event.setCanceled(true);
         event.setCancellationResult(InteractionResult.SUCCESS);
@@ -226,7 +237,7 @@ public final class MawonnaCompanion {
             message(player,"married");
             return;
         }
-        if (canonical == null || food.nutrition() < 6 || food.saturation() < 7.199F) { message(player,"ineligible"); return; }
+        if (approvedMeal(stack) == null) { message(player,"ineligible"); return; }
         if (!rememberMeal(pokemon, canonical)) { message(player,"repeat",mealIds(pokemon).size()); return; }
         ItemStack remainder = stack.getCraftingRemainingItem();
         stack.shrink(1);
@@ -248,6 +259,10 @@ public final class MawonnaCompanion {
         Pokemon pokemon = party.get(slot - 1);
         String key = pokemon == null ? null : counterKey(pokemon);
         if (key == null) {
+            if (pokemon != null && species(pokemon).equals("eevee")) {
+                owner.sendSystemMessage(Component.literal("For Eevee use /eeveedefeats <gastly|normal|bug> " + slot + " <complete|add amount>."));
+                return 0;
+            }
             owner.sendSystemMessage(Component.literal("Choose a party slot containing Mawile, Corvisquire, Sliggoo or Sylveon."));
             return 0;
         }
@@ -260,6 +275,20 @@ public final class MawonnaCompanion {
         }
         owner.sendSystemMessage(Component.literal("Slot " + slot + " - ").append(pokemon.getDisplayName(false))
                 .append(": " + count + " / " + goal + " Dark types defeated."));
+        return 1;
+    }
+
+    private static int adjustEevee(ServerPlayer player, int slot, String route, int goal, int amount) {
+        Pokemon pokemon = com.cobblemon.mod.common.Cobblemon.INSTANCE.getStorage().getParty(player).get(slot - 1);
+        if (pokemon == null || !species(pokemon).equals("eevee")) {
+            player.sendSystemMessage(Component.literal("Choose a party slot containing Eevee."));
+            return 0;
+        }
+        String key = "unyielding_eevee_" + route + "_defeats";
+        int next = Math.min(goal, value(pokemon, key) + amount);
+        set(pokemon, key, next);
+        offerEvolution(pokemon);
+        player.sendSystemMessage(Component.literal("Eevee in slot " + slot + ": " + next + "/" + goal + " " + route + " defeats."));
         return 1;
     }
 
@@ -293,6 +322,18 @@ public final class MawonnaCompanion {
                                     source.sendSuccess(() -> Component.literal("Spawned " + total + " / " + count + " " + sp.getName()), false);
                                     return total;
                                 }))));
+        var eeveeCommand = Commands.literal("eeveedefeats").requires(source -> source.hasPermission(2));
+        for (String route : List.of("gastly", "normal", "bug")) {
+            int goal = route.equals("normal") ? 500 : 1000;
+            eeveeCommand.then(Commands.literal(route)
+                    .then(Commands.argument("slot", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1,6))
+                            .then(Commands.literal("complete").executes(ctx -> adjustEevee(ctx.getSource().getPlayerOrException(),
+                                    ctx.getArgument("slot", Integer.class), route, goal, goal)))
+                            .then(Commands.literal("add").then(Commands.argument("amount", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1,1000))
+                                    .executes(ctx -> adjustEevee(ctx.getSource().getPlayerOrException(),ctx.getArgument("slot", Integer.class),
+                                            route,goal,ctx.getArgument("amount",Integer.class)))))));
+        }
+        event.getDispatcher().register(eeveeCommand);
         var slots = com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 6);
         var amounts = com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 1000);
         event.getDispatcher().register(Commands.literal("darkdefeats").requires(source -> source.hasPermission(2))
@@ -385,6 +426,17 @@ public final class MawonnaCompanion {
                 .findFirst().orElseThrow(() -> new IllegalStateException("Missing evolution " + id)).test(pokemon);
     }
     static void selfTest(net.minecraft.core.RegistryAccess registry) {
+        Pokemon diner = testPokemon("mawile");
+        ListTag legacy = new ListTag();
+        legacy.add(StringTag.valueOf("mawonna:dish/burger"));
+        diner.getPersistentData().put(MEAL_IDS, legacy);
+        for (String id : List.of("farmersdelight:hamburger", "mynethersdelight:nether_burger",
+                "twilightdelight:ghast_burger", "twilightdelight:hydra_burger", "farmersdelight:honey_glazed_ham")) {
+            ItemStack serving = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(id)));
+            require(id.equals(approvedMeal(serving)), "Meal rejected or grouped: " + id);
+            require(rememberMeal(diner,id) != id.equals("farmersdelight:hamburger"), "Legacy burger migration failed: " + id);
+            require(!rememberMeal(diner,id), "Duplicate meal credited: " + id);
+        }
         GhostJirachiEyeAspect.selfTest();
         GhostJirachiEyeAspect.selfTestPokemon();
         testFaintEvent(ActorType.WILD,true,true,1);
