@@ -29,6 +29,11 @@ TWILIGHT_FOREST = {
     'url': 'https://edge.forgecdn.net/files/7797/302/twilightforest-1.21.1-4.8.3345-universal.jar',
     'sha1': '9cfd4154928433e2f1f6cfc3deb48c284debb580',
 }
+MEAL_AUDIT_MODS = [('eternal_starlight_delight-neoforge-1.4.0.jar', 'https://edge.forgecdn.net/files/8955/160/eternal_starlight_delight-neoforge-1.4.0.jar', 'eb01e0ac5c994492a3880b84cf56a1ff643b2c67c824b629b9aea6054dfdd69f6ff47ebbd5399919a760327249353d1b9414f463b1dc6e3058381e86a11bc9d4'),
+    ('eternalstarlight-0.9.1+1.21.1+neoforge.jar', 'https://edge.forgecdn.net/files/8931/80/eternalstarlight-0.9.1%2b1.21.1%2bneoforge.jar', '2bd7d2fbc478b3cc2b6426ff9cffddf8800b46aa2ca5a4570f9d9ed2f50d4aeadc83bea0c5c410bf26c2e9e0c6cc3296cb8adff233787897265aa2d7a1ad9a71'),
+    ('CreativeCore_NEOFORGE_v2.13.49_mc1.21.1.jar', 'https://edge.forgecdn.net/files/8975/261/CreativeCore_NEOFORGE_v2.13.49_mc1.21.1.jar', '344ebfc6ab4043620a66f127bacfe115f897e01ce130aa0b154d59672f5a7bde27e522201c1737c0062c03940ecd9ec44cfb2ebbe9da0abfbf0a09e84b31a765'),
+    ('Spice of Life Onion_NEOFORGE_v1.5.6_mc1.21.1.jar', 'https://edge.forgecdn.net/files/7675/823/Spice%20of%20Life%20Onion_NEOFORGE_v1.5.6_mc1.21.1.jar', '15a08552a68e75e692a13e7ac82586f877991eb1fad2f40b06e1304c5f5d7aa67fa00f704448a80a4113ecba79b262bda131f3c2043851228befeaa0025f8c2f'),
+    ('oceansdelight-neoforge-1.0.4-1.21.1.jar', 'https://edge.forgecdn.net/files/7939/973/oceansdelight-neoforge-1.0.4-1.21.1.jar', '8079160938175f9d0c1b8f10587c40e3c6b54210511109331f0bb37a845aa90522f60c4e668688e8a0b4023e0464b80d44f50a6af39572fe519d48c9581a9f15')]
 HEADERS = {'User-Agent': 'unyielding-mod-cloud-runtime-smoke/1.0 (GitHub Actions)'}
 
 def fetch_json(url):
@@ -109,6 +114,9 @@ def main():
         chosen=next((x for x in info['files'] if x.get('primary')),info['files'][0])
         download(chosen['url'],mods/chosen['filename'],chosen['hashes']['sha512'])
         manifest.append({'label':label,'version_id':version,'file':chosen['filename'],'sha512':chosen['hashes']['sha512']})
+    for filename, url, digest in MEAL_AUDIT_MODS:
+        download(url, mods/filename, digest)
+        manifest.append({'label':filename, 'sha512':digest})
     forest=mods/TWILIGHT_FOREST['filename']
     download(TWILIGHT_FOREST['url'],forest)
     if hashlib.sha1(forest.read_bytes()).hexdigest()!=TWILIGHT_FOREST['sha1']:

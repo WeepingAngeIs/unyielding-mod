@@ -6,12 +6,20 @@ group = 'dev.mawonna'
 version = '1.0.2'
 base.archivesName = 'mawonna-companion'
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+    exclusiveContent {
+        forRepository { maven { url = 'https://cursemaven.com' } }
+        filter { includeGroup 'curse.maven' }
+    }
+}
 neoForge {
     version = '21.1.249'
     mods { mawonna { sourceSet(sourceSets.main) } }
 }
 dependencies {
+    compileOnly 'curse.maven:spice-of-life-onion-878047:7675823'
+    compileOnly 'curse.maven:creativecore-257814:8975261'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly fileTree(dir: 'compile-libs', include: ['*.jar'])
     compileOnly 'org.jetbrains.kotlin:kotlin-stdlib:2.2.0'

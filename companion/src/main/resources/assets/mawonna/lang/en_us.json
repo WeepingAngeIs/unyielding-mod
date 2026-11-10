@@ -1,10 +1,12 @@
 {
   "item.mawonna.mawilite_vow_ring": "Mawilite Vow Ring",
+  "mawonna.ring.promise": "Mawile's Promise Ring",
   "mawonna.message.owner": "Only your own Mawile can share these meals or accept your vow.",
   "mawonna.message.battle": "Wait until your Mawile is out of battle.",
   "mawonna.message.repeat": "Mawile has already shared this dish. Different meals: %s / 49.",
   "mawonna.message.meal": "A meal to remember! Different meals: %s / 49. Dark defeats: %s / 666.",
-  "mawonna.message.ineligible": "This is not an eligible substantial prepared meal.",
+  "mawonna.message.ineligible": "Mawile needs food with at least 10 Diversity.",
+  "mawonna.message.drop_food": "Drop one serving near Mawile to share it.",
   "mawonna.message.requirements": "Your vow needs 49 different meals and 666 wild/NPC Dark defeats. Progress: %s / 49 meals, %s / 666 defeats.",
   "mawonna.message.confirm": "Your bond is ready. Sneak and use the ring again to exchange vows. The ring will be consumed.",
   "mawonna.message.married": "A vow sealed with love. Mawonna evolution is now unlocked; open your Pokemon's evolution option.",

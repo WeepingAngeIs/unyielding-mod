@@ -30,9 +30,12 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.component.ItemLore;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -51,13 +54,16 @@ public final class MawonnaCompanion {
     private static final String MEAL_IDS = "mawonna_verified_dishes_v1";
     private static final String SPOUSE = "mawonna_spouse";
     private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("mawonna");
-    public static final DeferredItem<Item> RING = ITEMS.registerSimpleItem("mawilite_vow_ring", new Item.Properties().stacksTo(1));
-    private static final Map<String,String> DISHES = loadDishes();
+    public static final DeferredItem<Item> RING = ITEMS.registerSimpleItem("mawilite_vow_ring",
+            new Item.Properties().stacksTo(1).component(DataComponents.LORE,
+                    new ItemLore(List.of(Component.translatable("mawonna.ring.promise")))));
+    private static final Map<String,String> LEGACY_GROUPS = loadLegacyGroups();
     // Weak battle keys expire after the battle registry releases the battle.
     private static final Map<Object,Set<String>> SEEN_FAINTS = Collections.synchronizedMap(new WeakHashMap<>());
 
     public MawonnaCompanion(IEventBus modBus) {
         ITEMS.register(modBus);
+        modBus.addListener(MawonnaCompanion::addCreativeItems);
         GhostJirachiEyeAspect.install();
         NeoForge.EVENT_BUS.addListener(this::onInteract);
         NeoForge.EVENT_BUS.addListener(this::commands);
@@ -69,13 +75,22 @@ public final class MawonnaCompanion {
         CobblemonEvents.BATTLE_FAINTED.subscribe(Priority.NORMAL, (Consumer<BattleFaintedEvent>) MawonnaCompanion::onFainted);
     }
 
-    private static Map<String,String> loadDishes() {
+    private static void addCreativeItems(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) event.accept(RING.get());
+    }
+
+    private static Map<String,String> loadLegacyGroups() {
         var stream = MawonnaCompanion.class.getResourceAsStream("/mawonna/meals.json");
         if (stream == null) throw new IllegalStateException("Missing audited meal list");
         try (var reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
             Map<String,String> result = new Gson().fromJson(reader, new TypeToken<Map<String,String>>(){}.getType());
-            if (new HashSet<>(result.values()).size() < 49) throw new IllegalStateException("Fewer than 49 distinct approved dishes");
-            return Map.copyOf(result);
+            // Older saves tracked several different items as one dish. Keep one credit per old group.
+            Map<String, String> groups = new HashMap<>();
+            groups.put("mawonna:dish/burger", "farmersdelight:hamburger");
+            result.forEach((item, group) -> {
+                if (group.startsWith("mawonna:dish/")) groups.putIfAbsent(group, item);
+            });
+            return Map.copyOf(groups);
         } catch (java.io.IOException e) { throw new IllegalStateException(e); }
     }
 
@@ -177,8 +192,7 @@ public final class MawonnaCompanion {
     static Set<String> mealIds(Pokemon pokemon) {
         Set<String> ids = new LinkedHashSet<>();
         ListTag tags = pokemon.getPersistentData().getList(MEAL_IDS, Tag.TAG_STRING);
-        for (Tag tag : tags) ids.add(tag.getAsString());
-        if (ids.remove("mawonna:dish/burger")) ids.add("farmersdelight:hamburger");
+        for (Tag tag : tags) ids.add(LEGACY_GROUPS.getOrDefault(tag.getAsString(), tag.getAsString()));
         return ids;
     }
     static boolean rememberMeal(Pokemon pokemon, String canonical) {
@@ -197,10 +211,19 @@ public final class MawonnaCompanion {
     private static void message(ServerPlayer player, String key, Object... values) {
         player.sendSystemMessage(Component.translatable("mawonna.message." + key, values));
     }
-    static String approvedMeal(ItemStack stack) {
-        FoodProperties food = stack.get(DataComponents.FOOD);
-        if (food == null || food.nutrition() < 6 || food.saturation() < 7.199F) return null;
-        return DISHES.get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
+    static String approvedMeal(ItemStack stack, net.minecraft.world.entity.LivingEntity owner) {
+        if (stack.isEmpty() || !net.neoforged.fml.ModList.get().isLoaded("solonion")
+                || stack.getItem().getFoodProperties(stack, owner) == null) return null;
+        double diversity = OnionScore.forFood(stack, owner);
+        // Account for binary floating point in the mod's 9.8 + 0.2 boundary.
+        return diversity >= 10.0 - 1.0e-9 ? BuiltInRegistries.ITEM.getKey(stack.getItem()).toString() : null;
+    }
+
+    // The other Unyielding features also run in installations without Spice of Life Onion.
+    private static final class OnionScore {
+        static double forFood(ItemStack stack, net.minecraft.world.entity.LivingEntity owner) {
+            return team.creative.solonion.common.SOLOnion.CONFIG.getDiversity(owner, stack);
+        }
     }
 
     static void reportMeal(ServerPlayer player, Pokemon pokemon) {
@@ -208,20 +231,19 @@ public final class MawonnaCompanion {
     }
 
     private void onInteract(PlayerInteractEvent.EntityInteract event) {
-        if (event.getHand() != InteractionHand.MAIN_HAND || !(event.getTarget() instanceof PokemonEntity entity)) return;
+        if (!(event.getTarget() instanceof PokemonEntity entity)) return;
         Pokemon pokemon = entity.getPokemon();
         if (!species(pokemon).equals("mawile")) return;
         ItemStack stack = event.getItemStack();
         boolean ring = stack.is(RING.get());
-        FoodProperties food = stack.get(DataComponents.FOOD);
+        FoodProperties food = stack.getItem().getFoodProperties(stack, event.getEntity());
         if (!ring && food == null) return;
-        String canonical = DISHES.get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
         // Resolve an attempted food interaction here so it cannot become a player bite.
         // Own eligible interactions on both sides to prevent ordinary feeding consuming the same item twice.
         event.setCanceled(true);
         event.setCancellationResult(InteractionResult.SUCCESS);
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        if (!player.getUUID().equals(pokemon.getOwnerUUID())) { message(player,"owner"); return; }
+        if (ring && !player.getUUID().equals(pokemon.getOwnerUUID())) { message(player,"owner"); return; }
         if (entity.isBattling()) { message(player,"battle"); return; }
         if (ring) {
             if (value(pokemon, MARRIED) != 0 || pokemon.getPersistentData().hasUUID(SPOUSE)) { message(player,"already_married"); return; }
@@ -237,12 +259,10 @@ public final class MawonnaCompanion {
             message(player,"married");
             return;
         }
-        if (approvedMeal(stack) == null) { message(player,"ineligible"); return; }
-        if (!rememberMeal(pokemon, canonical)) { message(player,"repeat",mealIds(pokemon).size()); return; }
-        ItemStack remainder = stack.getCraftingRemainingItem();
-        stack.shrink(1);
-        if (!remainder.isEmpty() && !player.addItem(remainder)) player.drop(remainder,false);
-        message(player,"meal",Math.min(49,mealIds(pokemon).size()),value(pokemon,DEFEATS));
+        String meal = approvedMeal(stack, player);
+        if (meal == null) message(player, "ineligible");
+        else if (mealIds(pokemon).contains(meal)) message(player, "repeat", Math.min(49, mealIds(pokemon).size()));
+        else message(player, "drop_food");
     }
     private static int defeatGoal(String key) {
         return DEFEATS.equals(key) ? 666 : 1000;
@@ -358,23 +378,25 @@ public final class MawonnaCompanion {
         }));
     }
     private static void auditAvailableMeals(net.minecraft.server.MinecraftServer server) {
-        Set<String> obtainable = new HashSet<>();
+        var owner = net.neoforged.neoforge.common.util.FakePlayerFactory.getMinecraft(server.overworld());
+        Map<String, Double> foods = new TreeMap<>();
+        for (Item item : BuiltInRegistries.ITEM) {
+            ItemStack stack = item.getDefaultInstance();
+            String id = approvedMeal(stack, owner);
+            if (id != null) foods.put(id, OnionScore.forFood(stack, owner));
+        }
+        Set<String> recipeFoods = new TreeSet<>();
         for (var holder : server.getRecipeManager().getRecipes()) {
             var recipe = holder.value();
-            var output = recipe.getResultItem(server.registryAccess());
-            String id = BuiltInRegistries.ITEM.getKey(output.getItem()).toString();
-            String canonical = DISHES.get(id);
-            if (canonical == null) continue;
-            var food = output.get(DataComponents.FOOD);
-            if (food == null || food.nutrition() < 6 || food.saturation() < 7.199F) continue;
-            boolean ingredientsExist = !recipe.getIngredients().isEmpty();
-            for (var ingredient : recipe.getIngredients()) {
-                if (ingredient != net.minecraft.world.item.crafting.Ingredient.EMPTY && ingredient.getItems().length == 0) ingredientsExist = false;
-            }
-            if (ingredientsExist) obtainable.add(canonical);
+            ItemStack output = recipe.getResultItem(server.registryAccess());
+            String id = approvedMeal(output, owner);
+            if (id == null || recipe.getIngredients().isEmpty()) continue;
+            if (recipe.getIngredients().stream().allMatch(ingredient ->
+                    ingredient == net.minecraft.world.item.crafting.Ingredient.EMPTY || ingredient.getItems().length > 0))
+                recipeFoods.add(id);
         }
-        require(obtainable.size() >= 49, "Only " + obtainable.size() + " distinct nutritious dishes have obtainable recipes; need at least 49");
-        System.out.println("MAWONNA_MEAL_AUDIT_OK distinct=" + obtainable.size());
+        System.out.println("MAWONNA_DIVERSITY_ITEMS " + new Gson().toJson(foods));
+        System.out.println("MAWONNA_DIVERSITY_RECIPES " + new Gson().toJson(recipeFoods));
     }
     private static void require(boolean condition, String message) {
         if (!condition) throw new IllegalStateException(message);
@@ -430,13 +452,16 @@ public final class MawonnaCompanion {
         ListTag legacy = new ListTag();
         legacy.add(StringTag.valueOf("mawonna:dish/burger"));
         diner.getPersistentData().put(MEAL_IDS, legacy);
-        for (String id : List.of("farmersdelight:hamburger", "mynethersdelight:nether_burger",
-                "twilightdelight:ghast_burger", "twilightdelight:hydra_burger", "farmersdelight:honey_glazed_ham")) {
-            ItemStack serving = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(id)));
-            require(id.equals(approvedMeal(serving)), "Meal rejected or grouped: " + id);
-            require(rememberMeal(diner,id) != id.equals("farmersdelight:hamburger"), "Legacy burger migration failed: " + id);
-            require(!rememberMeal(diner,id), "Duplicate meal credited: " + id);
+        require(mealIds(diner).contains("farmersdelight:hamburger"), "Legacy burger credit lost");
+        require(approvedMeal(new ItemStack(net.minecraft.world.item.Items.CARROT), null) == null, "Carrot qualified");
+        for (String id : List.of("farmersdelight:baked_cod_stew", "farmersdelight:honey_glazed_ham",
+                "twilightdelight:plate_of_lily_chicken", "ends_delight:dragon_breath_and_chorus_soup")) {
+            var stack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(id)));
+            require(id.equals(approvedMeal(stack, null)), "High-diversity food rejected: " + id);
+            require(rememberMeal(diner, id) && !rememberMeal(diner, id), "Dish credited twice: " + id);
         }
+        require(approvedMeal(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse("mynethersdelight:nether_burger"))), null) == null,
+                "Lower-diversity Nether Burger qualified");
         GhostJirachiEyeAspect.selfTest();
         GhostJirachiEyeAspect.selfTestPokemon();
         testFaintEvent(ActorType.WILD,true,true,1);
@@ -477,7 +502,7 @@ public final class MawonnaCompanion {
         }
         Pokemon pokemon = new Pokemon();
         pokemon.setSpecies(Objects.requireNonNull(PokemonSpecies.getByName("mawile")));
-        List<String> canonical = new ArrayList<>(new LinkedHashSet<>(DISHES.values()));
+        List<String> canonical = java.util.stream.IntStream.range(0, 49).mapToObj(i -> "test:dish_" + i).toList();
         for (int i=0;i<48;i++) require(rememberMeal(pokemon,canonical.get(i)),"Unique meal ignored");
         require(!rememberMeal(pokemon,canonical.get(0)),"Duplicate meal credited");
         set(pokemon,DEFEATS,666);

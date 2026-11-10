@@ -60,7 +60,7 @@ for n,v in module.items():
     if '/lang/' in n and n in base:
         merged = json.loads(v) | json.loads(base[n])
         if n == 'assets/mawonna/lang/en_us.json':
-            merged['mawonna.ui.verified_dark_defeats'] = json.loads(v)['mawonna.ui.verified_dark_defeats']
+            merged.update(json.loads(v))
         v = (json.dumps(merged, indent=2, ensure_ascii=False)+'\n').encode()
     entries[n]=v;allowed.add(n)
 text=base[meta].decode()
@@ -86,6 +86,11 @@ for n,v in base.items():
         assert entries[n]==v,n
 for n,v in entries.items():
     if n.endswith('.json'):json.loads(v)
+ring_path = 'assets/mawonna/textures/item/mawilite_vow_ring.png'
+ring_model = json.loads(entries['assets/mawonna/models/item/mawilite_vow_ring.json'])
+assert ring_model['textures']['layer0'] == 'mawonna:item/mawilite_vow_ring'
+assert sha(entries[ring_path]) == 'e2fe33170bf03e9cc96219e90d19d9aeca48f762a891c567ff32c586b0e18828', 'Approved ring texture changed'
+assert json.loads(entries['mawonna/meals.json']) == json.loads((companion/'src/main/resources/mawonna/meals.json').read_bytes())
 dest=out/'Unyielding-1.1.8.jar'
 with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
     for n,v in sorted(entries.items()):z.writestr(n,v)

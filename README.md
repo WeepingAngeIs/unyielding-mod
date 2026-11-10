@@ -4,7 +4,7 @@ Supporting mod and pack files for Cobblemon Unyielding.
 
 ## Installation
 
-1. Download [Unyielding 1.1.10](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.10.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules, riding definitions and animated portraits/map icons.
+1. Download [Unyielding 1.1.8](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/curseforge-1.1.8/Unyielding-1.1.8.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules, riding definitions and animated portraits/map icons.
 2. Stop Minecraft and the server. Back up the world before updating.
 3. Replace the previous Unyielding JAR and separate UnyieldingQuests or Cobble Currency Bridge JARs in the server's and every client's `mods` folder with the combined file. Remove any separate companion module already included in that file. Keep only one copy of each module installed.
 4. Remove or disable the old `Mawonna.zip` and individual Lunavee, Buzzeon, Ghost Jirachi and Creepyeon addon packs from the world `datapacks` and each client's `resourcepacks`. The JAR supplies them now; old external packs can override the fixes. Update any server-distributed copy containing those old assets. Other resource packs can remain enabled.
@@ -14,9 +14,13 @@ The combined release requires Cobblemon 1.8.4, CobbleDollars 2.x, Lightman's Cur
 
 ## Builds and checks
 
-Version 1.1.10 uses local editing/assets and GitHub-hosted heavy builds and game checks. Downloads are published only after the required checks pass. The checks use isolated server/client environments; they do not cover the entire client modpack, sustained player-controlled flight or a live minimap radar session. See [build instructions](docs/settings-release.md) and [release validation](https://github.com/WeepingAngeIs/Server-Jars/blob/main/releases/Unyielding-1.1.10-Validation.txt).
+Version 1.1.8 uses the local TEST profile for inventory and asset checks and GitHub Actions for heavy builds and game checks. Downloads are published only after the required checks pass. The checks use isolated server/client environments; they do not cover the entire client modpack, sustained player-controlled flight or a live minimap radar session. See [build instructions](docs/settings-release.md) and [release checks](https://github.com/WeepingAngeIs/unyielding-mod/actions/workflows/spin-release.yml).
 
-## New command-only Pokemon
+## Mawile's marriage ring
+
+Use `/give @s mawonna:mawilite_vow_ring` to get the **Mawilite Vow Ring** for testing or to stock an NPC shop. Each Mawile needs 49 different prepared meals and 666 personal Dark-type defeats. Use the ring on your own Mawile outside battle, then sneak and use it to exchange vows.
+
+## Custom Pokémon
 
 The combined pack includes the approved Lunavee, Buzzeon, Ghost Jirachi, and Creepyeon exports. With operator permission:
 
@@ -27,7 +31,7 @@ The combined pack includes the approved Lunavee, Buzzeon, Ghost Jirachi, and Cre
 /pokespawn creepyeon
 ```
 
-Append `gender=male` or `gender=female` to select a sex. These four currently have no natural spawn or evolution rules. Their supplied exports have no separate shiny palettes; `shiny` retains the same artwork. Lunavee retains Normal typing and Eevee abilities; Creepyeon retains Synchronize/Magic Bounce and now has all eligible Ghost and Normal moves. Lunavee's Aura Wheel retains its normal species restriction. Original export notes and licenses are under `docs/imported-pokemon/`.
+Append `gender=male` or `gender=female` to select a sex. Eevee can also evolve into Creepyeon, Buzzeon or Lunavee through their defeat milestones. Their supplied exports have no separate shiny palettes; `shiny` retains the same artwork. Lunavee retains Normal typing and Eevee abilities; Creepyeon retains Synchronize/Magic Bounce and now has all eligible Ghost and Normal moves. Lunavee's Aura Wheel retains its normal species restriction. Original export notes and licenses are under `docs/imported-pokemon/`.
 
 All four friends' learnsets are available from level one: Lunavee 102, Buzzeon 55, Ghost Jirachi 119, and Creepyeon 269. No level progression or teaching item is required for these lists; the normal four equipped battle-move slots and individual move restrictions still apply. See [the full lists](docs/friends-move-progression.md). Lunavee uses Eevee's normal scale; Buzzeon, Creepyeon and Ghost Jirachi have reduced world sizes. The zero-transition scale correction matches the earlier Corvislight fix. Buzzeon's ears and wings angle outward. Ghost Jirachi now uses the original Jirachi model and animations in purple; its belly eye opens strictly below half HP and closes again when healed to half or above. Lunavee's star scale keyframes use the vector format accepted by Cobblemon.
 
