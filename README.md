@@ -18,7 +18,7 @@ Version 1.1.8 uses the local TEST profile for inventory and asset checks and Git
 
 ## Mawile's marriage ring
 
-Use `/give @s mawonna:mawilite_vow_ring` to get the **Mawilite Vow Ring** for testing or to stock an NPC shop. Each Mawile needs 49 different prepared meals and 666 personal Dark-type defeats. Use the ring on your own Mawile outside battle, then sneak and use it to exchange vows.
+Use `/give @s mawonna:mawilite_vow_ring` to get the **Mawilite Vow Ring** for testing or to stock an NPC shop. Each Mawile needs 49 different foods with at least 8 Diversity and 666 personal Dark-type defeats. Hold a new qualifying food near a wild or owned Mawile to get its attention, then drop it. Hunger and recipe source do not determine credit. Spice of Life Onion supplies the food score. Use the ring on your own Mawile outside battle, then sneak and use it to exchange vows.
 
 ## Custom Pokémon
 
