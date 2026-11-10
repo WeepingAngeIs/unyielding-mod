@@ -1,0 +1,72 @@
+name: Build and verify Unyielding Lucky Spin and map repair
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/manual-lucky-spin]
+permissions:
+  contents: read
+concurrency:
+  group: unyielding-spin-release
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: mawonna-pack
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: mawonna-pack
+      - uses: actions/checkout@v4
+        with:
+          repository: WeepingAngeIs/Server-Jars
+          ref: 4d069cc
+          path: server-jars
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+          cache-read-only: false
+      - name: Build changed modules, run unit tests and audit final JAR
+        id: assemble
+        run: python tools/build_spin_release.py
+      - name: Build isolated settings verification helper
+        run: gradle -p ../server-jars/settings-update --no-daemon build --build-cache -PcombinedJar="$PWD/dist/settings-release/Unyielding-1.1.8-test.jar"
+      - name: Verify server permissions, settings, claims and Pokemon gameplay
+        env:
+          UNYIELDING_BUNDLED_PACK: 'true'
+        run: python tools/cloud_runtime_smoke.py --pack Mawonna.zip --eula-file source/runtime/eula.txt --unyielding dist/settings-release/Unyielding-1.1.8-test.jar --settings-test ../server-jars/settings-update/build/libs/settings-smoke-test-only-1.0.0.jar --species mawonna mawonna_flower covislight fairy_sliggoo inkyeon lunavee buzzeon ghost_jirachi creepyeon
+      - name: Set up hosted client rendering
+        if: ${{ !cancelled() && steps.assemble.outcome == 'success' }}
+        run: sudo apt-get update -qq && sudo apt-get install -y xvfb libgl1-mesa-dri libopenal1
+      - name: Verify client rendering, icon animation, scale and settings receipt
+        if: ${{ !cancelled() && steps.assemble.outcome == 'success' }}
+        env:
+          UNYIELDING_BUNDLED_PACK: 'true'
+          UNYIELDING_ANIMATED_RELEASE: 'true'
+          UNYIELDING_SETTINGS_RELEASE: 'true'
+        run: python tools/cloud_client_smoke.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Unyielding-1.1.8-test-verified
+          path: |
+            mawonna-pack/dist/settings-release/Unyielding-1.1.8-test.jar
+            mawonna-pack/dist/settings-release/assembly-report.json
+            mawonna-pack/dist/settings-release/SHA256SUMS
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Unyielding-1.1.8-test-evidence
+          path: |
+            mawonna-pack/dist/client/
+            mawonna-pack/dist/runtime/
+            mawonna-pack/dist/settings-release/*.log
+            mawonna-pack/dist/settings-release/assembly-report.json
+            server-jars/unyielding-quests/build/reports/tests/
+            server-jars/unyielding-quests/build/test-results/
