@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: WeepingAngeIs/Server-Jars
-          ref: 4d069cc
+          ref: 5d64bf52d27dc4c95feecff456730e207b0e2efd
           path: server-jars
       - uses: actions/setup-java@v4
         with:
