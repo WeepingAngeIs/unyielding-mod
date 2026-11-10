@@ -2,7 +2,7 @@ name: Build and verify Unyielding Lucky Spin and map repair
 on:
   workflow_dispatch:
   push:
-    branches: [release/meal-fix-1.1.9]
+    branches: [release/curseforge-1.1.8]
 permissions:
   contents: read
 concurrency:
@@ -36,11 +36,11 @@ jobs:
         id: assemble
         run: python tools/build_spin_release.py
       - name: Build isolated settings verification helper
-        run: gradle -p ../server-jars/settings-update --no-daemon build --build-cache -PcombinedJar="$PWD/dist/settings-release/Unyielding-1.1.9.jar"
+        run: gradle -p ../server-jars/settings-update --no-daemon build --build-cache -PcombinedJar="$PWD/dist/settings-release/Unyielding-1.1.8.jar"
       - name: Verify server permissions, settings, claims and Pokemon gameplay
         env:
           UNYIELDING_BUNDLED_PACK: 'true'
-        run: python tools/cloud_runtime_smoke.py --pack Mawonna.zip --eula-file source/runtime/eula.txt --unyielding dist/settings-release/Unyielding-1.1.9.jar --settings-test ../server-jars/settings-update/build/libs/settings-smoke-test-only-1.0.0.jar --species mawonna mawonna_flower covislight fairy_sliggoo inkyeon lunavee buzzeon ghost_jirachi creepyeon
+        run: python tools/cloud_runtime_smoke.py --pack Mawonna.zip --eula-file source/runtime/eula.txt --unyielding dist/settings-release/Unyielding-1.1.8.jar --settings-test ../server-jars/settings-update/build/libs/settings-smoke-test-only-1.0.0.jar --species mawonna mawonna_flower covislight fairy_sliggoo inkyeon lunavee buzzeon ghost_jirachi creepyeon
       - name: Set up hosted client rendering
         if: ${{ !cancelled() && steps.assemble.outcome == 'success' }}
         run: sudo apt-get update -qq && sudo apt-get install -y xvfb libgl1-mesa-dri libopenal1
@@ -53,16 +53,16 @@ jobs:
         run: python tools/cloud_client_smoke.py
       - uses: actions/upload-artifact@v4
         with:
-          name: Unyielding-1.1.9-verified
+          name: Unyielding-1.1.8-verified
           path: |
-            mawonna-pack/dist/settings-release/Unyielding-1.1.9.jar
+            mawonna-pack/dist/settings-release/Unyielding-1.1.8.jar
             mawonna-pack/dist/settings-release/assembly-report.json
             mawonna-pack/dist/settings-release/SHA256SUMS
           if-no-files-found: error
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Unyielding-1.1.9-evidence
+          name: Unyielding-1.1.8-evidence
           path: |
             mawonna-pack/dist/client/
             mawonna-pack/dist/runtime/
