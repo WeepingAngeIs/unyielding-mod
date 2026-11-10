@@ -130,6 +130,20 @@ public class ClientSmoke {
     private static Map<String,Object> verifyAnimatedIcons() throws Exception {
         Class<?> support = Class.forName("dev.mawonna.client.AnimatedPokemonIcons");
         Map<String,Object> report = new LinkedHashMap<>((Map<String,Object>) support.getMethod("verifyClient").invoke(null));
+        // Exercise the applied Xaero mixin with no icon manager at all: custom
+        // species must not fall back to model prerender or depend on external JSON.
+        Class<?> radar=Class.forName("xaero.hud.minimap.radar.render.element.RadarRenderer");
+        Class<?> concrete=Class.forName("xaero.common.minimap.render.radar.element.RadarRenderer");
+        var ctor=java.util.Arrays.stream(concrete.getConstructors()).filter(c->c.getParameterCount()==5).findFirst().orElseThrow();
+        Object renderer=ctor.newInstance(new Object[5]);
+        var keyField=radar.getDeclaredField("mawonna$iconKey");keyField.setAccessible(true);
+        Method direct=java.util.Arrays.stream(radar.getDeclaredMethods()).filter(m->m.getName().contains("mawonna$directIcon")).findFirst().orElseThrow();direct.setAccessible(true);
+        for(String key:new String[]{"mawonna","inkyeon","fairy_sliggoo","lunavee","buzzeon","creepyeon","ghost_jirachi"}){
+            keyField.set(renderer,key);
+            Object marker=direct.invoke(renderer,null,null,1f,false,false,null,null);
+            if(marker==null)throw new AssertionError("Custom map icon still depends on generated model: "+key);
+        }
+        report.put("xaero_direct_icon_without_model_cases",7);
         var repo = com.cobblemon.mod.common.client.render.models.blockbench.repository.VaryingModelRepository.INSTANCE;
         Map<String,String> selected = new LinkedHashMap<>();
         for (String species : List.of("mawonna", "mawonna_flower", "inkyeon")) {

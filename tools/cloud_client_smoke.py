@@ -42,7 +42,7 @@ try:
   assert result.get('animated_icons',{}).get('mapScaleCases')==8,'Map scaling geometry checks missing'
  assert result.get('pose_transition_scale_samples',0)>0,'No pose transitions were checked'
  assert len(result.get('animated_icons',{}).get('native_repository_portrait_selection',{}))==3,'Mawonna animated portrait interception failed'
- assert len(result.get('actual_gui_screenshots',[]))==9,'Missing actual GUI render screenshots'
+ assert len(result.get('actual_gui_screenshots',[]))==10,'Missing actual GUI render screenshots'
  assert len(result.get('inkyeon_walk_samples',[]))==8,'Missing actual normal/shiny Inkyeon WALK rotation samples'
  assert len(result.get('fairy_sliggoo_face_bones',[]))==4,'Missing native Frilligoo face bones'
  assert result.get('ghost_jirachi_native',{}).get('native_bones')==49,'Ghost Jirachi native skeleton check missing'

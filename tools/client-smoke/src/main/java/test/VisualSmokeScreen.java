@@ -31,7 +31,7 @@ import java.util.*;
 /** Captures actual Cobblemon GUI renderers, without starting a local world. */
 public final class VisualSmokeScreen extends Screen {
     private static final List<String> SPECIES = List.of("lunavee", "buzzeon", "creepyeon", "ghost_jirachi");
-    private static final List<String> SHOTS = List.of("friends-profiles-portraits.png", "buzzeon-wing-cycle.png", "ghost-jirachi-angles.png", "fairy-sliggoo-native-face.png", "inkyeon-walk-normal.png", "inkyeon-walk-shiny.png", "inkyeon-idle-walk-normal.png", "inkyeon-idle-walk-shiny.png", "animated-portraits-and-map-frames.png");
+    private static final List<String> SHOTS = List.of("friends-profiles-portraits.png", "buzzeon-wing-cycle.png", "ghost-jirachi-angles.png", "fairy-sliggoo-native-face.png", "inkyeon-walk-normal.png", "inkyeon-walk-shiny.png", "inkyeon-idle-walk-normal.png", "inkyeon-idle-walk-shiny.png", "animated-portraits-and-map-frames.png", "lucky-spin-reel.png");
     private static final float[] WALK_PHASES = {0f, (float)Math.PI / 1.32f, (float)Math.PI / .66f, 3f * (float)Math.PI / 1.32f};
     private static final List<String> REAR_CHAIN = List.of("sylveon", "body", "back_legs", "back_leg_left", "knee_left", "ankle_left", "foot_left", "back_leg_right", "knee_right", "ankle_right", "foot_right");
     private final Map<String,Object> results;
@@ -57,7 +57,8 @@ public final class VisualSmokeScreen extends Screen {
             else if (page == 3) renderSliggoo(graphics);
             else if (page < 6) renderInkyeonWalk(graphics, page == 5);
             else if (page < 8) renderInkyeonTransitions(graphics, page == 7);
-            else renderAnimatedIcons(graphics);
+            else if(page==8) renderAnimatedIcons(graphics);
+            else renderLuckySpin(graphics);
             graphics.flush();
             if (++frames < 4) return;
             Path directory = Path.of("visual-smoke");
@@ -117,6 +118,26 @@ public final class VisualSmokeScreen extends Screen {
             graphics.pose().popPose();
             graphics.disableScissor();
         }
+    }
+
+    private void renderLuckySpin(GuiGraphics graphics) throws Exception {
+        Class<?> type=Class.forName("dev.unyielding.quests.client.LuckySpinScreen");
+        Screen screen=(Screen)type.getConstructor(Screen.class).newInstance(this);
+        screen.init(minecraft,width,height);
+        var stateField=type.getDeclaredField("state");stateField.setAccessible(true);
+        var state=new net.minecraft.nbt.CompoundTag();state.putLong("count",2);state.putBoolean("ready",true);state.putBoolean("enabled",true);stateField.set(screen,state);
+        var waiting=type.getDeclaredField("waiting");waiting.setAccessible(true);waiting.setBoolean(screen,false);
+        Class<?> tier=Class.forName("dev.unyielding.quests.spin.LuckySpin$Tier");
+        Object basic=tier.getEnumConstants()[0];
+        var entry=Class.forName("dev.unyielding.quests.spin.LuckySpin$Entry").getConstructor(tier,net.minecraft.world.item.ItemStack.class);
+        var strip=new ArrayList<Object>();
+        net.minecraft.world.item.Item[] items={net.minecraft.world.item.Items.DIAMOND,net.minecraft.world.item.Items.GOLD_INGOT,net.minecraft.world.item.Items.BREAD};
+        for(int i=0;i<30;i++)strip.add(entry.newInstance(basic,new net.minecraft.world.item.ItemStack(items[i%3])));
+        Object result=Class.forName("dev.unyielding.quests.spin.LuckySpin$Spin").getConstructor(tier,boolean.class,String.class,int.class,List.class).newInstance(basic,false,"Diamond",24,strip);
+        type.getMethod("receiveSpins",List.class).invoke(screen,List.of(result));
+        var started=type.getDeclaredField("started");started.setAccessible(true);started.setLong(screen,net.minecraft.Util.getMillis()-2500);
+        screen.tick();screen.render(graphics,0,0,0);
+        results.put("lucky_spin_render","Production screen, saved-credit fixture and mid-animation horizontal reel");
     }
 
     private void renderAnimatedIcons(GuiGraphics graphics) throws Exception {
