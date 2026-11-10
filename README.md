@@ -4,7 +4,7 @@ Supporting mod and pack files for Cobblemon Unyielding.
 
 ## Installation
 
-1. Download [Unyielding 1.1.9](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.9.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules, riding definitions and animated portraits/map icons.
+1. Download [Unyielding 1.1.10](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.10.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules, riding definitions and animated portraits/map icons.
 2. Stop Minecraft and the server. Back up the world before updating.
 3. Replace the previous Unyielding JAR and separate UnyieldingQuests or Cobble Currency Bridge JARs in the server's and every client's `mods` folder with the combined file. Remove any separate companion module already included in that file. Keep only one copy of each module installed.
 4. Remove or disable the old `Mawonna.zip` and individual Lunavee, Buzzeon, Ghost Jirachi and Creepyeon addon packs from the world `datapacks` and each client's `resourcepacks`. The JAR supplies them now; old external packs can override the fixes. Update any server-distributed copy containing those old assets. Other resource packs can remain enabled.
@@ -14,7 +14,7 @@ The combined release requires Cobblemon 1.8.4, CobbleDollars 2.x, Lightman's Cur
 
 ## Builds and checks
 
-Version 1.1.9 is built and checked locally at the user's request. Downloads are published only after the required checks pass. The checks use isolated server/client environments; they do not cover the entire client modpack, sustained player-controlled flight or a live minimap radar session. See [build instructions](docs/animation-release.md) and [release validation](https://github.com/WeepingAngeIs/Server-Jars/blob/main/releases/Unyielding-1.1.9-Validation.txt).
+Version 1.1.10 uses local editing/assets and GitHub-hosted heavy builds and game checks. Downloads are published only after the required checks pass. The checks use isolated server/client environments; they do not cover the entire client modpack, sustained player-controlled flight or a live minimap radar session. See [build instructions](docs/settings-release.md) and [release validation](https://github.com/WeepingAngeIs/Server-Jars/blob/main/releases/Unyielding-1.1.10-Validation.txt).
 
 ## New command-only Pokemon
 
@@ -38,3 +38,9 @@ Frilligoo (saved species ID `fairy_sliggoo`) is Dragon/Fairy and uses the origin
 Mawonna and command-only Mawonna Flower share the supplied animated face portrait and full-body map icon. Inkyeon uses a still, transparent face portrait from the clean supplied artwork and the right-facing GIF for her animated map icon. The new portrait images replace the team portrait only; the 3D models remain available in other views. Map animation integrates with Xaero Minimap 26.5.0; Xaero is optional. Normal and shiny forms use the same supplied portrait artwork.
 
 Admin Mawonna Flower has 862 level-one moves after removing Z/Max/G-Max, one-PP and malformed/internal entries. Its separate admin stats and command-only obtain method remain intact: `/pokespawn mawonna_flower`. Public Mawonna is unchanged by that move cleanup.
+
+## Live server controls
+
+Operators use `/config` (or `/quests settings`). Choose **Config values -> Map icon size** for the 0.25-4x custom-map-icon scale. The main settings list adds home/back/warp/RTP/TPA/nickname/recording/nearby-player switches, admin inventory controls, and optional OPAC admin claim bypass (default OFF). Day/Night/Weather shortcuts appear in operator inventories. [Settings and installation](https://github.com/WeepingAngeIs/Server-Jars/blob/main/settings-update/RELEASE-NOTES.md).
+
+Mawonna now uses the new 60-frame map GIF while preserving all 30 previous portrait frames/timing. Frilligoo uses the new supplied map artwork. Other portraits and models are unchanged.
