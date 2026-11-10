@@ -31,7 +31,7 @@ import java.util.*;
 /** Captures actual Cobblemon GUI renderers, without starting a local world. */
 public final class VisualSmokeScreen extends Screen {
     private static final List<String> SPECIES = List.of("lunavee", "buzzeon", "creepyeon", "ghost_jirachi");
-    private static final List<String> SHOTS = List.of("friends-profiles-portraits.png", "buzzeon-wing-cycle.png", "ghost-jirachi-angles.png", "fairy-sliggoo-native-face.png", "inkyeon-walk-normal.png", "inkyeon-walk-shiny.png", "inkyeon-idle-walk-normal.png", "inkyeon-idle-walk-shiny.png");
+    private static final List<String> SHOTS = List.of("friends-profiles-portraits.png", "buzzeon-wing-cycle.png", "ghost-jirachi-angles.png", "fairy-sliggoo-native-face.png", "inkyeon-walk-normal.png", "inkyeon-walk-shiny.png", "inkyeon-idle-walk-normal.png", "inkyeon-idle-walk-shiny.png", "animated-portraits-and-map-frames.png");
     private static final float[] WALK_PHASES = {0f, (float)Math.PI / 1.32f, (float)Math.PI / .66f, 3f * (float)Math.PI / 1.32f};
     private static final List<String> REAR_CHAIN = List.of("sylveon", "body", "back_legs", "back_leg_left", "knee_left", "ankle_left", "foot_left", "back_leg_right", "knee_right", "ankle_right", "foot_right");
     private final Map<String,Object> results;
@@ -56,7 +56,8 @@ public final class VisualSmokeScreen extends Screen {
             else if (page == 2) renderGhost(graphics);
             else if (page == 3) renderSliggoo(graphics);
             else if (page < 6) renderInkyeonWalk(graphics, page == 5);
-            else renderInkyeonTransitions(graphics, page == 7);
+            else if (page < 8) renderInkyeonTransitions(graphics, page == 7);
+            else renderAnimatedIcons(graphics);
             graphics.flush();
             if (++frames < 4) return;
             Path directory = Path.of("visual-smoke");
@@ -65,6 +66,7 @@ public final class VisualSmokeScreen extends Screen {
                 image.writeToFile(directory.resolve(SHOTS.get(page)));
             }
             if (page == 0) results.put("pose_transition_scale_samples", validateTransitions());
+            if (page == 2) results.put("ghost_jirachi_native", validateGhostJirachi());
             if (page == 3) results.put("fairy_sliggoo_face_bones", validateSliggooFace());
             if (page == 5) results.put("inkyeon_walk_samples", validateInkyeonWalk());
             if (page == 7) results.put("inkyeon_transition_checks", validateInkyeonTransitions());
@@ -117,6 +119,29 @@ public final class VisualSmokeScreen extends Screen {
         }
     }
 
+    private void renderAnimatedIcons(GuiGraphics graphics) throws Exception {
+        String[] species = {"mawonna", "mawonna_flower", "inkyeon"};
+        for (int i=0;i<species.length;i++) {
+            int x=i*width/3, y=40;
+            panel(graphics,x,y,width/3,280,species[i]+" actual team portrait");
+            graphics.pose().pushPose();
+            graphics.pose().translate(x+width/6.0,y+40,100);
+            graphics.pose().scale(6,6,1);
+            GuiUtilsKt.drawPosablePortrait(id(species[i]),graphics.pose(),13f,1f,false,state("female",0),0f,0f,0f,0f,0f,0f,false,1f,1f,1f,1f);
+            graphics.pose().popPose();
+        }
+        graphics.flush();
+        var draw=Class.forName("dev.mawonna.client.AnimatedPokemonIcons").getMethod("drawMapPreviewAt",PoseStack.class,String.class,int.class,int.class,int.class,int.class,long.class);
+        for (int i=0;i<4;i++) {
+            String key=i<2 ? "mawonna" : "inkyeon";
+            int x=i*width/4, y=330; long time=(i%2)*360L;
+            panel(graphics,x,y,width/4,320,key+" map frame t="+time+"ms");
+            graphics.flush();
+            draw.invoke(null,graphics.pose(),key,x+width/8-100,y+40,200,200,time);
+        }
+        results.put("map_frame_screenshot_scope","Production atlas selection helper at 0/360ms; live radar requires in-world verification");
+    }
+
     private void renderWings(GuiGraphics graphics) {
         PoseType[] poses = {PoseType.STAND, PoseType.FLY, PoseType.FLY, PoseType.FLY, PoseType.HOVER};
         float[] seconds = {0f, 0f, .175f, .35f, .3f};
@@ -159,7 +184,7 @@ public final class VisualSmokeScreen extends Screen {
         for (int row = 0; row < 2; row++) for (int column = 0; column < 3; column++) {
             boolean shiny = row == 1;
             int x = column * cellWidth, y = 32 + row * cellHeight;
-            panel(graphics, x, y, cellWidth, cellHeight, "Fairy Sliggoo " + (shiny ? "shiny" : "normal") + " STAND yaw=" + angles[column]);
+            panel(graphics, x, y, cellWidth, cellHeight, "Frilligoo " + (shiny ? "shiny" : "normal") + " STAND yaw=" + angles[column]);
             graphics.enableScissor(x + 3, y + 20, x + cellWidth - 3, y + cellHeight - 3);
             graphics.pose().pushPose();
             graphics.pose().translate(x + cellWidth / 2.0, y + 36 * factor, 100);
@@ -252,12 +277,58 @@ public final class VisualSmokeScreen extends Screen {
         return context;
     }
 
+    private static com.google.gson.JsonObject resourceJson(String id) {
+        try (var reader = new java.io.InputStreamReader(Minecraft.getInstance().getResourceManager()
+                .getResourceOrThrow(ResourceLocation.parse(id)).open(), java.nio.charset.StandardCharsets.UTF_8)) {
+            return com.google.gson.JsonParser.parseReader(reader).getAsJsonObject();
+        } catch (java.io.IOException e) { throw new IllegalStateException(e); }
+    }
+
+    private static Map<String,com.google.gson.JsonObject> geometryBones(com.google.gson.JsonObject json) {
+        Map<String,com.google.gson.JsonObject> result = new LinkedHashMap<>();
+        for (var bone : json.getAsJsonArray("minecraft:geometry").get(0).getAsJsonObject().getAsJsonArray("bones")) {
+            var b = bone.getAsJsonObject(); result.put(b.get("name").getAsString(), b);
+        }
+        return result;
+    }
+
     private static List<String> validateSliggooFace() {
         var model = VaryingModelRepository.INSTANCE.getPoser(id("fairy_sliggoo"), variantState(false, 0));
         var checked = List.of("head", "eye_left", "eye_right", "mouth");
-        for (String name : checked) if (model.getPart(name) == null)
-            throw new AssertionError("Missing native Fairy Sliggoo face bone: " + name);
+        var actual = geometryBones(resourceJson("mawonna:bedrock/pokemon/models/fairy_sliggoo/fairy_sliggoo.geo.json"));
+        var original = geometryBones(resourceJson("cobblemon:bedrock/pokemon/models/0705_sliggoo/sliggoo.geo.json"));
+        for (String name : checked) {
+            if (model.getPart(name) == null) throw new AssertionError("Missing native Frilligoo face bone: " + name);
+            if (!actual.get(name).get("cubes").equals(original.get(name).get("cubes")))
+                throw new AssertionError("Frilligoo differs from native face geometry/UV: " + name);
+        }
+        if (actual.get("mouth").getAsJsonArray("cubes").size() != 1)
+            throw new AssertionError("Added smile panel remains on Frilligoo");
+        if (!Component.translatable("cobblemon.species.fairysliggoo.name").getString().equals("Frilligoo"))
+            throw new AssertionError("Frilligoo display name alias still stale");
         return checked;
+    }
+
+    private static Map<String,Object> validateGhostJirachi() {
+        var bones = geometryBones(resourceJson("uwu:bedrock/pokemon/models/ghost_jirachi/ghost_jirachi_male.geo.json"));
+        if (bones.size() != 49 || !bones.containsKey("jirachi") || bones.containsKey("import_uv_scale") || bones.containsKey("import_uv_root"))
+            throw new AssertionError("Ghost Jirachi must retain the native 49-bone skeleton");
+        var animations = resourceJson("uwu:bedrock/pokemon/animations/ghost_jirachi/ghost_jirachi.animation.json").getAsJsonObject("animations");
+        if (animations.size() != 16) throw new AssertionError("Missing original Jirachi animation clips");
+        Map<String,Object> states = new LinkedHashMap<>();
+        for (boolean open : new boolean[]{false,true}) {
+            var state = variantState(false, .5f);
+            state.setCurrentAspects(open ? Set.of("mawonna-ghost-eye-exact", "mawonna-ghost-eye-open") : Set.of("mawonna-ghost-eye-exact"));
+            var model = VaryingModelRepository.INSTANCE.getPoser(id("ghost_jirachi"), state);
+            configureModelContext(model,id("ghost_jirachi"),state);
+            state.setCurrentModel(model); state.setPoseToFirstSuitable(PoseType.PROFILE);
+            model.applyAnimations(null,state,0,0,10,0,0);
+            String pose = state.getCurrentPose();
+            if (pose.contains("low-health") != open) throw new AssertionError("Exact belly-eye aspect chose wrong menu pose: " + pose);
+            states.put(open ? "open" : "closed", Map.of("pose",pose,"eye_open_z",model.getPart("eye_open").z,"eye_close_z",model.getPart("eye_close").z));
+            model.setDefault();
+        }
+        return Map.of("native_bones",bones.size(),"native_animation_clips",animations.size(),"exact_aspect_menu_states",states);
     }
 
     private static List<Map<String,Object>> validateInkyeonWalk() {
@@ -265,6 +336,7 @@ public final class VisualSmokeScreen extends Screen {
         for (boolean shiny : new boolean[]{false, true}) {
             float minLeft = Float.POSITIVE_INFINITY, maxLeft = Float.NEGATIVE_INFINITY;
             float minFront = Float.POSITIVE_INFINITY, maxFront = Float.NEGATIVE_INFINITY;
+            Map<String,List<Float>> restingRear = new LinkedHashMap<>();
             for (int frame = 0; frame < WALK_PHASES.length; frame++) {
                 var state = variantState(shiny, frame / 8f);
                 var model = VaryingModelRepository.INSTANCE.getPoser(id("inkyeon"), state);
@@ -280,8 +352,15 @@ public final class VisualSmokeScreen extends Screen {
                     for (float angle : new float[]{bone.xRot, bone.yRot, bone.zRot})
                         if (!Float.isFinite(angle)) throw new AssertionError("Nonfinite Inkyeon walk rotation: " + boneName);
                     rotations.put(boneName, List.of(bone.xRot, bone.yRot, bone.zRot));
-                    if (Math.abs(bone.yRot) > .0001f || Math.abs(bone.zRot) > .0001f)
-                        throw new AssertionError("Inkyeon WALK leg swings sideways: " + boneName + " yaw=" + bone.yRot + " roll=" + bone.zRot);
+                    if (boneName.startsWith("front_leg")) {
+                        if (Math.abs(bone.yRot) > .0001f || Math.abs(bone.zRot) > .0001f)
+                            throw new AssertionError("Inkyeon front WALK leg swings sideways: " + boneName);
+                    } else {
+                        var rest = restingRear.computeIfAbsent(boneName, ignored -> List.of(bone.xRot, bone.yRot, bone.zRot));
+                        assertNear(bone.xRot, rest.get(0), "stationary rear pitch " + boneName);
+                        assertNear(bone.yRot, rest.get(1), "stationary rear yaw " + boneName);
+                        assertNear(bone.zRot, rest.get(2), "stationary rear roll " + boneName);
+                    }
                 }
                 float left = model.getPart("back_leg_left").xRot;
                 float right = model.getPart("back_leg_right").xRot;
@@ -291,8 +370,8 @@ public final class VisualSmokeScreen extends Screen {
                 maxLeft = Math.max(maxLeft, left);
                 minFront = Math.min(minFront, frontLeft);
                 maxFront = Math.max(maxFront, frontLeft);
-                assertNear(left - rearNeutral, .5f * (frontRight - frontNeutral), "rear-left/front-right diagonal phase");
-                assertNear(right - rearNeutral, .5f * (frontLeft - frontNeutral), "rear-right/front-left diagonal phase");
+                assertNear(left, rearNeutral, "rear-left unchanged by stride");
+                assertNear(right, rearNeutral, "rear-right unchanged by stride");
                 var nativeState = variantState(shiny, frame / 8f);
                 var nativeModel = VaryingModelRepository.INSTANCE.getPoser(id("sylveon"), nativeState);
                 configureModelContext(nativeModel, id("sylveon"), nativeState);
@@ -303,13 +382,13 @@ public final class VisualSmokeScreen extends Screen {
                 nativeModel.applyAnimations(null, nativeState, WALK_PHASES[frame], .8f, nativeState.getAnimationSeconds() * 20f, 0f, 0f);
                 assertNear(frontLeft, nativeModel.getPart("front_leg_left").xRot, "native front-left stride");
                 assertNear(frontRight, nativeModel.getPart("front_leg_right").xRot, "native front-right stride");
-                assertNear(left - rearNeutral, .5f * (nativeModel.getPart("back_leg_left").xRot - nativeRearNeutral), "half native rear-left stride");
-                assertNear(right - rearNeutral, .5f * (nativeModel.getPart("back_leg_right").xRot - nativeRearNeutral), "half native rear-right stride");
-                samples.add(Map.of("shiny", shiny, "phase", frame, "limb_swing", WALK_PHASES[frame], "stride", .8f, "radians_xyz", rotations, "native_front_unchanged_and_rear_half_amplitude", true));
+
+
+                samples.add(Map.of("shiny", shiny, "phase", frame, "limb_swing", WALK_PHASES[frame], "stride", .8f, "radians_xyz", rotations, "native_front_unchanged_and_rear_stationary", true));
                 nativeModel.setDefault();
                 model.setDefault();
             }
-            assertNear(maxLeft - minLeft, 1.12f, "rear WALK pitch range at stride 0.8");
+            assertNear(maxLeft - minLeft, 0f, "rear WALK pitch range at stride 0.8");
             assertNear(maxFront - minFront, 2.24f, "front WALK pitch range at stride 0.8");
         }
         return samples;
@@ -489,9 +568,10 @@ public final class VisualSmokeScreen extends Screen {
                 for (int tick : new int[]{0, 1, 2, 5, 10}) {
                     state.updateAge(tick);
                     model.applyAnimations(null, state, 0f, 0f, 0f, 0f, 0f);
-                    var bone = model.getPart(scaleBone);
+                    var bone = species.equals("ghost_jirachi") ? (ModelPart) (Object) model.getRootPart() : model.getPart(scaleBone);
+                    float expectedScale = species.equals("ghost_jirachi") ? 1f : .0625f;
                     for (float scale : new float[]{bone.xScale, bone.yScale, bone.zScale}) {
-                        if (Math.abs(scale - 0.0625f) > 0.00001f)
+                        if (Math.abs(scale - expectedScale) > 0.00001f)
                             throw new AssertionError(species + " " + sex + " " + from.getPoseName() + "->" + to.getPoseName() + " tick=" + tick + " scale=" + scale);
                     }
                     samples++;

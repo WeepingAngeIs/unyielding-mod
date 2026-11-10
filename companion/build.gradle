@@ -3,7 +3,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.148'
 }
 group = 'dev.mawonna'
-version = '1.0.0'
+version = '1.0.1'
 base.archivesName = 'mawonna-companion'
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 repositories { mavenCentral() }
@@ -13,5 +13,6 @@ neoForge {
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly fileTree(dir: 'compile-libs', include: ['*.jar'])
     compileOnly 'org.jetbrains.kotlin:kotlin-stdlib:2.2.0'
 }

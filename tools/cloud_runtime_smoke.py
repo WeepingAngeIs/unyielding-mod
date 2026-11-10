@@ -36,6 +36,12 @@ def fetch_json(url):
         return json.load(response)
 
 def download(url, path, sha512=None):
+    if os.environ.get('UNYIELDING_LOCAL_BUILD')=='true':
+        for folder in [Path(os.environ.get('UNYIELDING_LOCAL_MODS','__missing__')),Path.cwd()/'companion/libs']:
+            cached=folder/path.name
+            if cached.is_file() and cached.resolve()!=path.resolve() and (sha512 is None or hashlib.sha512(cached.read_bytes()).hexdigest()==sha512):
+                shutil.copy2(cached,path)
+                return
     with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=180) as response, path.open('wb') as handle:
         shutil.copyfileobj(response, handle)
     if sha512 and hashlib.sha512(path.read_bytes()).hexdigest() != sha512:
@@ -86,7 +92,7 @@ def main():
     parser.add_argument('--unyielding',required=True,type=Path)
     parser.add_argument('--species',nargs='+',default=['Covislight','mawonna','mawonna_flower'])
     args=parser.parse_args()
-    if os.environ.get('GITHUB_ACTIONS')!='true' or os.environ.get('RUNNER_ENVIRONMENT')!='github-hosted':
+    if os.environ.get('UNYIELDING_LOCAL_BUILD')!='true' and (os.environ.get('GITHUB_ACTIONS')!='true' or os.environ.get('RUNNER_ENVIRONMENT')!='github-hosted'):
         raise SystemExit('Runtime tests are allowed only on GitHub-hosted runners.')
     accepted=args.eula_file.read_text(encoding='utf-8-sig')
     if not re.search(r'^\s*eula\s*=\s*true\s*$',accepted,re.M|re.I):
@@ -96,7 +102,7 @@ def main():
     output=root/'dist/runtime';output.mkdir(parents=True,exist_ok=True)
     manifest=[]
     mods=work/'mods';mods.mkdir(exist_ok=True)
-    for label,version in (VERSIONS | MEAL_VERSIONS).items():
+    for label,version in (VERSIONS | MEAL_VERSIONS | {'CobbleDollars':'Iqiqjfsi','LightmansCurrency':'n2ynBeOK'}).items():
         info=fetch_json('https://api.modrinth.com/v2/version/'+version)
         chosen=next((x for x in info['files'] if x.get('primary')),info['files'][0])
         download(chosen['url'],mods/chosen['filename'],chosen['hashes']['sha512'])
@@ -124,7 +130,9 @@ def main():
         'difficulty=peaceful','sync-chunk-writes=false','motd=Cloud smoke test only',
     ])+'\n')
     packs=work/'smoke-world/datapacks';packs.mkdir(parents=True,exist_ok=True)
-    if args.pack.is_dir():
+    if os.environ.get('UNYIELDING_BUNDLED_PACK')=='true':
+        pass  # Test embedded data without an external duplicate pack.
+    elif args.pack.is_dir():
         if not (args.pack/'pack.mcmeta').is_file():raise AssertionError('Downloaded install artifact has no root pack.mcmeta')
         shutil.copytree(args.pack,packs/'Mawonna-runtime-test',dirs_exist_ok=True)
     else:
@@ -135,7 +143,7 @@ def main():
     proc=None;rcon=None
     try:
         with (output/'server-console.log').open('w') as log:
-            proc=subprocess.Popen(['bash','run.sh','nogui'],cwd=work,stdout=log,stderr=subprocess.STDOUT)
+            proc=subprocess.Popen((['cmd','/c','run.bat','nogui'] if os.name=='nt' else ['bash','run.sh','nogui']),cwd=work,stdout=log,stderr=subprocess.STDOUT)
             deadline=time.monotonic()+600
             while time.monotonic()<deadline:
                 if proc.poll() is not None:raise RuntimeError('Cloud server exited before readiness')
@@ -145,7 +153,7 @@ def main():
             else:raise TimeoutError('Cloud server did not start within ten minutes')
             rcon=Rcon(password)
             enabled=rcon.command('datapack list enabled');report['enabled_datapacks']=enabled
-            if 'Mawonna-runtime-test' not in enabled:raise AssertionError('Combined pack is not enabled')
+            if os.environ.get('UNYIELDING_BUNDLED_PACK')!='true' and 'Mawonna-runtime-test' not in enabled:raise AssertionError('Combined pack is not enabled')
             rcon.command('gamerule doMobSpawning false')
             rcon.command('forceload add 0 0')
             rcon.command('scoreboard objectives add smoke dummy')

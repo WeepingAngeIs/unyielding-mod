@@ -11,5 +11,10 @@ out/
 Thumbs.db
 dist/
 __pycache__/
+cloud-client/
+cloud-runtime/
+companion/libs/
+companion/compile-libs/
+unyielding-artifact/
 source/pink-corvisquire/Pink-Corvisquire-v16.bbmodel
 source/pink-corvisquire/model-preview.html

@@ -14,7 +14,7 @@ import java.util.*;
 public class ClientSmoke {
     private boolean started;
     public ClientSmoke() {
-        if (!"true".equals(System.getenv("GITHUB_ACTIONS"))) throw new IllegalStateException("Cloud only");
+        if (!"true".equals(System.getenv("GITHUB_ACTIONS")) && !"true".equals(System.getenv("UNYIELDING_LOCAL_BUILD"))) throw new IllegalStateException("Cloud only");
         NeoForge.EVENT_BUS.addListener(this::tick);
     }
     private void tick(ClientTickEvent.Post event) {
@@ -78,6 +78,7 @@ public class ClientSmoke {
                 results.putAll(Map.of("status","passed","resource_reload",true,"pack_retained",true,"original_uv_rejected",true,"vow_ring_baked",true,"species_textures",textures));
                 results.put("pack_source", bundled ? "bundled_mod_jar" : "external_resource_pack");
                 results.put("title_screen_render_fixture", Map.of("species", prepareRenderSpecies(bundled), "fields", List.of("name", "baseScale"), "purpose", "GUI form-scale lookup only; full species parsing and gameplay are verified by server runtime smoke"));
+                results.put("animated_icons", verifyAnimatedIcons());
                 // Launch defaults override options.txt dimensions; resize the actual
                 // GLFW window and allow its normal framebuffer callback to run.
                 org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(), 1280, 720);
@@ -90,6 +91,25 @@ public class ClientSmoke {
         }));
     }
 
+    private static Map<String,Object> verifyAnimatedIcons() throws Exception {
+        Class<?> support = Class.forName("dev.mawonna.client.AnimatedPokemonIcons");
+        Map<String,Object> report = new LinkedHashMap<>((Map<String,Object>) support.getMethod("verifyClient").invoke(null));
+        var repo = com.cobblemon.mod.common.client.render.models.blockbench.repository.VaryingModelRepository.INSTANCE;
+        Map<String,String> selected = new LinkedHashMap<>();
+        for (String species : List.of("mawonna", "mawonna_flower", "inkyeon")) {
+            var state = new com.cobblemon.mod.common.client.render.models.blockbench.FloatingState();
+            var sprite = repo.getSprite(net.minecraft.resources.ResourceLocation.parse("cobblemon:" + species), state,
+                    com.cobblemon.mod.common.client.render.SpriteType.PORTRAIT);
+            if (sprite == null || !sprite.getNamespace().equals("mawonna"))
+                throw new AssertionError("Animated team portrait was not selected: " + species + " -> " + sprite);
+            if (Minecraft.getInstance().getResourceManager().getResource(sprite).isEmpty())
+                throw new AssertionError("Selected portrait frame resource missing: " + sprite);
+            selected.put(species, sprite.toString());
+        }
+        report.put("native_repository_portrait_selection", selected);
+        return report;
+    }
+
     // A title screen has neither server registry sync nor the ability registry.
     // The GUI only needs name and baseScale; use those exact shipped values in a
     // render-only fixture. Models, textures, poses and animations remain real.
@@ -100,7 +120,7 @@ public class ClientSmoke {
         for (var existing : com.cobblemon.mod.common.api.pokemon.PokemonSpecies.getSpecies())
             species.put(existing.getResourceIdentifier(), existing);
         List<String> loaded = new ArrayList<>();
-        for (String name : List.of("lunavee", "buzzeon", "creepyeon", "ghost_jirachi", "fairy_sliggoo", "inkyeon")) {
+        for (String name : List.of("lunavee", "buzzeon", "creepyeon", "ghost_jirachi", "fairy_sliggoo", "inkyeon", "mawonna", "mawonna_flower")) {
             var id = net.minecraft.resources.ResourceLocation.parse("cobblemon:" + name);
             if (species.containsKey(id)) continue;
             String resource = "data/cobblemon/species/custom/" + name + ".json";

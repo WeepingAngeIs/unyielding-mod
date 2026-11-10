@@ -1,0 +1,66 @@
+{
+  "cellSize": 64,
+  "atlasSize": 512,
+  "icons": {
+    "lunavee": {
+      "cell": 0,
+      "source": "assets/xaerominimap/entity/icon/sprite/mawonna/lunavee.png",
+      "sourceSha256": "a08154d3a6209be3f49c64f1e5e0fdafdd8e9b281d6601f1ba3595c883d8d871",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "crop": [
+        101,
+        57,
+        1148,
+        1209
+      ]
+    },
+    "buzzeon": {
+      "cell": 1,
+      "source": "assets/xaerominimap/entity/icon/sprite/mawonna/buzzeon.png",
+      "sourceSha256": "ccb8ee1cf3404f30030757495a89ea4da6f0c48281cb2f8e488a1464ec5909d5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "crop": [
+        105,
+        38,
+        1093,
+        1200
+      ]
+    },
+    "creepyeon": {
+      "cell": 2,
+      "source": "assets/xaerominimap/entity/icon/sprite/mawonna/creepyeon.png",
+      "sourceSha256": "aef09b71d0685ab0910b7ef12f5901e1b1c7abcb457f6228e1a5d92197b8a043",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "crop": [
+        92,
+        38,
+        1174,
+        1206
+      ]
+    },
+    "ghost_jirachi": {
+      "cell": 3,
+      "source": "assets/xaerominimap/entity/icon/sprite/mawonna/ghost_jirachi.png",
+      "sourceSha256": "e91a7acdaccd3b046ef57f290f6d4d43f01f8135ea23f56f4e2ce0b60eb5b5ae",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "crop": [
+        462,
+        489,
+        819,
+        809
+      ]
+    }
+  }
+}

@@ -58,6 +58,7 @@ public final class MawonnaCompanion {
 
     public MawonnaCompanion(IEventBus modBus) {
         ITEMS.register(modBus);
+        GhostJirachiEyeAspect.install();
         NeoForge.EVENT_BUS.addListener(this::onInteract);
         NeoForge.EVENT_BUS.addListener(this::commands);
         CobblemonEvents.BATTLE_FAINTED.subscribe(Priority.NORMAL, (Consumer<BattleFaintedEvent>) MawonnaCompanion::onFainted);
@@ -280,6 +281,8 @@ public final class MawonnaCompanion {
                 .findFirst().orElseThrow(() -> new IllegalStateException("Missing evolution " + id)).test(pokemon);
     }
     static void selfTest(net.minecraft.core.RegistryAccess registry) {
+        GhostJirachiEyeAspect.selfTest();
+        GhostJirachiEyeAspect.selfTestPokemon();
         testFaintEvent(ActorType.WILD,true,true,1);
         testFaintEvent(ActorType.NPC,true,true,1);
         testFaintEvent(ActorType.PLAYER,true,true,0);

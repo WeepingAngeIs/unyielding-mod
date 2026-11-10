@@ -1,0 +1,50 @@
+name: Build and verify Unyielding animated portraits
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: unyielding-animated-release
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      - name: Compile updated component and audit combined JAR
+        run: python tools/build_animation_release.py
+      - name: Set up hosted rendering
+        run: sudo apt-get update -qq && sudo apt-get install -y xvfb libgl1-mesa-dri libopenal1
+      - name: Verify final JAR client and animated assets
+        env:
+          UNYIELDING_BUNDLED_PACK: 'true'
+          UNYIELDING_ANIMATED_RELEASE: 'true'
+        run: python tools/cloud_client_smoke.py
+      - name: Verify dedicated server and exact HP boundary
+        env:
+          UNYIELDING_BUNDLED_PACK: 'true'
+        run: python tools/cloud_runtime_smoke.py --pack Mawonna.zip --eula-file source/runtime/eula.txt --unyielding dist/animation-release/Unyielding-1.1.9.jar --species mawonna mawonna_flower covislight fairy_sliggoo inkyeon lunavee buzzeon ghost_jirachi creepyeon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Unyielding-1.1.9-verified
+          path: |
+            dist/animation-release/Unyielding-1.1.9.jar
+            dist/animation-release/assembly-report.json
+            dist/animation-release/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Unyielding-1.1.9-evidence
+          path: |
+            dist/client/
+            dist/runtime/
+            dist/animation-release/companion-build.log
+            dist/animation-release/assembly-report.json

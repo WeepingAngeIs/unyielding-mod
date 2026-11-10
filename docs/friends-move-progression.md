@@ -1,136 +1,21 @@
-# Friends Pokemon move progression
+# Friends Pokemon moves available at level one
 
-These schedules replace the temporary level-one testing lists for Lunavee, Buzzeon, Ghost Jirachi and Creepyeon. They preserve every supplied move and keep TM, tutor, egg, legacy and special entries unchanged. Each species starts with four level-up moves; later moves unlock through leveling.
+All moves below are available from level one. No leveling or teaching item is required to unlock them. The normal four equipped battle-move slots and each move's battle restrictions still apply. These lists supersede the former level progression schedule.
 
-Lunavee and Buzzeon progress through level 80. Ghost Jirachi keeps its existing level milestones through Doom Desire at level 98. Creepyeon keeps its existing higher-level schedule and learns the deferred Double-Edge at level 60. Their stats, abilities, models and other species fields are outside this module.
+Creepyeon includes all eligible Ghost and Normal moves, excluding one-PP, Z/Max/G-Max and malformed/internal entries.
 
-Existing high-level Pokemon may retain already learned moves; this changes learnsets, not stored party move history. Conditional restrictions still apply, including Aura Wheel's species restriction.
+## Lunavee (102 moves)
 
-## Lunavee
+`accelerock`, `afteryou`, `agility`, `ancientpower`, `aquajet`, `aquastep`, `aurawheel`, `autotomize`, `babydolleyes`, `batonpass`, `bite`, `bleakwindstorm`, `bodyslam`, `bubble`, `bubblebeam`, `bulldoze`, `bulletpunch`, `calmmind`, `charm`, `clangoroussoul`, `constrict`, `cosmicpower`, `cottonspore`, `crunch`, `curse`, `doubleedge`, `dragondance`, `drumbeating`, `electroball`, `electroweb`, `esperwing`, `extremespeed`, `facade`, `feint`, `filletaway`, `firefang`, `flamecharge`, `geomancy`, `glaciate`, `glare`, `grasspledge`, `gyroball`, `hammerarm`, `healingwish`, `helpinghand`, `icefang`, `icehammer`, `iceshard`, `icywind`, `lastresort`, `lowsweep`, `machpunch`, `moonblast`, `moonlight`, `mudshot`, `noretreat`, `ominouswind`, `orderup`, `playrough`, `pounce`, `protect`, `psychic`, `psychicfangs`, `psyshock`, `quash`, `quickattack`, `quiverdance`, `rapidspin`, `rockpolish`, `rocktomb`, `scaleshot`, `scaryface`, `secretpower`, `shadowball`, `shadowsneak`, `shellsmash`, `shiftgear`, `silktrap`, `silverwind`, `speedswap`, `spinout`, `stickyweb`, `stringshot`, `stunspore`, `substitute`, `suckerpunch`, `swift`, `syrupbomb`, `tailwind`, `tarshot`, `thunderfang`, `thunderwave`, `tidyup`, `toxicthread`, `trailblaze`, `trickroom`, `uturn`, `vcreate`, `venomdrench`, `victorydance`, `wish`, `yawn`
 
-| Level | Move IDs |
-|---:|---|
-| 1 | `babydolleyes`, `bite`, `helpinghand`, `quickattack` |
-| 5 | `bubble`, `constrict`, `stringshot` |
-| 8 | `charm`, `cottonspore`, `mudshot` |
-| 11 | `feint`, `icywind`, `pounce` |
-| 14 | `aquajet`, `iceshard`, `swift` |
-| 17 | `flamecharge`, `lowsweep`, `trailblaze` |
-| 20 | `bubblebeam`, `electroweb`, `rocktomb` |
-| 23 | `agility`, `thunderwave`, `yawn` |
-| 26 | `accelerock`, `machpunch`, `rapidspin` |
-| 29 | `ancientpower`, `ominouswind`, `silverwind` |
-| 32 | `moonlight`, `protect`, `wish` |
-| 35 | `bulldoze`, `grasspledge`, `secretpower` |
-| 38 | `firefang`, `icefang`, `thunderfang` |
-| 40 | `batonpass`, `tailwind`, `uturn` |
-| 42 | `autotomize`, `rockpolish`, `tidyup` |
-| 44 | `glare`, `scaryface`, `stunspore` |
-| 46 | `crunch`, `facade`, `psychicfangs` |
-| 48 | `electroball`, `gyroball`, `speedswap` |
-| 50 | `cosmicpower`, `moonblast`, `playrough` |
-| 52 | `psychic`, `psyshock`, `shadowball` |
-| 54 | `bulletpunch`, `shadowsneak`, `suckerpunch` |
-| 56 | `syrupbomb`, `tarshot`, `toxicthread` |
-| 58 | `silktrap`, `stickyweb`, `venomdrench` |
-| 60 | `calmmind`, `dragondance`, `quiverdance` |
-| 62 | `afteryou`, `quash`, `trickroom` |
-| 64 | `bodyslam`, `doubleedge`, `substitute` |
-| 66 | `aquastep`, `drumbeating`, `esperwing` |
-| 68 | `hammerarm`, `icehammer`, `scaleshot` |
-| 70 | `filletaway`, `shellsmash`, `shiftgear` |
-| 72 | `curse`, `noretreat`, `victorydance` |
-| 74 | `bleakwindstorm`, `glaciate`, `spinout` |
-| 76 | `aurawheel`, `healingwish`, `orderup` |
-| 78 | `extremespeed`, `lastresort` |
-| 80 | `clangoroussoul`, `geomancy`, `vcreate` |
+## Buzzeon (55 moves)
 
-0 non-level acquisition entries retained unchanged.
+`acrobatics`, `aerialace`, `agility`, `attackorder`, `babydolleyes`, `bite`, `bugbite`, `bugbuzz`, `charm`, `crosspoison`, `crunch`, `defendorder`, `doubleedge`, `drillrun`, `dualwingbeat`, `fellstinger`, `firstimpression`, `furycutter`, `healorder`, `helpinghand`, `infestation`, `knockoff`, `leechlife`, `lunge`, `megahorn`, `pinmissile`, `poisonjab`, `poisonsting`, `pollenpuff`, `pounce`, `powder`, `protect`, `quickattack`, `quiverdance`, `ragepowder`, `roost`, `signalbeam`, `silktrap`, `silverwind`, `skittersmack`, `spiderweb`, `steamroller`, `stickyweb`, `stringshot`, `strugglebug`, `substitute`, `swordsdance`, `tackle`, `tailglow`, `tailwind`, `toxic`, `twineedle`, `uturn`, `wish`, `xscissor`
 
-## Buzzeon
+## Ghost Jirachi (119 moves)
 
-| Level | Move IDs |
-|---:|---|
-| 1 | `bugbite`, `poisonsting`, `stringshot`, `tackle` |
-| 5 | `babydolleyes`, `quickattack` |
-| 8 | `helpinghand`, `strugglebug` |
-| 11 | `bite`, `furycutter` |
-| 14 | `charm`, `pounce` |
-| 17 | `infestation`, `twineedle` |
-| 20 | `aerialace`, `pinmissile` |
-| 23 | `signalbeam`, `silverwind` |
-| 26 | `protect`, `roost` |
-| 29 | `spiderweb`, `steamroller` |
-| 32 | `acrobatics`, `dualwingbeat` |
-| 35 | `fellstinger`, `poisonjab` |
-| 38 | `skittersmack`, `uturn` |
-| 41 | `agility`, `tailwind` |
-| 44 | `lunge`, `xscissor` |
-| 47 | `pollenpuff`, `wish` |
-| 50 | `crunch`, `knockoff` |
-| 53 | `crosspoison`, `drillrun` |
-| 56 | `stickyweb`, `toxic` |
-| 59 | `powder`, `ragepowder` |
-| 62 | `defendorder`, `healorder` |
-| 65 | `attackorder`, `firstimpression` |
-| 68 | `bugbuzz`, `leechlife` |
-| 71 | `quiverdance`, `swordsdance` |
-| 74 | `silktrap`, `substitute` |
-| 77 | `doubleedge`, `tailglow` |
-| 80 | `megahorn` |
+`aerialace`, `allyswitch`, `amnesia`, `ancientpower`, `astonish`, `aurasphere`, `batonpass`, `bodyslam`, `calmmind`, `chargebeam`, `charm`, `confide`, `confuseray`, `confusion`, `cosmicpower`, `dazzlinggleam`, `defensecurl`, `destinybond`, `doomdesire`, `doubleedge`, `doubleteam`, `dracometeor`, `drainpunch`, `dreameater`, `dynamicpunch`, `encore`, `endure`, `energyball`, `expandingforce`, `facade`, `faketears`, `firepunch`, `flash`, `flashcannon`, `fling`, `followme`, `frustration`, `futuresight`, `gigaimpact`, `grassknot`, `gravity`, `happyhour`, `headbutt`, `healingwish`, `heartstamp`, `helpinghand`, `hex`, `hiddenpower`, `hyperbeam`, `icepunch`, `icywind`, `imprison`, `irondefense`, `ironhead`, `lastresort`, `lifedew`, `lightscreen`, `luckychant`, `magiccoat`, `magicroom`, `megakick`, `megapunch`, `metalsound`, `meteorbeam`, `meteormash`, `metronome`, `mimic`, `moonblast`, `mudslap`, `naturalgift`, `nightmare`, `nightshade`, `phantomforce`, `playrough`, `poweruppunch`, `protect`, `psybeam`, `psychic`, `psychicnoise`, `psychup`, `psyshock`, `raindance`, `recycle`, `reflect`, `refresh`, `rest`, `return`, `round`, `safeguard`, `sandstorm`, `secretpower`, `shadowball`, `shockwave`, `signalbeam`, `skillswap`, `sleeptalk`, `snore`, `stealthrock`, `steelbeam`, `storedpower`, `substitute`, `sunnyday`, `swagger`, `swift`, `telekinesis`, `terablast`, `thunder`, `thunderbolt`, `thunderpunch`, `thunderwave`, `toxic`, `trick`, `trickroom`, `uproar`, `uturn`, `waterpulse`, `willowisp`, `wish`, `zenheadbutt`
 
-0 non-level acquisition entries retained unchanged.
+## Creepyeon (269 moves)
 
-## Ghost Jirachi
-
-| Level | Move IDs |
-|---:|---|
-| 1 | `astonish`, `confuseray`, `confusion`, `wish` |
-| 7 | `swift` |
-| 10 | `refresh` |
-| 12 | `nightshade` |
-| 15 | `luckychant` |
-| 18 | `psybeam` |
-| 21 | `hex`, `lifedew` |
-| 28 | `willowisp`, `zenheadbutt` |
-| 35 | `calmmind`, `gravity` |
-| 42 | `psychic`, `shadowball` |
-| 49 | `dreameater`, `meteormash` |
-| 56 | `destinybond`, `healingwish` |
-| 63 | `rest`, `trickroom` |
-| 70 | `futuresight`, `phantomforce` |
-| 77 | `doubleedge` |
-| 84 | `cosmicpower`, `storedpower` |
-| 91 | `lastresort` |
-| 98 | `doomdesire` |
-
-151 non-level acquisition entries retained unchanged.
-
-## Creepyeon
-
-| Level | Move IDs |
-|---:|---|
-| 1 | `bite`, `growl`, `tackle`, `tailwhip` |
-| 5 | `sandattack` |
-| 6 | `helpinghand` |
-| 8 | `confusion` |
-| 10 | `quickattack` |
-| 12 | `covet` |
-| 15 | `babydolleyes` |
-| 18 | `copycat` |
-| 20 | `swift` |
-| 22 | `refresh` |
-| 25 | `psybeam` |
-| 26 | `charm` |
-| 30 | `morningsun` |
-| 32 | `batonpass` |
-| 35 | `powerswap` |
-| 38 | `takedown` |
-| 40 | `psychic` |
-| 45 | `psychup` |
-| 48 | `trumpcard` |
-| 50 | `futuresight` |
-| 55 | `lastresort` |
-| 60 | `doubleedge` |
-
-135 non-level acquisition entries retained unchanged.
+`acupressure`, `afteryou`, `alluringvoice`, `allyswitch`, `assist`, `astonish`, `astralbarrage`, `attract`, `babydolleyes`, `barrage`, `batonpass`, `bellydrum`, `bestow`, `bide`, `bind`, `bite`, `bittermalice`, `block`, `bloodmoon`, `bodyslam`, `boomburst`, `calmmind`, `camouflage`, `captivate`, `celebrate`, `charm`, `chipaway`, `cometpunch`, `confide`, `confuseray`, `confusion`, `constrict`, `conversion`, `conversion2`, `copycat`, `courtchange`, `covet`, `crushclaw`, `crushgrip`, `curse`, `cut`, `dazzlinggleam`, `defensecurl`, `destinybond`, `detect`, `dig`, `disable`, `dizzypunch`, `doodle`, `doubleedge`, `doublehit`, `doublekick`, `doubleslap`, `doubleteam`, `drainingkiss`, `dreameater`, `echoedvoice`, `eggbomb`, `encore`, `endeavor`, `endure`, `entrainment`, `expandingforce`, `explosion`, `extremespeed`, `facade`, `fakeout`, `faketears`, `falseswipe`, `feint`, `filletaway`, `flail`, `flash`, `focusenergy`, `followme`, `foresight`, `frustration`, `furyattack`, `furyswipes`, `futuresight`, `gigaimpact`, `glare`, `grassknot`, `gravity`, `growl`, `growth`, `grudge`, `guillotine`, `happyhour`, `harden`, `headbutt`, `headcharge`, `healbell`, `helpinghand`, `hex`, `hiddenpower`, `holdback`, `holdhands`, `hornattack`, `horndrill`, `howl`, `hyperbeam`, `hyperdrill`, `hyperfang`, `hypervoice`, `imprison`, `infernalparade`, `irontail`, `judgment`, `laserfocus`, `lastresort`, `lastrespects`, `leer`, `lick`, `lightscreen`, `lockon`, `lovelykiss`, `luckychant`, `magicalleaf`, `magiccoat`, `magicroom`, `meanlook`, `mefirst`, `megakick`, `megapunch`, `metronome`, `milkdrink`, `mimic`, `mindreader`, `minimize`, `moongeistbeam`, `morningsun`, `mudslap`, `multiattack`, `naturalgift`, `naturepower`, `nightmare`, `nightshade`, `nobleroar`, `odorsleuth`, `ominouswind`, `painsplit`, `payday`, `perishsong`, `phantomforce`, `playnice`, `poltergeist`, `populationbomb`, `pound`, `powergem`, `powershift`, `powerswap`, `present`, `protect`, `psybeam`, `psychic`, `psychicfangs`, `psychicnoise`, `psychicterrain`, `psychup`, `psyshock`, `quickattack`, `rage`, `ragefist`, `ragingbull`, `raindance`, `rapidspin`, `razorwind`, `recover`, `recycle`, `reflect`, `reflecttype`, `refresh`, `relicsong`, `rest`, `retaliate`, `return`, `revelationdance`, `roar`, `rockclimb`, `round`, `safeguard`, `sandattack`, `scaryface`, `scratch`, `screech`, `secretpower`, `selfdestruct`, `shadowball`, `shadowbone`, `shadowclaw`, `shadowforce`, `shadowpunch`, `shadowsneak`, `sharpen`, `shedtail`, `shellsmash`, `signalbeam`, `simplebeam`, `sing`, `skillswap`, `skullbash`, `slackoff`, `slam`, `slash`, `sleeptalk`, `smellingsalts`, `smokescreen`, `snore`, `softboiled`, `sonicboom`, `spectralthief`, `spikecannon`, `spiritshackle`, `spite`, `spitup`, `splash`, `spotlight`, `stockpile`, `stomp`, `storedpower`, `strength`, `stuffcheeks`, `substitute`, `sunnyday`, `superfang`, `supersonic`, `swagger`, `swallow`, `sweetscent`, `swift`, `swordsdance`, `synchronoise`, `tackle`, `tailslap`, `tailwhip`, `takedown`, `tearfullook`, `teatime`, `technoblast`, `teeterdance`, `telekinesis`, `terablast`, `terastarstorm`, `terrainpulse`, `thrash`, `thunderwave`, `tickle`, `tidyup`, `toxic`, `trailblaze`, `transform`, `triattack`, `trick`, `trickortreat`, `trickroom`, `trumpcard`, `uproar`, `veeveevolley`, `visegrip`, `weatherball`, `whirlwind`, `wish`, `workup`, `wrap`, `wringout`, `yawn`, `zapcannon`, `zenheadbutt`

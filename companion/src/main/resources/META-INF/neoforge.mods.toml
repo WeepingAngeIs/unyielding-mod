@@ -3,7 +3,7 @@ loaderVersion="[4,)"
 license="MIT"
 [[mods]]
 modId="mawonna"
-version="1.0.0"
+version="1.0.1"
 displayName="Unyielding: Mawonna Evolutions"
 description="Verified wild/NPC evolution progress, distinct meals and Mawilite vows."
 [[dependencies.mawonna]]
@@ -18,3 +18,6 @@ type="required"
 versionRange="[1.8.4,1.9)"
 ordering="AFTER"
 side="BOTH"
+
+[[mixins]]
+config="mawonna-icons.mixins.json"

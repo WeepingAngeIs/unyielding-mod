@@ -4,7 +4,7 @@ Supporting mod and pack files for Cobblemon Unyielding.
 
 ## Installation
 
-1. Download [Unyielding 1.1.8](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.8.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules and riding definitions.
+1. Download [Unyielding 1.1.9](https://github.com/WeepingAngeIs/Server-Jars/raw/refs/heads/main/releases/Unyielding-1.1.9.jar). This combined JAR includes the complete Mawonna assets, species data, ring, evolution rules, riding definitions and animated portraits/map icons.
 2. Stop Minecraft and the server. Back up the world before updating.
 3. Replace the previous Unyielding JAR and separate UnyieldingQuests or Cobble Currency Bridge JARs in the server's and every client's `mods` folder with the combined file. Remove any separate companion module already included in that file. Keep only one copy of each module installed.
 4. Remove or disable the old `Mawonna.zip` and individual Lunavee, Buzzeon, Ghost Jirachi and Creepyeon addon packs from the world `datapacks` and each client's `resourcepacks`. The JAR supplies them now; old external packs can override the fixes. Update any server-distributed copy containing those old assets. Other resource packs can remain enabled.
@@ -14,7 +14,7 @@ The combined release requires Cobblemon 1.8.4, CobbleDollars 2.x, Lightman's Cur
 
 ## Builds and checks
 
-This release's builds and game checks ran on GitHub-hosted runners, with a focused local compilation check to reduce repeated cloud runs. Downloads are published only after their required checks pass. The checks use a focused test environment; they do not cover the entire client modpack or sustained player-controlled flight.
+Version 1.1.9 is built and checked locally at the user's request. Downloads are published only after the required checks pass. The checks use isolated server/client environments; they do not cover the entire client modpack, sustained player-controlled flight or a live minimap radar session. See [build instructions](docs/animation-release.md) and [release validation](https://github.com/WeepingAngeIs/Server-Jars/blob/main/releases/Unyielding-1.1.9-Validation.txt).
 
 ## New command-only Pokemon
 
@@ -27,10 +27,14 @@ The combined pack includes the approved Lunavee, Buzzeon, Ghost Jirachi, and Cre
 /pokespawn creepyeon
 ```
 
-Append `gender=male` or `gender=female` to select a sex. These four currently have no natural spawn or evolution rules. Their supplied exports have no separate shiny palettes; `shiny` retains the same artwork. Lunavee retains Normal typing and Eevee abilities; Creepyeon retains its supplied Synchronize/Magic Bounce and Espeon-derived learnset. Lunavee's Aura Wheel retains its normal species restriction. Original export notes and licenses are under `docs/imported-pokemon/`.
+Append `gender=male` or `gender=female` to select a sex. These four currently have no natural spawn or evolution rules. Their supplied exports have no separate shiny palettes; `shiny` retains the same artwork. Lunavee retains Normal typing and Eevee abilities; Creepyeon retains Synchronize/Magic Bounce and now has all eligible Ghost and Normal moves. Lunavee's Aura Wheel retains its normal species restriction. Original export notes and licenses are under `docs/imported-pokemon/`.
 
-The friends' revised learnsets start with four moves and unlock later moves through leveling. See [the full schedules](docs/friends-move-progression.md). Existing Pokemon can retain already learned moves. Lunavee uses Eevee's normal scale; Buzzeon, Creepyeon and Ghost Jirachi have reduced world sizes. The zero-transition scale correction matches the earlier Corvislight fix. Buzzeon's ears and wings angle outward. Ghost Jirachi has a proper English name alias and corrected side-crystal angles, preserving the raised purple crown and original animation clips. Portraits are centered on faces. Lunavee's star scale keyframes are expanded into the vector format that Cobblemon accepts, so its animation group loads.
+All four friends' learnsets are available from level one: Lunavee 102, Buzzeon 55, Ghost Jirachi 119, and Creepyeon 269. No level progression or teaching item is required for these lists; the normal four equipped battle-move slots and individual move restrictions still apply. See [the full lists](docs/friends-move-progression.md). Lunavee uses Eevee's normal scale; Buzzeon, Creepyeon and Ghost Jirachi have reduced world sizes. The zero-transition scale correction matches the earlier Corvislight fix. Buzzeon's ears and wings angle outward. Ghost Jirachi now uses the original Jirachi model and animations in purple; its belly eye opens strictly below half HP and closes again when healed to half or above. Lunavee's star scale keyframes use the vector format accepted by Cobblemon.
 
 All nine custom species have riding seat locators. The combined release supplies their riding definitions. Rendering checks capture actual client portraits, profiles and flight poses and verify scale throughout pose changes. These are focused client checks, not a full modpack play session.
 
-Fairy Sliggoo uses the original Sliggoo eyes and mouth. Inkyeon has a shorter rear stride and corrected sideways alignment; its normal/shiny gait and 280 idle/walk transition samples passed actual client rendering checks. See the [1.1.8 verification](https://github.com/WeepingAngeIs/Server-Jars/blob/main/releases/Unyielding-1.1.8-Validation.txt).
+Frilligoo (saved species ID `fairy_sliggoo`) is Dragon/Fairy and uses the original Sliggoo eyes and mouth, with the added drawn-on smile removed. Inkyeon's rear joints remain still while its front legs and body retain their approved motion. All latest Mawonna sleeve/hand, cry, and loop fixes from the approved ZIP are embedded.
+
+Mawonna and command-only Mawonna Flower share the supplied animated face portrait and full-body map icon. Inkyeon uses a still, transparent face portrait from the clean supplied artwork and the right-facing GIF for her animated map icon. The new portrait images replace the team portrait only; the 3D models remain available in other views. Map animation integrates with Xaero Minimap 26.5.0; Xaero is optional. Normal and shiny forms use the same supplied portrait artwork.
+
+Admin Mawonna Flower has 862 level-one moves after removing Z/Max/G-Max, one-PP and malformed/internal entries. Its separate admin stats and command-only obtain method remain intact: `/pokespawn mawonna_flower`. Public Mawonna is unchanged by that move cleanup.

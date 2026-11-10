@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "cellSize": 64,
+  "columns": 8,
+  "atlasSize": 512,
+  "animations": {
+    "mawonna": {
+      "frames": 30,
+      "durationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "totalMs": 2400,
+      "sourceDimensions": [
+        1166,
+        1349
+      ],
+      "sourceSha256": "bf61023531274f765e3605af558ecf94bf992f52a86452fba1da1074c662e66b",
+      "sourceFile": "source/animated-icons/mawonna.gif",
+      "mapBounds": [
+        14,
+        0,
+        1151,
+        1346
+      ],
+      "portraitCrop": [
+        260,
+        190,
+        810,
+        635
+      ]
+    },
+    "inkyeon": {
+      "frames": 20,
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "totalMs": 3600,
+      "sourceDimensions": [
+        280,
+        280
+      ],
+      "sourceSha256": "afb5242755a169be38607a5aec9bec36d8f41128fc3d3ee0296a0fde2573a4d1",
+      "sourceFile": "source/animated-icons/inkyeon-map-right.gif",
+      "mapBounds": [
+        9,
+        2,
+        271,
+        269
+      ],
+      "portraitFile": "textures/animated_icons/inkyeon/portrait_static.png",
+      "portraitCrop": [
+        585,
+        375,
+        1110,
+        770
+      ],
+      "portraitSourceDimensions": [
+        1254,
+        1254
+      ],
+      "portraitSourceFile": "source/animated-icons/inkyeon-portrait-right.png",
+      "portraitSourceSha256": "9101c60ad18bc9da7c01638339501c62b2a6eb13e97b345b99389ac54001a05e"
+    }
+  }
+}
