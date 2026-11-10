@@ -20,6 +20,7 @@ MAWONNA_CROP = (260, 190, 810, 635)
 INKYEON_PORTRAIT = "textures/animated_icons/inkyeon/portrait_static.png"
 SOURCES = {
     "mawonna.gif": "bf61023531274f765e3605af558ecf94bf992f52a86452fba1da1074c662e66b",
+    "mawonna-map.gif": "ab56d238641f316bc720695035fa08fb14edab47de647b4e844037d92827d153",
     "inkyeon-map-right.gif": "afb5242755a169be38607a5aec9bec36d8f41128fc3d3ee0296a0fde2573a4d1",
     "inkyeon-portrait-right.png": "9101c60ad18bc9da7c01638339501c62b2a6eb13e97b345b99389ac54001a05e",
 }
@@ -46,11 +47,13 @@ def save(image: Image.Image, path: Path) -> None:
     image.save(path)
 
 
-def export_animation(key: str, filename: str, output: Path) -> dict:
+def export_animation(key: str, filename: str, output: Path, *, portrait: bool = False, emit_map: bool = True) -> dict:
     source = Image.open(SOURCE / filename)
     frames = [frame.convert("RGBA") for frame in ImageSequence.Iterator(source)]
     source.seek(0)
     durations = [int(frame.info["duration"]) for frame in ImageSequence.Iterator(source)]
+    if not frames or len(frames) > 64 or any(duration <= 0 for duration in durations):
+        raise ValueError("Animation must contain 1–64 frames with positive durations")
     bounds = [frame.getbbox() for frame in frames]
     union = (min(b[0] for b in bounds), min(b[1] for b in bounds),
              max(b[2] for b in bounds), max(b[3] for b in bounds))
@@ -58,14 +61,15 @@ def export_animation(key: str, filename: str, output: Path) -> dict:
     for index, frame in enumerate(frames):
         tile = contain_rgba(frame.crop(union), 64, padding=2)
         atlas.alpha_composite(tile, ((index % 8) * 64, (index // 8) * 64))
-        if key == "mawonna":
-            portrait = contain_rgba(frame.crop(MAWONNA_CROP), 256)
-            save(portrait, output / f"textures/animated_icons/{key}/portrait_{index:03}.png")
-    save(atlas, output / f"textures/animated_icons/{key}_map.png")
+        if portrait:
+            cropped = contain_rgba(frame.crop(MAWONNA_CROP), 256)
+            save(cropped, output / f"textures/animated_icons/{key}/portrait_{index:03}.png")
+    if emit_map:
+        save(atlas, output / f"textures/animated_icons/{key}_map.png")
     entry = {"frames": len(frames), "durationsMs": durations, "totalMs": sum(durations),
              "sourceDimensions": list(source.size), "sourceSha256": SOURCES[filename],
              "sourceFile": f"source/animated-icons/{filename}", "mapBounds": list(union)}
-    if key == "mawonna":
+    if portrait:
         entry["portraitCrop"] = list(MAWONNA_CROP)
     return entry
 
@@ -93,15 +97,18 @@ def main() -> None:
     if args.only_inkyeon_portrait:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     else:
+        mawonna_portrait = export_animation("mawonna", "mawonna.gif", args.output, portrait=True, emit_map=False)
+        mawonna_map = export_animation("mawonna", "mawonna-map.gif", args.output)
+        mawonna_map["portraitAnimation"] = mawonna_portrait
         manifest = {"version": 1, "cellSize": 64, "columns": 8, "atlasSize": 512,
                     "animations": {
-                        "mawonna": export_animation("mawonna", "mawonna.gif", args.output),
+                        "mawonna": mawonna_map,
                         "inkyeon": export_animation("inkyeon", "inkyeon-map-right.gif", args.output),
                     }}
     export_static_portrait(args.output, manifest["animations"]["inkyeon"])
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"output": str(args.output), "mawonnaPortrait": "30-frame animation",
-                      "inkyeonPortrait": "static PNG", "mapAnimations": "30/20 frames"}))
+                      "inkyeonPortrait": "static PNG", "mapAnimations": "60/20 frames"}))
 
 
 if __name__ == "__main__":

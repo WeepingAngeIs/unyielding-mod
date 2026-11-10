@@ -90,6 +90,7 @@ def main():
     parser.add_argument('--pack',required=True,type=Path)
     parser.add_argument('--eula-file',required=True,type=Path)
     parser.add_argument('--unyielding',required=True,type=Path)
+    parser.add_argument('--settings-test',type=Path,help='Test-only settings harness for the isolated server')
     parser.add_argument('--species',nargs='+',default=['Covislight','mawonna','mawonna_flower'])
     args=parser.parse_args()
     if os.environ.get('UNYIELDING_LOCAL_BUILD')!='true' and (os.environ.get('GITHUB_ACTIONS')!='true' or os.environ.get('RUNNER_ENVIRONMENT')!='github-hosted'):
@@ -102,7 +103,8 @@ def main():
     output=root/'dist/runtime';output.mkdir(parents=True,exist_ok=True)
     manifest=[]
     mods=work/'mods';mods.mkdir(exist_ok=True)
-    for label,version in (VERSIONS | MEAL_VERSIONS | {'CobbleDollars':'Iqiqjfsi','LightmansCurrency':'n2ynBeOK'}).items():
+    test_dependencies = {'Open Parties and Claims 0.33.0':'yWmXD7GW'} if args.settings_test else {}
+    for label,version in (VERSIONS | MEAL_VERSIONS | {'CobbleDollars':'Iqiqjfsi','LightmansCurrency':'n2ynBeOK'} | test_dependencies).items():
         info=fetch_json('https://api.modrinth.com/v2/version/'+version)
         chosen=next((x for x in info['files'] if x.get('primary')),info['files'][0])
         download(chosen['url'],mods/chosen['filename'],chosen['hashes']['sha512'])
@@ -115,6 +117,10 @@ def main():
     if not args.unyielding.is_file():raise FileNotFoundError(args.unyielding)
     shutil.copy2(args.unyielding,mods/'Unyielding-Mawonna.jar')
     manifest.append({'label':'Integrated Unyielding mod','file':'Unyielding-Mawonna.jar','sha256':hashlib.sha256(args.unyielding.read_bytes()).hexdigest()})
+    if args.settings_test:
+        if not args.settings_test.is_file(): raise FileNotFoundError(args.settings_test)
+        shutil.copy2(args.settings_test,mods/'settings-smoke-test-only.jar')
+        manifest.append({'label':'Test-only settings harness','sha256':hashlib.sha256(args.settings_test.read_bytes()).hexdigest()})
     installer=work/'neoforge-installer.jar'
     download(f'https://maven.neoforged.net/releases/net/neoforged/neoforge/{NEOFORGE}/neoforge-{NEOFORGE}-installer.jar',installer)
     with (output/'installer.log').open('w') as log:
@@ -161,6 +167,15 @@ def main():
             report['companion_self_test']=self_test
             if 'MAWONNA_SELF_TEST_OK' not in self_test:
                 raise AssertionError('Companion runtime assertions failed: '+self_test)
+            if args.settings_test:
+                settings_test=rcon.command('settingstest')
+                report['settings_self_test']=settings_test
+                if 'SETTINGSTEST PASS' not in settings_test:
+                    raise AssertionError('Settings runtime assertions failed: '+settings_test)
+                result=json.loads((work/'settings-smoke-result.json').read_text())
+                report['settings_results']=result
+                if result.get('status') != 'PASS':
+                    raise AssertionError('Settings report/cleanup did not pass: '+json.dumps(result))
             for index,species in enumerate(args.species):
                 # Score records the actual command's return success; parser errors cannot pass.
                 marker='spawn_'+str(index)
@@ -191,6 +206,8 @@ def main():
         for name in ['latest.log','debug.log']:
             p=work/'logs'/name
             if p.exists():shutil.copy2(p,output/name)
+        settings_report=work/'settings-smoke-result.json'
+        if args.settings_test and settings_report.exists():shutil.copy2(settings_report,output/settings_report.name)
         (output/'runtime-validation.json').write_text(json.dumps(report,indent=2))
         if report['status']!='passed':
             latest=output/'latest.log'

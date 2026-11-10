@@ -1,4 +1,4 @@
-"""Repack the four supplied static map PNGs into Xaero-compatible 64-pixel cells.
+"""Repack the friends' and Frilligoo static map PNGs into 64-pixel cells.
 
 Uses the exact PNG artwork already shipped in Mawonna.zip. No image generation.
 The final-quad mixin selects these cells directly, so other resource packs can
@@ -13,7 +13,7 @@ from zipfile import ZipFile
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
-SPECIES = ("lunavee", "buzzeon", "creepyeon", "ghost_jirachi")
+SPECIES = ("lunavee", "buzzeon", "creepyeon", "ghost_jirachi", "fairy_sliggoo")
 OUTPUT = ROOT / "companion/src/main/resources/assets/mawonna"
 
 
@@ -23,7 +23,13 @@ def main():
     with ZipFile(ROOT / "Mawonna.zip") as pack:
         for cell, species in enumerate(SPECIES):
             source = f"assets/xaerominimap/entity/icon/sprite/mawonna/{species}.png"
-            data = pack.read(source)
+            if species == "fairy_sliggoo":
+                source = "source/animated-icons/frilligoo-map.png"
+                data = (ROOT/source).read_bytes()
+                if hashlib.sha256(data).hexdigest() != "53665e2c3024d6bbda51df2fd436269cbca61ffc683a6a3ac4a2eb631a752e85":
+                    raise ValueError("Frilligoo source artwork changed")
+            else:
+                data = pack.read(source)
             image = Image.open(BytesIO(data)).convert("RGBA")
             if image.getchannel("A").getextrema() != (0, 255):
                 raise ValueError(f"Expected transparent supplied icon: {source}")

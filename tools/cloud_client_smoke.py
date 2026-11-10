@@ -37,6 +37,9 @@ try:
   subprocess.run(([os.environ['UNYIELDING_GRADLE'],'--no-daemon','runClient'] if os.name=='nt' else ['xvfb-run','-a','-s','-screen 0 1280x720x24','gradle','--no-daemon','runClient']),cwd=project,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=1500,env=os.environ|{'LIBGL_ALWAYS_SOFTWARE':'true'})
  assert (run/'client-smoke-passed.json').exists(),'Client never confirmed loaded resource pack'
  result=json.loads((run/'client-smoke-passed.json').read_text())
+ if os.environ.get('UNYIELDING_SETTINGS_RELEASE')=='true':
+  assert result.get('settings_client',{}).get('packet_handler_cases')==7,'Settings receipt/renderer checks missing'
+  assert result.get('animated_icons',{}).get('mapScaleCases')==8,'Map scaling geometry checks missing'
  assert result.get('pose_transition_scale_samples',0)>0,'No pose transitions were checked'
  assert len(result.get('animated_icons',{}).get('native_repository_portrait_selection',{}))==3,'Mawonna animated portrait interception failed'
  assert len(result.get('actual_gui_screenshots',[]))==9,'Missing actual GUI render screenshots'

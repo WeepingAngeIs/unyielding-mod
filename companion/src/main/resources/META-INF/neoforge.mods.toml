@@ -3,7 +3,7 @@ loaderVersion="[4,)"
 license="MIT"
 [[mods]]
 modId="mawonna"
-version="1.0.1"
+version="1.0.2"
 displayName="Unyielding: Mawonna Evolutions"
 description="Verified wild/NPC evolution progress, distinct meals and Mawilite vows."
 [[dependencies.mawonna]]

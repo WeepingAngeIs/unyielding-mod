@@ -61,6 +61,21 @@
         819,
         809
       ]
+    },
+    "fairy_sliggoo": {
+      "cell": 4,
+      "source": "source/animated-icons/frilligoo-map.png",
+      "sourceSha256": "53665e2c3024d6bbda51df2fd436269cbca61ffc683a6a3ac4a2eb631a752e85",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "crop": [
+        261,
+        21,
+        1091,
+        1244
+      ]
     }
   }
 }

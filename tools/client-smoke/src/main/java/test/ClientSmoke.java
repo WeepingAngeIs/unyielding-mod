@@ -79,6 +79,8 @@ public class ClientSmoke {
                 results.put("pack_source", bundled ? "bundled_mod_jar" : "external_resource_pack");
                 results.put("title_screen_render_fixture", Map.of("species", prepareRenderSpecies(bundled), "fields", List.of("name", "baseScale"), "purpose", "GUI form-scale lookup only; full species parsing and gameplay are verified by server runtime smoke"));
                 results.put("animated_icons", verifyAnimatedIcons());
+                if ("true".equals(System.getenv("UNYIELDING_SETTINGS_RELEASE")))
+                    results.put("settings_client", verifySettingsClient());
                 // Launch defaults override options.txt dimensions; resize the actual
                 // GLFW window and allow its normal framebuffer callback to run.
                 org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(), 1280, 720);
@@ -89,6 +91,40 @@ public class ClientSmoke {
                 mc.stop();
             }
         }));
+    }
+
+    private static Map<String,Object> verifySettingsClient() throws Exception {
+        Class<?> data = Class.forName("dev.unyielding.quests.client.ClientData");
+        Class<?> packet = Class.forName("dev.unyielding.quests.net.Net$AdminSettingsSync");
+        Method handler = Class.forName("dev.unyielding.quests.client.ClientHandlers").getMethod("onAdminSettings", packet);
+        Method rendererScale = Class.forName("dev.mawonna.client.AnimatedPokemonIcons").getMethod("configuredMapScale");
+        var constructor = packet.getConstructor(net.minecraft.nbt.CompoundTag.class, boolean.class);
+        int cases = 0;
+        try {
+            for (double[] pair : new double[][]{{.25,.25},{2,2},{4,4},{-9,.25},{90,4},{Double.NaN,1},{Double.POSITIVE_INFINITY,1}}) {
+                var tag = new net.minecraft.nbt.CompoundTag();
+                tag.putDouble("customMapIconScale", pair[0]);
+                tag.putBoolean("adminInventoryControls", false);
+                handler.invoke(null, constructor.newInstance(tag, false));
+                if (data.getField("customMapIconScale").getDouble(null) != pair[1]
+                        || ((Float)rendererScale.invoke(null)).doubleValue() != pair[1]
+                        || data.getField("adminInventoryControls").getBoolean(null))
+                    throw new AssertionError("Client settings receipt/renderer did not apply " + pair[0]);
+                cases++;
+            }
+            handler.invoke(null, constructor.newInstance(new net.minecraft.nbt.CompoundTag(), false));
+            if (data.getField("customMapIconScale").getDouble(null) != 1
+                    || !data.getField("adminInventoryControls").getBoolean(null))
+                throw new AssertionError("Missing settings must use defaults");
+            data.getField("customMapIconScale").setDouble(null, 3);
+            data.getField("adminInventoryControls").setBoolean(null, false);
+            data.getMethod("clear").invoke(null);
+            if (data.getField("customMapIconScale").getDouble(null) != 1
+                    || !data.getField("adminInventoryControls").getBoolean(null))
+                throw new AssertionError("Disconnect reset leaked settings");
+            return Map.of("packet_handler_cases", cases, "renderer_reads_synced_scale", true,
+                    "missing_fields_default", true, "disconnect_clear_resets", true);
+        } finally { data.getMethod("clear").invoke(null); }
     }
 
     private static Map<String,Object> verifyAnimatedIcons() throws Exception {
