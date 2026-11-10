@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:slime_ball"
+    },
+    "title": "I love snails.",
+    "description": "One Sliggoo. One thousand Dark types. Absolutely worth the wait.",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "background": "minecraft:textures/block/black_concrete.png"
+  },
+  "criteria": {
+    "milestone": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

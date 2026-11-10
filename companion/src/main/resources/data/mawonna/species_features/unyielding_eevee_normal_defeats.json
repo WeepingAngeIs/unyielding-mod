@@ -1,0 +1,10 @@
+{
+  "keys": [
+    "unyielding_eevee_normal_defeats"
+  ],
+  "type": "integer",
+  "min": 0,
+  "max": 500,
+  "default": 0,
+  "visible": true
+}

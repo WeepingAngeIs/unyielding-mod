@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:pink_dye"
+    },
+    "title": "Friendship Was Optional",
+    "description": "Your Sylveon tied up a thousand loose ends. With ribbons.",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "background": "minecraft:textures/block/black_concrete.png"
+  },
+  "criteria": {
+    "milestone": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

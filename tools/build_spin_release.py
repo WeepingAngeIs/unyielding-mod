@@ -39,9 +39,9 @@ def read(path):
         assert len(z.namelist()) == len(set(z.namelist()))
         return {n:z.read(n) for n in z.namelist() if not n.endswith('/')}
 
-base_path = server/'releases/Unyielding-1.1.10.jar'
+base_path = server/'releases/Unyielding-1.1.8-test.jar'
 sha = lambda data: hashlib.sha256(data).hexdigest()
-assert sha(base_path.read_bytes()) == '802006a6a784bea663e7aa487fd98933fe30d8e6a2fbfb313301437a069798c3'
+assert sha(base_path.read_bytes()) == 'c76304bb8db8bd6367fe0c4a7e4354d83a8a0e90c64e25bcbd42dbbbd8458b43'
 base = read(base_path)
 quest = read(quests/'build/libs/UnyieldingQuests-1.6.9.jar')
 module = read(companion/'build/libs/mawonna-companion-1.0.2.jar')
@@ -58,7 +58,10 @@ for n,v in module.items():
     if n in (meta,manifest,'pack.mcmeta'): continue
     if not n.startswith(('assets/','data/','LICENSES/','dev/mawonna/','mawonna/','mawonna.','mawonna-')): continue
     if '/lang/' in n and n in base:
-        v=(json.dumps(json.loads(v)|json.loads(base[n]),indent=2,ensure_ascii=False)+'\n').encode()
+        merged = json.loads(v) | json.loads(base[n])
+        if n == 'assets/mawonna/lang/en_us.json':
+            merged['mawonna.ui.verified_dark_defeats'] = json.loads(v)['mawonna.ui.verified_dark_defeats']
+        v = (json.dumps(merged, indent=2, ensure_ascii=False)+'\n').encode()
     entries[n]=v;allowed.add(n)
 text=base[meta].decode()
 for mod,version in [('mawonna','1.0.2'),('unyieldingquests','1.6.9')]:
@@ -68,7 +71,7 @@ for mod,version in [('mawonna','1.0.2'),('unyieldingquests','1.6.9')]:
     assert count==1
     text=text[:block.start()]+replaced+text[block.end():]
 entries[meta]=text.encode()
-entries[manifest]=re.sub(rb'Implementation-Version: [^\r\n]+',b'Implementation-Version: 1.1.8-test',base[manifest])
+entries[manifest]=re.sub(rb'Implementation-Version: [^\r\n]+',b'Implementation-Version: 1.1.8',base[manifest])
 entries[manifest]=re.sub(rb'Unyielding-Quests-Version: [^\r\n]+',b'Unyielding-Quests-Version: 1.6.9',entries[manifest])
 oldmeta=tomllib.loads(base[meta].decode()); newmeta=tomllib.loads(text)
 for m in oldmeta['mods']:
@@ -83,11 +86,11 @@ for n,v in base.items():
         assert entries[n]==v,n
 for n,v in entries.items():
     if n.endswith('.json'):json.loads(v)
-dest=out/'Unyielding-1.1.8-test.jar'
+dest=out/'Unyielding-1.1.8.jar'
 with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
     for n,v in sorted(entries.items()):z.writestr(n,v)
 assert read(dest)==entries
-report={'status':'passed','version':'1.1.8-test','sha256':sha(dest.read_bytes()),'baseline_sha256':sha(base_path.read_bytes()),'mod_ids':[m['modId'] for m in newmeta['mods']], 'changed_entries':sorted(changed),'added_entries':sorted(set(entries)-set(base)),'preserved_entries':len(base)-len(changed),'portrait_model_species_walk_preserved':True}
+report={'status':'passed','version':'1.1.8','sha256':sha(dest.read_bytes()),'baseline_sha256':sha(base_path.read_bytes()),'mod_ids':[m['modId'] for m in newmeta['mods']], 'changed_entries':sorted(changed),'added_entries':sorted(set(entries)-set(base)),'preserved_entries':len(base)-len(changed),'portrait_model_species_walk_preserved':True}
 (out/'assembly-report.json').write_text(json.dumps(report,indent=2)+'\n')
 (out/'SHA256SUMS').write_text(report['sha256']+'  '+dest.name+'\n')
 (root/'unyielding-artifact').mkdir(exist_ok=True)

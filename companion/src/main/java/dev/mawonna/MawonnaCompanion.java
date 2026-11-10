@@ -61,6 +61,10 @@ public final class MawonnaCompanion {
         GhostJirachiEyeAspect.install();
         NeoForge.EVENT_BUS.addListener(this::onInteract);
         NeoForge.EVENT_BUS.addListener(this::commands);
+        NeoForge.EVENT_BUS.addListener(this::midnightOffers);
+        CobblemonEvents.EVOLUTION_ACCEPTED.subscribe(Priority.NORMAL, (Consumer<com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionAcceptedEvent>) event -> {
+            if (event.getEvolution().getId().equals("eevee_lunavee") && !event.getEvolution().test(event.getPokemon())) event.cancel();
+        });
         CobblemonEvents.BATTLE_FAINTED.subscribe(Priority.NORMAL, (Consumer<BattleFaintedEvent>) MawonnaCompanion::onFainted);
     }
 
@@ -108,20 +112,48 @@ public final class MawonnaCompanion {
         boolean pvp = event.getBattle().isPvP();
         for (var opponent : actor.getSide().getOppositeSide().getActors()) if (opponent.getType() == ActorType.PLAYER) pvp = true;
         Pokemon original = killer.getOriginalPokemon();
-        if (!eligible(pvp, actor.getType(), victim.getType(), actor.getSide() != victim.getSide(), dark,
+        Map<String,Integer> goals = new LinkedHashMap<>();
+        String darkKey = counterKey(original);
+        if (dark && darkKey != null) goals.put(darkKey, defeatGoal(darkKey));
+        if (species(original).equals("eevee")) {
+            Pokemon opponent = killed.getEffectedPokemon();
+            if (killed.getOriginalPokemon().getSpecies().getResourceIdentifier().toString().equals("cobblemon:gastly"))
+                goals.put("unyielding_eevee_gastly_defeats", 1000);
+            for (var type : opponent.getTypes()) {
+                if (type == ElementalTypes.NORMAL) goals.put("unyielding_eevee_normal_defeats", 500);
+                if (type == ElementalTypes.BUG) goals.put("unyielding_eevee_bug_defeats", 1000);
+            }
+        }
+        if (!eligible(pvp, actor.getType(), victim.getType(), actor.getSide() != victim.getSide(), !goals.isEmpty(),
                       original.isPlayerOwned(), true)) return;
-        String key = counterKey(original);
-        if (key == null) return;
-        String faint = killed.getUuid() + ":" + killed.getFaintedAt();
-        if (!firstFaint(event.getBattle(), faint)) return;
-        int next = creditDefeat(original);
-        if (killer.getEffectedPokemon() != original) set(killer.getEffectedPokemon(), key, next);
+        if (!firstFaint(event.getBattle(), killed.getUuid() + ":" + killed.getFaintedAt())) return;
+        goals.replaceAll((key, limit) -> {
+            int next = Math.min(limit, value(original, key) + 1);
+            set(original, key, next);
+            if (killer.getEffectedPokemon() != original) set(killer.getEffectedPokemon(), key, next);
+            if (key.equals(darkKey) && next == limit && original.getOwnerPlayer() != null)
+                awardDefeatMilestone(original.getOwnerPlayer(), original);
+            return next;
+        });
         killer.getPostBattlePokemonOperations().add(pokemon -> {
-            // Retain the credit if the battle implementation restores a battle copy at its end.
-            set(pokemon.getOriginalPokemon(), key, Math.max(next, value(pokemon.getOriginalPokemon(), key)));
-            offerEvolution(pokemon.getOriginalPokemon());
+            Pokemon restored = pokemon.getOriginalPokemon();
+            goals.forEach((key,next) -> set(restored,key,Math.max(next,value(restored,key))));
+            offerEvolution(restored);
             return kotlin.Unit.INSTANCE;
         });
+    }
+
+    private void midnightOffers(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) {
+        if (event.getServer().getTickCount() % 100 != 0) return;
+        for (var player : event.getServer().getPlayerList().getPlayers()) {
+            long time = Math.floorMod(player.level().dayTime(), 24000L);
+            if (time < 17000 || time >= 19000) continue;
+            var party = com.cobblemon.mod.common.Cobblemon.INSTANCE.getStorage().getParty(player);
+            for (Pokemon pokemon : party) {
+                if (species(pokemon).equals("eevee") && value(pokemon,"unyielding_eevee_normal_defeats") >= 500)
+                    offerEvolution(pokemon);
+            }
+        }
     }
     static boolean firstFaint(Object battle, String faint) {
         synchronized(SEEN_FAINTS) {
@@ -130,13 +162,13 @@ public final class MawonnaCompanion {
     }
     static int creditDefeat(Pokemon pokemon) {
         String key = Objects.requireNonNull(counterKey(pokemon));
-        int maximum = DEFEATS.equals(key) ? 666 : 1000;
+        int maximum = defeatGoal(key);
         int next = Math.min(maximum, value(pokemon, key) + 1);
         set(pokemon, key, next);
         return next;
     }
     private static void offerEvolution(Pokemon pokemon) {
-        Set<String> ids = Set.of("mawile_mawonna", "corvisquire_covislight", "sliggoo_fairy_sliggoo", "sylveon_inkyeon");
+        Set<String> ids = Set.of("mawile_mawonna", "corvisquire_covislight", "sliggoo_fairy_sliggoo", "sylveon_inkyeon", "eevee_lunavee", "eevee_creepyeon", "eevee_buzzeon");
         for (var evolution : pokemon.getForm().getEvolutions()) {
             if (ids.contains(evolution.getId()) && evolution instanceof PassiveEvolution passive) passive.attemptEvolution(pokemon);
         }
@@ -201,7 +233,76 @@ public final class MawonnaCompanion {
         if (!remainder.isEmpty() && !player.addItem(remainder)) player.drop(remainder,false);
         message(player,"meal",Math.min(49,mealIds(pokemon).size()),value(pokemon,DEFEATS));
     }
+    private static int defeatGoal(String key) {
+        return DEFEATS.equals(key) ? 666 : 1000;
+    }
+
+    private static void awardDefeatMilestone(ServerPlayer owner, Pokemon pokemon) {
+        var id = ResourceLocation.fromNamespaceAndPath("mawonna", "dark_defeats_" + species(pokemon));
+        var advancement = owner.server.getAdvancements().get(id);
+        if (advancement != null) owner.getAdvancements().award(advancement, "milestone");
+    }
+
+    private static int adjustDefeats(ServerPlayer owner, int slot, int amount) {
+        var party = com.cobblemon.mod.common.Cobblemon.INSTANCE.getStorage().getParty(owner);
+        Pokemon pokemon = party.get(slot - 1);
+        String key = pokemon == null ? null : counterKey(pokemon);
+        if (key == null) {
+            owner.sendSystemMessage(Component.literal("Choose a party slot containing Mawile, Corvisquire, Sliggoo or Sylveon."));
+            return 0;
+        }
+        int goal = defeatGoal(key);
+        int count = Math.min(goal, value(pokemon, key) + amount);
+        set(pokemon, key, count);
+        if (count == goal) {
+            awardDefeatMilestone(owner, pokemon);
+            offerEvolution(pokemon);
+        }
+        owner.sendSystemMessage(Component.literal("Slot " + slot + " - ").append(pokemon.getDisplayName(false))
+                .append(": " + count + " / " + goal + " Dark types defeated."));
+        return 1;
+    }
+
     private void commands(RegisterCommandsEvent event) {
+        event.getDispatcher().register(Commands.literal("cobblemonspawn").requires(source -> source.hasPermission(2))
+                .then(Commands.argument("species", net.minecraft.commands.arguments.ResourceLocationArgument.id())
+                        .suggests((ctx, builder) -> net.minecraft.commands.SharedSuggestionProvider.suggest(
+                                PokemonSpecies.getImplemented().stream().map(sp -> sp.getResourceIdentifier().getPath()), builder))
+                        .then(Commands.argument("count", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 100))
+                                .executes(ctx -> {
+                                    var source = ctx.getSource();
+                                    var id = net.minecraft.commands.arguments.ResourceLocationArgument.getId(ctx,"species");
+                                    if (id.getNamespace().equals("minecraft"))
+                                        id = ResourceLocation.fromNamespaceAndPath("cobblemon",id.getPath());
+                                    var sp = PokemonSpecies.getByIdentifier(id);
+                                    if (sp == null) {
+                                        source.sendFailure(Component.literal("Unknown species: " + id));
+                                        return 0;
+                                    }
+                                    int count = ctx.getArgument("count", Integer.class);
+                                    int spawned = 0;
+                                    for (int i = 0; i < count; i++) {
+                                        try {
+                                            spawned += event.getDispatcher().execute("spawnpokemon " + sp.getResourceIdentifier().getPath(),source.withSuppressedOutput());
+                                        } catch (com.mojang.brigadier.exceptions.CommandSyntaxException failure) {
+                                            source.sendFailure(Component.literal("Spawn stopped: " + failure.getMessage()));
+                                            break;
+                                        }
+                                    }
+                                    int total = spawned;
+                                    source.sendSuccess(() -> Component.literal("Spawned " + total + " / " + count + " " + sp.getName()), false);
+                                    return total;
+                                }))));
+        var slots = com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 6);
+        var amounts = com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 1000);
+        event.getDispatcher().register(Commands.literal("darkdefeats").requires(source -> source.hasPermission(2))
+                .then(Commands.literal("add").then(Commands.argument("slot", slots)
+                        .then(Commands.argument("amount", amounts).executes(ctx -> adjustDefeats(
+                                ctx.getSource().getPlayerOrException(), ctx.getArgument("slot", Integer.class),
+                                ctx.getArgument("amount", Integer.class))))))
+                .then(Commands.literal("complete").then(Commands.argument("slot", slots).executes(ctx ->
+                        adjustDefeats(ctx.getSource().getPlayerOrException(), ctx.getArgument("slot", Integer.class), 1000)))));
+
         event.getDispatcher().register(Commands.literal("mawonnatest").requires(source -> source.hasPermission(4)).executes(context -> {
             try {
                 selfTest(context.getSource().registryAccess());
@@ -250,14 +351,17 @@ public final class MawonnaCompanion {
         return pokemon;
     }
     private static void testFaintEvent(ActorType victimType, boolean dark, boolean knownOrigin, int expected) {
-        Pokemon attacker = testPokemon("mawile");
-        Pokemon bench = testPokemon("mawile");
+        testFaintEvent(victimType,knownOrigin,expected,"mawile",dark ? "umbreon" : "eevee",DEFEATS);
+    }
+    private static void testFaintEvent(ActorType victimType, boolean knownOrigin, int expected, String speciesName, String victimName, String feature) {
+        Pokemon attacker = testPokemon(speciesName);
+        Pokemon bench = testPokemon(speciesName);
         var store = new com.cobblemon.mod.common.api.storage.party.PlayerPartyStore(UUID.randomUUID());
         require(store.add(attacker) && store.add(bench), "Test ownership not initialized");
-        Pokemon battleCopy = testPokemon("mawile");
+        Pokemon battleCopy = testPokemon(speciesName);
         BattlePokemon killer = new BattlePokemon(attacker,battleCopy,new ArrayList<>(),new ArrayList<>());
         BattlePokemon benched = new BattlePokemon(bench,bench,new ArrayList<>(),new ArrayList<>());
-        Pokemon victimPokemon = testPokemon(dark ? "umbreon" : "eevee");
+        Pokemon victimPokemon = testPokemon(victimName);
         BattlePokemon victim = new BattlePokemon(victimPokemon,victimPokemon,new ArrayList<>(),new ArrayList<>());
         TestActor player = new TestActor(ActorType.PLAYER,List.of(killer,benched));
         TestActor opponent = new TestActor(victimType,List.of(victim));
@@ -268,13 +372,13 @@ public final class MawonnaCompanion {
             com.cobblemon.mod.common.api.battles.interpreter.BattleContext.Type.values()[0],knownOrigin ? killer : null);
         var event = new BattleFaintedEvent(battle,victim,context,"p2a");
         onFainted(event);
-        require(value(attacker,DEFEATS)==expected,"Faint event credit wrong for " + victimType + " dark="+dark+" origin="+knownOrigin);
-        require(value(battleCopy,DEFEATS)==expected,"Battle copy missing verified counter");
-        require(value(bench,DEFEATS)==0,"Benched teammate received credit");
+        require(value(attacker,feature)==expected,"Faint event credit wrong for " + victimType + " dark="+victimName+" origin="+knownOrigin);
+        require(value(battleCopy,feature)==expected,"Battle copy missing verified counter");
+        require(value(bench,feature)==0,"Benched teammate received credit");
         onFainted(event);
-        require(value(attacker,DEFEATS)==expected,"Duplicate faint event credited twice");
+        require(value(attacker,feature)==expected,"Duplicate faint event credited twice");
         for (var operation : killer.getPostBattlePokemonOperations()) operation.invoke(killer);
-        require(value(attacker,DEFEATS)==expected,"Postbattle operation changed valid credit");
+        require(value(attacker,feature)==expected,"Postbattle operation changed valid credit");
     }
     private static boolean evolutionReady(Pokemon pokemon, String id) {
         return pokemon.getForm().getEvolutions().stream().filter(e -> e.getId().equals(id))
@@ -288,6 +392,10 @@ public final class MawonnaCompanion {
         testFaintEvent(ActorType.PLAYER,true,true,0);
         testFaintEvent(ActorType.WILD,false,true,0);
         testFaintEvent(ActorType.WILD,true,false,0);
+        testFaintEvent(ActorType.WILD,true,1,"eevee","gastly","unyielding_eevee_gastly_defeats");
+        testFaintEvent(ActorType.WILD,true,0,"eevee","haunter","unyielding_eevee_gastly_defeats");
+        testFaintEvent(ActorType.NPC,true,1,"eevee","rattata","unyielding_eevee_normal_defeats");
+        testFaintEvent(ActorType.WILD,true,1,"eevee","caterpie","unyielding_eevee_bug_defeats");
         Object battle = new Object();
         require(firstFaint(battle,"victim:1"),"First faint ignored");
         require(!firstFaint(battle,"victim:1"),"Duplicate faint counted");
@@ -307,7 +415,7 @@ public final class MawonnaCompanion {
             require(pokemon.getFeature(key) instanceof IntSpeciesFeature,"Missing feature assignment " + name);
             require(value(pokemon,key)==0,"Counter imports old progress");
             require(creditDefeat(pokemon)==1,"Verified credit not applied");
-            int maximum = DEFEATS.equals(key) ? 666 : 1000;
+            int maximum = defeatGoal(key);
             set(pokemon,key,maximum);
             require(creditDefeat(pokemon)==maximum,"Counter overflow");
             set(pokemon,key,3);

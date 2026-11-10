@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:feather"
+    },
+    "title": "A Murder of One",
+    "description": "A thousand Dark types later, this bird still insists it worked alone.",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "background": "minecraft:textures/block/black_concrete.png"
+  },
+  "criteria": {
+    "milestone": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

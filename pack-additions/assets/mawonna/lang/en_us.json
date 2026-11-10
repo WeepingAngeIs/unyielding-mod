@@ -20,7 +20,7 @@
   "cobblemon.species.fairy_sliggoo.name": "Fairy Sliggoo",
   "cobblemon.species.fairysliggoo.desc": "Sliggoo evolves into Fairy Sliggoo after personally defeating 1,000 Dark-type Pokemon in wild or NPC-trainer battles (human PvP never counts). Select the evolution when available. This Fairy/Dragon final evolution flies with four fluffy Cupid wings. HP 200, Atk 10, Def 120, Sp. Atk 120, Sp. Def 110, Speed 15.",
   "cobblemon.species.sliggoo.fairy_evolution.desc": "Sliggoo evolves into Fairy Sliggoo after personally defeating 1,000 Dark-type Pokemon in wild or NPC-trainer battles (human PvP never counts). Select the evolution when available. This Fairy/Dragon final evolution flies with four fluffy Cupid wings. HP 200, Atk 10, Def 120, Sp. Atk 120, Sp. Def 110, Speed 15.",
-  "mawonna.ui.verified_dark_defeats": "Dark defeats (wild / NPC)",
+  "mawonna.ui.verified_dark_defeats": "Defeat Dark Types",
   "cobblemon.ability.inkylove": "Inky Love",
   "cobblemon.ability.inkylove.desc": "A touch of love leaves a sticky stain. When a damaging move makes contact, its clinging ink lowers the attacker's Speed by one stage.",
   "cobblemon.ability.taintedcharm": "Tainted Charm",

@@ -1,0 +1,10 @@
+{
+  "keys": [
+    "unyielding_eevee_bug_defeats"
+  ],
+  "type": "integer",
+  "min": 0,
+  "max": 1000,
+  "default": 0,
+  "visible": true
+}

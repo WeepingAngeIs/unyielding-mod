@@ -1,0 +1,48 @@
+{
+  "target": "cobblemon:eevee",
+  "evolutions": [
+    {
+      "id": "eevee_creepyeon",
+      "variant": "level_up",
+      "result": "creepyeon",
+      "optional": true,
+      "consumeHeldItem": false,
+      "requirements": [
+        {
+          "variant": "properties",
+          "target": "unyielding_eevee_gastly_defeats=1000"
+        }
+      ]
+    },
+    {
+      "id": "eevee_lunavee",
+      "variant": "level_up",
+      "result": "lunavee",
+      "optional": true,
+      "consumeHeldItem": false,
+      "requirements": [
+        {
+          "variant": "properties",
+          "target": "unyielding_eevee_normal_defeats=500"
+        },
+        {
+          "variant": "time_range",
+          "range": "midnight"
+        }
+      ]
+    },
+    {
+      "id": "eevee_buzzeon",
+      "variant": "level_up",
+      "result": "buzzeon",
+      "optional": true,
+      "consumeHeldItem": false,
+      "requirements": [
+        {
+          "variant": "properties",
+          "target": "unyielding_eevee_bug_defeats=1000"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:bowl"
+    },
+    "title": "Table for 666",
+    "description": "Your Mawile worked up an appetite. Both mouths agree.",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "background": "minecraft:textures/block/black_concrete.png"
+  },
+  "criteria": {
+    "milestone": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
