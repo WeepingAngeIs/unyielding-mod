@@ -333,6 +333,11 @@ public final class VisualSmokeScreen extends Screen {
 
     private static List<Map<String,Object>> validateInkyeonWalk() {
         List<Map<String,Object>> samples = new ArrayList<>();
+        var actualRig = geometryBones(resourceJson("mawonna:bedrock/pokemon/models/inkyeon/inkyeon.geo.json"));
+        var nativeRig = geometryBones(resourceJson("cobblemon:bedrock/pokemon/models/0700_sylveon/sylveon.geo.json"));
+        for (String bone : REAR_CHAIN) for (String field : List.of("parent", "pivot", "rotation"))
+            if (!Objects.equals(actualRig.get(bone).get(field), nativeRig.get(bone).get(field)))
+                throw new AssertionError("Inkyeon rear rig differs from native Sylveon: " + bone + " " + field);
         for (boolean shiny : new boolean[]{false, true}) {
             float minLeft = Float.POSITIVE_INFINITY, maxLeft = Float.NEGATIVE_INFINITY;
             float minFront = Float.POSITIVE_INFINITY, maxFront = Float.NEGATIVE_INFINITY;
@@ -357,9 +362,10 @@ public final class VisualSmokeScreen extends Screen {
                             throw new AssertionError("Inkyeon front WALK leg swings sideways: " + boneName);
                     } else {
                         var rest = restingRear.computeIfAbsent(boneName, ignored -> List.of(bone.xRot, bone.yRot, bone.zRot));
-                        assertNear(bone.xRot, rest.get(0), "stationary rear pitch " + boneName);
-                        assertNear(bone.yRot, rest.get(1), "stationary rear yaw " + boneName);
-                        assertNear(bone.zRot, rest.get(2), "stationary rear roll " + boneName);
+                        if (!boneName.startsWith("back_leg"))
+                            assertNear(bone.xRot, rest.get(0), "no custom rear joint pitch " + boneName);
+                        assertNear(bone.yRot, rest.get(1), "no rear yaw oscillation " + boneName);
+                        assertNear(bone.zRot, rest.get(2), "no rear roll oscillation " + boneName);
                     }
                 }
                 float left = model.getPart("back_leg_left").xRot;
@@ -370,25 +376,34 @@ public final class VisualSmokeScreen extends Screen {
                 maxLeft = Math.max(maxLeft, left);
                 minFront = Math.min(minFront, frontLeft);
                 maxFront = Math.max(maxFront, frontLeft);
-                assertNear(left, rearNeutral, "rear-left unchanged by stride");
-                assertNear(right, rearNeutral, "rear-right unchanged by stride");
                 var nativeState = variantState(shiny, frame / 8f);
                 var nativeModel = VaryingModelRepository.INSTANCE.getPoser(id("sylveon"), nativeState);
                 configureModelContext(nativeModel, id("sylveon"), nativeState);
                 nativeState.setCurrentModel(nativeModel);
                 nativeState.setPoseToFirstSuitable(PoseType.WALK);
                 nativeModel.applyAnimations(null, nativeState, WALK_PHASES[frame], 0f, nativeState.getAnimationSeconds() * 20f, 0f, 0f);
-                float nativeRearNeutral = nativeModel.getPart("back_leg_left").xRot;
                 nativeModel.applyAnimations(null, nativeState, WALK_PHASES[frame], .8f, nativeState.getAnimationSeconds() * 20f, 0f, 0f);
                 assertNear(frontLeft, nativeModel.getPart("front_leg_left").xRot, "native front-left stride");
                 assertNear(frontRight, nativeModel.getPart("front_leg_right").xRot, "native front-right stride");
-
-
-                samples.add(Map.of("shiny", shiny, "phase", frame, "limb_swing", WALK_PHASES[frame], "stride", .8f, "radians_xyz", rotations, "native_front_unchanged_and_rear_stationary", true));
+                // Compare actual loaded native transforms, including all parents and
+                // static knee/ankle/foot offsets; do not merely mirror our controller.
+                float[] actualRear = rearTransform(model), nativeRear = rearTransform(nativeModel);
+                for (int i=0;i<actualRear.length;i++)
+                    assertNear(actualRear[i], nativeRear[i], "native rear-chain transform " + REAR_CHAIN.get(i/9) + " component=" + i%9);
+                for (String side : List.of("left", "right")) for (boolean bodyLocal : new boolean[]{false,true}) {
+                    var actualFoot = rearFootPosition(model, side, bodyLocal);
+                    var nativeFoot = rearFootPosition(nativeModel, side, bodyLocal);
+                    assertNear(actualFoot.x, nativeFoot.x, "native foot lateral " + side);
+                    assertNear(actualFoot.y, nativeFoot.y, "native foot height " + side);
+                    assertNear(actualFoot.z, nativeFoot.z, "native foot forward/back " + side);
+                }
+                assertNear(left-rearNeutral, frontRight-frontNeutral, "native diagonal left-rear/right-front phase");
+                assertNear(right-rearNeutral, frontLeft-frontNeutral, "native diagonal right-rear/left-front phase");
+                samples.add(Map.of("shiny", shiny, "phase", frame, "limb_swing", WALK_PHASES[frame], "stride", .8f, "radians_xyz", rotations, "native_front_and_rear_match", true));
                 nativeModel.setDefault();
                 model.setDefault();
             }
-            assertNear(maxLeft - minLeft, 0f, "rear WALK pitch range at stride 0.8");
+            assertNear(maxLeft - minLeft, 2.24f, "native rear WALK pitch range at stride 0.8");
             assertNear(maxFront - minFront, 2.24f, "front WALK pitch range at stride 0.8");
         }
         return samples;
@@ -482,10 +497,18 @@ public final class VisualSmokeScreen extends Screen {
             state.setPose(pose);
             float[] low = {Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY};
             float[] high = {Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY};
+            float[] idleRear = null;
             for (int tick = 0; tick <= 160; tick++) {
                 state.updateAge(tick);
                 model.applyAnimations(null, state, tick * .55f, .8f, tick, 0f, 0f);
                 float[] values = rearTransform(model);
+                if (species.equals("inkyeon") && !pose.equals("walking")) {
+                    if (idleRear == null) idleRear = values.clone();
+                    // Keep the existing body sway, but forbid separate twitching
+                    // of the rear parent, hips, knees, ankles or feet while idle.
+                    for (int i=18;i<values.length;i++)
+                        assertNear(values[i], idleRear[i], "calm idle rear chain " + pose + " " + REAR_CHAIN.get(i/9));
+                }
                 if (species.equals("inkyeon")) for (int i = 0; i < values.length; i++) {
                     minima[i] = Math.min(minima[i], values[i]);
                     maxima[i] = Math.max(maxima[i], values[i]);
@@ -526,7 +549,7 @@ public final class VisualSmokeScreen extends Screen {
         output.put("steady_bounds", boundsReport);
         output.put("samples", samples);
         output.put("lateral_tolerance_blocks", .03125f);
-        output.put("scope", "Actual loaded pose transitions, moving stride 0.8, body-local and world foot pivots, all rear ancestors and joints; 8-second idle loops plus native Sylveon comparison");
+        output.put("scope", "Actual loaded pose transitions, native Sylveon stride 0.8, body-local and world foot pivots, all rear ancestors and joints; 8-second idle loops with static rear joints plus native Sylveon comparison");
         return output;
     }
 

@@ -42,7 +42,7 @@ No hosted build was used for this release. `animated-release.yml` is available o
 - Normal and shiny forms share these supplied icon images. Their existing 3D model textures remain separate.
 - Ghost Jirachi: native Jirachi model and clips recolored purple; native-style purple map icon. The eye opens for `2 * HP < maxHP` and closes at half or above, including after recall/healing.
 - Frilligoo: original Sliggoo eyes/mouth and restored UVs, no added painted smile, Dragon/Fairy order. Existing saved ID `fairy_sliggoo` is preserved.
-- Inkyeon rear joints remain stationary, with approved front-leg/body animation and prior eye/tear/heart-bow fixes retained.
+- Inkyeon uses native Sylveon walking for all four legs. Standing and battle poses keep the rear joints calm; no custom knee motion is added. Prior eye/tear/heart-bow fixes are retained.
 - Mawonna's approved hands, sleeves, animation loops and two cry variants are embedded from the trial ZIP.
 
 Mawonna Flower remains command-only with separate admin stats (HP 155 / Attack 165 / Defense 200 / Sp. Atk 5 / Sp. Def 150 / Speed 30). It has 862 eligible level-one moves after removing Z/Max/G-Max, one-PP and malformed/internal entries. Public Mawonna remains HP 100 / Attack 120 / Defense 120 / Sp. Atk 10 / Sp. Def 100 / Speed 10, with 141 moves. Each Pokemon has one active ability at a time.

@@ -33,7 +33,7 @@ All four friends' learnsets are available from level one: Lunavee 102, Buzzeon 5
 
 All nine custom species have riding seat locators. The combined release supplies their riding definitions. Rendering checks capture actual client portraits, profiles and flight poses and verify scale throughout pose changes. These are focused client checks, not a full modpack play session.
 
-Frilligoo (saved species ID `fairy_sliggoo`) is Dragon/Fairy and uses the original Sliggoo eyes and mouth, with the added drawn-on smile removed. Inkyeon's rear joints remain still while its front legs and body retain their approved motion. All latest Mawonna sleeve/hand, cry, and loop fixes from the approved ZIP are embedded.
+Frilligoo (saved species ID `fairy_sliggoo`) is Dragon/Fairy and uses the original Sliggoo eyes and mouth, with the added drawn-on smile removed. Inkyeon uses Sylveon's original four-leg walking controller, with calm rear joints while standing/in battle and no custom knee-bending motion. All latest Mawonna sleeve/hand, cry, and loop fixes from the approved ZIP are embedded.
 
 Mawonna and command-only Mawonna Flower share the supplied animated face portrait and full-body map icon. Inkyeon uses a still, transparent face portrait from the clean supplied artwork and the right-facing GIF for her animated map icon. The new portrait images replace the team portrait only; the 3D models remain available in other views. Map animation integrates with Xaero Minimap 26.5.0; Xaero is optional. Normal and shiny forms use the same supplied portrait artwork.
 
